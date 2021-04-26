@@ -32,3 +32,20 @@ adams_theme <- theme(plot.title = element_text(hjust = 0.5, size = title_size),
                      legend.key.size = unit(0.9, "cm"))
 adams_theme <- theme_minimal() + adams_theme
 
+
+
+
+makePNG <- function(fig, path_to_output.x = path_to_output, file_name = "unamed_graph",
+                    height=PNGheight,  width=PNGwidth, units=PNGunits, res = PNGres){
+  
+  #fig = SMP_fig
+  #  file_name = "sMP_fig"
+  model_run_time_stamp <- Sys.time() %>% 
+    sub(pattern = ":", replacement = "-") %>%
+    sub(pattern = ":", replacement = "-") %>%
+    sub(pattern = " ", replacement = "-")
+  
+  png(paste0(path_to_output.x,file_name,"_",model_run_time_stamp,".png"), height=height, width=width, units=units, res = res)
+  print(fig)
+  dev.off()
+}

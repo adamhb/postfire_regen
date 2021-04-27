@@ -49,3 +49,10 @@ makePNG <- function(fig, path_to_output.x = path_to_output, file_name = "unamed_
   print(fig)
   dev.off()
 }
+
+
+#png options
+PNGheight = 5
+PNGwidth = 8 #usually 8
+PNGunits = "in"
+PNGres = 100

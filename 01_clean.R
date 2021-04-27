@@ -11,7 +11,7 @@ files <- list.files(path,pattern = "csv")
 outPath <- "~/cloud/gdrive/fire_project/figures/fromR/"
 
 
-numPix <- 1000
+numPix <- 9000
 #join data from different focal areas
 df <- tibble()
 for(f in files){
@@ -42,6 +42,21 @@ PatchesIN <- pixelsPerPatch %>% filter(nPerPatch > 100) %>%
   pull(PatchID)
 
 df <- df %>% filter(PatchID %in% PatchesIN)
+
+
+########################################
+summary_stats <- function(data){
+  n_focal_areas <- length(unique(data$focalAreaID))
+  n_patches <- length(unique(data$PatchID))
+  n_pixels <- length(unique(data$pixelID))
+  area <- n_pixels * (60*60) / 1e4 #hectares
+  return(list(n_focal_areas,n_patches,n_pixels,area))
+}
+
+summary_stats(df2)
+
+
+
 
 ########################################
 #create recovery trajectories per pixel#
@@ -85,7 +100,7 @@ deltaConProbFunc <- function(recov_data, pixelID.x){
 }
 
 
-pixelIDvec <- unique(df$pixelID)[1:numPix] 
+pixelIDvec <- unique(df$pixelID) #[1:numPix] 
 start_time <- Sys.time()
 deltaConProbDF <- tibble()
 
@@ -110,6 +125,9 @@ recovery1 <- recovery %>%
   mutate(postFireConProb = preFireConProb - deltaConProb) %>%
   mutate(ARI = ConProb - postFireConProb) %>%
   mutate(RRI = ARI / deltaConProb) %>% arrange(pixelID,year)
+
+
+
 
 RRIoverTime <- recovery1 %>%
   group_by(PatchID,year) %>%
@@ -212,7 +230,7 @@ GrabVarByFireYear <- function(data, pixelID.x,varOfInterest,YrsRel2Fire,stat = f
   start_time <- Sys.time()
   PPT_DF <- tibble()
   for(i in 1:length(pixelIDvec)){
-    browser()
+    
     p <- pixelIDvec[i]
     tmp <- tibble(pixelID = p,
                   JanSeptSum = GrabVarByFireYear(data = PPT %>% filter(period == "JanSept"),
@@ -279,45 +297,66 @@ df2 <- recovery2 %>%
   left_join(PPT_DF, by = "pixelID") %>% 
   left_join(stableVars)
 
+print(summary_stats(df2))
 
-SAP_quantiles <- quantile(df2$SAPYr1_3, probs = c(0.2,0.8))
-PPT_quantiles <- quantile(df2$PPT_Yr0_3_mean, probs = c(0.2,0.8))
-
-summary(PPT_DF$PPT_Yr0_3_mean)
 
 crossPatchMean <- df2 %>%
   group_by(timeSinceFire) %>%
   summarise(RRI = mean(RRI))
 
+#patch level stats
 df3 <- df2 %>%
   group_by(PatchID,year) %>%
-  summarise_if(.predicate = is.numeric, .funs = mean) %>%
-mutate(SeedAvail = case_when(
-  SAPYr1_3 < SAP_quantiles[1] ~ "low",
-  SAPYr1_3 > SAP_quantiles[2] ~ "high",
-  (SAPYr1_3 > SAP_quantiles[1]) & (SAPYr1_3 < SAP_quantiles[2]) ~ "medium"
-)) %>%
-  mutate(PostFirePPT = case_when(
-    PPT_Yr0_3_mean < PPT_quantiles[1] ~ "low",
-    PPT_Yr0_3_mean > PPT_quantiles[2] ~ "high",
-    (PPT_Yr0_3_mean > PPT_quantiles[1]) & (SAPYr1_3 < PPT_quantiles[2]) ~ "medium"
-  ))
+  mutate_at(.vars = "plantedYr0_6",.funs = as.numeric) %>%
+  summarise_if(.predicate = is.numeric, .funs = mean)
 
-
-table(df3$SeedAvail)
-
-names(df3)
 RRI_Plot1 <- df3 %>% ggplot(aes(timeSinceFire,RRI,color = PatchID)) +
   geom_line() +
   geom_line(data = crossPatchMean, mapping = aes(timeSinceFire,RRI), color = "black", size = 3) +
-  adams_theme
+  adams_theme +
+  theme(legend.position = "none")
 
 makePNG(fig = RRI_Plot1,path_to_output.x = outPath,file_name = "NoStratification")
 
-df3 %>% ggplot(aes(timeSinceFire,RRI,color = PatchID)) +
+SAP_quantiles <- quantile(df3$SAPYr1_3, probs = c(0.2,0.8))
+PPT_quantiles <- quantile(df3$PPT_Yr0_3_mean, probs = c(0.2,0.8))
+
+df4 <- df3 %>%
+mutate(SeedAvail = case_when(
+  SAPYr1_3 <= SAP_quantiles[1] ~ "low seed avail.",
+  SAPYr1_3 >= SAP_quantiles[2] ~ "high seed avail.",
+  (SAPYr1_3 > SAP_quantiles[1]) & (SAPYr1_3 < SAP_quantiles[2]) ~ "medium seed avail."
+)) %>%
+  mutate(PostFirePPT = case_when(
+    PPT_Yr0_3_mean <= PPT_quantiles[1] ~ "low ppt Yrs 0-3",
+    PPT_Yr0_3_mean >= PPT_quantiles[2] ~ "high ppt Yrs 0-3",
+    (PPT_Yr0_3_mean > PPT_quantiles[1]) & (SAPYr1_3 < PPT_quantiles[2]) ~ "medium ppt Yrs 0-3"
+  )) %>% mutate(SeedAvail2 = factor(SeedAvail,levels = c("high seed avail.","medium seed avail.","low seed avail."))) %>%
+  mutate(PostFirePPT2 = factor(PostFirePPT,levels = c("high ppt Yrs 0-3","medium ppt Yrs 0-3","low ppt Yrs 0-3"))) %>%
+  mutate(planted = case_when(
+    plantedYr0_6 >= 0.5 ~ TRUE,
+    plantedYr0_6 < 0.5 ~ FALSE
+  ))
+
+
+RRI_plot2 <- df4 %>% ggplot(aes(timeSinceFire,RRI,color = PatchID,linetype = planted)) +
   geom_line() +
-  facet_grid(rows = vars(SeedAvail), cols = vars(PostFirePPT)) +
-  adams_theme 
+  facet_grid(rows = vars(SeedAvail2), cols = vars(PostFirePPT2),drop = FALSE) +
+  scale_colour_discrete(guide = FALSE) 
+  #theme(legend.position = "none")
+  
+makePNG(fig = RRI_plot2,path_to_output.x = outPath,file_name = "WithStratification",res = 600)
+
+write_csv(tibble(unlist(summary_stats(df2))),path = paste0("tmp/metaData",Sys.time() %>% 
+                                                             sub(pattern = ":", replacement = "-") %>%
+                                                             sub(pattern = ":", replacement = "-") %>%
+                                                             sub(pattern = " ", replacement = "-"),".csv"))
+
+write_csv(df4,path = paste0("tmp/Data",Sys.time() %>% 
+                              sub(pattern = ":", replacement = "-") %>%
+                              sub(pattern = ":", replacement = "-") %>%
+                              sub(pattern = " ", replacement = "-"),".csv"))
+
 
 
 

@@ -1,15 +1,17 @@
 #import libraries
 library(tidyverse)
-library(raster)
-library(sf)
-library(rgdal)
-library(ggcorrplot)
+library(parallel)
+#library(raster)
+#library(sf)
+#library(rgdal)
+#library(ggcorrplot)
 source('utils/system_settings.R')
 
 #set path to data
-path <- ("~/cloud/gdrive/fire_project/local_data/fromGEE/")
+path <- "/home/rstudio/data/"
+#path <- ("~/cloud/gdrive/fire_project/local_data/fromGEE/")
 files <- list.files(path,pattern = "csv")
-outPath <- "~/cloud/gdrive/fire_project/figures/fromR/"
+outPath <- "/home/rstudio/figures/"
 
 #set parameters
 minPixPerPatch <- 100
@@ -32,15 +34,17 @@ df <- df %>% rename(patchID = PatchID, fireYear = FireYear) %>%
   mutate_at(.vars = c("patchID","focalAreaID"),.funs = as.character) ##make IDs characters
   
 pixelsPerPatch <- df %>% #pixels per patch
-  group_by(PatchID) %>%
+  group_by(patchID) %>%
   summarise(nPerPatch = length(pixelID))
 
 #filter to patches with more than minPixPerPatch number of pixels
 PatchesIN <- pixelsPerPatch %>% filter(nPerPatch >= minPixPerPatch) %>% 
-  pull(PatchID) #could sample patches randomly here
+  pull(patchID) #could sample patches randomly here
 
 df <- df %>% filter(patchID %in% PatchesIN)
 
+
+pixelIDs <- unique(timeVaryingDF$pixelID)
 
 ########################################
 summary_stats <- function(data){
@@ -83,6 +87,8 @@ GetTimeVarStat <- function(pixel, d, varOfInterest,relYrs,stat = "mean") {
   
   if(stat == "mean"){f = function(x){mean(x)}}
   if(stat == "sum"){f = function(x){sum(x)}}
+  if(stat == "max"){f == function(x){max(x)}}
+  
   fireYear <- d[d$pixelID == pixel,]$fireYear #get fire year of pixel
   output <- d %>%
     filter(timeSinceFire %in% relYrs,
@@ -92,16 +98,52 @@ GetTimeVarStat <- function(pixel, d, varOfInterest,relYrs,stat = "mean") {
   return(output)
 }
 
-numCores <- detectCores()
 
+#calculating pixel-level metrics from time-varying variables
+numCores <- detectCores()
 start_time <- Sys.time()
-mclapply(X = unique(timeVaryingDF$pixelID)[1:100],
-       FUN = GetTimeVarStat, 
-       d = timeVaryingDF, 
-       varOfInterest = "ConProb",
-       relYrs = c(-1,-2)) %>% flatten_dbl()
+preFireConProb <- mclapply(X = pixelIDs,
+       FUN = GetTimeVarStat,mc.cores = numCores,d = timeVaryingDF, varOfInterest = "ConProb",relYrs = c(-1,-2)) %>% flatten_dbl()
+postFireConProb <- mclapply(X = pixelIDs,
+       FUN = GetTimeVarStat,mc.cores = numCores,d = timeVaryingDF, varOfInterest = "ConProb",relYrs = c(1,2)) %>% flatten_dbl()
+postFireSAP <- mclapply(X = pixelIDs,
+       FUN = GetTimeVarStat,mc.cores = numCores,d = timeVaryingDF, varOfInterest = "SAP",relYrs = c(1,2,3)) %>% flatten_dbl()
+postFirePlanting <- mclapply(X = pixelIDs,
+                        FUN = GetTimeVarStat,mc.cores = numCores,d = timeVaryingDF, varOfInterest = "management",relYrs = 1:6) %>% flatten_dbl()
 end_time <- Sys.time()
 print(end_time-start_time)
+
+#calculated time metrics (time stable)
+timeVaryingDF2 <- tibble(pixelID = pixelIDs, 
+       preFireConProb = preFireConProb,
+       postFireConProb = postFireConProb,
+       postFireSAP = postFireSAP,
+       postFirePlanting = postFirePlanting) %>% 
+  mutate_at(.vars = 'postFirePlanting', .funs = function(x){x > 0}) %>%
+  right_join(timeVaryingDF, by = "pixelID") %>%
+  mutate(disturbanceSize = postFireConProb - preFireConProb,
+         ARI = ConProb - postFireConProb,
+         RRI = ARI / deltaConProb) 
+  
+stableVars <- df %>% dplyr::select(pixelID,patchID,focalAreaID,fireYear,
+                                   CWDhist,PPThist,PPThistSD,T_meanHist,T_meanSD,
+                                   SolarLoad,aspect,eastness,northness,slope,elevation,
+                                   burnSev,wilderness)
+
+#PICK UP HERE
+
+
+#joinging all vars back to recovery DF
+df2 <- timeVaryingDF2 %>% 
+  left_join(stableVars, by = "pixelID") %>% str()
+
+
+
+
+
+
+
+
 
 
 flatten_dbl(lapply(X = unique(timeVaringDF$year),FUN = function(x){x+1}))

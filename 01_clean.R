@@ -4,7 +4,6 @@ library(raster)
 library(sf)
 library(rgdal)
 library(ggcorrplot)
-
 source('utils/system_settings.R')
 
 #set path to data
@@ -12,8 +11,9 @@ path <- ("~/cloud/gdrive/fire_project/local_data/fromGEE/")
 files <- list.files(path,pattern = "csv")
 outPath <- "~/cloud/gdrive/fire_project/figures/fromR/"
 
+#set parameters
+minPixPerPatch <- 100
 
-numPix <- 9000
 #join data from different focal areas
 df <- tibble()
 for(f in files){
@@ -27,70 +27,123 @@ for(f in files){
 #record focal areas
 focal_areas <- unique(df$focal_area_code)
 
-#check that focalArea pixels match file name
-read_csv("~/cloud/gdrive/fire_project/local_data/fromGEE/FocalArea30.csv") %>%
-  pull(focalAreaID) %>% head()
-
 #cleaning NOT DONE
-df <- df %>% mutate_at(.vars = c("PatchID","focalAreaID"),.funs = as.character) ##make IDs characters
-
-#descriptive statistics
+df <- df %>% rename(patchID = PatchID, fireYear = FireYear) %>%
+  mutate_at(.vars = c("patchID","focalAreaID"),.funs = as.character) ##make IDs characters
+  
 pixelsPerPatch <- df %>% #pixels per patch
   group_by(PatchID) %>%
   summarise(nPerPatch = length(pixelID))
 
-PatchesIN <- pixelsPerPatch %>% filter(nPerPatch > 100) %>% 
-  #could sample patches randomly here
-  pull(PatchID)
+#filter to patches with more than minPixPerPatch number of pixels
+PatchesIN <- pixelsPerPatch %>% filter(nPerPatch >= minPixPerPatch) %>% 
+  pull(PatchID) #could sample patches randomly here
 
-df <- df %>% filter(PatchID %in% PatchesIN)
+df <- df %>% filter(patchID %in% PatchesIN)
 
 
 ########################################
 summary_stats <- function(data){
+  
   n_focal_areas <- length(unique(data$focalAreaID))
-  n_patches <- length(unique(data$PatchID))
+  n_patches <- length(unique(data$patchID))
   n_pixels <- length(unique(data$pixelID))
   area <- n_pixels * (60*60) / 1e4 #hectares
-  return(list(n_focal_areas,n_patches,n_pixels,area))
+  output <- tibble(stat = c("n Focal Areas","n Patches","n Pixels","Area (ha)"),
+                   value = c(n_focal_areas,n_patches,n_pixels,area))
+  return(output)
+}
+summary_stats(df)
+
+#function to get the time trajectories of time-varying variables
+GetTimeTraj <- function(d, varOfInterest, pattern = "[:digit:]{4}(?=0)"){
+  
+  timeTraj <- d %>% 
+    dplyr::select(pixelID, patchID, focalAreaID, fireYear, contains(varOfInterest)) %>% 
+    gather(contains(varOfInterest),key = "year",value = varOfInterest) %>%
+    mutate(year = flatten_chr(str_extract_all(year,pattern))) %>%
+    arrange(pixelID,year) %>% 
+    rename(!!sym(x = eval(varOfInterest)) := varOfInterest)
+  
+  return(timeTraj)
 }
 
-summary_stats(df2)
+conProbDF <- GetTimeTraj(d = df,varOfInterest = "ConProb")
+seedDF <- GetTimeTraj(d = df,varOfInterest = "SAP") %>% dplyr::select(pixelID,year,SAP)
+managementDF <- GetTimeTraj(d = df,varOfInterest = "management",pattern = "[:digit:]{4}") %>% dplyr::select(pixelID,year,management)
+
+timeVaryingDF <- conProbDF %>%
+  left_join(seedDF,by = c("pixelID","year")) %>%
+  left_join(managementDF, by = c("pixelID","year")) %>%
+  mutate_at(.vars = "year",.funs = as.numeric) %>%
+  mutate(timeSinceFire = year-fireYear)
+
+
+GetTimeVarStat <- function(pixel, d, varOfInterest,relYrs,stat = "mean") {
+  
+  if(stat == "mean"){f = function(x){mean(x)}}
+  if(stat == "sum"){f = function(x){sum(x)}}
+  fireYear <- d[d$pixelID == pixel,]$fireYear #get fire year of pixel
+  output <- d %>%
+    filter(timeSinceFire %in% relYrs,
+           pixelID == pixel) %>%
+    pull(varOfInterest) %>% f()
+  
+  return(output)
+}
+
+numCores <- detectCores()
+
+start_time <- Sys.time()
+mclapply(X = unique(timeVaryingDF$pixelID)[1:100],
+       FUN = GetTimeVarStat, 
+       d = timeVaryingDF, 
+       varOfInterest = "ConProb",
+       relYrs = c(-1,-2)) %>% flatten_dbl()
+end_time <- Sys.time()
+print(end_time-start_time)
+
+
+flatten_dbl(lapply(X = unique(timeVaringDF$year),FUN = function(x){x+1}))
+
+
+timeVaryingDF %>%
+  mutate(preFire = pmap(list(pixelID,ConProb,c(-2,-1)),
+                        d = .,
+                        .f = GetTimeVarStat))
+
+GetTimeVarStat(pixel = df$pixelID[1],d = timeVaringDF,varOfInterest = "ConProb",relYrs = c(-2,-1),stat = function(x){mean(x)})
 
 
 
 
-########################################
-#create recovery trajectories per pixel#
-########################################
-conPcode <- read_csv("tmp/code_conP.csv") #import names code
 
-recovery <- df %>% dplyr::select(pixelID, PatchID, focalAreaID, FireYear, contains("ConProb")) %>% 
-  gather(contains("ConProb"),key = "year",value = "ConProb") 
-recovery <- recovery %>%
-  left_join(conPcode, by = "year") %>%
-  dplyr::select(-year) %>%
-  rename(year = newyear) %>%
-  mutate(timeSinceFire = year-FireYear)
+
+
 
 #function to calculate pre-fire ConProb
-preFireConProbFunc <- function(recov_data, pixelID.x){
-  FireYear <-  recov_data %>%
-    filter(pixelID == pixelID.x) %>% pull(FireYear) %>% unique() %>% head(1)
+getPreDisturbance <- function(d, pixel){
   
-  ConProb2yrsPrior <- recov_data %>%
-    filter(pixelID == pixelID.x,
-           year %in% c(FireYear-1,FireYear-2)) %>%
+  
+  preDisturbance <- d %>%
+    filter(pixelID == pixel,
+           year %in% c(fireYear-1,fireYear-2)) %>%
     pull(ConProb) %>% mean()
-  return(ConProb2yrsPrior)
+  return(preDisturbance)
 }
 
+str(df2)
 
 #function to calculate delta ConProb
-deltaConProbFunc <- function(recov_data, pixelID.x){
-  FireYear <-  recov_data %>%
-    filter(pixelID == pixelID.x) %>% pull(FireYear) %>% unique() %>% head(1)
-  
+d <- head(recovery,100)
+pixel <- recovery$pixelID[1]
+
+
+
+disturbanceSize <- function(d, pixel){
+  #get fire year
+  fireYear <- d[d$pixelID == pixel,]$FireYear
+
   preFireConProb <- preFireConProbFunc(recov_data = recov_data,pixelID.x = pixelID.x)
   
   postFireConProb <- recov_data %>%
@@ -155,23 +208,7 @@ recovery2 <- recovery1 %>%
   
 
 #function to create summary variables of time trajectory data
-timeTrajFunc <-  function(data, codeNameFile, varOFinterest){
-    
-  
-  Code <- read_csv(codeNameFile) #import names code
-  
-  timeTraj <- data %>% 
-    dplyr::select(pixelID, PatchID, focalAreaID, FireYear, contains(varOFinterest)) %>% 
-    gather(contains(varOFinterest),key = "year",value = varOFinterest) 
-  timeTraj <- timeTraj %>%
-    left_join(Code, by = "year") %>%
-    dplyr::select(-year) %>%
-    rename(year = newyear) %>%
-    mutate(timeSinceFire = year-FireYear)
-  
-  return(timeTraj)
 
-  }
 
 SAP <- timeTrajFunc(data = df, codeNameFile = "tmp/codeNameSAP.csv",varOFinterest = "SAP")
 SAP <- SAP %>%

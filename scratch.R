@@ -214,7 +214,7 @@ d %>%
   rowwise() %>%
   mutate(d = map_dbl(list(a,b,c),.f = sum))
 
-class(map_dbl(d, function(x) {sum(x)} ))
+map_dbl(d, function(x) {sum(x)} )
 
 
 

@@ -183,3 +183,45 @@ str_extract("X1_1_LC08_041034_20130630_SAP","[:digit:]")
 
 
 na.omit(str_extract(string = "X1_1_LC08_041034_20120630_SAP", pattern = c("2012","2013")))
+
+
+df <- data.frame(id = 1:10, a = 1:10, b = 11:20, c = 21:30)
+
+lst_result <- apply(df, 1, function(x){
+  var1 <- (x[['a']] + x[['b']])
+  var2 <- x[['c']]/2
+  return(data.frame(var1 = var1, var2 = var2))
+})
+
+
+df %>%
+mutate(d = pmap_dbl(.l = list(b, c), 
+                   function(b, c) {b + c})
+)
+
+
+
+
+a <- c(1,2,3)
+b <- c(4,5,6)
+c <- c(7,8,9)
+
+al <- list(a,b,c)
+
+d <- tibble(a = a, b = b, c = c)
+
+d %>%
+  rowwise() %>%
+  mutate(d = map_dbl(list(a,b,c),.f = sum))
+
+class(map_dbl(d, function(x) {sum(x)} ))
+
+
+
+
+
+
+
+
+
+

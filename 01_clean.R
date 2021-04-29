@@ -3,6 +3,8 @@ library(tidyverse)
 library(raster)
 library(sf)
 library(rgdal)
+library(ggcorrplot)
+
 source('utils/system_settings.R')
 
 #set path to data
@@ -356,6 +358,43 @@ write_csv(df4,path = paste0("tmp/Data",Sys.time() %>%
                               sub(pattern = ":", replacement = "-") %>%
                               sub(pattern = ":", replacement = "-") %>%
                               sub(pattern = " ", replacement = "-"),".csv"))
+
+
+
+#exploring variables: correlations
+names(df4)[11] <- "RRIYR20"
+
+corr_data <- df4 %>% 
+  summarise_if(.predicate = is.numeric, .funs = mean) %>%
+  ungroup() %>%
+  dplyr::select(-FireYear,-year,-ConProb,-ARI,-RRI,-timeSinceFire) %>%
+  select_if(.predicate = is.numeric) %>%
+  dplyr::select(RRIYR20,SAPYr1_3,slope,plantedYr0_6,burnSev,elevation,PPThist,PPT_Yr0_3_mean) 
+
+corr <- corr_data %>% cor() %>% round(1)
+Pmat <-  corr_data %>% cor_pmat()
+
+ggcorrplot(corr, hc.order = TRUE, type = "lower",
+           lab = TRUE, p.mat = Pmat) +
+  adams_theme +
+  theme(legend.position = "none",
+        axis.text.x.bottom  = element_text(angle = 90, vjust = 0.5, hjust=1))
+
+
+#exploring variables: discrete variables
+df4 %>%
+  summarise_if(.predicate = is.numeric, .funs = mean) %>%
+  ungroup() %>%
+  ggplot(aes(plantedYr0_6 * 100,RRIYR20)) +
+  ylab(label = "RRI at Year 20") +
+  xlab(label = "% of Patch Planted After Fire") +
+  geom_point() +
+  adams_theme
+
+
+
+
+
 
 
 

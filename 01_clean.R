@@ -8,23 +8,25 @@ library(parallel)
 source('utils/system_settings.R')
 
 #set path to data
-path <- "/home/rstudio/data/"
-#path <- ("~/cloud/gdrive/fire_project/local_data/fromGEE/")
+#path <- "/home/rstudio/data/"
+path <- ("~/cloud/gdrive/fire_project/local_data/fromGEE/testingPython/")
 files <- list.files(path,pattern = "csv")
-outPath <- "/home/rstudio/figures/"
+#outPath <- "/home/rstudio/figures/"
 
 #set parameters
 minPixPerPatch <- 100
 
 #join data from different focal areas
 df <- tibble()
+
 for(f in files){
               df_tmp <- read_csv(paste0(path,f))
               focalAreaID <- df_tmp$focalAreaID[1]
-              pixelID <- paste(focalAreaID,df_tmp$`system:index`, sep = "_")
+              pixelID <- paste(focalAreaID,df_tmp$pixelID, sep = "_")
               df_tmp$pixelID <- pixelID
               df <- rbind(df,df_tmp)
 }
+
 
 #record focal areas
 focal_areas <- unique(df$focal_area_code)

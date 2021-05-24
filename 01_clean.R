@@ -5,11 +5,12 @@ library(parallel)
 #library(sf)
 #library(rgdal)
 #library(ggcorrplot)
-source('utils/system_settings.R')
+source('utils/system_settings.R') # source internal functions and settings
 
 #set path to data
 #path <- "/home/rstudio/data/"
-path <- ("~/cloud/gdrive/fire_project/local_data/fromGEE/testingPython/")
+path <- ("~/cloud/gdrive/fire_project/local_data/fromGEE/")
+
 files <- list.files(path,pattern = "csv")
 #outPath <- "/home/rstudio/figures/"
 
@@ -29,7 +30,7 @@ for(f in files){
 
 
 #record focal areas
-focal_areas <- unique(df$focal_area_code)
+focal_areas <- unique(df$focalAreaID)
 
 #cleaning NOT DONE
 df <- df %>% rename(patchID = PatchID, fireYear = FireYear) %>%
@@ -116,6 +117,8 @@ end_time <- Sys.time()
 print(end_time-start_time)
 
 #calculated time metrics (time stable)
+
+
 timeVaryingDF2 <- tibble(pixelID = pixelIDs, 
        preFireConProb = preFireConProb,
        postFireConProb = postFireConProb,
@@ -135,16 +138,16 @@ stableVars <- df %>% dplyr::select(pixelID,patchID,focalAreaID,fireYear,
 #PICK UP HERE
 
 
+
+
+
+
+
+
+
 #joinging all vars back to recovery DF
 df2 <- timeVaryingDF2 %>% 
   left_join(stableVars, by = "pixelID") %>% str()
-
-
-
-
-
-
-
 
 
 
@@ -157,11 +160,6 @@ timeVaryingDF %>%
                         .f = GetTimeVarStat))
 
 GetTimeVarStat(pixel = df$pixelID[1],d = timeVaringDF,varOfInterest = "ConProb",relYrs = c(-2,-1),stat = function(x){mean(x)})
-
-
-
-
-
 
 
 

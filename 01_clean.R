@@ -21,8 +21,6 @@ minPixPerPatch <- 100
 df <- tibble()
 
 
-
-
 for(f in files){
               df_tmp <- read_csv(paste0(path,f))
               focalAreaID <- df_tmp$focalAreaID[1]
@@ -49,8 +47,7 @@ PatchesIN <- pixelsPerPatch %>% filter(nPerPatch >= minPixPerPatch) %>%
 
 df <- df %>% filter(patchID %in% PatchesIN)
 
-
-pixelIDs <- unique(timeVaryingDF$pixelID)
+pixelIDs <- unique(df$pixelID)
 
 ########################################
 summary_stats <- function(data){
@@ -65,6 +62,8 @@ summary_stats <- function(data){
 }
 summary_stats(df)
 
+
+
 #function to get the time trajectories of time-varying variables
 GetTimeTraj <- function(d, varOfInterest, pattern = "[:digit:]{4}(?=0)"){
   
@@ -78,13 +77,46 @@ GetTimeTraj <- function(d, varOfInterest, pattern = "[:digit:]{4}(?=0)"){
   return(timeTraj)
 }
 
+
+#make time trajectories of time-varying variables
 conProbDF <- GetTimeTraj(d = df,varOfInterest = "ConProb")
 seedDF <- GetTimeTraj(d = df,varOfInterest = "SAP") %>% dplyr::select(pixelID,year,SAP)
-managementDF <- GetTimeTraj(d = df,varOfInterest = "management",pattern = "[:digit:]{4}") %>% dplyr::select(pixelID,year,management)
+managementDF <- GetTimeTraj(d = df,varOfInterest = "management",pattern = "[:digit:]{4}") %>% 
+  dplyr::select(pixelID,year,management)
+
+pptOctNovDecDF <- GetTimeTraj(d = df,varOfInterest = "10_ppt",pattern = "[:digit:]{4}")
+names(pptOctNovDecDF)[6] <- "pptOctNovDec"
+pptOctNovDecDF <- pptOctNovDecDF %>%
+  dplyr::select(pixelID,year,pptOctNovDec)
+
+pptJanSeptDF <- GetTimeTraj(d = df,varOfInterest = "01_ppt",pattern = "[:digit:]{4}")
+names(pptJanSeptDF)[6] <- "pptJanSept"
+pptJanSeptDF <- pptJanSeptDF %>%
+  dplyr::select(pixelID,year,pptJanSept)
+
+tmaxJanSeptDF <- GetTimeTraj(d = df,varOfInterest = "01_tmax",pattern = "[:digit:]{4}")
+names(tmaxJanSeptDF)[6] <- "tmaxJanSept"
+tmaxJanSeptDF <- tmaxJanSeptDF %>%
+  dplyr::select(pixelID,year,tmaxJanSept)
+
+tmaxOctNovDecDF <- GetTimeTraj(d = df,varOfInterest = "10_tmax",pattern = "[:digit:]{4}")
+names(tmaxOctNovDecDF)[6] <- "tmaxOctNovDec"
+tmaxOctNovDecDF <- tmaxOctNovDecDF %>%
+  dplyr::select(pixelID,year,tmaxOctNovDec)
+
+
+
+
+#adding all time varying variables into the same DF
+
 
 timeVaryingDF <- conProbDF %>%
   left_join(seedDF,by = c("pixelID","year")) %>%
   left_join(managementDF, by = c("pixelID","year")) %>%
+  left_join(pptOctNovDecDF,by = c("pixelID","year")) %>%
+  left_join(pptJanSeptDF, by = c("pixelID","year")) %>%
+  left_join(tmaxJanSeptDF,by = c("pixelID","year")) %>%
+  left_join(tmaxOctNovDecDF, by = c("pixelID","year")) %>%
   mutate_at(.vars = "year",.funs = as.numeric) %>%
   mutate(timeSinceFire = year-fireYear)
 
@@ -116,6 +148,15 @@ postFireSAP <- mclapply(X = pixelIDs,
        FUN = GetTimeVarStat,mc.cores = numCores,d = timeVaryingDF, varOfInterest = "SAP",relYrs = c(1,2,3)) %>% flatten_dbl()
 postFirePlanting <- mclapply(X = pixelIDs,
                         FUN = GetTimeVarStat,mc.cores = numCores,d = timeVaryingDF, varOfInterest = "management",relYrs = 1:6) %>% flatten_dbl()
+
+
+#need to pick up here
+
+PPT_Yr0_3_mean <- 
+
+
+
+
 end_time <- Sys.time()
 print(end_time-start_time)
 
@@ -128,121 +169,23 @@ timeVaryingDF2 <- tibble(pixelID = pixelIDs,
        postFireSAP = postFireSAP,
        postFirePlanting = postFirePlanting) %>% 
   mutate_at(.vars = 'postFirePlanting', .funs = function(x){x > 0}) %>%
-  right_join(timeVaryingDF, by = "pixelID") %>%
+  right_join(timeVaryingDF, by = "pixelID") %>% 
   mutate(disturbanceSize = postFireConProb - preFireConProb,
          ARI = ConProb - postFireConProb,
-         RRI = ARI / deltaConProb) 
+         RRI = ARI / disturbanceSize) 
   
-stableVars <- df %>% dplyr::select(pixelID,patchID,focalAreaID,fireYear,
+stableVars <- df %>% dplyr::select(pixelID,
                                    CWDhist,PPThist,PPThistSD,T_meanHist,T_meanSD,
                                    SolarLoad,aspect,eastness,northness,slope,elevation,
-                                   burnSev,wilderness)
-
-#PICK UP HERE
-
-
-
-
-
-
-
+                                   burnSev,wilderness) 
 
 
 #joinging all vars back to recovery DF
 df2 <- timeVaryingDF2 %>% 
-  left_join(stableVars, by = "pixelID") %>% str()
+  left_join(stableVars, by = "pixelID")
 
 
 
-flatten_dbl(lapply(X = unique(timeVaringDF$year),FUN = function(x){x+1}))
-
-
-timeVaryingDF %>%
-  mutate(preFire = pmap(list(pixelID,ConProb,c(-2,-1)),
-                        d = .,
-                        .f = GetTimeVarStat))
-
-GetTimeVarStat(pixel = df$pixelID[1],d = timeVaringDF,varOfInterest = "ConProb",relYrs = c(-2,-1),stat = function(x){mean(x)})
-
-
-
-#function to calculate pre-fire ConProb
-getPreDisturbance <- function(d, pixel){
-  
-  
-  preDisturbance <- d %>%
-    filter(pixelID == pixel,
-           year %in% c(fireYear-1,fireYear-2)) %>%
-    pull(ConProb) %>% mean()
-  return(preDisturbance)
-}
-
-str(df2)
-
-#function to calculate delta ConProb
-d <- head(recovery,100)
-pixel <- recovery$pixelID[1]
-
-
-
-disturbanceSize <- function(d, pixel){
-  #get fire year
-  fireYear <- d[d$pixelID == pixel,]$FireYear
-
-  preFireConProb <- preFireConProbFunc(recov_data = recov_data,pixelID.x = pixelID.x)
-  
-  postFireConProb <- recov_data %>%
-    filter(pixelID == pixelID.x,
-           year %in% c(FireYear+1, FireYear+2)) %>%
-    pull(ConProb) %>% mean()
-  
-  return(preFireConProb - postFireConProb)
-}
-
-
-pixelIDvec <- unique(df$pixelID) #[1:numPix] 
-start_time <- Sys.time()
-deltaConProbDF <- tibble()
-
-for(i in 1:length(pixelIDvec)){
- 
-  p <- pixelIDvec[i]
-  tmp <- tibble(pixelID = p,
-                deltaConProb = deltaConProbFunc(recov_data = recovery, pixelID.x = p),
-                preFireConProb = preFireConProbFunc(recov_data = recovery, pixelID.x = p))
-  
-  deltaConProbDF <- rbind(deltaConProbDF,tmp)
-  print(i/length(pixelIDvec)*100)
-}
-end_time <- Sys.time()
-print(paste(end_time - start_time, "test1"))
-
-
-recovery1 <- recovery %>%
-  left_join(deltaConProbDF, by = "pixelID") %>% 
-  filter(deltaConProb > 20) %>%
-  drop_na(deltaConProb) %>%
-  mutate(postFireConProb = preFireConProb - deltaConProb) %>%
-  mutate(ARI = ConProb - postFireConProb) %>%
-  mutate(RRI = ARI / deltaConProb) %>% arrange(pixelID,year)
-
-
-
-
-RRIoverTime <- recovery1 %>%
-  group_by(PatchID,year) %>%
-  summarise(RRI = mean(RRI)) %>%
-  ggplot(aes(year,RRI,color=PatchID)) +
-  geom_line() +
-  adams_theme #+
-  #theme(legend.position = "none")
-
-#view histogram of patch-level RRI at year 20
-recovery1 %>%
-  group_by(PatchID,year) %>%
-  filter(timeSinceFire == 20) %>%
-  summarise(RRI = mean(RRI)) %>%
-  pull(RRI) %>% hist()
   
 RRIyr20 <- recovery1 %>%
   filter(timeSinceFire == 20) %>% dplyr::select(pixelID,RRI) %>%
@@ -255,35 +198,6 @@ recovery2 <- recovery1 %>%
 #function to create summary variables of time trajectory data
 
 
-SAP <- timeTrajFunc(data = df, codeNameFile = "tmp/codeNameSAP.csv",varOFinterest = "SAP")
-SAP <- SAP %>%
-  rename(SAP = varOFinterest)
-
-SAPmeanF1_3 <- function(data, pixelID.x){
-  FireYear <-  data %>%
-    filter(pixelID == pixelID.x) %>% pull(FireYear) %>% unique() %>% head(1)
-  
-  SAPF1_3 <- data %>%
-    filter(pixelID == pixelID.x,
-           year %in% c(FireYear+1, FireYear+2, FireYear+3)) %>%
-    pull(SAP) %>% mean()
-  
-  return(SAPF1_3)
-}
-
-start_time <- Sys.time()
-SAP_Yr1_3_DF <- tibble()
-for(i in 1:length(pixelIDvec)){
-  
-  p <- pixelIDvec[i]
-  tmp <- tibble(pixelID = p,
-                SAPYr1_3 = SAPmeanF1_3(data = SAP,pixelID.x = p))
-  
-  SAP_Yr1_3_DF <- rbind(SAP_Yr1_3_DF,tmp)
-  print(i/length(pixelIDvec)*100)
-}
-end_time <- Sys.time()
-print(paste(end_time - start_time, "test2"))
 
 
 #write_csv(tibble(grep(names(df),pattern = "ppt",value = T)),path = "tmp/ppt_code.csv")

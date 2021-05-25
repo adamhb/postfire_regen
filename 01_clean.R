@@ -8,8 +8,8 @@ library(parallel)
 source('utils/system_settings.R') # source internal functions and settings
 
 #set path to data
-#path <- "/home/rstudio/data/"
-path <- ("~/cloud/gdrive/fire_project/local_data/fromGEE/")
+path <- "/home/rstudio/data/"
+#path <- ("~/cloud/gdrive/fire_project/local_data/fromGEE/")
 
 files <- list.files(path,pattern = "csv")
 #outPath <- "/home/rstudio/figures/"
@@ -19,6 +19,9 @@ minPixPerPatch <- 100
 
 #join data from different focal areas
 df <- tibble()
+
+
+
 
 for(f in files){
               df_tmp <- read_csv(paste0(path,f))

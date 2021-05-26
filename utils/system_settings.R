@@ -45,9 +45,12 @@ makePNG <- function(fig, path_to_output.x = path_to_output, file_name = "unamed_
     sub(pattern = ":", replacement = "-") %>%
     sub(pattern = " ", replacement = "-")
   
-  png(paste0(path_to_output.x,file_name,"_",model_run_time_stamp,".png"), height=height, width=width, units=units, res = res)
-  print(fig)
-  dev.off()
+  if(makeFigs == T){
+    png(paste0(path_to_output.x,file_name,"_",model_run_time_stamp,".png"), height=height, width=width, units=units, res = res)
+    print(fig)
+    dev.off()
+  }
+  
 }
 
 

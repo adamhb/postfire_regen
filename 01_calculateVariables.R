@@ -271,7 +271,7 @@ patchLevelTimeVarying <- timeVaryingDF3 %>%
 str(patchLevelTimeVarying)
 timeStamp <- gsub(x = gsub(pattern = " ", replacement = "_", x = Sys.time()),pattern = ":",replacement = "-")
 if(write_csvs == T){
-  write_csv(x = timeVaryingDF3, path = paste0(outpath,"fromR_patchLevelTimeVarying_",timeStamp,".csv"))
+  write_csv(x = patchLevelTimeVarying, path = paste0(outpath,"fromR_patchLevelTimeVarying_",timeStamp,".csv"))
 }
 
 

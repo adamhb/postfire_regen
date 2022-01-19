@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<kml xmlns="http://www.opengis.net/kml/2.2">
+<Document id="root_doc">
+<Folder><name>B54</name>
+  <Placemark>
+	<name>B54</name>
+      <Point><coordinates>-123.100918562876,40.3995459955266</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<name>B54_N</name>
+      <Point><coordinates>-123.100954005443,40.4003739812833</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<name>B54_S</name>
+      <Point><coordinates>-123.100883121118,40.3987180103241</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<name>B54_E</name>
+      <Point><coordinates>-123.099835328271,40.3995730815185</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<name>B54_W</name>
+      <Point><coordinates>-123.102001796671,40.3995189000752</coordinates></Point>
+  </Placemark>
+</Folder>
+</Document></kml>

@@ -1,0 +1,3549 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<kml xmlns="http://www.opengis.net/kml/2.2">
+<Document id="root_doc">
+<Schema name="klamathPoints" id="klamathPoints">
+	<SimpleField name="id" type="string"></SimpleField>
+</Schema>
+<Folder><name>klamathPoints</name>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B0</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-123.086111741493,40.3983319209547</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B0_N</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-123.086147014292,40.3991599101049</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B0_S</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-123.086076469499,40.3975039323587</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B0_E</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-123.085028519515,40.3983588776079</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B0_W</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-123.087194962664,40.3983049548421</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B1</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-123.086182245667,40.3957655645016</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B1_N</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-123.086217518022,40.3965935518839</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B1_S</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-123.086146974117,40.3949375776727</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B1_E</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-123.085099062074,40.3957925217138</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B1_W</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-123.087265428453,40.3957385978303</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B2</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-123.081824136639,40.3996079440281</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B2_N</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-123.081859361071,40.4004359352664</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B2_S</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-123.081788913013,40.3987799533442</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B2_E</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-123.080740893995,40.3996348632646</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B2_W</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-123.082907378479,40.3995810153319</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B3</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-123.084363616959,40.3972108982733</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B3_N</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-123.084398869239,40.3980388871567</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B3_S</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-123.084328365483,40.3963829099436</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B3_E</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-123.083280411087,40.3972378396348</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B3_W</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-123.085446822025,40.3971839474524</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B4</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-123.15878855806,40.4143714416083</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B4_N</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-123.158824669209,40.4151994208127</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B4_S</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-123.158752447735,40.4135434629611</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B4_E</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-123.157705123636,40.4143990333245</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B4_W</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-123.159871991658,40.4143438404308</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B5</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-123.154590185372,40.4116021753582</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B5_N</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-123.154626247165,40.4124301538855</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B5_S</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-123.154554124402,40.4107741973877</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B5_E</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-123.153506790759,40.4116297303464</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B5_W</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-123.15567357916,40.4115746109093</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B6</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-123.15666838421,40.4127156619839</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B6_N</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-123.156704470306,40.41354364067</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B6_S</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-123.156632298938,40.4118876838548</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B6_E</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-123.155584973738,40.4127432351467</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B6_W</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-123.157751793856,40.4126880793601</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B7</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-123.156483308886,40.4150113167743</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B7_N</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-123.15651939401,40.4158392970886</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B7_S</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-123.156447224586,40.4141833370176</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B7_E</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-123.155399864017,40.4150388883731</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B7_W</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-123.15756675293,40.4149837357144</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B8</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-123.156377332182,40.4078626451235</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B8_N</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-123.156413412536,40.4086906205709</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B8_S</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-123.156341252653,40.4070346702319</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B8_E</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-123.155293994161,40.4078902156341</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B8_W</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-123.157460669379,40.4078350651526</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B9</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-123.152809827236,40.408747338112</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B9_N</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-123.152845867264,40.4095753152018</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B9_S</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-123.152773788031,40.4079193615782</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B9_E</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-123.151726474631,40.4087748774871</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B9_W</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-123.153893179017,40.4087197892763</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B10</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-123.153934179602,40.4072339859353</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B10_N</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-123.153970231725,40.4080619616631</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B10_S</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-123.153898128302,40.4064060107632</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B10_E</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-123.15285085005,40.4072615350953</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B10_W</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-123.155017508329,40.4072064273151</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B11</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-123.155052708924,40.4091784439688</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B11_N</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-123.155088774796,40.4100064207018</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B11_S</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-123.155016643876,40.4083504677919</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B11_E</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-123.153969350727,40.4092060029412</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B11_W</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-123.156136066298,40.4091508755359</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B12</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-123.211051893716,40.3964415614048</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B12_N</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-123.21108859303,40.3972695130179</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B12_S</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-123.211015195241,40.3956136103444</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B12_E</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-123.209968747399,40.3964696091278</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B12_W</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-123.212135039195,40.3964135042235</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B13</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-123.213258711149,40.3963853785936</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B13_N</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-123.213295435646,40.3972133295153</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B13_S</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-123.213221987491,40.3955574282246</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B13_E</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-123.212175566526,40.3964134455872</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B13_W</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-123.214341854933,40.3963573021417</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B14</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-122.838710073191,40.8501357220272</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B14_N</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-122.838742722701,40.8509641160062</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B14_S</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-122.838677424432,40.8493073287124</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B14_E</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-122.837619968071,40.8501605280325</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B14_W</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-122.83980017756,40.8501109064977</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B15</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-122.835976316497,40.8496682034969</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B15_N</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-122.836008934362,40.8504965978113</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B15_S</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-122.835943699383,40.8488398098466</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B15_E</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-122.83488621751,40.8496929856045</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B15_W</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-122.837066414734,40.8496434118651</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B16</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-122.834481937634,40.8514966626179</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B16_N</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-122.834514539144,40.8523250588081</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B16_S</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-122.834449336874,40.8506682670922</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B16_E</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-122.833391810468,40.8515214317126</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B16_W</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-122.835572064051,40.8514718839988</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B17</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-122.835185459859,40.8531034170203</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B17_N</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-122.835218070185,40.8539318143325</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B17_S</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-122.835152850283,40.8522750203729</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B17_E</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-122.834095308622,40.853128192301</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B17_W</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-122.836275610346,40.8530786322149</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B18</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-122.823957197047,40.8597122237313</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B18_N</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-122.823989681244,40.8605406293518</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B18_S</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-122.823924713597,40.8588838187772</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B18_E</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-122.822866941945,40.8597369010637</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B18_W</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-122.825047451401,40.8596875368731</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B19</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-122.821537836785,40.8601423887726</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B19_N</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-122.821570293354,40.8609707953734</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B19_S</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-122.821505380963,40.8593139828385</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B19_E</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-122.820447574345,40.8601670449758</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B19_W</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-122.822628098479,40.8601177230435</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B20</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-122.821047128456,40.858039196456</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B20_N</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-122.821079578435,40.8588676014708</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B20_S</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-122.821014679224,40.8572107921073</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B20_E</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-122.819956897678,40.8580638483207</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B20_W</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-122.822137358488,40.8580145350657</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B21</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-122.823700489736,40.8565394162492</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B21_N</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-122.82373296955,40.8573678193525</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B21_S</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-122.823668010668,40.8557110138117</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B21_E</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-122.822610282563,40.8565640912619</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B21_W</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-122.824790696162,40.8565147317113</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B22</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-122.81841124236,40.8575933765647</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B22_N</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-122.818443661826,40.8584217819016</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B22_S</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-122.818378823639,40.8567649718939</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B22_E</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-122.817321017427,40.8576180053872</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B22_W</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-122.819501466547,40.8575687382168</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B23</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-122.815884785436,40.8575872948007</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B23_N</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-122.815917175847,40.8584157007888</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B23_S</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-122.81585239577,40.8567588894786</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B23_E</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-122.814794559732,40.8576119015477</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B23_W</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-122.816975010395,40.8575626785282</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B24</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-122.817878829142,40.8597809198404</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B24_N</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-122.817911243471,40.8606093270978</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B24_S</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-122.817846415559,40.8589525132497</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B24_E</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-122.816788570921,40.8598055440637</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B24_W</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-122.818969086618,40.8597562860914</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B25</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-122.815515957033,40.8592394466505</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B25_N</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-122.815548343945,40.8600678540801</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B25_S</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-122.815483570865,40.8584110398873</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B25_E</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-122.814425706199,40.8592640502146</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B25_W</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-122.816606207121,40.8592148335606</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B26</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-122.681040976966,41.1424793808661</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B26_N</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-122.681071939155,41.143308064956</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B26_S</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-122.681010015492,41.1416506975128</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B26_E</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-122.679946378204,41.1425028162462</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B26_W</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-122.682135575013,41.1424559359192</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B27</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-122.681982040893,41.1408942812171</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B27_N</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-122.682013013262,41.1417229636508</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B27_S</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-122.681951069238,41.1400655995196</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B27_E</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-122.68088746661,41.1409177247825</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B27_W</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-122.68307661446,41.1408708280851</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B28</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-122.221999607061,41.2663980442628</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B28_N</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-122.222025313428,41.2672269457483</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B28_S</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-122.221973901289,41.2655691435471</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B28_E</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-122.220902978128,41.2664174697381</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B28_W</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-122.223096235399,41.2663786092002</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B29</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-122.229475823224,41.2621085898983</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B29_N</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-122.229501614523,41.2629374858398</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B29_S</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-122.229450032521,41.2612796947257</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B29_E</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-122.228379261957,41.2621280806434</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B29_W</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-122.230572383894,41.2620890895667</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B30</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-122.225095790307,41.2622489155066</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B30_N</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-122.225121530997,41.2630778124788</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B30_S</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-122.225070050213,41.2614200193031</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B30_E</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-122.223999225703,41.2622683679607</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B30_W</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-122.226192354315,41.2622294534657</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B31</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-122.221935774445,41.263827267435</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B31_N</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-122.221961479152,41.2646561665301</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B31_S</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-122.221910070333,41.2629983691092</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B31_E</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-122.220839184834,41.2638466922961</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B31_W</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-122.223032363462,41.2638078329871</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B32</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-122.228056064319,41.2696404082792</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B32_N</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-122.228081841906,41.270469311556</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B32_S</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-122.228030287327,41.268811505773</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B32_E</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-122.226959387411,41.2696598867765</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B32_W</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-122.229152740631,41.2696209201941</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B33</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-122.226930227897,41.2669432990277</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B33_N</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-122.226955991492,41.2677722000116</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B33_S</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-122.226904464899,41.2661143988138</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B33_E</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-122.225833591959,41.2669627676227</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B33_W</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-122.22802686324,41.2669238208452</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B34</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-122.228966343698,41.2661684663306</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B34_N</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-122.228992130566,41.2669973661714</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B34_S</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-122.228940557427,41.2653395672597</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B34_E</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-122.22786972017,41.2661879527103</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B34_W</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-122.23006296663,41.2661489703637</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B35</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-122.223418545457,41.2682788540236</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B35_N</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-122.223444268911,41.269107756978</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B35_S</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-122.223392822597,41.2674499518396</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B35_E</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-122.222321888126,41.2682982919457</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B35_W</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-122.224515202192,41.268259406514</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B36</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-122.269092133694,41.2824586877426</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B36_N</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-122.269118390657,41.2832875945348</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B36_S</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-122.269065877338,41.281629781724</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B36_E</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-122.267995271837,41.2824785252999</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B36_W</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-122.270188994943,41.2824388405958</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B37</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-122.266626538773,41.2821595923356</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B37_N</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-122.266652767102,41.2829884993624</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B37_S</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-122.266600311052,41.2813306860823</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B37_E</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-122.265529680813,41.2821794083296</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B37_W</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-122.267723396127,41.2821397667522</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B38</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-122.265671392629,41.2782923713459</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B38_N</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-122.265697608492,41.2791212749393</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B38_S</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-122.265645177373,41.2774634685251</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B38_E</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-122.264574593605,41.2783121789026</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B38_W</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-122.266768191047,41.2782725542004</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B39</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-122.270760509125,41.2845340414647</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B39_N</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-122.270786786151,41.2853629498594</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B39_S</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-122.270734232707,41.2837051338442</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B39_E</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-122.269663615957,41.2845538936552</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B39_W</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-122.271857401684,41.2845141796846</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B40</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-122.283035847435,41.2858233612715</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B40_N</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-122.283062266958,41.2866522683014</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B40_S</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-122.283009428523,41.2849944550161</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B40_E</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-122.281938937937,41.2858433208139</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B40_W</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-122.284132756321,41.2858033921394</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B41</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-122.280746423579,41.2842911933491</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B41_N</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-122.28077281605,41.2851200994192</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B41_S</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-122.280720031719,41.283462288053</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B41_E</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-122.279649536902,41.2843111328405</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B41_W</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-122.281843309646,41.2842712442681</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B42</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-122.284538772119,41.284435057233</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B42_N</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-122.284565208519,41.2852639626401</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B42_S</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-122.284512336331,41.2836061526001</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B42_E</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-122.283441884296,41.2844550298841</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B42_W</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-122.285635659332,41.2844150749925</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B43</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-122.286155897753,41.2865605195074</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B43_N</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-122.286182353647,41.2873894265737</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B43_S</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-122.286129442471,41.2857316132157</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B43_E</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-122.285058977839,41.286580506345</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B43_W</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-122.287252817056,41.28654052308</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B44</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-123.16252155065,40.4929200559569</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B44_N</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-123.162557743696,40.4937480888391</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B44_S</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-123.162485358433,40.4920920236506</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B44_E</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-123.161436941849,40.4929476820958</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B44_W</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-123.163606158623,40.492892420346</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B45</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-123.165198200783,40.4933650827745</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B45_N</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-123.165234424673,40.4941931151915</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B45_S</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-123.165161977723,40.4925370509334</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B45_E</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-123.164113586336,40.4933927323009</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B45_W</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-123.166282814402,40.4933374237758</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B46</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-123.164390237192,40.49130022806</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B46_N</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-123.164426450805,40.4921282592502</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B46_S</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-123.164354024407,40.4904721974453</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B46_E</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-123.163305653377,40.4913278704813</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B46_W</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-123.165474820179,40.4912725761669</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B47</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-123.160598133503,40.492017260108</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B47_N</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-123.160634304094,40.4928452929111</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B47_S</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-123.160561963741,40.4911892278807</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B47_E</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-123.159513537497,40.492044869427</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B47_W</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-123.161682728683,40.4919896413171</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B48</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-122.322080524741,40.8254129811637</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B48_N</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-122.322107224378,40.8262414780513</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B48_S</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-122.322053825717,40.8245844849373</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B48_E</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-122.320990631962,40.8254332722604</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B48_W</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-122.323170416906,40.8253926805433</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B49</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-122.317263874858,40.8253656027835</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B49_N</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-122.317290519107,40.8261941006629</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B49_S</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-122.317237231222,40.8245371055651</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B49_E</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-122.316173981441,40.8253858517883</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B49_W</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-122.318353767663,40.8253453442549</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B50</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-122.318415745604,40.8268958262302</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B50_N</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-122.318442403661,40.8277243250957</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B50_S</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-122.318389088161,40.8260673280262</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B50_E</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-122.317325829369,40.8269160853307</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B50_W</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-122.319505661227,40.8268755576056</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B51</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-122.322060776561,40.830141447546</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B51_N</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-122.322087477724,40.8309699482476</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B51_S</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-122.322034076013,40.8293129475067</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B51_E</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-122.320970812265,40.8301617385631</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B51_W</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-122.323150740244,40.8301211470045</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B52</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-123.102501888658,40.3959478420443</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B52_N</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-123.102537347556,40.3967758248973</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B52_S</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-123.102466430571,40.3951198597445</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B52_E</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-123.101418708427,40.3959749417838</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B52_W</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-123.10358506808,40.3959207328458</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B53</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-123.103524937864,40.3993436075591</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B53_N</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-123.103560410112,40.4001715924328</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B53_S</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-123.103489466426,40.3985156232395</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B53_E</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-123.102441707259,40.3993707163086</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B53_W</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-123.104608167659,40.3993164893501</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B54</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-123.100918562876,40.3995459955266</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B54_N</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-123.100954005443,40.4003739812833</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B54_S</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-123.100883121118,40.3987180103241</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B54_E</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-123.099835328271,40.3995730815185</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B54_W</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-123.102001796671,40.3995189000752</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B55</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-123.100075414309,40.3970020607557</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B55_N</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-123.100110845999,40.3978300450199</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B55_S</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-123.100039983428,40.396174077045</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B55_E</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-123.098992217414,40.3970291393276</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B55_W</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-123.101158610395,40.3969749727245</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B56</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-122.905157756196,40.7550648885585</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B56_N</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-122.905191125684,40.7558931890559</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B56_S</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-122.905124387475,40.7542365887017</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B56_E</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-122.904069110825,40.7550902728282</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B56_W</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-122.906246400802,40.7550394947782</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B57</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-122.903512871557,40.753816857899</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B57_N</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-122.903546221579,40.7546451578581</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B57_S</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-122.9034795223,40.7529885585803</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B57_E</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-122.902424244441,40.7538422277683</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B57_W</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-122.904601497907,40.7537914785196</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B58</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-122.761577620248,40.9328101953546</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B58_N</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-122.761609419359,40.9336386773902</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B58_S</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-122.761545821869,40.9319817140036</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B58_E</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-122.760486236617,40.9328343293827</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B58_W</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-122.762669003147,40.9327860517901</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B59</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-122.763770951664,40.9330262344805</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B59_N</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-122.76380277612,40.9338547161382</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B59_S</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-122.763739127941,40.9321977535076</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B59_E</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-122.762679565492,40.9330503876803</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B59_W</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-122.764862337103,40.9330020717444</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B60</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-122.762192793143,40.9310077224512</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B60_N</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-122.762224598539,40.9318362028232</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B60_S</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-122.762160988479,40.9301792427636</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B60_E</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-122.76110143705,40.9310318618112</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B60_W</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-122.763284148503,40.9309835735551</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B61</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-122.759317338777,40.9326793669551</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B61_N</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-122.759349111811,40.9335078494566</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B61_S</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-122.759285566474,40.9318508851383</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B61_E</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-122.758225956372,40.9327034812286</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B61_W</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-122.76040872045,40.9326552431452</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B62</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-122.754040952637,40.9362757406819</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B62_N</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-122.754072666517,40.9371042275342</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B62_S</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-122.754009239488,40.9354472545153</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B62_E</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-122.752949513927,40.936299808935</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B62_W</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-122.755132390617,40.9362516628919</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B63</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-122.674018599548,41.1468275965691</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B63_N</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-122.674049482531,41.1476562863018</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B63_S</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-122.673987717279,41.1459989075741</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B63_E</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-122.672923932182,41.1468509706792</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B63_W</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-122.675113266201,41.1468042128915</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B64</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-122.921020419869,40.3700615619355</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B64_N</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-122.921053793347,40.3708895776294</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B64_S</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-122.920987047153,40.36923354679</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B64_E</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-122.919937560564,40.3700870761721</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B64_W</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-122.922103278412,40.3700360382422</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B65</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-122.923635524959,40.3715124642729</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B65_N</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-122.923668928975,40.3723404802399</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B65_S</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-122.923602121707,40.3706844488548</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B65_E</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-122.922552644902,40.3715380013787</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B65_W</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-122.924718404253,40.3714869177103</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B66</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-122.926580496237,40.3719611775304</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B66_N</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-122.926613934096,40.3727891930059</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B66_S</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-122.926547059141,40.3711331626038</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B66_E</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-122.925497610515,40.3719867403656</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B66_W</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-122.927663381194,40.3719356052384</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B67</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-122.930970718941,40.3699728348241</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B67_N</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-122.931004206027,40.3708008477754</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B67_S</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-122.93093723262,40.3691448224211</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B67_E</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-122.929887864468,40.3699984359602</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B67_W</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-122.932053572648,40.3699472242313</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B68</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-122.941493133141,40.3678334096643</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B68_N</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-122.941526739418,40.3686614183288</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B68_S</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-122.941459527632,40.3670054015476</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B68_E</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-122.940410314346,40.3678591026536</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B68_W</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-122.942575951169,40.3678077072189</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B69</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-122.946006723398,40.3669521008639</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B69_N</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-122.946040380816,40.3677801077113</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B69_S</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-122.945973066748,40.3661240945641</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B69_E</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-122.944923919366,40.3669778332541</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B69_W</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-122.947089526661,40.3669263590176</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B70</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-122.957184635341,40.3748250184534</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B70_N</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-122.957218424092,40.3756530275635</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B70_S</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-122.957150847361,40.3739970098926</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B70_E</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-122.956101717686,40.3748508486301</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B70_W</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-122.958267552225,40.3747991788195</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B71</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-122.943281793723,40.3688783098509</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B71_N</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-122.943315420913,40.3697063187334</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B71_S</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-122.943248167301,40.3680503015163</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B71_E</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-122.942198959955,40.368904018483</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B71_W</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-122.944364626723,40.3688525917623</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B72</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-122.938859490667,40.3777476062593</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B72_N</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-122.938893071457,40.3785756223206</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B72_S</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-122.938825910644,40.3769195907482</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B72_E</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-122.937776522842,40.3777732764541</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B72_W</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-122.939942457725,40.3777219266068</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B73</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-122.941969760175,40.3769551788981</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B73_N</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-122.942003376126,40.3777831935814</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B73_S</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-122.941936144993,40.3761271647648</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B73_E</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-122.940886805291,40.3769808762401</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B73_W</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-122.943052714292,40.3769294720986</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B74</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-122.93488165321,40.3788255154576</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B74_N</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-122.93491518906,40.3796535333237</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B74_S</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-122.934848118126,40.3779974981419</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B74_E</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-122.933798667874,40.3788511509342</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B74_W</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-122.93596463778,40.3787998705232</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B75</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-122.937089734454,40.3789170309776</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B75_N</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-122.93712329557,40.3797450483082</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B75_S</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-122.937056174106,40.3780890141975</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B75_E</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-122.936006748532,40.3789426857406</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B75_W</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-122.93817271961,40.3788913667569</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B76</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-122.875307907583,40.361765725662</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B76_N</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-122.875340755185,40.3625937479879</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B76_S</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-122.875275060731,40.360937703883</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B76_E</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-122.87422515622,40.3617908404942</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B76_W</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-122.876390658195,40.361740601374</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B77</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-122.8744551823,40.358377015646</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B77_N</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-122.874488018629,40.3592050359257</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B77_S</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-122.87442234672,40.3575489959124</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B77_E</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-122.873372481245,40.3584021229621</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B77_W</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-122.875537882604,40.3583518988744</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B78</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-122.87658096704,40.3604190689093</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B78_N</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-122.876613828571,40.3612470899944</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B78_S</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-122.876548106259,40.3595910483707</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B78_E</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-122.875498236228,40.3604441948326</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B78_W</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-122.877663697101,40.3603939335304</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B79</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-122.879015706105,40.3618563827877</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B79_N</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-122.879048596093,40.3626844041913</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B79_S</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-122.878982816867,40.3610283619308</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B79_E</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-122.877932954673,40.3618815300043</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B79_W</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-122.880098456785,40.3618312261153</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B80</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-122.868084194001,40.3648375789784</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B80_N</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-122.868116960493,40.3656656052783</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B80_S</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-122.868051428257,40.3640095532261</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B80_E</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-122.867001394263,40.3648626307835</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B80_W</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-122.86916699299,40.364812517717</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B81</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-122.847969659846,40.3637625406347</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B81_N</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-122.848002196126,40.3645905715098</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B81_S</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-122.847937124309,40.362934510307</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B81_E</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-122.846886869239,40.3637874167439</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B81_W</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-122.849052449709,40.3637376550692</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B82</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-122.847652335914,40.3608718037526</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B82_N</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-122.847684867272,40.3616998327709</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B82_S</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-122.847619805298,40.3600437752809</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B82_E</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-122.846569588369,40.3608966770323</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B82_W</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-122.848735082716,40.3608469210169</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B83</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-122.861355254381,40.3630734461344</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B83_N</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-122.861387943226,40.3639014730258</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B83_S</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-122.861322566283,40.3622454197902</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B83_E</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-122.860272478669,40.3630984391355</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B83_W</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-122.862438029347,40.3630484436772</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B84</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-122.312645591011,41.5145854664001</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B84_N</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-122.312672438829,41.5154145902997</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B84_S</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-122.312618743816,41.5137563433319</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B84_E</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-122.311545176634,41.5146056902451</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B84_W</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-122.313746004765,41.5145652329322</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B85</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-122.309292953723,41.5225006301759</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B85_N</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-122.309319765599,41.5233297627936</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B85_S</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-122.30926614247,41.5216714983918</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B85_E</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-122.308192416457,41.5225208248957</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B85_W</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-122.310393490368,41.5224804258322</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B86</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-122.318432324719,41.5106107233711</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B86_N</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-122.318459238205,41.5114398420227</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B86_S</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-122.318405411857,41.5097816055498</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B86_E</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-122.317331973207,41.5106309977246</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B86_W</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-122.319532675606,41.5105904393952</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B87</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-122.303411589164,41.5216784422262</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B87_N</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-122.30343833246,41.5225075752631</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B87_S</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-122.303384846489,41.5208493100227</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B87_E</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-122.302311062905,41.5216985854912</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B87_W</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-122.304512114803,41.5216582893373</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B88</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-122.272729149895,41.532605457698</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B88_N</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-122.272755541065,41.533434608289</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B88_S</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-122.272702759338,41.5317763079433</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B88_E</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-122.27162844666,41.5326253328983</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B88_W</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-122.273829852517,41.532585572872</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B89</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-122.261838006076,41.5335700482634</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B89_N</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-122.261864271155,41.5343992021122</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B89_S</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-122.261811741606,41.5327408952512</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B89_E</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-122.260737284951,41.5335898282381</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B89_W</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-122.26293872659,41.5335502586627</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B90</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-122.250694426102,41.5324673086105</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B90_N</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-122.2507205614,41.5332964636592</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B90_S</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-122.250668291411,41.5316381543981</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B90_E</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-122.249593718896,41.5324869911017</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B90_W</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-122.251795132702,41.5324476164934</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B91</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-122.283674332982,41.5219501946417</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B91_N</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-122.283700847268,41.5227793321302</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B91_S</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-122.283647819312,41.5211210579868</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B91_E</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-122.282573796995,41.5219701653039</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B91_W</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-122.284774868354,41.5219302143554</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B92</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-122.231568315989,41.5452641977338</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B92_N</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-122.231594233878,41.5460933697553</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B92_S</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-122.231542398702,41.5444350265519</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B92_E</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-122.230467406274,41.5452837132613</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B92_W</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-122.232669225102,41.5452446725784</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B93</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-122.224453372354,41.5539936137486</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B93_N</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-122.224479210782,41.5548227961416</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B93_S</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-122.224427534526,41.5531644321976</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B93_E</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-122.223352326097,41.554013067259</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B93_W</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-122.225554418011,41.5539741506091</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B94</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-122.224250731029,41.54481834982</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B94_N</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-122.224276563784,41.5456475228913</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B94_S</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-122.224224898874,41.5439891775882</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B94_E</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-122.223149826192,41.5448378013391</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B94_W</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-122.225351635267,41.5447988886731</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B95</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-122.236467910612,41.5361371206349</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B95_N</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-122.236493882075,41.5369662823566</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B95_S</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-122.236441939752,41.5353079597505</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B95_E</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-122.235367142936,41.5361566787945</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B95_W</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-122.237568677685,41.5361175528488</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B96</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-122.205168260273,41.5658059286177</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B96_N</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-122.205193878972,41.5666351270435</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B96_S</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-122.20514264217,41.564976731037</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B96_E</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-122.204067026598,41.5658252137432</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B96_W</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-122.206269493354,41.5657866338613</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B97</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-122.196360564436,41.5731984230081</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B97_N</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-122.196386083471,41.5740276308113</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B97_S</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-122.196335045993,41.5723692160518</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B97_E</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-122.195259214338,41.5732176312764</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B97_W</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-122.19746191394,41.5731792051078</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B98</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-122.193738118497,41.5705473891228</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B98_N</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-122.193763606122,41.5713765947339</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B98_S</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-122.193712631465,41.5697181843582</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B98_E</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-122.192636808596,41.5705665743921</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B98_W</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-122.194839427806,41.570528194222</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B99</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-122.209421739026,41.5617684296541</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B99_N</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-122.209447405679,41.5625976230758</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B99_S</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-122.209396072969,41.5609392370764</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B99_E</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-122.208320568779,41.5617877518845</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B99_W</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-122.210522908676,41.5617490977935</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B100</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-123.163206507362,40.4995101035341</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B100_N</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-123.16324271154,40.5003381408918</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B100_S</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-123.163170304012,40.4986820667539</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B100_E</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-123.162121800063,40.4995377358107</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B100_W</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-123.164291213832,40.4994824617845</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B101</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-123.160693057711,40.4986699305886</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B101_N</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-123.160729232712,40.499497968082</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B101_S</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-123.160656883537,40.4978418936726</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B101_E</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-123.159608362045,40.4986975408935</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B101_W</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-123.161777752549,40.4986423108108</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B102</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-123.162760048562,40.4978716207497</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B102_N</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-123.162796246813,40.4986996570741</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B102_S</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-123.16272385114,40.4970435850026</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B102_E</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-123.161675365649,40.4978992490884</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B102_W</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-123.163844730647,40.4978439829384</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B103</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-123.165235606709,40.494448026145</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B103_N</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-123.165271831569,40.4952760593188</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B103_S</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-123.165199382679,40.4936199935476</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B103_E</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-123.164150976048,40.4944756760238</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B103_W</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-123.166320236542,40.494420366794</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B104</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-123.011672517305,40.5973182133536</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B104_N</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-123.011707034359,40.5981463646886</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B104_S</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-123.011638001042,40.5964900626206</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B104_E</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-123.010586285654,40.5973445243746</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B104_W</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-123.012758748165,40.5972918928449</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B105</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-123.012421628803,40.5956359677332</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B105_N</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-123.012456153636,40.5964641176181</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B105_S</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-123.012387104761,40.5948078184498</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B105_E</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-123.011335422704,40.5956622852584</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B105_W</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-123.013507834111,40.5956096407206</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B106</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-123.012094734179,40.5992055395312</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B106_N</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-123.012129256972,40.6000336921435</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B106_S</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-123.012060212178,40.5983773875214</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B106_E</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-123.011008474319,40.5992318542845</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B106_W</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-123.013180993248,40.5991792152901</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B107</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-122.324610392553,40.8150369393697</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B107_N</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-122.324637117426,40.8158654273781</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B107_S</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-122.324583668295,40.8142084520199</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B107_E</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-122.323520657378,40.8150572523702</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B107_W</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-122.325700127114,40.8150166168469</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B108</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-122.325391407331,40.8170248756093</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B108_N</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-122.325418141919,40.8178533650452</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B108_S</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-122.325364673359,40.8161963868325</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B108_E</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-122.324301642321,40.8170451954737</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B108_W</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-122.326481171727,40.8170045462223</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B109</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-122.327695413295,40.8174203174956</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B109_N</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-122.327722174513,40.8182488067547</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B109_S</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-122.327668652693,40.8165918288956</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B109_E</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-122.326605642956,40.8174406575015</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B109_W</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-122.328785183019,40.8173999679671</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B110</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-122.319026214693,40.8224388026884</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B110_N</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-122.319052878119,40.8232672978364</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B110_S</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-122.318999551881,40.8216103082009</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B110_E</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-122.317936366031,40.8224590670362</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B110_W</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-122.320116062743,40.8224185288172</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B111</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-122.31673965589,40.8210636886517</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B111_N</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-122.316766292522,40.8218921831827</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B111_S</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-122.31671301987,40.8202351947808</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B111_E</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-122.315649827378,40.8210839329912</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B111_W</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-122.317829483789,40.8210434347889</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B112</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-122.320045331229,40.8188734689513</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B112_N</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-122.320072005049,40.8197019610161</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B112_S</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-122.320018658021,40.8180449775461</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B112_E</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-122.318955536763,40.818893742135</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B112_W</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-122.321135125081,40.8188531862448</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B113</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-122.317006947236,40.8193700792534</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B113_N</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-122.317033586315,40.8201985723665</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B113_S</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-122.31698030877,40.8185415868</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B113_E</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-122.315917144408,40.8193903258955</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B113_W</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-122.318096749452,40.8193498230883</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B114</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-121.995699837083,41.2547829279856</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B114_N</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-121.995722922049,41.2556118626444</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B114_S</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-121.995676752651,41.253953994095</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B114_E</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-121.994603327671,41.2548003746641</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B114_W</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-121.996796345961,41.2547654717204</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B115</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-121.950585727141,41.2641696838917</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B115_N</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-121.950608293287,41.2649986355217</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B115_S</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-121.950563161518,41.2633407330322</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B115_E</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-121.94948906325,41.2641867363039</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B115_W</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-121.951682390511,41.2641526218912</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B116</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-121.990789025199,41.259303932353</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B116_N</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-121.990812054822,41.2601328721309</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B116_S</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-121.99076599611,41.2584749933444</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B116_E</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-121.989692445424,41.2593213361832</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B116_W</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-121.991885604442,41.2592865189354</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B117</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-122.005254040861,41.2559355506633</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B117_N</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-122.0052772367,41.2567644846334</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B117_S</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-122.005230845557,41.2551066174614</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B117_E</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-122.004157516146,41.255953080899</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#klamathPoints">
+		<SimpleData name="id">B117_W</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-122.006350565039,41.2559180108405</coordinates></Point>
+  </Placemark>
+</Folder>
+</Document></kml>

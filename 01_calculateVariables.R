@@ -44,16 +44,7 @@ pixelIDs <- unique(df$pixelID)
 
 
 ########################################
-summary_stats <- function(data){
-  
-  n_focal_areas <- length(unique(data$focalAreaID))
-  n_patches <- length(unique(data$patchID))
-  n_pixels <- length(unique(data$pixelID))
-  area <- n_pixels * (60*60) / 1e4 #hectares
-  output <- tibble(stat = c("n Focal Areas","n Patches","n Pixels","Area (ha)"),
-                   value = c(n_focal_areas,n_patches,n_pixels,area))
-  return(output)
-}
+
 summary_stats(df)
 focalAreasList <- unique(df$focalAreaID)
 print('focalAreas:')

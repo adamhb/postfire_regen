@@ -1,9 +1,16 @@
 
-fromFile <- F
-makeFigs <- T
+source('00_setup.R')
+
+fromFile <- T
+makeFigs <- F
 ###########################
 if(fromFile == T){
-  #PatchesIN <- 
+  path <- "~/cloud/gdrive/fire_project/local_data/fromGEE/"
+  outpath <- "~/cloud/gdrive/fire_project/local_data/"
+  figuresPath <- '~/cloud/gdrive/fire_project/figures/'
+  patchLevelTimeVarying <- read_csv(paste0(path,'fromR_patchLevelTimeVarying_2021-05-26_05-20-05.csv'),
+                                    col_types = cols(.default = "?", patchID = "c"))
+  PatchesIN <- patchLevelTimeVarying$patchID %>% unique()
 }else{
   source('01_calculateVariables.R')
 }
@@ -84,7 +91,7 @@ patchLevelTimeInvariant <- patchLevelTimeVarying %>%
   summarise_all(.funs = mean)
 
 cols <- patchLevelTimeInvariant %>%
-  dplyr::select(-fireYear,-wilderness,-patchID) %>%
+  dplyr::select(-fireYear,-wilderness,-patchID,-focalAreaID,-timeSinceFire,-year) %>%
   colnames()
 
 

@@ -1,24 +1,24 @@
 source('00_setup.R')
 
+#set parameters
+minPixPerPatch <- 100
 light_run <- T
 write_csvs <- T
 patches_sub_sample <- 100
-
 path <- "~/cloud/gdrive/fire_project/local_data/fromGEE/checked/"
+
+
 files <- list.files(path,pattern = "csv")
 #outPath <- "/home/rstudio/figures/"
 
-#set parameters
-minPixPerPatch <- 100
-
-#join data from different focal areas
+#join data from different focal areas (csvs)
 df <- tibble()
 
 j <- 0
 for(f in files){
               j <- j + 1
               df_tmp <- read_csv(paste0(path,f),show_col_types = FALSE)
-              focalAreaID <- df_tmp$focalAreaID[1]
+              focalAreaID <- median(df_tmp$focalAreaID)
               pixelID <- paste(focalAreaID,df_tmp$pixelID, sep = "_")
               df_tmp$pixelID <- pixelID
               df <- rbind(df,df_tmp)

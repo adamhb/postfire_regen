@@ -1,5 +1,10 @@
 source('00_setup.R')
 
+light_run <- T
+write_csvs <- T
+patches_sub_sample <- 100
+
+path <- "~/cloud/gdrive/fire_project/local_data/fromGEE/checked/"
 files <- list.files(path,pattern = "csv")
 #outPath <- "/home/rstudio/figures/"
 
@@ -9,18 +14,20 @@ minPixPerPatch <- 100
 #join data from different focal areas
 df <- tibble()
 
-
+j <- 0
 for(f in files){
-              df_tmp <- read_csv(paste0(path,f))
+              j <- j + 1
+              df_tmp <- read_csv(paste0(path,f),show_col_types = FALSE)
               focalAreaID <- df_tmp$focalAreaID[1]
               pixelID <- paste(focalAreaID,df_tmp$pixelID, sep = "_")
               df_tmp$pixelID <- pixelID
               df <- rbind(df,df_tmp)
+              print(paste("done with focal area",focalAreaID,":",j,"of",length(files),"focal areas"))
 }
 
 
 #record focal areas
-focal_areas <- unique(df$focalAreaID)
+focal_areas <- na.omit(unique(df$focalAreaID))
 
 #cleaning NOT DONE
 df <- df %>% rename(patchID = PatchID, fireYear = FireYear) %>%
@@ -34,8 +41,10 @@ pixelsPerPatch <- df %>% #pixels per patch
 PatchesIN <- pixelsPerPatch %>% filter(nPerPatch >= minPixPerPatch) %>% 
   pull(patchID) #could sample patches randomly here
 
+print(paste("nPatches=",length(PatchesIN)))
+
 if(light_run == T){
-  PatchesIN <- sample(x = PatchesIN,size = 10)
+  PatchesIN <- sample(x = PatchesIN,size = patches_sub_sample)
 }
 
 df <- df %>% filter(patchID %in% PatchesIN)
@@ -44,16 +53,7 @@ pixelIDs <- unique(df$pixelID)
 
 
 ########################################
-summary_stats <- function(data){
-  
-  n_focal_areas <- length(unique(data$focalAreaID))
-  n_patches <- length(unique(data$patchID))
-  n_pixels <- length(unique(data$pixelID))
-  area <- n_pixels * (60*60) / 1e4 #hectares
-  output <- tibble(stat = c("n Focal Areas","n Patches","n Pixels","Area (ha)"),
-                   value = c(n_focal_areas,n_patches,n_pixels,area))
-  return(output)
-}
+
 summary_stats(df)
 focalAreasList <- unique(df$focalAreaID)
 print('focalAreas:')
@@ -128,7 +128,6 @@ timeVaryingDF <- conProbDF %>%
 
 #function to calculate new time-invariant variables from the time-varying variables
 GetTimeVarStat <- function(pixel, d, varOfInterest,relYrs,stat = "mean") {
-  
   if(stat == "mean"){f = function(x){mean(x)}}
   if(stat == "sum"){f = function(x){sum(x)}}
   if(stat == "max"){f == function(x){max(x)}}
@@ -255,7 +254,7 @@ str(timeVaryingDF3)
 timeStamp <- gsub(x = gsub(pattern = " ", replacement = "_", x = Sys.time()),pattern = ":",replacement = "-")
 
 if(write_csvs == T){
-write_csv(x = timeVaryingDF3, path = paste0(outpath,"fromR_pixelLevelTimeVarying_",timeStamp,".csv"))
+write_csv(x = timeVaryingDF3, path = paste0(outpath,"fromR_pixelLevelTimeVarying_FA13",timeStamp,".csv"))
 }
 
 ############################################

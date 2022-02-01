@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<kml xmlns="http://www.opengis.net/kml/2.2">
+<Document id="root_doc">
+<Schema name="test" id="test">
+	<SimpleField name="id" type="float"></SimpleField>
+</Schema>
+<Folder><name>test</name>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#test">
+		<SimpleData name="id">1</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>3.31405115129803,47.9737179056175</coordinates></Point>
+  </Placemark>
+</Folder>
+</Document></kml>

@@ -1,5 +1,3 @@
-light_run <- F
-write_csvs <- T
 remote_server <- T
 
 #import libraries
@@ -10,8 +8,8 @@ library(ggcorrplot)
 source('utils/system_settings.R') # source internal functions and settings
 
 #set path to data on laptop
-path <- "~/cloud/gdrive/fire_project/local_data/fromGEE/"
-outpath <- "~/cloud/gdrive/fire_project/local_data/"
+
+outpath <- "~/cloud/gdrive/fire_project/local_data/CleanedDataForAnalysis/"
 figuresPath <- '~/cloud/gdrive/fire_project/figures/'
 
 #set path to data on cluster
@@ -24,3 +22,14 @@ if(remote_server == T){
 
 
 
+
+summary_stats <- function(data){
+  
+  n_focal_areas <- length(unique(data$focalAreaID))
+  n_patches <- length(unique(data$patchID))
+  n_pixels <- length(unique(data$pixelID))
+  area <- n_pixels * (60*60) / 1e4 #hectares
+  output <- tibble(stat = c("n Focal Areas","n Patches","n Pixels","Area (ha)"),
+                   value = c(n_focal_areas,n_patches,n_pixels,area))
+  return(output)
+}

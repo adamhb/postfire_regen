@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<kml xmlns="http://www.opengis.net/kml/2.2">
+<Document id="root_doc">
+<Folder><name>B87</name>
+  <Placemark>
+	<name>B87</name>
+      <Point><coordinates>-122.303411589164,41.5216784422262</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<name>B87_N</name>
+      <Point><coordinates>-122.30343833246,41.5225075752631</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<name>B87_S</name>
+      <Point><coordinates>-122.303384846489,41.5208493100227</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<name>B87_E</name>
+      <Point><coordinates>-122.302311062905,41.5216985854912</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<name>B87_W</name>
+      <Point><coordinates>-122.304512114803,41.5216582893373</coordinates></Point>
+  </Placemark>
+</Folder>
+</Document></kml>

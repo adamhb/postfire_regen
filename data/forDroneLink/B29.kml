@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<kml xmlns="http://www.opengis.net/kml/2.2">
+<Document id="root_doc">
+<Folder><name>B29</name>
+  <Placemark>
+	<name>B29</name>
+      <Point><coordinates>-122.229475823224,41.2621085898983</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<name>B29_N</name>
+      <Point><coordinates>-122.229501614523,41.2629374858398</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<name>B29_S</name>
+      <Point><coordinates>-122.229450032521,41.2612796947257</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<name>B29_E</name>
+      <Point><coordinates>-122.228379261957,41.2621280806434</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<name>B29_W</name>
+      <Point><coordinates>-122.230572383894,41.2620890895667</coordinates></Point>
+  </Placemark>
+</Folder>
+</Document></kml>

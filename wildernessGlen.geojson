@@ -1,0 +1,8 @@
+{
+"type": "FeatureCollection",
+"name": "wildernessGlen",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:EPSG::3310" } },
+"features": [
+{ "type": "Feature", "properties": { "id": 1.0 }, "geometry": { "type": "Point", "coordinates": [ 11744214.221788330003619, 4614260.00187780149281 ] } }
+]
+}

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<kml xmlns="http://www.opengis.net/kml/2.2">
+<Document id="root_doc">
+<Schema name="wildernessGlen92m" id="wildernessGlen92m">
+	<SimpleField name="id" type="string"></SimpleField>
+</Schema>
+<Folder><name>wildernessGlen92m</name>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#wildernessGlen92m">
+		<SimpleData name="id">1</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-117.659601724906,33.6398658736473</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#wildernessGlen92m">
+		<SimpleData name="id">1_N</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-117.659577256011,33.6406953746798</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#wildernessGlen92m">
+		<SimpleData name="id">1_S</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-117.65962619329,33.6390363717812</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#wildernessGlen92m">
+		<SimpleData name="id">1_E</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-117.658610712429,33.639845388473</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#wildernessGlen92m">
+		<SimpleData name="id">1_W</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-117.660592737895,33.6398863501505</coordinates></Point>
+  </Placemark>
+</Folder>
+</Document></kml>

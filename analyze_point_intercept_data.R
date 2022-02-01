@@ -26,8 +26,8 @@ df <- raw %>%
 
 getCoordsFromExifFile <- function(file){
   dat <- read_exif(path = file)
-  x <- strsplit(x = dat$GPSPosition,split = " ")[[1]][1]
-  y <- strsplit(x = dat$GPSPosition,split = " ")[[1]][2]
+  y <- strsplit(x = dat$GPSPosition,split = " ")[[1]][1]
+  x <- strsplit(x = dat$GPSPosition,split = " ")[[1]][2]
   return(tibble(pointID = dat$FileName, x = x, y = y))
 }
 
@@ -65,8 +65,19 @@ if(newgeodata == T){
 
 #check that all photo points are in the same plot
 #create spatial object
-geo_data2 <- st_as_sf(geo_data, coords = c("x","y"))
-geo_data3 <-st_set_crs(geo_data2,st_crs(4326))
+geo_data2 <- st_as_sf(geo_data, coords = c("y","x"), crs = 4326)
+geo_data3 <- geo_data2 %>% st_transform(crs = 3310)
+
+pointInterceptHulls <- geo_data3 %>%
+  group_by(plotID) %>%
+  summarise(geometry = st_combine(geometry)) %>%
+  st_convex_hull()
+pointInterceptCentroids <- st_centroid(pointInterceptHulls)
+
+st_write(obj = pointInterceptHulls,dsn = "data/pointInterceptHulls.shp", driver = "ESRI Shapefile")
+st_write(obj = pointInterceptCentroids,dsn = "data/pointInterceptCentroids.shp", driver = "ESRI Shapefile")
+
+
 
 #map points from each validation plot to check that all points are in
 #a systematic grid.
@@ -96,13 +107,18 @@ getPctCover <- function(df,pft = "c"){
   return(output)
 }
 
-fieldValidationData <- tibble()
+fieldValidationData_PI <- tibble()
 for(p in unique(df$plotID)){
-  tmp <- getPctCover(df = df %>% filter(plotID == "B0"), pft = pfts)
-  tmp <- tmp %>% add_column(plotID = p)
-  fieldValidationData <- rbind(fieldValidationData,tmp)
+  tmp <- getPctCover(df = df %>% filter(plotID == p), pft = pfts)
+  tmp <- tmp %>% add_column(plotID = p) 
+  fieldValidationData_PI <- rbind(fieldValidationData_PI,tmp)
 }
 
+fieldValidationData_PI <- fieldValidationData_PI %>%
+  select(plotID,pft,pct_cover) %>%
+  rename(pctCover = pct_cover)
+
+write_csv(fieldValidationData_PI ,"data/fieldValidationData_PI.csv")
 #join point intercept data with line intercept data
 
 

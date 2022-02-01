@@ -1,5 +1,4 @@
-light_run <- T
-write_csvs <- F
+
 #import libraries
 library(tidyverse)
 library(parallel)
@@ -14,8 +13,8 @@ source('utils/system_settings.R') # source internal functions and settings
 
 
 #set path to data on laptop
-path <- "~/cloud/gdrive/fire_project/local_data/fromGEE/"
-outpath <- "~/cloud/gdrive/fire_project/local_data/"
+
+outpath <- "~/cloud/gdrive/fire_project/local_data/CleanedDataForAnalysis/"
 figuresPath <- '~/cloud/gdrive/fire_project/figures/'
 
 

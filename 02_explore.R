@@ -2,13 +2,15 @@
 source('00_setup.R')
 
 fromFile <- T
-makeFigs <- F
+makeFigs <- T
+cleanedData <- 'fromR_patchLevelTimeVarying_FA132022-01-31_16-57-37.csv'
+
 ###########################
 if(fromFile == T){
-  path <- "~/cloud/gdrive/fire_project/local_data/fromGEE/"
+  path <- "~/cloud/gdrive/fire_project/local_data/CleanedDataForAnalysis/"
   outpath <- "~/cloud/gdrive/fire_project/local_data/"
   figuresPath <- '~/cloud/gdrive/fire_project/figures/'
-  patchLevelTimeVarying <- read_csv(paste0(path,'fromR_patchLevelTimeVarying_2021-05-26_05-20-05.csv'),
+  patchLevelTimeVarying <- read_csv(paste0(path,cleanedData),
                                     col_types = cols(.default = "?", patchID = "c"))
   PatchesIN <- patchLevelTimeVarying$patchID %>% unique()
 }else{
@@ -25,6 +27,9 @@ meanRecoveryOfAllPatches <- patchLevelTimeVarying %>%
   group_by(timeSinceFire) %>%
   summarise(RRI = mean(RRI))
 
+
+
+
 #visualize recovery trajectories of all patches and the mean across patches
 recoveryTrajsFig <- patchLevelTimeVarying %>%
   ggplot(aes(timeSinceFire,RRI,color = patchID)) +
@@ -33,13 +38,39 @@ recoveryTrajsFig <- patchLevelTimeVarying %>%
   adams_theme +
   theme(legend.position = "none")
 
+
+
 makePNG(fig = recoveryTrajsFig,path_to_output.x = figuresPath,file_name = "recoveryTraj_noStrat")
+
+
+#what is the conifer probability at the end of the trajectories
+patchLevelTimeVarying %>%
+  filter(timeSinceFire > 30) %>%
+  ggplot(aes(timeSinceFire,ConProb,color = patchID)) +
+  geom_line() +
+  #geom_line(data = meanRecoveryOfAllPatches, mapping = aes(timeSinceFire,RRI), color = "black", size = 3) +
+  adams_theme +
+  theme(legend.position = "none")
+
+patchLevelTimeVarying %>%
+  ggplot(aes(timeSinceFire,ConProb,color = patchID)) +
+  geom_line() +
+  #geom_line(data = meanRecoveryOfAllPatches, mapping = aes(timeSinceFire,RRI), color = "black", size = 3) +
+  adams_theme +
+  theme(legend.position = "none")
+
+
+
+
+
+
 
 ######################################################################################
 #visualize recovery trajectories stratified by postFire precip and seed availability##
 ######################################################################################
 SAP_quantiles <- quantile(patchLevelTimeVarying$postFireSAP, probs = c(0.2,0.8))
 PPT_quantiles <- quantile(patchLevelTimeVarying$pptYr0_3_sum, probs = c(0.2,0.8))
+
 
 
 recoveryTrajsStratFig <- patchLevelTimeVarying %>%
@@ -91,7 +122,8 @@ patchLevelTimeInvariant <- patchLevelTimeVarying %>%
   summarise_all(.funs = mean)
 
 cols <- patchLevelTimeInvariant %>%
-  dplyr::select(-fireYear,-wilderness,-patchID,-focalAreaID,-timeSinceFire,-year) %>%
+  #dplyr::select(-fireYear,-wilderness,-patchID,-focalAreaID,-year,-timeSinceFire) %>%
+  dplyr::select(-fireYear,-wilderness,-patchID,-focalAreaID) %>%
   colnames()
 
 

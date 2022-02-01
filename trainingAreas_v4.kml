@@ -1,0 +1,1990 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<kml xmlns="http://www.opengis.net/kml/2.2">
+<Document id="root_doc">
+<Schema name="trainingAreas_v4" id="trainingAreas_v4">
+	<SimpleField name="class" type="int"></SimpleField>
+	<SimpleField name="FID" type="int"></SimpleField>
+	<SimpleField name="fid_dates_" type="string"></SimpleField>
+	<SimpleField name="region" type="int"></SimpleField>
+	<SimpleField name="con" type="int"></SimpleField>
+	<SimpleField name="year" type="int"></SimpleField>
+	<SimpleField name="layer" type="string"></SimpleField>
+	<SimpleField name="path" type="string"></SimpleField>
+</Schema>
+<Folder><name>trainingAreas_v4</name>
+  <Placemark>
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#trainingAreas_v4">
+		<SimpleData name="class">1</SimpleData>
+		<SimpleData name="FID">83</SimpleData>
+		<SimpleData name="fid_dates_">6-5-2021</SimpleData>
+		<SimpleData name="region">2</SimpleData>
+		<SimpleData name="con">1</SimpleData>
+		<SimpleData name="year">2021</SimpleData>
+		<SimpleData name="layer">allTrainingAreas_11_3_2021_v3</SimpleData>
+		<SimpleData name="path">/home/adam/cloud/gdrive/fire_project/local_data/classificationData/allTrainingAreas_11_3_2021_v3.shp|layername=allTrainingAreas_11_3_2021_v3</SimpleData>
+	</SchemaData></ExtendedData>
+      <MultiGeometry><Polygon><outerBoundaryIs><LinearRing><coordinates>-120.176710196434,38.1682257629082 -120.175218888222,38.1675678293222 -120.175862618385,38.1659482751957 -120.177289553581,38.165222838242 -120.177922554909,38.1662941205046 -120.176710196434,38.1682257629082</coordinates></LinearRing></outerBoundaryIs></Polygon></MultiGeometry>
+  </Placemark>
+  <Placemark>
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#trainingAreas_v4">
+		<SimpleData name="class">1</SimpleData>
+		<SimpleData name="FID">84</SimpleData>
+		<SimpleData name="fid_dates_">6-5-2021</SimpleData>
+		<SimpleData name="region">2</SimpleData>
+		<SimpleData name="con">1</SimpleData>
+		<SimpleData name="year">2021</SimpleData>
+		<SimpleData name="layer">allTrainingAreas_11_3_2021_v3</SimpleData>
+		<SimpleData name="path">/home/adam/cloud/gdrive/fire_project/local_data/classificationData/allTrainingAreas_11_3_2021_v3.shp|layername=allTrainingAreas_11_3_2021_v3</SimpleData>
+	</SchemaData></ExtendedData>
+      <MultiGeometry><Polygon><outerBoundaryIs><LinearRing><coordinates>-120.179124184547,38.1656952166131 -120.178373166023,38.1652565796557 -120.17824441999,38.1641599757156 -120.179703541695,38.1646829734984 -120.179124184547,38.1656952166131</coordinates></LinearRing></outerBoundaryIs></Polygon></MultiGeometry>
+  </Placemark>
+  <Placemark>
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#trainingAreas_v4">
+		<SimpleData name="class">1</SimpleData>
+		<SimpleData name="FID">85</SimpleData>
+		<SimpleData name="fid_dates_">8-12-2017</SimpleData>
+		<SimpleData name="region">2</SimpleData>
+		<SimpleData name="con">1</SimpleData>
+		<SimpleData name="year">2017</SimpleData>
+		<SimpleData name="layer">allTrainingAreas_11_3_2021_v3</SimpleData>
+		<SimpleData name="path">/home/adam/cloud/gdrive/fire_project/local_data/classificationData/allTrainingAreas_11_3_2021_v3.shp|layername=allTrainingAreas_11_3_2021_v3</SimpleData>
+	</SchemaData></ExtendedData>
+      <MultiGeometry><Polygon><outerBoundaryIs><LinearRing><coordinates>-119.850039174677,37.7902026147044 -119.848419120432,37.79064349892 -119.845093181254,37.7906011063213 -119.844406535746,37.7875996485134 -119.849942615153,37.787514859799 -119.850039174677,37.7902026147044</coordinates></LinearRing></outerBoundaryIs></Polygon></MultiGeometry>
+  </Placemark>
+  <Placemark>
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#trainingAreas_v4">
+		<SimpleData name="class">1</SimpleData>
+		<SimpleData name="FID">86</SimpleData>
+		<SimpleData name="fid_dates_">8-12-2017</SimpleData>
+		<SimpleData name="region">2</SimpleData>
+		<SimpleData name="con">1</SimpleData>
+		<SimpleData name="year">2017</SimpleData>
+		<SimpleData name="layer">allTrainingAreas_11_3_2021_v3</SimpleData>
+		<SimpleData name="path">/home/adam/cloud/gdrive/fire_project/local_data/classificationData/allTrainingAreas_11_3_2021_v3.shp|layername=allTrainingAreas_11_3_2021_v3</SimpleData>
+	</SchemaData></ExtendedData>
+      <MultiGeometry><Polygon><outerBoundaryIs><LinearRing><coordinates>-119.843870096014,37.7940687400309 -119.841960363196,37.7946791624565 -119.837282590674,37.7909826383452 -119.838720254706,37.7885577537353 -119.843998842047,37.7909995953001 -119.843870096014,37.7940687400309</coordinates></LinearRing></outerBoundaryIs></Polygon></MultiGeometry>
+  </Placemark>
+  <Placemark>
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#trainingAreas_v4">
+		<SimpleData name="class">1</SimpleData>
+		<SimpleData name="FID">87</SimpleData>
+		<SimpleData name="fid_dates_">6-5-2021</SimpleData>
+		<SimpleData name="region">2</SimpleData>
+		<SimpleData name="con">1</SimpleData>
+		<SimpleData name="year">2021</SimpleData>
+		<SimpleData name="layer">allTrainingAreas_11_3_2021_v3</SimpleData>
+		<SimpleData name="path">/home/adam/cloud/gdrive/fire_project/local_data/classificationData/allTrainingAreas_11_3_2021_v3.shp|layername=allTrainingAreas_11_3_2021_v3</SimpleData>
+	</SchemaData></ExtendedData>
+      <MultiGeometry><Polygon><outerBoundaryIs><LinearRing><coordinates>-120.131106093269,38.1244564106027 -120.130483820778,38.1262794430313 -120.126385405403,38.1261444051533 -120.128316595894,38.1229540626276 -120.130934431892,38.121063423493 -120.133294775825,38.1220425105852 -120.131106093269,38.1244564106027</coordinates></LinearRing></outerBoundaryIs></Polygon></MultiGeometry>
+  </Placemark>
+  <Placemark>
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#trainingAreas_v4">
+		<SimpleData name="class">1</SimpleData>
+		<SimpleData name="FID">88</SimpleData>
+		<SimpleData name="fid_dates_">6-5-2021</SimpleData>
+		<SimpleData name="region">2</SimpleData>
+		<SimpleData name="con">1</SimpleData>
+		<SimpleData name="year">2021</SimpleData>
+		<SimpleData name="layer">allTrainingAreas_11_3_2021_v3</SimpleData>
+		<SimpleData name="path">/home/adam/cloud/gdrive/fire_project/local_data/classificationData/allTrainingAreas_11_3_2021_v3.shp|layername=allTrainingAreas_11_3_2021_v3</SimpleData>
+	</SchemaData></ExtendedData>
+      <MultiGeometry><Polygon><outerBoundaryIs><LinearRing><coordinates>-120.06804228937,38.1231537210143 -120.063579093569,38.1257701426167 -120.056583892458,38.1251624659593 -120.058236133211,38.1222084101516 -120.06804228937,38.1231537210143</coordinates></LinearRing></outerBoundaryIs></Polygon></MultiGeometry>
+  </Placemark>
+  <Placemark>
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#trainingAreas_v4">
+		<SimpleData name="class">1</SimpleData>
+		<SimpleData name="FID">89</SimpleData>
+		<SimpleData name="fid_dates_">6-5-2021</SimpleData>
+		<SimpleData name="region">2</SimpleData>
+		<SimpleData name="con">1</SimpleData>
+		<SimpleData name="year">2021</SimpleData>
+		<SimpleData name="layer">allTrainingAreas_11_3_2021_v3</SimpleData>
+		<SimpleData name="path">/home/adam/cloud/gdrive/fire_project/local_data/classificationData/allTrainingAreas_11_3_2021_v3.shp|layername=allTrainingAreas_11_3_2021_v3</SimpleData>
+	</SchemaData></ExtendedData>
+      <MultiGeometry><Polygon><outerBoundaryIs><LinearRing><coordinates>-120.060833256499,38.1324403545312 -120.058236878173,38.1327779196409 -120.053838055388,38.1321027878602 -120.053988259093,38.1305499610648 -120.061584275023,38.1311238356855 -120.060833256499,38.1324403545312</coordinates></LinearRing></outerBoundaryIs></Polygon></MultiGeometry>
+  </Placemark>
+  <Placemark>
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#trainingAreas_v4">
+		<SimpleData name="class">1</SimpleData>
+		<SimpleData name="FID">90</SimpleData>
+		<SimpleData name="fid_dates_">8-13-2019</SimpleData>
+		<SimpleData name="region">2</SimpleData>
+		<SimpleData name="con">1</SimpleData>
+		<SimpleData name="year">2019</SimpleData>
+		<SimpleData name="layer">allTrainingAreas_11_3_2021_v3</SimpleData>
+		<SimpleData name="path">/home/adam/cloud/gdrive/fire_project/local_data/classificationData/allTrainingAreas_11_3_2021_v3.shp|layername=allTrainingAreas_11_3_2021_v3</SimpleData>
+	</SchemaData></ExtendedData>
+      <MultiGeometry><Polygon><outerBoundaryIs><LinearRing><coordinates>-120.038253199288,38.1394105967078 -120.035978686043,38.1397818827785 -120.030099283883,38.1390730622767 -120.028425585457,38.1374697524075 -120.032287966439,38.1364064853832 -120.038167368599,38.1373684895488 -120.038253199288,38.1394105967078</coordinates></LinearRing></outerBoundaryIs></Polygon></MultiGeometry>
+  </Placemark>
+  <Placemark>
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#trainingAreas_v4">
+		<SimpleData name="class">1</SimpleData>
+		<SimpleData name="FID">91</SimpleData>
+		<SimpleData name="fid_dates_">6-5-2021</SimpleData>
+		<SimpleData name="region">2</SimpleData>
+		<SimpleData name="con">1</SimpleData>
+		<SimpleData name="year">2021</SimpleData>
+		<SimpleData name="layer">allTrainingAreas_11_3_2021_v3</SimpleData>
+		<SimpleData name="path">/home/adam/cloud/gdrive/fire_project/local_data/classificationData/allTrainingAreas_11_3_2021_v3.shp|layername=allTrainingAreas_11_3_2021_v3</SimpleData>
+	</SchemaData></ExtendedData>
+      <MultiGeometry><Polygon><outerBoundaryIs><LinearRing><coordinates>-120.048381220528,38.1465779466728 -120.04647148771,38.1482991788827 -120.042373072335,38.1478604372742 -120.04363907499,38.1438103901317 -120.047651659676,38.143979146585 -120.048381220528,38.1465779466728</coordinates></LinearRing></outerBoundaryIs></Polygon></MultiGeometry>
+  </Placemark>
+  <Placemark>
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#trainingAreas_v4">
+		<SimpleData name="class">1</SimpleData>
+		<SimpleData name="FID">100</SimpleData>
+		<SimpleData name="fid_dates_">8-13-2019</SimpleData>
+		<SimpleData name="region">2</SimpleData>
+		<SimpleData name="con">1</SimpleData>
+		<SimpleData name="year">2019</SimpleData>
+		<SimpleData name="layer">allTrainingAreas_11_3_2021_v3</SimpleData>
+		<SimpleData name="path">/home/adam/cloud/gdrive/fire_project/local_data/classificationData/allTrainingAreas_11_3_2021_v3.shp|layername=allTrainingAreas_11_3_2021_v3</SimpleData>
+	</SchemaData></ExtendedData>
+      <MultiGeometry><Polygon><outerBoundaryIs><LinearRing><coordinates>-120.000667486846,38.1795399660055 -119.999444399535,38.1796917724202 -119.996161375701,38.1791435810983 -119.996257935225,38.1765712436617 -120.001515064894,38.1761242380595 -120.003575001418,38.1785194813422 -120.000667486846,38.1795399660055</coordinates></LinearRing></outerBoundaryIs></Polygon></MultiGeometry>
+  </Placemark>
+  <Placemark>
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#trainingAreas_v4">
+		<SimpleData name="class">1</SimpleData>
+		<SimpleData name="FID">101</SimpleData>
+		<SimpleData name="fid_dates_">8-13-2019</SimpleData>
+		<SimpleData name="region">2</SimpleData>
+		<SimpleData name="con">1</SimpleData>
+		<SimpleData name="year">2019</SimpleData>
+		<SimpleData name="layer">allTrainingAreas_11_3_2021_v3</SimpleData>
+		<SimpleData name="path">/home/adam/cloud/gdrive/fire_project/local_data/classificationData/allTrainingAreas_11_3_2021_v3.shp|layername=allTrainingAreas_11_3_2021_v3</SimpleData>
+	</SchemaData></ExtendedData>
+      <MultiGeometry><Polygon><outerBoundaryIs><LinearRing><coordinates>-119.9824842626,38.1787000346557 -119.979008119717,38.1808590543699 -119.972484987393,38.1785482261748 -119.970768373623,38.17401069336 -119.984050672665,38.1738082689562 -119.9824842626,38.1787000346557</coordinates></LinearRing></outerBoundaryIs></Polygon></MultiGeometry>
+  </Placemark>
+  <Placemark>
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#trainingAreas_v4">
+		<SimpleData name="class">1</SimpleData>
+		<SimpleData name="FID">102</SimpleData>
+		<SimpleData name="fid_dates_">5-31-2014</SimpleData>
+		<SimpleData name="region">2</SimpleData>
+		<SimpleData name="con">1</SimpleData>
+		<SimpleData name="year">2014</SimpleData>
+		<SimpleData name="layer">allTrainingAreas_11_3_2021_v3</SimpleData>
+		<SimpleData name="path">/home/adam/cloud/gdrive/fire_project/local_data/classificationData/allTrainingAreas_11_3_2021_v3.shp|layername=allTrainingAreas_11_3_2021_v3</SimpleData>
+	</SchemaData></ExtendedData>
+      <MultiGeometry><Polygon><outerBoundaryIs><LinearRing><coordinates>-118.833354269287,36.7969559014937 -118.830993925354,36.7971363176792 -118.828644310257,36.7967583023267 -118.830360924026,36.7945159456318 -118.834416424057,36.7956414278867 -118.833354269287,36.7969559014937</coordinates></LinearRing></outerBoundaryIs></Polygon></MultiGeometry>
+  </Placemark>
+  <Placemark>
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#trainingAreas_v4">
+		<SimpleData name="class">1</SimpleData>
+		<SimpleData name="FID">103</SimpleData>
+		<SimpleData name="fid_dates_">5-31-2014</SimpleData>
+		<SimpleData name="region">2</SimpleData>
+		<SimpleData name="con">1</SimpleData>
+		<SimpleData name="year">2014</SimpleData>
+		<SimpleData name="layer">allTrainingAreas_11_3_2021_v3</SimpleData>
+		<SimpleData name="path">/home/adam/cloud/gdrive/fire_project/local_data/classificationData/allTrainingAreas_11_3_2021_v3.shp|layername=allTrainingAreas_11_3_2021_v3</SimpleData>
+	</SchemaData></ExtendedData>
+      <MultiGeometry><Polygon><outerBoundaryIs><LinearRing><coordinates>-118.839383550731,36.7980222805839 -118.837548919764,36.7990188460438 -118.835853763667,36.7988642074258 -118.835714288798,36.7971717532551 -118.838063903895,36.79662191238 -118.839383550731,36.7980222805839</coordinates></LinearRing></outerBoundaryIs></Polygon></MultiGeometry>
+  </Placemark>
+  <Placemark>
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#trainingAreas_v4">
+		<SimpleData name="class">1</SimpleData>
+		<SimpleData name="FID">104</SimpleData>
+		<SimpleData name="fid_dates_">5-31-2014</SimpleData>
+		<SimpleData name="region">2</SimpleData>
+		<SimpleData name="con">1</SimpleData>
+		<SimpleData name="year">2014</SimpleData>
+		<SimpleData name="layer">allTrainingAreas_11_3_2021_v3</SimpleData>
+		<SimpleData name="path">/home/adam/cloud/gdrive/fire_project/local_data/classificationData/allTrainingAreas_11_3_2021_v3.shp|layername=allTrainingAreas_11_3_2021_v3</SimpleData>
+	</SchemaData></ExtendedData>
+      <MultiGeometry><Polygon><outerBoundaryIs><LinearRing><coordinates>-118.831917362646,36.8001070957479 -118.830426054433,36.800055550309 -118.828634338811,36.7995572759444 -118.828966932729,36.7973579572601 -118.831756430105,36.7974009133078 -118.832496719793,36.7987067656607 -118.831917362646,36.8001070957479</coordinates></LinearRing></outerBoundaryIs></Polygon></MultiGeometry>
+  </Placemark>
+  <Placemark>
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#trainingAreas_v4">
+		<SimpleData name="class">1</SimpleData>
+		<SimpleData name="FID">105</SimpleData>
+		<SimpleData name="fid_dates_">5-31-2014</SimpleData>
+		<SimpleData name="region">2</SimpleData>
+		<SimpleData name="con">1</SimpleData>
+		<SimpleData name="year">2014</SimpleData>
+		<SimpleData name="layer">allTrainingAreas_11_3_2021_v3</SimpleData>
+		<SimpleData name="path">/home/adam/cloud/gdrive/fire_project/local_data/classificationData/allTrainingAreas_11_3_2021_v3.shp|layername=allTrainingAreas_11_3_2021_v3</SimpleData>
+	</SchemaData></ExtendedData>
+      <MultiGeometry><Polygon><outerBoundaryIs><LinearRing><coordinates>-118.94189942979,36.7787804254092 -118.939131390086,36.7808943468772 -118.934432159892,36.7801037814459 -118.933960091106,36.7765461360932 -118.940161358348,36.7755492783114 -118.94189942979,36.7787804254092</coordinates></LinearRing></outerBoundaryIs></Polygon></MultiGeometry>
+  </Placemark>
+  <Placemark>
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#trainingAreas_v4">
+		<SimpleData name="class">1</SimpleData>
+		<SimpleData name="FID">106</SimpleData>
+		<SimpleData name="fid_dates_">5-31-2014</SimpleData>
+		<SimpleData name="region">2</SimpleData>
+		<SimpleData name="con">1</SimpleData>
+		<SimpleData name="year">2014</SimpleData>
+		<SimpleData name="layer">allTrainingAreas_11_3_2021_v3</SimpleData>
+		<SimpleData name="path">/home/adam/cloud/gdrive/fire_project/local_data/classificationData/allTrainingAreas_11_3_2021_v3.shp|layername=allTrainingAreas_11_3_2021_v3</SimpleData>
+	</SchemaData></ExtendedData>
+      <MultiGeometry><Polygon><outerBoundaryIs><LinearRing><coordinates>-118.947320702807,36.6952176016615 -118.9453251393,36.6992779474058 -118.942986253039,36.6988994496632 -118.943844559924,36.6949767269554 -118.947320702807,36.6952176016615</coordinates></LinearRing></outerBoundaryIs></Polygon></MultiGeometry>
+  </Placemark>
+  <Placemark>
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#trainingAreas_v4">
+		<SimpleData name="class">1</SimpleData>
+		<SimpleData name="FID">107</SimpleData>
+		<SimpleData name="fid_dates_">5-31-2014</SimpleData>
+		<SimpleData name="region">2</SimpleData>
+		<SimpleData name="con">1</SimpleData>
+		<SimpleData name="year">2014</SimpleData>
+		<SimpleData name="layer">allTrainingAreas_11_3_2021_v3</SimpleData>
+		<SimpleData name="path">/home/adam/cloud/gdrive/fire_project/local_data/classificationData/allTrainingAreas_11_3_2021_v3.shp|layername=allTrainingAreas_11_3_2021_v3</SimpleData>
+	</SchemaData></ExtendedData>
+      <MultiGeometry><Polygon><outerBoundaryIs><LinearRing><coordinates>-118.938206195937,36.6973459942841 -118.934890985594,36.6978191257322 -118.932541370497,36.6973201870305 -118.932530641661,36.6949802933653 -118.938238382445,36.6949286772611 -118.938206195937,36.6973459942841</coordinates></LinearRing></outerBoundaryIs></Polygon></MultiGeometry>
+  </Placemark>
+  <Placemark>
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#trainingAreas_v4">
+		<SimpleData name="class">1</SimpleData>
+		<SimpleData name="FID">108</SimpleData>
+		<SimpleData name="fid_dates_">5-31-2014</SimpleData>
+		<SimpleData name="region">2</SimpleData>
+		<SimpleData name="con">1</SimpleData>
+		<SimpleData name="year">2014</SimpleData>
+		<SimpleData name="layer">allTrainingAreas_11_3_2021_v3</SimpleData>
+		<SimpleData name="path">/home/adam/cloud/gdrive/fire_project/local_data/classificationData/allTrainingAreas_11_3_2021_v3.shp|layername=allTrainingAreas_11_3_2021_v3</SimpleData>
+	</SchemaData></ExtendedData>
+      <MultiGeometry><Polygon><outerBoundaryIs><LinearRing><coordinates>-118.994644470912,36.7086605061415 -118.99320680688,36.7095292173983 -118.989902325373,36.7086605061415 -118.991071768504,36.7056328416392 -118.995245285731,36.7066994188796 -118.994644470912,36.7086605061415</coordinates></LinearRing></outerBoundaryIs></Polygon></MultiGeometry>
+  </Placemark>
+  <Placemark>
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#trainingAreas_v4">
+		<SimpleData name="class">1</SimpleData>
+		<SimpleData name="FID">109</SimpleData>
+		<SimpleData name="fid_dates_">5-31-2014</SimpleData>
+		<SimpleData name="region">2</SimpleData>
+		<SimpleData name="con">1</SimpleData>
+		<SimpleData name="year">2014</SimpleData>
+		<SimpleData name="layer">allTrainingAreas_11_3_2021_v3</SimpleData>
+		<SimpleData name="path">/home/adam/cloud/gdrive/fire_project/local_data/classificationData/allTrainingAreas_11_3_2021_v3.shp|layername=allTrainingAreas_11_3_2021_v3</SimpleData>
+	</SchemaData></ExtendedData>
+      <MultiGeometry><Polygon><outerBoundaryIs><LinearRing><coordinates>-118.980933018427,36.7133565906301 -118.978315182429,36.713606008336 -118.976308890086,36.7122471020578 -118.978594132166,36.7107591581245 -118.981405087214,36.7117654586206 -118.980933018427,36.7133565906301</coordinates></LinearRing></outerBoundaryIs></Polygon></MultiGeometry>
+  </Placemark>
+  <Placemark>
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#trainingAreas_v4">
+		<SimpleData name="class">2</SimpleData>
+		<SimpleData name="FID">110</SimpleData>
+		<SimpleData name="fid_dates_">4-27-2021</SimpleData>
+		<SimpleData name="region">2</SimpleData>
+		<SimpleData name="con">0</SimpleData>
+		<SimpleData name="year">2021</SimpleData>
+		<SimpleData name="layer">allTrainingAreas_11_3_2021_v3</SimpleData>
+		<SimpleData name="path">/home/adam/cloud/gdrive/fire_project/local_data/classificationData/allTrainingAreas_11_3_2021_v3.shp|layername=allTrainingAreas_11_3_2021_v3</SimpleData>
+	</SchemaData></ExtendedData>
+      <MultiGeometry><Polygon><outerBoundaryIs><LinearRing><coordinates>-120.261872124332,37.8177283959977 -120.260541748661,37.8179826578152 -120.259758543628,37.8179190924429 -120.25896460976,37.8171732546526 -120.259887289661,37.8160926240311 -120.260724138874,37.8161095752218 -120.261625361103,37.8163045136351 -120.262472939151,37.8159866790011 -120.263653111118,37.816283324702 -120.263540458339,37.8167367665412 -120.263009380954,37.8170164582495 -120.261872124332,37.8177283959977</coordinates></LinearRing></outerBoundaryIs></Polygon></MultiGeometry>
+  </Placemark>
+  <Placemark>
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#trainingAreas_v4">
+		<SimpleData name="class">2</SimpleData>
+		<SimpleData name="FID">111</SimpleData>
+		<SimpleData name="fid_dates_">4-27-2021</SimpleData>
+		<SimpleData name="region">2</SimpleData>
+		<SimpleData name="con">0</SimpleData>
+		<SimpleData name="year">2021</SimpleData>
+		<SimpleData name="layer">allTrainingAreas_11_3_2021_v3</SimpleData>
+		<SimpleData name="path">/home/adam/cloud/gdrive/fire_project/local_data/classificationData/allTrainingAreas_11_3_2021_v3.shp|layername=allTrainingAreas_11_3_2021_v3</SimpleData>
+	</SchemaData></ExtendedData>
+      <MultiGeometry><Polygon><outerBoundaryIs><LinearRing><coordinates>-120.259543966907,37.8158341178908 -120.257880997318,37.8177919615341 -120.257569861072,37.8166562490349 -120.25896460976,37.8149526475244 -120.259543966907,37.8158341178908</coordinates></LinearRing></outerBoundaryIs></Polygon></MultiGeometry>
+  </Placemark>
+  <Placemark>
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#trainingAreas_v4">
+		<SimpleData name="class">2</SimpleData>
+		<SimpleData name="FID">112</SimpleData>
+		<SimpleData name="fid_dates_">4-27-2021</SimpleData>
+		<SimpleData name="region">2</SimpleData>
+		<SimpleData name="con">0</SimpleData>
+		<SimpleData name="year">2021</SimpleData>
+		<SimpleData name="layer">allTrainingAreas_11_3_2021_v3</SimpleData>
+		<SimpleData name="path">/home/adam/cloud/gdrive/fire_project/local_data/classificationData/allTrainingAreas_11_3_2021_v3.shp|layername=allTrainingAreas_11_3_2021_v3</SimpleData>
+	</SchemaData></ExtendedData>
+      <MultiGeometry><Polygon><outerBoundaryIs><LinearRing><coordinates>-120.271034550327,37.8233177162881 -120.267665695804,37.8242838333725 -120.266421150821,37.8221481892122 -120.264211010593,37.8195209231336 -120.267687153476,37.8176563549902 -120.267794441837,37.8202497869673 -120.270068955081,37.82091084329 -120.271034550327,37.8233177162881</coordinates></LinearRing></outerBoundaryIs></Polygon></MultiGeometry>
+  </Placemark>
+  <Placemark>
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#trainingAreas_v4">
+		<SimpleData name="class">2</SimpleData>
+		<SimpleData name="FID">113</SimpleData>
+		<SimpleData name="fid_dates_">4-27-2021</SimpleData>
+		<SimpleData name="region">2</SimpleData>
+		<SimpleData name="con">0</SimpleData>
+		<SimpleData name="year">2021</SimpleData>
+		<SimpleData name="layer">allTrainingAreas_11_3_2021_v3</SimpleData>
+		<SimpleData name="path">/home/adam/cloud/gdrive/fire_project/local_data/classificationData/allTrainingAreas_11_3_2021_v3.shp|layername=allTrainingAreas_11_3_2021_v3</SimpleData>
+	</SchemaData></ExtendedData>
+      <MultiGeometry><Polygon><outerBoundaryIs><LinearRing><coordinates>-120.277278732914,37.8249787518761 -120.274575066227,37.8261482340972 -120.272171806949,37.8222668377312 -120.274381947177,37.8215040939234 -120.274875473636,37.8224532850186 -120.276677918094,37.8230295736566 -120.277278732914,37.8249787518761</coordinates></LinearRing></outerBoundaryIs></Polygon></MultiGeometry>
+  </Placemark>
+  <Placemark>
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#trainingAreas_v4">
+		<SimpleData name="class">2</SimpleData>
+		<SimpleData name="FID">114</SimpleData>
+		<SimpleData name="fid_dates_">4-27-2021</SimpleData>
+		<SimpleData name="region">2</SimpleData>
+		<SimpleData name="con">0</SimpleData>
+		<SimpleData name="year">2021</SimpleData>
+		<SimpleData name="layer">allTrainingAreas_11_3_2021_v3</SimpleData>
+		<SimpleData name="path">/home/adam/cloud/gdrive/fire_project/local_data/classificationData/allTrainingAreas_11_3_2021_v3.shp|layername=allTrainingAreas_11_3_2021_v3</SimpleData>
+	</SchemaData></ExtendedData>
+      <MultiGeometry><Polygon><outerBoundaryIs><LinearRing><coordinates>-120.28496475358,37.8328690759208 -120.279943658304,37.8345298965161 -120.275523377847,37.8318183333779 -120.276167108011,37.8259542373182 -120.280244065713,37.8254118696306 -120.281488610696,37.8242593250592 -120.285265160989,37.8254457677278 -120.291058732461,37.8259881351663 -120.291230393838,37.8288693953454 -120.285908891153,37.8312760087912 -120.28496475358,37.8328690759208</coordinates></LinearRing></outerBoundaryIs></Polygon></MultiGeometry>
+  </Placemark>
+  <Placemark>
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#trainingAreas_v4">
+		<SimpleData name="class">2</SimpleData>
+		<SimpleData name="FID">115</SimpleData>
+		<SimpleData name="fid_dates_">4-27-2021</SimpleData>
+		<SimpleData name="region">2</SimpleData>
+		<SimpleData name="con">0</SimpleData>
+		<SimpleData name="year">2021</SimpleData>
+		<SimpleData name="layer">allTrainingAreas_11_3_2021_v3</SimpleData>
+		<SimpleData name="path">/home/adam/cloud/gdrive/fire_project/local_data/classificationData/allTrainingAreas_11_3_2021_v3.shp|layername=allTrainingAreas_11_3_2021_v3</SimpleData>
+	</SchemaData></ExtendedData>
+      <MultiGeometry><Polygon><outerBoundaryIs><LinearRing><coordinates>-120.301752206599,37.8445119008067 -120.297975656306,37.8432579849448 -120.287439939295,37.8421226643556 -120.287504312312,37.8381743238503 -120.303919431483,37.839902807936 -120.307374116694,37.8435291036944 -120.301752206599,37.8445119008067</coordinates></LinearRing></outerBoundaryIs></Polygon></MultiGeometry>
+  </Placemark>
+  <Placemark>
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#trainingAreas_v4">
+		<SimpleData name="class">2</SimpleData>
+		<SimpleData name="FID">116</SimpleData>
+		<SimpleData name="fid_dates_">6-5-2021</SimpleData>
+		<SimpleData name="region">2</SimpleData>
+		<SimpleData name="con">0</SimpleData>
+		<SimpleData name="year">2021</SimpleData>
+		<SimpleData name="layer">allTrainingAreas_11_3_2021_v3</SimpleData>
+		<SimpleData name="path">/home/adam/cloud/gdrive/fire_project/local_data/classificationData/allTrainingAreas_11_3_2021_v3.shp|layername=allTrainingAreas_11_3_2021_v3</SimpleData>
+	</SchemaData></ExtendedData>
+      <MultiGeometry><Polygon><outerBoundaryIs><LinearRing><coordinates>-120.124030145806,37.8408766952733 -120.114417108697,37.8472140400258 -120.107893976373,37.8411139318933 -120.111498865289,37.8392160175674 -120.117635759515,37.8357250833451 -120.124030145806,37.8408766952733</coordinates></LinearRing></outerBoundaryIs></Polygon></MultiGeometry>
+  </Placemark>
+  <Placemark>
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#trainingAreas_v4">
+		<SimpleData name="class">2</SimpleData>
+		<SimpleData name="FID">117</SimpleData>
+		<SimpleData name="fid_dates_">6-5-2021</SimpleData>
+		<SimpleData name="region">2</SimpleData>
+		<SimpleData name="con">0</SimpleData>
+		<SimpleData name="year">2021</SimpleData>
+		<SimpleData name="layer">allTrainingAreas_11_3_2021_v3</SimpleData>
+		<SimpleData name="path">/home/adam/cloud/gdrive/fire_project/local_data/classificationData/allTrainingAreas_11_3_2021_v3.shp|layername=allTrainingAreas_11_3_2021_v3</SimpleData>
+	</SchemaData></ExtendedData>
+      <MultiGeometry><Polygon><outerBoundaryIs><LinearRing><coordinates>-120.045693084252,37.9007054829857 -120.04436270858,37.9003837791226 -120.044373437416,37.8995117852642 -120.045875474465,37.8990969496081 -120.046143695366,37.8981910758642 -120.047291680824,37.8981233465382 -120.047227307808,37.8987159760275 -120.046615764153,37.9003160518143 -120.045693084252,37.9007054829857</coordinates></LinearRing></outerBoundaryIs></Polygon></MultiGeometry>
+  </Placemark>
+  <Placemark>
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#trainingAreas_v4">
+		<SimpleData name="class">2</SimpleData>
+		<SimpleData name="FID">118</SimpleData>
+		<SimpleData name="fid_dates_">6-5-2021</SimpleData>
+		<SimpleData name="region">2</SimpleData>
+		<SimpleData name="con">0</SimpleData>
+		<SimpleData name="year">2021</SimpleData>
+		<SimpleData name="layer">allTrainingAreas_11_3_2021_v3</SimpleData>
+		<SimpleData name="path">/home/adam/cloud/gdrive/fire_project/local_data/classificationData/allTrainingAreas_11_3_2021_v3.shp|layername=allTrainingAreas_11_3_2021_v3</SimpleData>
+	</SchemaData></ExtendedData>
+      <MultiGeometry><Polygon><outerBoundaryIs><LinearRing><coordinates>-120.083751839918,37.9013374725247 -120.081219834608,37.9029459569348 -120.074117345136,37.9007787276079 -120.073945683759,37.8972229787506 -120.081756276411,37.896799663873 -120.083751839918,37.9013374725247</coordinates></LinearRing></outerBoundaryIs></Polygon></MultiGeometry>
+  </Placemark>
+  <Placemark>
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#trainingAreas_v4">
+		<SimpleData name="class">2</SimpleData>
+		<SimpleData name="FID">119</SimpleData>
+		<SimpleData name="fid_dates_">8-12-2017</SimpleData>
+		<SimpleData name="region">2</SimpleData>
+		<SimpleData name="con">0</SimpleData>
+		<SimpleData name="year">2017</SimpleData>
+		<SimpleData name="layer">allTrainingAreas_11_3_2021_v3</SimpleData>
+		<SimpleData name="path">/home/adam/cloud/gdrive/fire_project/local_data/classificationData/allTrainingAreas_11_3_2021_v3.shp|layername=allTrainingAreas_11_3_2021_v3</SimpleData>
+	</SchemaData></ExtendedData>
+      <MultiGeometry><Polygon><outerBoundaryIs><LinearRing><coordinates>-119.959667577645,37.9494483860705 -119.959098949334,37.9491607365745 -119.960086002252,37.9483147021181 -119.960622444055,37.9474432764429 -119.961352004907,37.9471725401483 -119.961759700677,37.9474601974282 -119.961523666284,37.9482724001396 -119.960676088235,37.9490592129542 -119.959667577645,37.9494483860705</coordinates></LinearRing></outerBoundaryIs></Polygon></MultiGeometry>
+  </Placemark>
+  <Placemark>
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#trainingAreas_v4">
+		<SimpleData name="class">2</SimpleData>
+		<SimpleData name="FID">120</SimpleData>
+		<SimpleData name="fid_dates_">6-5-2021</SimpleData>
+		<SimpleData name="region">2</SimpleData>
+		<SimpleData name="con">0</SimpleData>
+		<SimpleData name="year">2021</SimpleData>
+		<SimpleData name="layer">allTrainingAreas_11_3_2021_v3</SimpleData>
+		<SimpleData name="path">/home/adam/cloud/gdrive/fire_project/local_data/classificationData/allTrainingAreas_11_3_2021_v3.shp|layername=allTrainingAreas_11_3_2021_v3</SimpleData>
+	</SchemaData></ExtendedData>
+      <MultiGeometry><Polygon><outerBoundaryIs><LinearRing><coordinates>-120.142840757314,37.8713394160413 -120.141209974233,37.8719830761891 -120.135073080007,37.869052683199 -120.13996542925,37.8645806449873 -120.143184080068,37.8675281552087 -120.142840757314,37.8713394160413</coordinates></LinearRing></outerBoundaryIs></Polygon></MultiGeometry>
+  </Placemark>
+  <Placemark>
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#trainingAreas_v4">
+		<SimpleData name="class">2</SimpleData>
+		<SimpleData name="FID">121</SimpleData>
+		<SimpleData name="fid_dates_">5-31-2014</SimpleData>
+		<SimpleData name="region">2</SimpleData>
+		<SimpleData name="con">0</SimpleData>
+		<SimpleData name="year">2014</SimpleData>
+		<SimpleData name="layer">allTrainingAreas_11_3_2021_v3</SimpleData>
+		<SimpleData name="path">/home/adam/cloud/gdrive/fire_project/local_data/classificationData/allTrainingAreas_11_3_2021_v3.shp|layername=allTrainingAreas_11_3_2021_v3</SimpleData>
+	</SchemaData></ExtendedData>
+      <MultiGeometry><Polygon><outerBoundaryIs><LinearRing><coordinates>-118.978138871592,36.8380384791983 -118.974426694315,36.8383819443057 -118.971959062022,36.8363383042028 -118.974920220774,36.8344663506478 -118.977859921855,36.8358230921973 -118.978138871592,36.8380384791983</coordinates></LinearRing></outerBoundaryIs></Polygon></MultiGeometry>
+  </Placemark>
+  <Placemark>
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#trainingAreas_v4">
+		<SimpleData name="class">2</SimpleData>
+		<SimpleData name="FID">122</SimpleData>
+		<SimpleData name="fid_dates_">5-31-2014</SimpleData>
+		<SimpleData name="region">2</SimpleData>
+		<SimpleData name="con">0</SimpleData>
+		<SimpleData name="year">2014</SimpleData>
+		<SimpleData name="layer">allTrainingAreas_11_3_2021_v3</SimpleData>
+		<SimpleData name="path">/home/adam/cloud/gdrive/fire_project/local_data/classificationData/allTrainingAreas_11_3_2021_v3.shp|layername=allTrainingAreas_11_3_2021_v3</SimpleData>
+	</SchemaData></ExtendedData>
+      <MultiGeometry><Polygon><outerBoundaryIs><LinearRing><coordinates>-118.970778890055,36.836149393537 -118.968676038187,36.8371282892042 -118.965221352976,36.8373343709062 -118.964556165141,36.8350330937154 -118.969877667826,36.8348785278406 -118.970778890055,36.836149393537</coordinates></LinearRing></outerBoundaryIs></Polygon></MultiGeometry>
+  </Placemark>
+  <Placemark>
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#trainingAreas_v4">
+		<SimpleData name="class">2</SimpleData>
+		<SimpleData name="FID">123</SimpleData>
+		<SimpleData name="fid_dates_">5-31-2014</SimpleData>
+		<SimpleData name="region">2</SimpleData>
+		<SimpleData name="con">0</SimpleData>
+		<SimpleData name="year">2014</SimpleData>
+		<SimpleData name="layer">allTrainingAreas_11_3_2021_v3</SimpleData>
+		<SimpleData name="path">/home/adam/cloud/gdrive/fire_project/local_data/classificationData/allTrainingAreas_11_3_2021_v3.shp|layername=allTrainingAreas_11_3_2021_v3</SimpleData>
+	</SchemaData></ExtendedData>
+      <MultiGeometry><Polygon><outerBoundaryIs><LinearRing><coordinates>-118.946035264845,36.7620893708577 -118.945284246321,36.7625878888732 -118.94430792224,36.7631121888072 -118.943417428847,36.7626738399277 -118.945005296583,36.7609805864117 -118.946475147124,36.7610321581367 -118.946035264845,36.7620893708577</coordinates></LinearRing></outerBoundaryIs></Polygon></MultiGeometry>
+  </Placemark>
+  <Placemark>
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#trainingAreas_v4">
+		<SimpleData name="class">2</SimpleData>
+		<SimpleData name="FID">124</SimpleData>
+		<SimpleData name="fid_dates_">5-31-2014</SimpleData>
+		<SimpleData name="region">2</SimpleData>
+		<SimpleData name="con">0</SimpleData>
+		<SimpleData name="year">2014</SimpleData>
+		<SimpleData name="layer">allTrainingAreas_11_3_2021_v3</SimpleData>
+		<SimpleData name="path">/home/adam/cloud/gdrive/fire_project/local_data/classificationData/allTrainingAreas_11_3_2021_v3.shp|layername=allTrainingAreas_11_3_2021_v3</SimpleData>
+	</SchemaData></ExtendedData>
+      <MultiGeometry><Polygon><outerBoundaryIs><LinearRing><coordinates>-118.952099153188,36.7431441425123 -118.949695893911,36.7432387126315 -118.947475024847,36.7432301153527 -118.947153159765,36.7420350842366 -118.950339624075,36.7407540589956 -118.952131339697,36.7419491100576 -118.952099153188,36.7431441425123</coordinates></LinearRing></outerBoundaryIs></Polygon></MultiGeometry>
+  </Placemark>
+  <Placemark>
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#trainingAreas_v4">
+		<SimpleData name="class">2</SimpleData>
+		<SimpleData name="FID">125</SimpleData>
+		<SimpleData name="fid_dates_">5-31-2014</SimpleData>
+		<SimpleData name="region">2</SimpleData>
+		<SimpleData name="con">0</SimpleData>
+		<SimpleData name="year">2014</SimpleData>
+		<SimpleData name="layer">allTrainingAreas_11_3_2021_v3</SimpleData>
+		<SimpleData name="path">/home/adam/cloud/gdrive/fire_project/local_data/classificationData/allTrainingAreas_11_3_2021_v3.shp|layername=allTrainingAreas_11_3_2021_v3</SimpleData>
+	</SchemaData></ExtendedData>
+      <MultiGeometry><Polygon><outerBoundaryIs><LinearRing><coordinates>-118.958076354087,36.7459011499404 -118.957368250907,36.7462880130655 -118.956037875235,36.7456432401068 -118.955866213858,36.7447233546415 -118.957067843497,36.7443880665431 -118.957926150382,36.7450586412751 -118.958076354087,36.7459011499404</coordinates></LinearRing></outerBoundaryIs></Polygon></MultiGeometry>
+  </Placemark>
+  <Placemark>
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#trainingAreas_v4">
+		<SimpleData name="class">2</SimpleData>
+		<SimpleData name="FID">126</SimpleData>
+		<SimpleData name="fid_dates_">5-31-2014</SimpleData>
+		<SimpleData name="region">2</SimpleData>
+		<SimpleData name="con">0</SimpleData>
+		<SimpleData name="year">2014</SimpleData>
+		<SimpleData name="layer">allTrainingAreas_11_3_2021_v3</SimpleData>
+		<SimpleData name="path">/home/adam/cloud/gdrive/fire_project/local_data/classificationData/allTrainingAreas_11_3_2021_v3.shp|layername=allTrainingAreas_11_3_2021_v3</SimpleData>
+	</SchemaData></ExtendedData>
+      <MultiGeometry><Polygon><outerBoundaryIs><LinearRing><coordinates>-119.078935621867,36.7876853123894 -119.07780909408,36.7877712353086 -119.076671837458,36.7867573387225 -119.0771009909,36.7855200230182 -119.079461334834,36.7855200230182 -119.080051420817,36.7863363099268 -119.078935621867,36.7876853123894</coordinates></LinearRing></outerBoundaryIs></Polygon></MultiGeometry>
+  </Placemark>
+  <Placemark>
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#trainingAreas_v4">
+		<SimpleData name="class">2</SimpleData>
+		<SimpleData name="FID">127</SimpleData>
+		<SimpleData name="fid_dates_">5-31-2014</SimpleData>
+		<SimpleData name="region">2</SimpleData>
+		<SimpleData name="con">0</SimpleData>
+		<SimpleData name="year">2014</SimpleData>
+		<SimpleData name="layer">allTrainingAreas_11_3_2021_v3</SimpleData>
+		<SimpleData name="path">/home/adam/cloud/gdrive/fire_project/local_data/classificationData/allTrainingAreas_11_3_2021_v3.shp|layername=allTrainingAreas_11_3_2021_v3</SimpleData>
+	</SchemaData></ExtendedData>
+      <MultiGeometry><Polygon><outerBoundaryIs><LinearRing><coordinates>-119.074654816279,36.7818895890685 -119.072830914149,36.7817521017994 -119.070309637675,36.7810388826328 -119.07157564033,36.7789249651512 -119.075824259409,36.7789851180806 -119.077294109949,36.7804029948876 -119.074654816279,36.7818895890685</coordinates></LinearRing></outerBoundaryIs></Polygon></MultiGeometry>
+  </Placemark>
+  <Placemark>
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#trainingAreas_v4">
+		<SimpleData name="class">2</SimpleData>
+		<SimpleData name="FID">128</SimpleData>
+		<SimpleData name="fid_dates_">5-31-2014</SimpleData>
+		<SimpleData name="region">2</SimpleData>
+		<SimpleData name="con">0</SimpleData>
+		<SimpleData name="year">2014</SimpleData>
+		<SimpleData name="layer">allTrainingAreas_11_3_2021_v3</SimpleData>
+		<SimpleData name="path">/home/adam/cloud/gdrive/fire_project/local_data/classificationData/allTrainingAreas_11_3_2021_v3.shp|layername=allTrainingAreas_11_3_2021_v3</SimpleData>
+	</SchemaData></ExtendedData>
+      <MultiGeometry><Polygon><outerBoundaryIs><LinearRing><coordinates>-119.086463965915,36.7685223689618 -119.085820235752,36.7687973907128 -119.083942689441,36.7681528069305 -119.083288230442,36.7677746485895 -119.084361114048,36.7669839478501 -119.086828746341,36.7665971890843 -119.086463965915,36.7685223689618</coordinates></LinearRing></outerBoundaryIs></Polygon></MultiGeometry>
+  </Placemark>
+  <Placemark>
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#trainingAreas_v4">
+		<SimpleData name="class">2</SimpleData>
+		<SimpleData name="FID">129</SimpleData>
+		<SimpleData name="fid_dates_">5-31-2014</SimpleData>
+		<SimpleData name="region">2</SimpleData>
+		<SimpleData name="con">0</SimpleData>
+		<SimpleData name="year">2014</SimpleData>
+		<SimpleData name="layer">allTrainingAreas_11_3_2021_v3</SimpleData>
+		<SimpleData name="path">/home/adam/cloud/gdrive/fire_project/local_data/classificationData/allTrainingAreas_11_3_2021_v3.shp|layername=allTrainingAreas_11_3_2021_v3</SimpleData>
+	</SchemaData></ExtendedData>
+      <MultiGeometry><Polygon><outerBoundaryIs><LinearRing><coordinates>-119.084983059958,36.770258301066 -119.084789940909,36.7707052007923 -119.084022829131,36.7709372438537 -119.083132335738,36.7707868456533 -119.083078691557,36.7701895470307 -119.083454200819,36.7697641300666 -119.084135481909,36.7696395125292 -119.084983059958,36.770258301066</coordinates></LinearRing></outerBoundaryIs></Polygon></MultiGeometry>
+  </Placemark>
+  <Placemark>
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#trainingAreas_v4">
+		<SimpleData name="class">2</SimpleData>
+		<SimpleData name="FID">130</SimpleData>
+		<SimpleData name="fid_dates_">5-31-2014</SimpleData>
+		<SimpleData name="region">2</SimpleData>
+		<SimpleData name="con">0</SimpleData>
+		<SimpleData name="year">2014</SimpleData>
+		<SimpleData name="layer">allTrainingAreas_11_3_2021_v3</SimpleData>
+		<SimpleData name="path">/home/adam/cloud/gdrive/fire_project/local_data/classificationData/allTrainingAreas_11_3_2021_v3.shp|layername=allTrainingAreas_11_3_2021_v3</SimpleData>
+	</SchemaData></ExtendedData>
+      <MultiGeometry><Polygon><outerBoundaryIs><LinearRing><coordinates>-119.082703157862,36.7697594240683 -119.082228406867,36.7699742814291 -119.081388875445,36.7699420528633 -119.081506892642,36.7694006109334 -119.082260593375,36.7692287238069 -119.082703157862,36.7697594240683</coordinates></LinearRing></outerBoundaryIs></Polygon></MultiGeometry>
+  </Placemark>
+  <Placemark>
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#trainingAreas_v4">
+		<SimpleData name="class">0</SimpleData>
+		<SimpleData name="FID">131</SimpleData>
+		<SimpleData name="fid_dates_">6-5-2021</SimpleData>
+		<SimpleData name="region">2</SimpleData>
+		<SimpleData name="con">0</SimpleData>
+		<SimpleData name="year">2021</SimpleData>
+		<SimpleData name="layer">allTrainingAreas_11_3_2021_v3</SimpleData>
+		<SimpleData name="path">/home/adam/cloud/gdrive/fire_project/local_data/classificationData/allTrainingAreas_11_3_2021_v3.shp|layername=allTrainingAreas_11_3_2021_v3</SimpleData>
+	</SchemaData></ExtendedData>
+      <MultiGeometry><Polygon><outerBoundaryIs><LinearRing><coordinates>-120.042226548671,37.8977791298585 -120.041432614802,37.8983209652554 -120.040971274852,37.8979484538485 -120.041797395228,37.8952222902622 -120.042977567195,37.8953408212133 -120.043395991801,37.8959842716172 -120.044415231227,37.8959165402606 -120.044758553981,37.8966192500545 -120.044179196833,37.8970340996751 -120.043170686244,37.8973558181794 -120.042226548671,37.8977791298585</coordinates></LinearRing></outerBoundaryIs></Polygon></MultiGeometry>
+  </Placemark>
+  <Placemark>
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#trainingAreas_v4">
+		<SimpleData name="class">0</SimpleData>
+		<SimpleData name="FID">132</SimpleData>
+		<SimpleData name="fid_dates_">6-5-2021</SimpleData>
+		<SimpleData name="region">2</SimpleData>
+		<SimpleData name="con">0</SimpleData>
+		<SimpleData name="year">2021</SimpleData>
+		<SimpleData name="layer">allTrainingAreas_11_3_2021_v3</SimpleData>
+		<SimpleData name="path">/home/adam/cloud/gdrive/fire_project/local_data/classificationData/allTrainingAreas_11_3_2021_v3.shp|layername=allTrainingAreas_11_3_2021_v3</SimpleData>
+	</SchemaData></ExtendedData>
+      <MultiGeometry><Polygon><outerBoundaryIs><LinearRing><coordinates>-120.046904321193,37.8952561562677 -120.046764846324,37.8962890619507 -120.045380826472,37.8960604693189 -120.045166249751,37.8950360269535 -120.046153302668,37.8949259620496 -120.046904321193,37.8952561562677</coordinates></LinearRing></outerBoundaryIs></Polygon></MultiGeometry>
+  </Placemark>
+  <Placemark>
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#trainingAreas_v4">
+		<SimpleData name="class">0</SimpleData>
+		<SimpleData name="FID">133</SimpleData>
+		<SimpleData name="fid_dates_">6-5-2021</SimpleData>
+		<SimpleData name="region">2</SimpleData>
+		<SimpleData name="con">0</SimpleData>
+		<SimpleData name="year">2021</SimpleData>
+		<SimpleData name="layer">allTrainingAreas_11_3_2021_v3</SimpleData>
+		<SimpleData name="path">/home/adam/cloud/gdrive/fire_project/local_data/classificationData/allTrainingAreas_11_3_2021_v3.shp|layername=allTrainingAreas_11_3_2021_v3</SimpleData>
+	</SchemaData></ExtendedData>
+      <MultiGeometry><Polygon><outerBoundaryIs><LinearRing><coordinates>-120.040906901835,37.8926417827848 -120.039190288066,37.8944367225254 -120.037473674296,37.8934545911081 -120.038846965312,37.8901694356407 -120.040134425639,37.891490288965 -120.041572089671,37.8920152369107 -120.040906901835,37.8926417827848</coordinates></LinearRing></outerBoundaryIs></Polygon></MultiGeometry>
+  </Placemark>
+  <Placemark>
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#trainingAreas_v4">
+		<SimpleData name="class">0</SimpleData>
+		<SimpleData name="FID">134</SimpleData>
+		<SimpleData name="fid_dates_">6-5-2021</SimpleData>
+		<SimpleData name="region">2</SimpleData>
+		<SimpleData name="con">0</SimpleData>
+		<SimpleData name="year">2021</SimpleData>
+		<SimpleData name="layer">allTrainingAreas_11_3_2021_v3</SimpleData>
+		<SimpleData name="path">/home/adam/cloud/gdrive/fire_project/local_data/classificationData/allTrainingAreas_11_3_2021_v3.shp|layername=allTrainingAreas_11_3_2021_v3</SimpleData>
+	</SchemaData></ExtendedData>
+      <MultiGeometry><Polygon><outerBoundaryIs><LinearRing><coordinates>-120.04541301298,37.8924893802251 -120.043910975932,37.8930989885709 -120.042902465342,37.8924555129468 -120.044211383342,37.8918289654874 -120.04541301298,37.8924893802251</coordinates></LinearRing></outerBoundaryIs></Polygon></MultiGeometry>
+  </Placemark>
+  <Placemark>
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#trainingAreas_v4">
+		<SimpleData name="class">0</SimpleData>
+		<SimpleData name="FID">135</SimpleData>
+		<SimpleData name="fid_dates_">6-5-2021</SimpleData>
+		<SimpleData name="region">2</SimpleData>
+		<SimpleData name="con">0</SimpleData>
+		<SimpleData name="year">2021</SimpleData>
+		<SimpleData name="layer">allTrainingAreas_11_3_2021_v3</SimpleData>
+		<SimpleData name="path">/home/adam/cloud/gdrive/fire_project/local_data/classificationData/allTrainingAreas_11_3_2021_v3.shp|layername=allTrainingAreas_11_3_2021_v3</SimpleData>
+	</SchemaData></ExtendedData>
+      <MultiGeometry><Polygon><outerBoundaryIs><LinearRing><coordinates>-120.046056743144,37.8935392581257 -120.046164031505,37.8942673904572 -120.044511790751,37.8941996575209 -120.044168467997,37.8935731249055 -120.045455928325,37.8933868574239 -120.046056743144,37.8935392581257</coordinates></LinearRing></outerBoundaryIs></Polygon></MultiGeometry>
+  </Placemark>
+  <Placemark>
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#trainingAreas_v4">
+		<SimpleData name="class">0</SimpleData>
+		<SimpleData name="FID">136</SimpleData>
+		<SimpleData name="fid_dates_">8-12-2017</SimpleData>
+		<SimpleData name="region">2</SimpleData>
+		<SimpleData name="con">0</SimpleData>
+		<SimpleData name="year">2017</SimpleData>
+		<SimpleData name="layer">allTrainingAreas_11_3_2021_v3</SimpleData>
+		<SimpleData name="path">/home/adam/cloud/gdrive/fire_project/local_data/classificationData/allTrainingAreas_11_3_2021_v3.shp|layername=allTrainingAreas_11_3_2021_v3</SimpleData>
+	</SchemaData></ExtendedData>
+      <MultiGeometry><Polygon><outerBoundaryIs><LinearRing><coordinates>-120.012958401477,37.9424380748846 -120.011005753314,37.9436056932594 -120.007551068103,37.9418965644137 -120.007980221546,37.9394766407397 -120.011992806232,37.9391043377175 -120.012958401477,37.9402720090597 -120.012958401477,37.9424380748846</coordinates></LinearRing></outerBoundaryIs></Polygon></MultiGeometry>
+  </Placemark>
+  <Placemark>
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#trainingAreas_v4">
+		<SimpleData name="class">0</SimpleData>
+		<SimpleData name="FID">137</SimpleData>
+		<SimpleData name="fid_dates_">8-12-2017</SimpleData>
+		<SimpleData name="region">2</SimpleData>
+		<SimpleData name="con">0</SimpleData>
+		<SimpleData name="year">2017</SimpleData>
+		<SimpleData name="layer">allTrainingAreas_11_3_2021_v3</SimpleData>
+		<SimpleData name="path">/home/adam/cloud/gdrive/fire_project/local_data/classificationData/allTrainingAreas_11_3_2021_v3.shp|layername=allTrainingAreas_11_3_2021_v3</SimpleData>
+	</SchemaData></ExtendedData>
+      <MultiGeometry><Polygon><outerBoundaryIs><LinearRing><coordinates>-119.99136636317,37.7000676499463 -119.990336394908,37.7024275265346 -119.985122180583,37.7028349796349 -119.98428533137,37.7009165350684 -119.98681733668,37.6991678211037 -119.99136636317,37.7000676499463</coordinates></LinearRing></outerBoundaryIs></Polygon></MultiGeometry>
+  </Placemark>
+  <Placemark>
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#trainingAreas_v4">
+		<SimpleData name="class">0</SimpleData>
+		<SimpleData name="FID">138</SimpleData>
+		<SimpleData name="fid_dates_">6-5-2021</SimpleData>
+		<SimpleData name="region">2</SimpleData>
+		<SimpleData name="con">0</SimpleData>
+		<SimpleData name="year">2021</SimpleData>
+		<SimpleData name="layer">allTrainingAreas_11_3_2021_v3</SimpleData>
+		<SimpleData name="path">/home/adam/cloud/gdrive/fire_project/local_data/classificationData/allTrainingAreas_11_3_2021_v3.shp|layername=allTrainingAreas_11_3_2021_v3</SimpleData>
+	</SchemaData></ExtendedData>
+      <MultiGeometry><Polygon><outerBoundaryIs><LinearRing><coordinates>-120.143312076113,37.8536982825994 -120.14125213959,37.8529358637298 -120.143054584048,37.8508518785909 -120.145178893588,37.8510551968074 -120.145286181948,37.8524275801031 -120.144041636965,37.8525122942843 -120.143312076113,37.8536982825994</coordinates></LinearRing></outerBoundaryIs></Polygon></MultiGeometry>
+  </Placemark>
+  <Placemark>
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#trainingAreas_v4">
+		<SimpleData name="class">0</SimpleData>
+		<SimpleData name="FID">139</SimpleData>
+		<SimpleData name="fid_dates_">8-12-2017</SimpleData>
+		<SimpleData name="region">2</SimpleData>
+		<SimpleData name="con">0</SimpleData>
+		<SimpleData name="year">2017</SimpleData>
+		<SimpleData name="layer">allTrainingAreas_11_3_2021_v3</SimpleData>
+		<SimpleData name="path">/home/adam/cloud/gdrive/fire_project/local_data/classificationData/allTrainingAreas_11_3_2021_v3.shp|layername=allTrainingAreas_11_3_2021_v3</SimpleData>
+	</SchemaData></ExtendedData>
+      <MultiGeometry><Polygon><outerBoundaryIs><LinearRing><coordinates>-119.98974465174,37.988774449195 -119.98721264643,37.9912773032204 -119.981461990302,37.9880641642552 -119.98721264643,37.9772060957095 -119.996482360786,37.9803520565782 -119.98974465174,37.988774449195</coordinates></LinearRing></outerBoundaryIs></Polygon></MultiGeometry>
+  </Placemark>
+  <Placemark>
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#trainingAreas_v4">
+		<SimpleData name="class">0</SimpleData>
+		<SimpleData name="FID">140</SimpleData>
+		<SimpleData name="fid_dates_">8-12-2017</SimpleData>
+		<SimpleData name="region">2</SimpleData>
+		<SimpleData name="con">0</SimpleData>
+		<SimpleData name="year">2017</SimpleData>
+		<SimpleData name="layer">allTrainingAreas_11_3_2021_v3</SimpleData>
+		<SimpleData name="path">/home/adam/cloud/gdrive/fire_project/local_data/classificationData/allTrainingAreas_11_3_2021_v3.shp|layername=allTrainingAreas_11_3_2021_v3</SimpleData>
+	</SchemaData></ExtendedData>
+      <MultiGeometry><Polygon><outerBoundaryIs><LinearRing><coordinates>-120.013305175727,37.9865759258927 -120.012918937629,37.9926978040059 -119.999271858161,37.9920890213232 -120.00553749842,37.9860685650056 -120.013305175727,37.9865759258927</coordinates></LinearRing></outerBoundaryIs></Polygon></MultiGeometry>
+  </Placemark>
+  <Placemark>
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#trainingAreas_v4">
+		<SimpleData name="class">0</SimpleData>
+		<SimpleData name="FID">141</SimpleData>
+		<SimpleData name="fid_dates_">8-12-2017</SimpleData>
+		<SimpleData name="region">2</SimpleData>
+		<SimpleData name="con">0</SimpleData>
+		<SimpleData name="year">2017</SimpleData>
+		<SimpleData name="layer">allTrainingAreas_11_3_2021_v3</SimpleData>
+		<SimpleData name="path">/home/adam/cloud/gdrive/fire_project/local_data/classificationData/allTrainingAreas_11_3_2021_v3.shp|layername=allTrainingAreas_11_3_2021_v3</SimpleData>
+	</SchemaData></ExtendedData>
+      <MultiGeometry><Polygon><outerBoundaryIs><LinearRing><coordinates>-120.000730759141,37.9641838274815 -119.998327499864,37.9619507322098 -120.000408894059,37.9570444510887 -120.005151039598,37.9571290449193 -120.004636055467,37.9621706612739 -120.000730759141,37.9641838274815</coordinates></LinearRing></outerBoundaryIs></Polygon></MultiGeometry>
+  </Placemark>
+  <Placemark>
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#trainingAreas_v4">
+		<SimpleData name="class">0</SimpleData>
+		<SimpleData name="FID">142</SimpleData>
+		<SimpleData name="fid_dates_">8-12-2017</SimpleData>
+		<SimpleData name="region">2</SimpleData>
+		<SimpleData name="con">0</SimpleData>
+		<SimpleData name="year">2017</SimpleData>
+		<SimpleData name="layer">allTrainingAreas_11_3_2021_v3</SimpleData>
+		<SimpleData name="path">/home/adam/cloud/gdrive/fire_project/local_data/classificationData/allTrainingAreas_11_3_2021_v3.shp|layername=allTrainingAreas_11_3_2021_v3</SimpleData>
+	</SchemaData></ExtendedData>
+      <MultiGeometry><Polygon><outerBoundaryIs><LinearRing><coordinates>-119.997469192979,37.9598698323132 -119.996739632127,37.9632026273169 -119.994786983964,37.9617138847888 -119.995087391374,37.9580088149821 -119.997640854356,37.9580934077019 -119.997469192979,37.9598698323132</coordinates></LinearRing></outerBoundaryIs></Polygon></MultiGeometry>
+  </Placemark>
+  <Placemark>
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#trainingAreas_v4">
+		<SimpleData name="class">0</SimpleData>
+		<SimpleData name="FID">143</SimpleData>
+		<SimpleData name="fid_dates_">8-12-2017</SimpleData>
+		<SimpleData name="region">2</SimpleData>
+		<SimpleData name="con">0</SimpleData>
+		<SimpleData name="year">2017</SimpleData>
+		<SimpleData name="layer">allTrainingAreas_11_3_2021_v3</SimpleData>
+		<SimpleData name="path">/home/adam/cloud/gdrive/fire_project/local_data/classificationData/allTrainingAreas_11_3_2021_v3.shp|layername=allTrainingAreas_11_3_2021_v3</SimpleData>
+	</SchemaData></ExtendedData>
+      <MultiGeometry><Polygon><outerBoundaryIs><LinearRing><coordinates>-120.012446648118,37.9610879272131 -120.01246810579,37.9639977388026 -120.00993610048,37.9633718006944 -120.010129219529,37.9612571054624 -120.012446648118,37.9610879272131</coordinates></LinearRing></outerBoundaryIs></Polygon></MultiGeometry>
+  </Placemark>
+  <Placemark>
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#trainingAreas_v4">
+		<SimpleData name="class">0</SimpleData>
+		<SimpleData name="FID">144</SimpleData>
+		<SimpleData name="fid_dates_">5-31-2014</SimpleData>
+		<SimpleData name="region">2</SimpleData>
+		<SimpleData name="con">0</SimpleData>
+		<SimpleData name="year">2014</SimpleData>
+		<SimpleData name="layer">allTrainingAreas_11_3_2021_v3</SimpleData>
+		<SimpleData name="path">/home/adam/cloud/gdrive/fire_project/local_data/classificationData/allTrainingAreas_11_3_2021_v3.shp|layername=allTrainingAreas_11_3_2021_v3</SimpleData>
+	</SchemaData></ExtendedData>
+      <MultiGeometry><Polygon><outerBoundaryIs><LinearRing><coordinates>-119.287567327059,36.8187581752032 -119.283254334964,36.8205274498301 -119.276838491,36.8205446270532 -119.277482221163,36.818620754103 -119.287567327059,36.8187581752032</coordinates></LinearRing></outerBoundaryIs></Polygon></MultiGeometry>
+  </Placemark>
+  <Placemark>
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#trainingAreas_v4">
+		<SimpleData name="class">0</SimpleData>
+		<SimpleData name="FID">145</SimpleData>
+		<SimpleData name="fid_dates_">5-31-2014</SimpleData>
+		<SimpleData name="region">2</SimpleData>
+		<SimpleData name="con">0</SimpleData>
+		<SimpleData name="year">2014</SimpleData>
+		<SimpleData name="layer">allTrainingAreas_11_3_2021_v3</SimpleData>
+		<SimpleData name="path">/home/adam/cloud/gdrive/fire_project/local_data/classificationData/allTrainingAreas_11_3_2021_v3.shp|layername=allTrainingAreas_11_3_2021_v3</SimpleData>
+	</SchemaData></ExtendedData>
+      <MultiGeometry><Polygon><outerBoundaryIs><LinearRing><coordinates>-119.084689791454,36.7927004026831 -119.083842213406,36.7939461940311 -119.082136328472,36.7931385798807 -119.083337958111,36.7927261778817 -119.084024603619,36.7923653243116 -119.084689791454,36.7927004026831</coordinates></LinearRing></outerBoundaryIs></Polygon></MultiGeometry>
+  </Placemark>
+  <Placemark>
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#trainingAreas_v4">
+		<SimpleData name="class">1</SimpleData>
+		<SimpleData name="FID">146</SimpleData>
+		<SimpleData name="fid_dates_">7-15-2015</SimpleData>
+		<SimpleData name="region">2</SimpleData>
+		<SimpleData name="con">1</SimpleData>
+		<SimpleData name="year">2015</SimpleData>
+		<SimpleData name="layer">allTrainingAreas_11_3_2021_v3</SimpleData>
+		<SimpleData name="path">/home/adam/cloud/gdrive/fire_project/local_data/classificationData/allTrainingAreas_11_3_2021_v3.shp|layername=allTrainingAreas_11_3_2021_v3</SimpleData>
+	</SchemaData></ExtendedData>
+      <MultiGeometry><Polygon><outerBoundaryIs><LinearRing><coordinates>-123.38852347413,41.7261421772361 -123.38852347413,41.7269348951817 -123.386981203947,41.7269348951817 -123.386981203947,41.7261421772361 -123.38852347413,41.7261421772361</coordinates></LinearRing></outerBoundaryIs></Polygon></MultiGeometry>
+  </Placemark>
+  <Placemark>
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#trainingAreas_v4">
+		<SimpleData name="class">1</SimpleData>
+		<SimpleData name="FID">147</SimpleData>
+		<SimpleData name="fid_dates_">7-15-2015</SimpleData>
+		<SimpleData name="region">2</SimpleData>
+		<SimpleData name="con">1</SimpleData>
+		<SimpleData name="year">2015</SimpleData>
+		<SimpleData name="layer">allTrainingAreas_11_3_2021_v3</SimpleData>
+		<SimpleData name="path">/home/adam/cloud/gdrive/fire_project/local_data/classificationData/allTrainingAreas_11_3_2021_v3.shp|layername=allTrainingAreas_11_3_2021_v3</SimpleData>
+	</SchemaData></ExtendedData>
+      <MultiGeometry><Polygon><outerBoundaryIs><LinearRing><coordinates>-123.456753256283,41.7228670527097 -123.456753256283,41.723523681537 -123.455852034054,41.723523681537 -123.455852034054,41.7228670527097 -123.456753256283,41.7228670527097</coordinates></LinearRing></outerBoundaryIs></Polygon></MultiGeometry>
+  </Placemark>
+  <Placemark>
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#trainingAreas_v4">
+		<SimpleData name="class">1</SimpleData>
+		<SimpleData name="FID">0</SimpleData>
+		<SimpleData name="fid_dates_">7-15-2015</SimpleData>
+		<SimpleData name="region">1</SimpleData>
+		<SimpleData name="con">1</SimpleData>
+		<SimpleData name="year">2015</SimpleData>
+		<SimpleData name="layer">allTrainingAreas_11_3_2021_v3</SimpleData>
+		<SimpleData name="path">/home/adam/cloud/gdrive/fire_project/local_data/classificationData/allTrainingAreas_11_3_2021_v3.shp|layername=allTrainingAreas_11_3_2021_v3</SimpleData>
+	</SchemaData></ExtendedData>
+      <MultiGeometry><Polygon><outerBoundaryIs><LinearRing><coordinates>-123.273142510551,41.2219695746524 -123.273142510551,41.223075131448 -123.271651202339,41.223075131448 -123.271651202339,41.2219695746524 -123.273142510551,41.2219695746524</coordinates></LinearRing></outerBoundaryIs></Polygon></MultiGeometry>
+  </Placemark>
+  <Placemark>
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#trainingAreas_v4">
+		<SimpleData name="class">1</SimpleData>
+		<SimpleData name="FID">1</SimpleData>
+		<SimpleData name="fid_dates_">7-15-2015</SimpleData>
+		<SimpleData name="region">1</SimpleData>
+		<SimpleData name="con">1</SimpleData>
+		<SimpleData name="year">2015</SimpleData>
+		<SimpleData name="layer">allTrainingAreas_11_3_2021_v3</SimpleData>
+		<SimpleData name="path">/home/adam/cloud/gdrive/fire_project/local_data/classificationData/allTrainingAreas_11_3_2021_v3.shp|layername=allTrainingAreas_11_3_2021_v3</SimpleData>
+	</SchemaData></ExtendedData>
+      <MultiGeometry><Polygon><outerBoundaryIs><LinearRing><coordinates>-123.275277548927,41.2228249705975 -123.275277548927,41.2238982345888 -123.27368968119,41.2238982345889 -123.27368968119,41.2228249705975 -123.275277548927,41.2228249705975</coordinates></LinearRing></outerBoundaryIs></Polygon></MultiGeometry>
+  </Placemark>
+  <Placemark>
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#trainingAreas_v4">
+		<SimpleData name="class">1</SimpleData>
+		<SimpleData name="FID">2</SimpleData>
+		<SimpleData name="fid_dates_">7-15-2015</SimpleData>
+		<SimpleData name="region">1</SimpleData>
+		<SimpleData name="con">1</SimpleData>
+		<SimpleData name="year">2015</SimpleData>
+		<SimpleData name="layer">allTrainingAreas_11_3_2021_v3</SimpleData>
+		<SimpleData name="path">/home/adam/cloud/gdrive/fire_project/local_data/classificationData/allTrainingAreas_11_3_2021_v3.shp|layername=allTrainingAreas_11_3_2021_v3</SimpleData>
+	</SchemaData></ExtendedData>
+      <MultiGeometry><Polygon><outerBoundaryIs><LinearRing><coordinates>-123.235177925669,41.2044477321868 -123.235177925669,41.2056141239982 -123.233606151187,41.2056141239982 -123.233606151187,41.2044477321868 -123.235177925669,41.2044477321868</coordinates></LinearRing></outerBoundaryIs></Polygon></MultiGeometry>
+  </Placemark>
+  <Placemark>
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#trainingAreas_v4">
+		<SimpleData name="class">1</SimpleData>
+		<SimpleData name="FID">3</SimpleData>
+		<SimpleData name="fid_dates_">7-15-2015</SimpleData>
+		<SimpleData name="region">1</SimpleData>
+		<SimpleData name="con">1</SimpleData>
+		<SimpleData name="year">2015</SimpleData>
+		<SimpleData name="layer">allTrainingAreas_11_3_2021_v3</SimpleData>
+		<SimpleData name="path">/home/adam/cloud/gdrive/fire_project/local_data/classificationData/allTrainingAreas_11_3_2021_v3.shp|layername=allTrainingAreas_11_3_2021_v3</SimpleData>
+	</SchemaData></ExtendedData>
+      <MultiGeometry><Polygon><outerBoundaryIs><LinearRing><coordinates>-123.205727963818,41.1875746228414 -123.205727963818,41.1886403912209 -123.203657298458,41.1886403912209 -123.203657298458,41.1875746228414 -123.205727963818,41.1875746228414</coordinates></LinearRing></outerBoundaryIs></Polygon></MultiGeometry>
+  </Placemark>
+  <Placemark>
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#trainingAreas_v4">
+		<SimpleData name="class">1</SimpleData>
+		<SimpleData name="FID">4</SimpleData>
+		<SimpleData name="fid_dates_">7-15-2015</SimpleData>
+		<SimpleData name="region">1</SimpleData>
+		<SimpleData name="con">1</SimpleData>
+		<SimpleData name="year">2015</SimpleData>
+		<SimpleData name="layer">allTrainingAreas_11_3_2021_v3</SimpleData>
+		<SimpleData name="path">/home/adam/cloud/gdrive/fire_project/local_data/classificationData/allTrainingAreas_11_3_2021_v3.shp|layername=allTrainingAreas_11_3_2021_v3</SimpleData>
+	</SchemaData></ExtendedData>
+      <MultiGeometry><Polygon><outerBoundaryIs><LinearRing><coordinates>-123.38547973116,41.6361779386746 -123.38547973116,41.6369797840654 -123.384358567792,41.6369797840654 -123.384358567792,41.6361779386746 -123.38547973116,41.6361779386746</coordinates></LinearRing></outerBoundaryIs></Polygon></MultiGeometry>
+  </Placemark>
+  <Placemark>
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#trainingAreas_v4">
+		<SimpleData name="class">1</SimpleData>
+		<SimpleData name="FID">5</SimpleData>
+		<SimpleData name="fid_dates_">7-15-2015</SimpleData>
+		<SimpleData name="region">1</SimpleData>
+		<SimpleData name="con">1</SimpleData>
+		<SimpleData name="year">2015</SimpleData>
+		<SimpleData name="layer">allTrainingAreas_11_3_2021_v3</SimpleData>
+		<SimpleData name="path">/home/adam/cloud/gdrive/fire_project/local_data/classificationData/allTrainingAreas_11_3_2021_v3.shp|layername=allTrainingAreas_11_3_2021_v3</SimpleData>
+	</SchemaData></ExtendedData>
+      <MultiGeometry><Polygon><outerBoundaryIs><LinearRing><coordinates>-123.385835759785,41.7534044264122 -123.385835759785,41.7545569780618 -123.384344451573,41.7545569780618 -123.384344451573,41.7534044264122 -123.385835759785,41.7534044264122</coordinates></LinearRing></outerBoundaryIs></Polygon></MultiGeometry>
+  </Placemark>
+  <Placemark>
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#trainingAreas_v4">
+		<SimpleData name="class">1</SimpleData>
+		<SimpleData name="FID">6</SimpleData>
+		<SimpleData name="fid_dates_">7-15-2015</SimpleData>
+		<SimpleData name="region">1</SimpleData>
+		<SimpleData name="con">1</SimpleData>
+		<SimpleData name="year">2015</SimpleData>
+		<SimpleData name="layer">allTrainingAreas_11_3_2021_v3</SimpleData>
+		<SimpleData name="path">/home/adam/cloud/gdrive/fire_project/local_data/classificationData/allTrainingAreas_11_3_2021_v3.shp|layername=allTrainingAreas_11_3_2021_v3</SimpleData>
+	</SchemaData></ExtendedData>
+      <MultiGeometry><Polygon><outerBoundaryIs><LinearRing><coordinates>-123.239440767423,41.8905869994126 -123.239440767423,41.8913696984284 -123.238003103391,41.8913696984284 -123.238003103391,41.8905869994126 -123.239440767423,41.8905869994126</coordinates></LinearRing></outerBoundaryIs></Polygon></MultiGeometry>
+  </Placemark>
+  <Placemark>
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#trainingAreas_v4">
+		<SimpleData name="class">1</SimpleData>
+		<SimpleData name="FID">7</SimpleData>
+		<SimpleData name="fid_dates_">7-15-2015</SimpleData>
+		<SimpleData name="region">1</SimpleData>
+		<SimpleData name="con">1</SimpleData>
+		<SimpleData name="year">2015</SimpleData>
+		<SimpleData name="layer">allTrainingAreas_11_3_2021_v3</SimpleData>
+		<SimpleData name="path">/home/adam/cloud/gdrive/fire_project/local_data/classificationData/allTrainingAreas_11_3_2021_v3.shp|layername=allTrainingAreas_11_3_2021_v3</SimpleData>
+	</SchemaData></ExtendedData>
+      <MultiGeometry><Polygon><outerBoundaryIs><LinearRing><coordinates>-123.234059503779,41.8886837094694 -123.234059503779,41.8898058747357 -123.23250382255,41.8898058747357 -123.23250382255,41.8886837094695 -123.234059503779,41.8886837094694</coordinates></LinearRing></outerBoundaryIs></Polygon></MultiGeometry>
+  </Placemark>
+  <Placemark>
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#trainingAreas_v4">
+		<SimpleData name="class">1</SimpleData>
+		<SimpleData name="FID">8</SimpleData>
+		<SimpleData name="fid_dates_">5-29-2016</SimpleData>
+		<SimpleData name="region">1</SimpleData>
+		<SimpleData name="con">1</SimpleData>
+		<SimpleData name="year">2016</SimpleData>
+		<SimpleData name="layer">allTrainingAreas_11_3_2021_v3</SimpleData>
+		<SimpleData name="path">/home/adam/cloud/gdrive/fire_project/local_data/classificationData/allTrainingAreas_11_3_2021_v3.shp|layername=allTrainingAreas_11_3_2021_v3</SimpleData>
+	</SchemaData></ExtendedData>
+      <MultiGeometry><Polygon><outerBoundaryIs><LinearRing><coordinates>-123.09357538328,40.9890085864889 -123.09357538328,40.9901950068703 -123.091971422289,40.9901950068704 -123.091971422289,40.9890085864889 -123.09357538328,40.9890085864889</coordinates></LinearRing></outerBoundaryIs></Polygon></MultiGeometry>
+  </Placemark>
+  <Placemark>
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#trainingAreas_v4">
+		<SimpleData name="class">1</SimpleData>
+		<SimpleData name="FID">10</SimpleData>
+		<SimpleData name="fid_dates_">7-15-2015</SimpleData>
+		<SimpleData name="region">1</SimpleData>
+		<SimpleData name="con">1</SimpleData>
+		<SimpleData name="year">2015</SimpleData>
+		<SimpleData name="layer">allTrainingAreas_11_3_2021_v3</SimpleData>
+		<SimpleData name="path">/home/adam/cloud/gdrive/fire_project/local_data/classificationData/allTrainingAreas_11_3_2021_v3.shp|layername=allTrainingAreas_11_3_2021_v3</SimpleData>
+	</SchemaData></ExtendedData>
+      <MultiGeometry><Polygon><outerBoundaryIs><LinearRing><coordinates>-123.205755990132,41.2174796637928 -123.205755990132,41.2184561724659 -123.204447072133,41.2184561724659 -123.204447072133,41.2174796637928 -123.205755990132,41.2174796637928</coordinates></LinearRing></outerBoundaryIs></Polygon></MultiGeometry>
+  </Placemark>
+  <Placemark>
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#trainingAreas_v4">
+		<SimpleData name="class">1</SimpleData>
+		<SimpleData name="FID">12</SimpleData>
+		<SimpleData name="fid_dates_">7-15-2015</SimpleData>
+		<SimpleData name="region">1</SimpleData>
+		<SimpleData name="con">1</SimpleData>
+		<SimpleData name="year">2015</SimpleData>
+		<SimpleData name="layer">allTrainingAreas_11_3_2021_v3</SimpleData>
+		<SimpleData name="path">/home/adam/cloud/gdrive/fire_project/local_data/classificationData/allTrainingAreas_11_3_2021_v3.shp|layername=allTrainingAreas_11_3_2021_v3</SimpleData>
+	</SchemaData></ExtendedData>
+      <MultiGeometry><Polygon><outerBoundaryIs><LinearRing><coordinates>-123.222193706671,41.2238228633656 -123.222193706671,41.2245148276603 -123.221233475844,41.2245148276602 -123.221233475844,41.2238228633655 -123.222193706671,41.2238228633656</coordinates></LinearRing></outerBoundaryIs></Polygon></MultiGeometry>
+  </Placemark>
+  <Placemark>
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#trainingAreas_v4">
+		<SimpleData name="class">1</SimpleData>
+		<SimpleData name="FID">13</SimpleData>
+		<SimpleData name="fid_dates_">7-15-2015</SimpleData>
+		<SimpleData name="region">1</SimpleData>
+		<SimpleData name="con">1</SimpleData>
+		<SimpleData name="year">2015</SimpleData>
+		<SimpleData name="layer">allTrainingAreas_11_3_2021_v3</SimpleData>
+		<SimpleData name="path">/home/adam/cloud/gdrive/fire_project/local_data/classificationData/allTrainingAreas_11_3_2021_v3.shp|layername=allTrainingAreas_11_3_2021_v3</SimpleData>
+	</SchemaData></ExtendedData>
+      <MultiGeometry><Polygon><outerBoundaryIs><LinearRing><coordinates>-123.223137844245,41.2234597304856 -123.223137844245,41.2239882898979 -123.222389507929,41.2239882898979 -123.222389507929,41.2234597304856 -123.223137844245,41.2234597304856</coordinates></LinearRing></outerBoundaryIs></Polygon></MultiGeometry>
+  </Placemark>
+  <Placemark>
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#trainingAreas_v4">
+		<SimpleData name="class">1</SimpleData>
+		<SimpleData name="FID">14</SimpleData>
+		<SimpleData name="fid_dates_">7-15-2015</SimpleData>
+		<SimpleData name="region">1</SimpleData>
+		<SimpleData name="con">1</SimpleData>
+		<SimpleData name="year">2015</SimpleData>
+		<SimpleData name="layer">allTrainingAreas_11_3_2021_v3</SimpleData>
+		<SimpleData name="path">/home/adam/cloud/gdrive/fire_project/local_data/classificationData/allTrainingAreas_11_3_2021_v3.shp|layername=allTrainingAreas_11_3_2021_v3</SimpleData>
+	</SchemaData></ExtendedData>
+      <MultiGeometry><Polygon><outerBoundaryIs><LinearRing><coordinates>-123.223851311843,41.2241133682178 -123.223851311843,41.2244220282092 -123.223414111773,41.2244220282092 -123.223414111773,41.2241133682178 -123.223851311843,41.2241133682178</coordinates></LinearRing></outerBoundaryIs></Polygon></MultiGeometry>
+  </Placemark>
+  <Placemark>
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#trainingAreas_v4">
+		<SimpleData name="class">1</SimpleData>
+		<SimpleData name="FID">15</SimpleData>
+		<SimpleData name="fid_dates_">7-15-2015</SimpleData>
+		<SimpleData name="region">1</SimpleData>
+		<SimpleData name="con">1</SimpleData>
+		<SimpleData name="year">2015</SimpleData>
+		<SimpleData name="layer">allTrainingAreas_11_3_2021_v3</SimpleData>
+		<SimpleData name="path">/home/adam/cloud/gdrive/fire_project/local_data/classificationData/allTrainingAreas_11_3_2021_v3.shp|layername=allTrainingAreas_11_3_2021_v3</SimpleData>
+	</SchemaData></ExtendedData>
+      <MultiGeometry><Polygon><outerBoundaryIs><LinearRing><coordinates>-123.478018496726,41.5534165115043 -123.478018496726,41.555431706843 -123.475186084006,41.555431706843 -123.475186084006,41.5534165115043 -123.478018496726,41.5534165115043</coordinates></LinearRing></outerBoundaryIs></Polygon></MultiGeometry>
+  </Placemark>
+  <Placemark>
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#trainingAreas_v4">
+		<SimpleData name="class">1</SimpleData>
+		<SimpleData name="FID">16</SimpleData>
+		<SimpleData name="fid_dates_">7-15-2015</SimpleData>
+		<SimpleData name="region">1</SimpleData>
+		<SimpleData name="con">1</SimpleData>
+		<SimpleData name="year">2015</SimpleData>
+		<SimpleData name="layer">allTrainingAreas_11_3_2021_v3</SimpleData>
+		<SimpleData name="path">/home/adam/cloud/gdrive/fire_project/local_data/classificationData/allTrainingAreas_11_3_2021_v3.shp|layername=allTrainingAreas_11_3_2021_v3</SimpleData>
+	</SchemaData></ExtendedData>
+      <MultiGeometry><Polygon><outerBoundaryIs><LinearRing><coordinates>-123.474220488761,41.5546368763442 -123.474220488761,41.5564352667436 -123.471688483451,41.5564352667436 -123.471688483451,41.5546368763442 -123.474220488761,41.5546368763442</coordinates></LinearRing></outerBoundaryIs></Polygon></MultiGeometry>
+  </Placemark>
+  <Placemark>
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#trainingAreas_v4">
+		<SimpleData name="class">1</SimpleData>
+		<SimpleData name="FID">17</SimpleData>
+		<SimpleData name="fid_dates_">7-15-2015</SimpleData>
+		<SimpleData name="region">1</SimpleData>
+		<SimpleData name="con">1</SimpleData>
+		<SimpleData name="year">2015</SimpleData>
+		<SimpleData name="layer">allTrainingAreas_11_3_2021_v3</SimpleData>
+		<SimpleData name="path">/home/adam/cloud/gdrive/fire_project/local_data/classificationData/allTrainingAreas_11_3_2021_v3.shp|layername=allTrainingAreas_11_3_2021_v3</SimpleData>
+	</SchemaData></ExtendedData>
+      <MultiGeometry><Polygon><outerBoundaryIs><LinearRing><coordinates>-123.417419980812,41.5710258157601 -123.417419980812,41.5740758533631 -123.413064073372,41.5740758533631 -123.413064073372,41.5710258157601 -123.417419980812,41.5710258157601</coordinates></LinearRing></outerBoundaryIs></Polygon></MultiGeometry>
+  </Placemark>
+  <Placemark>
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#trainingAreas_v4">
+		<SimpleData name="class">1</SimpleData>
+		<SimpleData name="FID">18</SimpleData>
+		<SimpleData name="fid_dates_">7-15-2015</SimpleData>
+		<SimpleData name="region">1</SimpleData>
+		<SimpleData name="con">1</SimpleData>
+		<SimpleData name="year">2015</SimpleData>
+		<SimpleData name="layer">allTrainingAreas_11_3_2021_v3</SimpleData>
+		<SimpleData name="path">/home/adam/cloud/gdrive/fire_project/local_data/classificationData/allTrainingAreas_11_3_2021_v3.shp|layername=allTrainingAreas_11_3_2021_v3</SimpleData>
+	</SchemaData></ExtendedData>
+      <MultiGeometry><Polygon><outerBoundaryIs><LinearRing><coordinates>-123.39245624348,41.3648364990613 -123.39245624348,41.3684437719337 -123.380354116404,41.3684437719337 -123.380354116404,41.3648364990613 -123.39245624348,41.3648364990613</coordinates></LinearRing></outerBoundaryIs></Polygon></MultiGeometry>
+  </Placemark>
+  <Placemark>
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#trainingAreas_v4">
+		<SimpleData name="class">1</SimpleData>
+		<SimpleData name="FID">19</SimpleData>
+		<SimpleData name="fid_dates_">7-09-2017</SimpleData>
+		<SimpleData name="region">1</SimpleData>
+		<SimpleData name="con">1</SimpleData>
+		<SimpleData name="year">2017</SimpleData>
+		<SimpleData name="layer">allTrainingAreas_11_3_2021_v3</SimpleData>
+		<SimpleData name="path">/home/adam/cloud/gdrive/fire_project/local_data/classificationData/allTrainingAreas_11_3_2021_v3.shp|layername=allTrainingAreas_11_3_2021_v3</SimpleData>
+	</SchemaData></ExtendedData>
+      <MultiGeometry><Polygon><outerBoundaryIs><LinearRing><coordinates>-123.176486653528,41.750260920817 -123.176486653528,41.751837747513 -123.174448174677,41.751837747513 -123.174448174677,41.750260920817 -123.176486653528,41.750260920817</coordinates></LinearRing></outerBoundaryIs></Polygon></MultiGeometry>
+  </Placemark>
+  <Placemark>
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#trainingAreas_v4">
+		<SimpleData name="class">1</SimpleData>
+		<SimpleData name="FID">20</SimpleData>
+		<SimpleData name="fid_dates_">7-09-2017</SimpleData>
+		<SimpleData name="region">1</SimpleData>
+		<SimpleData name="con">1</SimpleData>
+		<SimpleData name="year">2017</SimpleData>
+		<SimpleData name="layer">allTrainingAreas_11_3_2021_v3</SimpleData>
+		<SimpleData name="path">/home/adam/cloud/gdrive/fire_project/local_data/classificationData/allTrainingAreas_11_3_2021_v3.shp|layername=allTrainingAreas_11_3_2021_v3</SimpleData>
+	</SchemaData></ExtendedData>
+      <MultiGeometry><Polygon><outerBoundaryIs><LinearRing><coordinates>-123.127607595169,41.6367095280555 -123.127607595169,41.6395640286437 -123.12305856868,41.6395640286437 -123.12305856868,41.6367095280555 -123.127607595169,41.6367095280555</coordinates></LinearRing></outerBoundaryIs></Polygon></MultiGeometry>
+  </Placemark>
+  <Placemark>
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#trainingAreas_v4">
+		<SimpleData name="class">1</SimpleData>
+		<SimpleData name="FID">21</SimpleData>
+		<SimpleData name="fid_dates_">7-09-2017</SimpleData>
+		<SimpleData name="region">1</SimpleData>
+		<SimpleData name="con">1</SimpleData>
+		<SimpleData name="year">2017</SimpleData>
+		<SimpleData name="layer">allTrainingAreas_11_3_2021_v3</SimpleData>
+		<SimpleData name="path">/home/adam/cloud/gdrive/fire_project/local_data/classificationData/allTrainingAreas_11_3_2021_v3.shp|layername=allTrainingAreas_11_3_2021_v3</SimpleData>
+	</SchemaData></ExtendedData>
+      <MultiGeometry><Polygon><outerBoundaryIs><LinearRing><coordinates>-123.136083375656,41.6355708998513 -123.136083375656,41.6369340439187 -123.133787404739,41.6369340439187 -123.133787404739,41.6355708998513 -123.136083375656,41.6355708998513</coordinates></LinearRing></outerBoundaryIs></Polygon></MultiGeometry>
+  </Placemark>
+  <Placemark>
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#trainingAreas_v4">
+		<SimpleData name="class">1</SimpleData>
+		<SimpleData name="FID">22</SimpleData>
+		<SimpleData name="fid_dates_">7-09-2017</SimpleData>
+		<SimpleData name="region">1</SimpleData>
+		<SimpleData name="con">1</SimpleData>
+		<SimpleData name="year">2017</SimpleData>
+		<SimpleData name="layer">allTrainingAreas_11_3_2021_v3</SimpleData>
+		<SimpleData name="path">/home/adam/cloud/gdrive/fire_project/local_data/classificationData/allTrainingAreas_11_3_2021_v3.shp|layername=allTrainingAreas_11_3_2021_v3</SimpleData>
+	</SchemaData></ExtendedData>
+      <MultiGeometry><Polygon><outerBoundaryIs><LinearRing><coordinates>-123.135900985443,41.630069919717 -123.135900985443,41.6318501716643 -123.133165132248,41.6318501716643 -123.133165132248,41.630069919717 -123.135900985443,41.630069919717</coordinates></LinearRing></outerBoundaryIs></Polygon></MultiGeometry>
+  </Placemark>
+  <Placemark>
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#trainingAreas_v4">
+		<SimpleData name="class">1</SimpleData>
+		<SimpleData name="FID">23</SimpleData>
+		<SimpleData name="fid_dates_">7-09-2017</SimpleData>
+		<SimpleData name="region">1</SimpleData>
+		<SimpleData name="con">1</SimpleData>
+		<SimpleData name="year">2017</SimpleData>
+		<SimpleData name="layer">allTrainingAreas_11_3_2021_v3</SimpleData>
+		<SimpleData name="path">/home/adam/cloud/gdrive/fire_project/local_data/classificationData/allTrainingAreas_11_3_2021_v3.shp|layername=allTrainingAreas_11_3_2021_v3</SimpleData>
+	</SchemaData></ExtendedData>
+      <MultiGeometry><Polygon><outerBoundaryIs><LinearRing><coordinates>-123.064819293883,41.60950975561 -123.064819293883,41.6108253207958 -123.062984662917,41.6108253207958 -123.062984662917,41.60950975561 -123.064819293883,41.60950975561</coordinates></LinearRing></outerBoundaryIs></Polygon></MultiGeometry>
+  </Placemark>
+  <Placemark>
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#trainingAreas_v4">
+		<SimpleData name="class">1</SimpleData>
+		<SimpleData name="FID">24</SimpleData>
+		<SimpleData name="fid_dates_">7-09-2017</SimpleData>
+		<SimpleData name="region">1</SimpleData>
+		<SimpleData name="con">1</SimpleData>
+		<SimpleData name="year">2017</SimpleData>
+		<SimpleData name="layer">allTrainingAreas_11_3_2021_v3</SimpleData>
+		<SimpleData name="path">/home/adam/cloud/gdrive/fire_project/local_data/classificationData/allTrainingAreas_11_3_2021_v3.shp|layername=allTrainingAreas_11_3_2021_v3</SimpleData>
+	</SchemaData></ExtendedData>
+      <MultiGeometry><Polygon><outerBoundaryIs><LinearRing><coordinates>-123.063478189375,41.6078652614006 -123.063478189375,41.608940203824 -123.061943965819,41.608940203824 -123.061943965819,41.6078652614006 -123.063478189375,41.6078652614006</coordinates></LinearRing></outerBoundaryIs></Polygon></MultiGeometry>
+  </Placemark>
+  <Placemark>
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#trainingAreas_v4">
+		<SimpleData name="class">1</SimpleData>
+		<SimpleData name="FID">25</SimpleData>
+		<SimpleData name="fid_dates_">7-09-2017</SimpleData>
+		<SimpleData name="region">1</SimpleData>
+		<SimpleData name="con">1</SimpleData>
+		<SimpleData name="year">2017</SimpleData>
+		<SimpleData name="layer">allTrainingAreas_11_3_2021_v3</SimpleData>
+		<SimpleData name="path">/home/adam/cloud/gdrive/fire_project/local_data/classificationData/allTrainingAreas_11_3_2021_v3.shp|layername=allTrainingAreas_11_3_2021_v3</SimpleData>
+	</SchemaData></ExtendedData>
+      <MultiGeometry><Polygon><outerBoundaryIs><LinearRing><coordinates>-123.057952838805,41.6100873241173 -123.057952838805,41.6109376238981 -123.056912141707,41.610937623898 -123.056912141707,41.6100873241173 -123.057952838805,41.6100873241173</coordinates></LinearRing></outerBoundaryIs></Polygon></MultiGeometry>
+  </Placemark>
+  <Placemark>
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#trainingAreas_v4">
+		<SimpleData name="class">1</SimpleData>
+		<SimpleData name="FID">26</SimpleData>
+		<SimpleData name="fid_dates_">7-09-2017</SimpleData>
+		<SimpleData name="region">1</SimpleData>
+		<SimpleData name="con">1</SimpleData>
+		<SimpleData name="year">2017</SimpleData>
+		<SimpleData name="layer">allTrainingAreas_11_3_2021_v3</SimpleData>
+		<SimpleData name="path">/home/adam/cloud/gdrive/fire_project/local_data/classificationData/allTrainingAreas_11_3_2021_v3.shp|layername=allTrainingAreas_11_3_2021_v3</SimpleData>
+	</SchemaData></ExtendedData>
+      <MultiGeometry><Polygon><outerBoundaryIs><LinearRing><coordinates>-123.061600643065,41.6096621700239 -123.061600643065,41.6110579484336 -123.060184436705,41.6110579484336 -123.060184436705,41.6096621700239 -123.061600643065,41.6096621700239</coordinates></LinearRing></outerBoundaryIs></Polygon></MultiGeometry>
+  </Placemark>
+  <Placemark>
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#trainingAreas_v4">
+		<SimpleData name="class">1</SimpleData>
+		<SimpleData name="FID">27</SimpleData>
+		<SimpleData name="fid_dates_">7-09-2017</SimpleData>
+		<SimpleData name="region">1</SimpleData>
+		<SimpleData name="con">1</SimpleData>
+		<SimpleData name="year">2017</SimpleData>
+		<SimpleData name="layer">allTrainingAreas_11_3_2021_v3</SimpleData>
+		<SimpleData name="path">/home/adam/cloud/gdrive/fire_project/local_data/classificationData/allTrainingAreas_11_3_2021_v3.shp|layername=allTrainingAreas_11_3_2021_v3</SimpleData>
+	</SchemaData></ExtendedData>
+      <MultiGeometry><Polygon><outerBoundaryIs><LinearRing><coordinates>-123.095813444571,41.6086424991546 -123.095813444571,41.6097013850358 -123.094204119162,41.6097013850358 -123.094204119162,41.6086424991546 -123.095813444571,41.6086424991546</coordinates></LinearRing></outerBoundaryIs></Polygon></MultiGeometry>
+  </Placemark>
+  <Placemark>
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#trainingAreas_v4">
+		<SimpleData name="class">1</SimpleData>
+		<SimpleData name="FID">28</SimpleData>
+		<SimpleData name="fid_dates_">10-26-2020</SimpleData>
+		<SimpleData name="region">1</SimpleData>
+		<SimpleData name="con">1</SimpleData>
+		<SimpleData name="year">2020</SimpleData>
+		<SimpleData name="layer">allTrainingAreas_11_3_2021_v3</SimpleData>
+		<SimpleData name="path">/home/adam/cloud/gdrive/fire_project/local_data/classificationData/allTrainingAreas_11_3_2021_v3.shp|layername=allTrainingAreas_11_3_2021_v3</SimpleData>
+	</SchemaData></ExtendedData>
+      <MultiGeometry><Polygon><outerBoundaryIs><LinearRing><coordinates>-123.377246806213,41.9273672877277 -123.377246806213,41.9277384577043 -123.375873515198,41.9277384577044 -123.375873515198,41.9273672877277 -123.377246806213,41.9273672877277</coordinates></LinearRing></outerBoundaryIs></Polygon></MultiGeometry>
+  </Placemark>
+  <Placemark>
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#trainingAreas_v4">
+		<SimpleData name="class">1</SimpleData>
+		<SimpleData name="FID">29</SimpleData>
+		<SimpleData name="fid_dates_">10-26-2020</SimpleData>
+		<SimpleData name="region">1</SimpleData>
+		<SimpleData name="con">1</SimpleData>
+		<SimpleData name="year">2020</SimpleData>
+		<SimpleData name="layer">allTrainingAreas_11_3_2021_v3</SimpleData>
+		<SimpleData name="path">/home/adam/cloud/gdrive/fire_project/local_data/classificationData/allTrainingAreas_11_3_2021_v3.shp|layername=allTrainingAreas_11_3_2021_v3</SimpleData>
+	</SchemaData></ExtendedData>
+      <MultiGeometry><Polygon><outerBoundaryIs><LinearRing><coordinates>-123.376431414673,41.926756648551 -123.376431414673,41.9272914570366 -123.375498005936,41.9272914570366 -123.375498005936,41.926756648551 -123.376431414673,41.926756648551</coordinates></LinearRing></outerBoundaryIs></Polygon></MultiGeometry>
+  </Placemark>
+  <Placemark>
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#trainingAreas_v4">
+		<SimpleData name="class">1</SimpleData>
+		<SimpleData name="FID">30</SimpleData>
+		<SimpleData name="fid_dates_">10-26-2020</SimpleData>
+		<SimpleData name="region">1</SimpleData>
+		<SimpleData name="con">1</SimpleData>
+		<SimpleData name="year">2020</SimpleData>
+		<SimpleData name="layer">allTrainingAreas_11_3_2021_v3</SimpleData>
+		<SimpleData name="path">/home/adam/cloud/gdrive/fire_project/local_data/classificationData/allTrainingAreas_11_3_2021_v3.shp|layername=allTrainingAreas_11_3_2021_v3</SimpleData>
+	</SchemaData></ExtendedData>
+      <MultiGeometry><Polygon><outerBoundaryIs><LinearRing><coordinates>-123.37526806451,41.9256687763221 -123.37526806451,41.9264031515866 -123.374484859477,41.9264031515866 -123.374484859477,41.9256687763221 -123.37526806451,41.9256687763221</coordinates></LinearRing></outerBoundaryIs></Polygon></MultiGeometry>
+  </Placemark>
+  <Placemark>
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#trainingAreas_v4">
+		<SimpleData name="class">1</SimpleData>
+		<SimpleData name="FID">31</SimpleData>
+		<SimpleData name="fid_dates_">10-26-2020</SimpleData>
+		<SimpleData name="region">1</SimpleData>
+		<SimpleData name="con">1</SimpleData>
+		<SimpleData name="year">2020</SimpleData>
+		<SimpleData name="layer">allTrainingAreas_11_3_2021_v3</SimpleData>
+		<SimpleData name="path">/home/adam/cloud/gdrive/fire_project/local_data/classificationData/allTrainingAreas_11_3_2021_v3.shp|layername=allTrainingAreas_11_3_2021_v3</SimpleData>
+	</SchemaData></ExtendedData>
+      <MultiGeometry><Polygon><outerBoundaryIs><LinearRing><coordinates>-123.372564397823,41.927456805679 -123.372564397823,41.9281273037683 -123.371555887233,41.9281273037683 -123.371555887233,41.927456805679 -123.372564397823,41.927456805679</coordinates></LinearRing></outerBoundaryIs></Polygon></MultiGeometry>
+  </Placemark>
+  <Placemark>
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#trainingAreas_v4">
+		<SimpleData name="class">1</SimpleData>
+		<SimpleData name="FID">32</SimpleData>
+		<SimpleData name="fid_dates_">10-26-2020</SimpleData>
+		<SimpleData name="region">1</SimpleData>
+		<SimpleData name="con">1</SimpleData>
+		<SimpleData name="year">2020</SimpleData>
+		<SimpleData name="layer">allTrainingAreas_11_3_2021_v3</SimpleData>
+		<SimpleData name="path">/home/adam/cloud/gdrive/fire_project/local_data/classificationData/allTrainingAreas_11_3_2021_v3.shp|layername=allTrainingAreas_11_3_2021_v3</SimpleData>
+	</SchemaData></ExtendedData>
+      <MultiGeometry><Polygon><outerBoundaryIs><LinearRing><coordinates>-123.381716094982,41.926754371551 -123.381716094982,41.9276324130026 -123.381029449474,41.9276324130026 -123.381029449474,41.926754371551 -123.381716094982,41.926754371551</coordinates></LinearRing></outerBoundaryIs></Polygon></MultiGeometry>
+  </Placemark>
+  <Placemark>
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#trainingAreas_v4">
+		<SimpleData name="class">1</SimpleData>
+		<SimpleData name="FID">33</SimpleData>
+		<SimpleData name="fid_dates_">10-26-2020</SimpleData>
+		<SimpleData name="region">1</SimpleData>
+		<SimpleData name="con">1</SimpleData>
+		<SimpleData name="year">2020</SimpleData>
+		<SimpleData name="layer">allTrainingAreas_11_3_2021_v3</SimpleData>
+		<SimpleData name="path">/home/adam/cloud/gdrive/fire_project/local_data/classificationData/allTrainingAreas_11_3_2021_v3.shp|layername=allTrainingAreas_11_3_2021_v3</SimpleData>
+	</SchemaData></ExtendedData>
+      <MultiGeometry><Polygon><outerBoundaryIs><LinearRing><coordinates>-123.374925084671,41.9289966797792 -123.374925084671,41.9296970937475 -123.374364502987,41.9296970937475 -123.374364502987,41.9289966797792 -123.374925084671,41.9289966797792</coordinates></LinearRing></outerBoundaryIs></Polygon></MultiGeometry>
+  </Placemark>
+  <Placemark>
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#trainingAreas_v4">
+		<SimpleData name="class">1</SimpleData>
+		<SimpleData name="FID">34</SimpleData>
+		<SimpleData name="fid_dates_">7-15-2015</SimpleData>
+		<SimpleData name="region">1</SimpleData>
+		<SimpleData name="con">1</SimpleData>
+		<SimpleData name="year">2015</SimpleData>
+		<SimpleData name="layer">allTrainingAreas_11_3_2021_v3</SimpleData>
+		<SimpleData name="path">/home/adam/cloud/gdrive/fire_project/local_data/classificationData/allTrainingAreas_11_3_2021_v3.shp|layername=allTrainingAreas_11_3_2021_v3</SimpleData>
+	</SchemaData></ExtendedData>
+      <MultiGeometry><Polygon><outerBoundaryIs><LinearRing><coordinates>-123.359543989573,41.6384738216103 -123.359543989573,41.6395723081346 -123.35805268136,41.6395723081346 -123.35805268136,41.6384738216103 -123.359543989573,41.6384738216103</coordinates></LinearRing></outerBoundaryIs></Polygon></MultiGeometry>
+  </Placemark>
+  <Placemark>
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#trainingAreas_v4">
+		<SimpleData name="class">1</SimpleData>
+		<SimpleData name="FID">35</SimpleData>
+		<SimpleData name="fid_dates_">7-15-2015</SimpleData>
+		<SimpleData name="region">1</SimpleData>
+		<SimpleData name="con">1</SimpleData>
+		<SimpleData name="year">2015</SimpleData>
+		<SimpleData name="layer">allTrainingAreas_11_3_2021_v3</SimpleData>
+		<SimpleData name="path">/home/adam/cloud/gdrive/fire_project/local_data/classificationData/allTrainingAreas_11_3_2021_v3.shp|layername=allTrainingAreas_11_3_2021_v3</SimpleData>
+	</SchemaData></ExtendedData>
+      <MultiGeometry><Polygon><outerBoundaryIs><LinearRing><coordinates>-123.358320902262,41.6397005973105 -123.358320902262,41.6403500573445 -123.357419680033,41.6403500573445 -123.357419680033,41.6397005973105 -123.358320902262,41.6397005973105</coordinates></LinearRing></outerBoundaryIs></Polygon></MultiGeometry>
+  </Placemark>
+  <Placemark>
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#trainingAreas_v4">
+		<SimpleData name="class">1</SimpleData>
+		<SimpleData name="FID">36</SimpleData>
+		<SimpleData name="fid_dates_">7-15-2015</SimpleData>
+		<SimpleData name="region">1</SimpleData>
+		<SimpleData name="con">1</SimpleData>
+		<SimpleData name="year">2015</SimpleData>
+		<SimpleData name="layer">allTrainingAreas_11_3_2021_v3</SimpleData>
+		<SimpleData name="path">/home/adam/cloud/gdrive/fire_project/local_data/classificationData/allTrainingAreas_11_3_2021_v3.shp|layername=allTrainingAreas_11_3_2021_v3</SimpleData>
+	</SchemaData></ExtendedData>
+      <MultiGeometry><Polygon><outerBoundaryIs><LinearRing><coordinates>-123.362791801591,41.6407282588583 -123.362791801591,41.6414177978071 -123.361879850526,41.6414177978071 -123.361879850526,41.6407282588582 -123.362791801591,41.6407282588583</coordinates></LinearRing></outerBoundaryIs></Polygon></MultiGeometry>
+  </Placemark>
+  <Placemark>
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#trainingAreas_v4">
+		<SimpleData name="class">1</SimpleData>
+		<SimpleData name="FID">37</SimpleData>
+		<SimpleData name="fid_dates_">7-15-2015</SimpleData>
+		<SimpleData name="region">1</SimpleData>
+		<SimpleData name="con">1</SimpleData>
+		<SimpleData name="year">2015</SimpleData>
+		<SimpleData name="layer">allTrainingAreas_11_3_2021_v3</SimpleData>
+		<SimpleData name="path">/home/adam/cloud/gdrive/fire_project/local_data/classificationData/allTrainingAreas_11_3_2021_v3.shp|layername=allTrainingAreas_11_3_2021_v3</SimpleData>
+	</SchemaData></ExtendedData>
+      <MultiGeometry><Polygon><outerBoundaryIs><LinearRing><coordinates>-123.355318279583,41.6395719946313 -123.355318279583,41.6402214559613 -123.354371459801,41.6402214559614 -123.354371459801,41.6395719946313 -123.355318279583,41.6395719946313</coordinates></LinearRing></outerBoundaryIs></Polygon></MultiGeometry>
+  </Placemark>
+  <Placemark>
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#trainingAreas_v4">
+		<SimpleData name="class">1</SimpleData>
+		<SimpleData name="FID">38</SimpleData>
+		<SimpleData name="fid_dates_">7-15-2015</SimpleData>
+		<SimpleData name="region">1</SimpleData>
+		<SimpleData name="con">1</SimpleData>
+		<SimpleData name="year">2015</SimpleData>
+		<SimpleData name="layer">allTrainingAreas_11_3_2021_v3</SimpleData>
+		<SimpleData name="path">/home/adam/cloud/gdrive/fire_project/local_data/classificationData/allTrainingAreas_11_3_2021_v3.shp|layername=allTrainingAreas_11_3_2021_v3</SimpleData>
+	</SchemaData></ExtendedData>
+      <MultiGeometry><Polygon><outerBoundaryIs><LinearRing><coordinates>-123.356009199391,41.6388477983603 -123.356009199391,41.6393318936535 -123.354955091248,41.6393318936535 -123.354955091248,41.6388477983603 -123.356009199391,41.6388477983603</coordinates></LinearRing></outerBoundaryIs></Polygon></MultiGeometry>
+  </Placemark>
+  <Placemark>
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#trainingAreas_v4">
+		<SimpleData name="class">1</SimpleData>
+		<SimpleData name="FID">39</SimpleData>
+		<SimpleData name="fid_dates_">7-15-2015</SimpleData>
+		<SimpleData name="region">1</SimpleData>
+		<SimpleData name="con">1</SimpleData>
+		<SimpleData name="year">2015</SimpleData>
+		<SimpleData name="layer">allTrainingAreas_11_3_2021_v3</SimpleData>
+		<SimpleData name="path">/home/adam/cloud/gdrive/fire_project/local_data/classificationData/allTrainingAreas_11_3_2021_v3.shp|layername=allTrainingAreas_11_3_2021_v3</SimpleData>
+	</SchemaData></ExtendedData>
+      <MultiGeometry><Polygon><outerBoundaryIs><LinearRing><coordinates>-123.343658343637,41.6371198190976 -123.343658343637,41.6379376893419 -123.341684237802,41.6379376893419 -123.341684237802,41.6371198190976 -123.343658343637,41.6371198190976</coordinates></LinearRing></outerBoundaryIs></Polygon></MultiGeometry>
+  </Placemark>
+  <Placemark>
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#trainingAreas_v4">
+		<SimpleData name="class">1</SimpleData>
+		<SimpleData name="FID">40</SimpleData>
+		<SimpleData name="fid_dates_">7-15-2015</SimpleData>
+		<SimpleData name="region">1</SimpleData>
+		<SimpleData name="con">1</SimpleData>
+		<SimpleData name="year">2015</SimpleData>
+		<SimpleData name="layer">allTrainingAreas_11_3_2021_v3</SimpleData>
+		<SimpleData name="path">/home/adam/cloud/gdrive/fire_project/local_data/classificationData/allTrainingAreas_11_3_2021_v3.shp|layername=allTrainingAreas_11_3_2021_v3</SimpleData>
+	</SchemaData></ExtendedData>
+      <MultiGeometry><Polygon><outerBoundaryIs><LinearRing><coordinates>-123.358931491125,41.6349049116567 -123.358931491125,41.6354301318884 -123.358368227232,41.6354301318884 -123.358368227232,41.6349049116567 -123.358931491125,41.6349049116567</coordinates></LinearRing></outerBoundaryIs></Polygon></MultiGeometry>
+  </Placemark>
+  <Placemark>
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#trainingAreas_v4">
+		<SimpleData name="class">1</SimpleData>
+		<SimpleData name="FID">41</SimpleData>
+		<SimpleData name="fid_dates_">7-15-2015</SimpleData>
+		<SimpleData name="region">1</SimpleData>
+		<SimpleData name="con">1</SimpleData>
+		<SimpleData name="year">2015</SimpleData>
+		<SimpleData name="layer">allTrainingAreas_11_3_2021_v3</SimpleData>
+		<SimpleData name="path">/home/adam/cloud/gdrive/fire_project/local_data/classificationData/allTrainingAreas_11_3_2021_v3.shp|layername=allTrainingAreas_11_3_2021_v3</SimpleData>
+	</SchemaData></ExtendedData>
+      <MultiGeometry><Polygon><outerBoundaryIs><LinearRing><coordinates>-123.361635157812,41.6346763793799 -123.361635157812,41.6354381504847 -123.360664198149,41.6354381504847 -123.360664198149,41.6346763793799 -123.361635157812,41.6346763793799</coordinates></LinearRing></outerBoundaryIs></Polygon></MultiGeometry>
+  </Placemark>
+  <Placemark>
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#trainingAreas_v4">
+		<SimpleData name="class">4</SimpleData>
+		<SimpleData name="FID">42</SimpleData>
+		<SimpleData name="fid_dates_">7-15-2015</SimpleData>
+		<SimpleData name="region">1</SimpleData>
+		<SimpleData name="con">0</SimpleData>
+		<SimpleData name="year">2015</SimpleData>
+		<SimpleData name="layer">allTrainingAreas_11_3_2021_v3</SimpleData>
+		<SimpleData name="path">/home/adam/cloud/gdrive/fire_project/local_data/classificationData/allTrainingAreas_11_3_2021_v3.shp|layername=allTrainingAreas_11_3_2021_v3</SimpleData>
+	</SchemaData></ExtendedData>
+      <MultiGeometry><Polygon><outerBoundaryIs><LinearRing><coordinates>-123.339316621847,41.5446847533292 -123.338340297766,41.5442993181176 -123.338351026602,41.543664950996 -123.339069858618,41.5433116299007 -123.34056116683,41.5437532809682 -123.339316621847,41.5446847533292</coordinates></LinearRing></outerBoundaryIs></Polygon></MultiGeometry>
+  </Placemark>
+  <Placemark>
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#trainingAreas_v4">
+		<SimpleData name="class">4</SimpleData>
+		<SimpleData name="FID">43</SimpleData>
+		<SimpleData name="fid_dates_">7-15-2015</SimpleData>
+		<SimpleData name="region">1</SimpleData>
+		<SimpleData name="con">0</SimpleData>
+		<SimpleData name="year">2015</SimpleData>
+		<SimpleData name="layer">allTrainingAreas_11_3_2021_v3</SimpleData>
+		<SimpleData name="path">/home/adam/cloud/gdrive/fire_project/local_data/classificationData/allTrainingAreas_11_3_2021_v3.shp|layername=allTrainingAreas_11_3_2021_v3</SimpleData>
+	</SchemaData></ExtendedData>
+      <MultiGeometry><Polygon><outerBoundaryIs><LinearRing><coordinates>-123.345600283717,41.5318061426707 -123.345042384242,41.531645512962 -123.345289147471,41.5312800788886 -123.346780455684,41.5312198423048 -123.346769726847,41.5317860639789 -123.345600283717,41.5318061426707</coordinates></LinearRing></outerBoundaryIs></Polygon></MultiGeometry>
+  </Placemark>
+  <Placemark>
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#trainingAreas_v4">
+		<SimpleData name="class">4</SimpleData>
+		<SimpleData name="FID">44</SimpleData>
+		<SimpleData name="fid_dates_">7-15-2015</SimpleData>
+		<SimpleData name="region">1</SimpleData>
+		<SimpleData name="con">0</SimpleData>
+		<SimpleData name="year">2015</SimpleData>
+		<SimpleData name="layer">allTrainingAreas_11_3_2021_v3</SimpleData>
+		<SimpleData name="path">/home/adam/cloud/gdrive/fire_project/local_data/classificationData/allTrainingAreas_11_3_2021_v3.shp|layername=allTrainingAreas_11_3_2021_v3</SimpleData>
+	</SchemaData></ExtendedData>
+      <MultiGeometry><Polygon><outerBoundaryIs><LinearRing><coordinates>-123.364044489857,41.5505253023897 -123.363239827153,41.5499311424893 -123.363175454136,41.5489435403027 -123.363883557316,41.5488471880621 -123.364409270283,41.5494012114845 -123.364044489857,41.5505253023897</coordinates></LinearRing></outerBoundaryIs></Polygon></MultiGeometry>
+  </Placemark>
+  <Placemark>
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#trainingAreas_v4">
+		<SimpleData name="class">4</SimpleData>
+		<SimpleData name="FID">45</SimpleData>
+		<SimpleData name="fid_dates_">7-15-2015</SimpleData>
+		<SimpleData name="region">1</SimpleData>
+		<SimpleData name="con">0</SimpleData>
+		<SimpleData name="year">2015</SimpleData>
+		<SimpleData name="layer">allTrainingAreas_11_3_2021_v3</SimpleData>
+		<SimpleData name="path">/home/adam/cloud/gdrive/fire_project/local_data/classificationData/allTrainingAreas_11_3_2021_v3.shp|layername=allTrainingAreas_11_3_2021_v3</SimpleData>
+	</SchemaData></ExtendedData>
+      <MultiGeometry><Polygon><outerBoundaryIs><LinearRing><coordinates>-123.358135641717,41.5814353173541 -123.35684818139,41.5817563289844 -123.355367602014,41.5798462862842 -123.356483400964,41.5784658841239 -123.359809340142,41.5799104903177 -123.358135641717,41.5814353173541</coordinates></LinearRing></outerBoundaryIs></Polygon></MultiGeometry>
+  </Placemark>
+  <Placemark>
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#trainingAreas_v4">
+		<SimpleData name="class">5</SimpleData>
+		<SimpleData name="FID">47</SimpleData>
+		<SimpleData name="fid_dates_">7-15-2015</SimpleData>
+		<SimpleData name="region">1</SimpleData>
+		<SimpleData name="con">0</SimpleData>
+		<SimpleData name="year">2015</SimpleData>
+		<SimpleData name="layer">allTrainingAreas_11_3_2021_v3</SimpleData>
+		<SimpleData name="path">/home/adam/cloud/gdrive/fire_project/local_data/classificationData/allTrainingAreas_11_3_2021_v3.shp|layername=allTrainingAreas_11_3_2021_v3</SimpleData>
+	</SchemaData></ExtendedData>
+      <MultiGeometry><Polygon><outerBoundaryIs><LinearRing><coordinates>-123.31549768794,41.5521269620081 -123.313813260679,41.5522072514785 -123.31367378581,41.5513240618205 -123.315873197202,41.5513320908718 -123.31549768794,41.5521269620081</coordinates></LinearRing></outerBoundaryIs></Polygon></MultiGeometry>
+  </Placemark>
+  <Placemark>
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#trainingAreas_v4">
+		<SimpleData name="class">5</SimpleData>
+		<SimpleData name="FID">48</SimpleData>
+		<SimpleData name="fid_dates_">7-15-2015</SimpleData>
+		<SimpleData name="region">1</SimpleData>
+		<SimpleData name="con">0</SimpleData>
+		<SimpleData name="year">2015</SimpleData>
+		<SimpleData name="layer">allTrainingAreas_11_3_2021_v3</SimpleData>
+		<SimpleData name="path">/home/adam/cloud/gdrive/fire_project/local_data/classificationData/allTrainingAreas_11_3_2021_v3.shp|layername=allTrainingAreas_11_3_2021_v3</SimpleData>
+	</SchemaData></ExtendedData>
+      <MultiGeometry><Polygon><outerBoundaryIs><LinearRing><coordinates>-123.264706953387,41.5644038057243 -123.264256342272,41.5646285732887 -123.263816459994,41.5639301857967 -123.264824970583,41.5630632115121 -123.265897854189,41.563424452211 -123.264706953387,41.5644038057243</coordinates></LinearRing></outerBoundaryIs></Polygon></MultiGeometry>
+  </Placemark>
+  <Placemark>
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#trainingAreas_v4">
+		<SimpleData name="class">5</SimpleData>
+		<SimpleData name="FID">49</SimpleData>
+		<SimpleData name="fid_dates_">7-15-2015</SimpleData>
+		<SimpleData name="region">1</SimpleData>
+		<SimpleData name="con">0</SimpleData>
+		<SimpleData name="year">2015</SimpleData>
+		<SimpleData name="layer">allTrainingAreas_11_3_2021_v3</SimpleData>
+		<SimpleData name="path">/home/adam/cloud/gdrive/fire_project/local_data/classificationData/allTrainingAreas_11_3_2021_v3.shp|layername=allTrainingAreas_11_3_2021_v3</SimpleData>
+	</SchemaData></ExtendedData>
+      <MultiGeometry><Polygon><outerBoundaryIs><LinearRing><coordinates>-123.259803875307,41.5623808624598 -123.259600027422,41.5621721424871 -123.260737284044,41.5619634218401 -123.261059149126,41.5623808624598 -123.259803875307,41.5623808624598</coordinates></LinearRing></outerBoundaryIs></Polygon></MultiGeometry>
+  </Placemark>
+  <Placemark>
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#trainingAreas_v4">
+		<SimpleData name="class">2</SimpleData>
+		<SimpleData name="FID">52</SimpleData>
+		<SimpleData name="fid_dates_">7-15-2015</SimpleData>
+		<SimpleData name="region">1</SimpleData>
+		<SimpleData name="con">0</SimpleData>
+		<SimpleData name="year">2015</SimpleData>
+		<SimpleData name="layer">allTrainingAreas_11_3_2021_v3</SimpleData>
+		<SimpleData name="path">/home/adam/cloud/gdrive/fire_project/local_data/classificationData/allTrainingAreas_11_3_2021_v3.shp|layername=allTrainingAreas_11_3_2021_v3</SimpleData>
+	</SchemaData></ExtendedData>
+      <MultiGeometry><Polygon><outerBoundaryIs><LinearRing><coordinates>-123.310228770679,41.5582850594461 -123.310159033245,41.5588791425609 -123.30932754845,41.558899212841 -123.30935437054,41.5582609748803 -123.310228770679,41.5582850594461</coordinates></LinearRing></outerBoundaryIs></Polygon></MultiGeometry>
+  </Placemark>
+  <Placemark>
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#trainingAreas_v4">
+		<SimpleData name="class">2</SimpleData>
+		<SimpleData name="FID">53</SimpleData>
+		<SimpleData name="fid_dates_">7-15-2015</SimpleData>
+		<SimpleData name="region">1</SimpleData>
+		<SimpleData name="con">0</SimpleData>
+		<SimpleData name="year">2015</SimpleData>
+		<SimpleData name="layer">allTrainingAreas_11_3_2021_v3</SimpleData>
+		<SimpleData name="path">/home/adam/cloud/gdrive/fire_project/local_data/classificationData/allTrainingAreas_11_3_2021_v3.shp|layername=allTrainingAreas_11_3_2021_v3</SimpleData>
+	</SchemaData></ExtendedData>
+      <MultiGeometry><Polygon><outerBoundaryIs><LinearRing><coordinates>-123.310979789203,41.5591922382211 -123.310421889728,41.5592323785807 -123.310395067638,41.558798861378 -123.310985153621,41.5587627348132 -123.310979789203,41.5591922382211</coordinates></LinearRing></outerBoundaryIs></Polygon></MultiGeometry>
+  </Placemark>
+  <Placemark>
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#trainingAreas_v4">
+		<SimpleData name="class">2</SimpleData>
+		<SimpleData name="FID">55</SimpleData>
+		<SimpleData name="fid_dates_">7-15-2015</SimpleData>
+		<SimpleData name="region">1</SimpleData>
+		<SimpleData name="con">0</SimpleData>
+		<SimpleData name="year">2015</SimpleData>
+		<SimpleData name="layer">allTrainingAreas_11_3_2021_v3</SimpleData>
+		<SimpleData name="path">/home/adam/cloud/gdrive/fire_project/local_data/classificationData/allTrainingAreas_11_3_2021_v3.shp|layername=allTrainingAreas_11_3_2021_v3</SimpleData>
+	</SchemaData></ExtendedData>
+      <MultiGeometry><Polygon><outerBoundaryIs><LinearRing><coordinates>-123.279605483627,41.5648114561125 -123.278720354652,41.5648315245503 -123.278629159545,41.5641491941711 -123.279610848045,41.5641411667121 -123.279605483627,41.5648114561125</coordinates></LinearRing></outerBoundaryIs></Polygon></MultiGeometry>
+  </Placemark>
+  <Placemark>
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#trainingAreas_v4">
+		<SimpleData name="class">2</SimpleData>
+		<SimpleData name="FID">56</SimpleData>
+		<SimpleData name="fid_dates_">7-15-2015</SimpleData>
+		<SimpleData name="region">1</SimpleData>
+		<SimpleData name="con">0</SimpleData>
+		<SimpleData name="year">2015</SimpleData>
+		<SimpleData name="layer">allTrainingAreas_11_3_2021_v3</SimpleData>
+		<SimpleData name="path">/home/adam/cloud/gdrive/fire_project/local_data/classificationData/allTrainingAreas_11_3_2021_v3.shp|layername=allTrainingAreas_11_3_2021_v3</SimpleData>
+	</SchemaData></ExtendedData>
+      <MultiGeometry><Polygon><outerBoundaryIs><LinearRing><coordinates>-123.280050730323,41.563282222825 -123.279557203864,41.5632942641735 -123.27948746643,41.5629490779641 -123.280029272651,41.5629249951365 -123.280050730323,41.563282222825</coordinates></LinearRing></outerBoundaryIs></Polygon></MultiGeometry>
+  </Placemark>
+  <Placemark>
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#trainingAreas_v4">
+		<SimpleData name="class">2</SimpleData>
+		<SimpleData name="FID">57</SimpleData>
+		<SimpleData name="fid_dates_">7-15-2015</SimpleData>
+		<SimpleData name="region">1</SimpleData>
+		<SimpleData name="con">0</SimpleData>
+		<SimpleData name="year">2015</SimpleData>
+		<SimpleData name="layer">allTrainingAreas_11_3_2021_v3</SimpleData>
+		<SimpleData name="path">/home/adam/cloud/gdrive/fire_project/local_data/classificationData/allTrainingAreas_11_3_2021_v3.shp|layername=allTrainingAreas_11_3_2021_v3</SimpleData>
+	</SchemaData></ExtendedData>
+      <MultiGeometry><Polygon><outerBoundaryIs><LinearRing><coordinates>-123.278537025862,41.5749177084893 -123.278456559592,41.5745164012104 -123.279368510657,41.5745043619536 -123.279400697165,41.5749016562459 -123.278537025862,41.5749177084893</coordinates></LinearRing></outerBoundaryIs></Polygon></MultiGeometry>
+  </Placemark>
+  <Placemark>
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#trainingAreas_v4">
+		<SimpleData name="class">0</SimpleData>
+		<SimpleData name="FID">58</SimpleData>
+		<SimpleData name="fid_dates_">7-15-2015</SimpleData>
+		<SimpleData name="region">1</SimpleData>
+		<SimpleData name="con">0</SimpleData>
+		<SimpleData name="year">2015</SimpleData>
+		<SimpleData name="layer">allTrainingAreas_11_3_2021_v3</SimpleData>
+		<SimpleData name="path">/home/adam/cloud/gdrive/fire_project/local_data/classificationData/allTrainingAreas_11_3_2021_v3.shp|layername=allTrainingAreas_11_3_2021_v3</SimpleData>
+	</SchemaData></ExtendedData>
+      <MultiGeometry><Polygon><outerBoundaryIs><LinearRing><coordinates>-123.276478367256,41.5870973888363 -123.276263790535,41.5871375118589 -123.274686651634,41.5863791825152 -123.276950436043,41.5852476904272 -123.277814107346,41.586246774891 -123.276478367256,41.5870973888363</coordinates></LinearRing></outerBoundaryIs></Polygon></MultiGeometry>
+  </Placemark>
+  <Placemark>
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#trainingAreas_v4">
+		<SimpleData name="class">1</SimpleData>
+		<SimpleData name="FID">59</SimpleData>
+		<SimpleData name="fid_dates_">7-15-2015</SimpleData>
+		<SimpleData name="region">1</SimpleData>
+		<SimpleData name="con">1</SimpleData>
+		<SimpleData name="year">2015</SimpleData>
+		<SimpleData name="layer">allTrainingAreas_11_3_2021_v3</SimpleData>
+		<SimpleData name="path">/home/adam/cloud/gdrive/fire_project/local_data/classificationData/allTrainingAreas_11_3_2021_v3.shp|layername=allTrainingAreas_11_3_2021_v3</SimpleData>
+	</SchemaData></ExtendedData>
+      <MultiGeometry><Polygon><outerBoundaryIs><LinearRing><coordinates>-123.273576217102,41.5865557255917 -123.273517208504,41.5861825771573 -123.274370150971,41.5861344288151 -123.274348693299,41.5865477009169 -123.273576217102,41.5865557255917</coordinates></LinearRing></outerBoundaryIs></Polygon></MultiGeometry>
+  </Placemark>
+  <Placemark>
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#trainingAreas_v4">
+		<SimpleData name="class">0</SimpleData>
+		<SimpleData name="FID">60</SimpleData>
+		<SimpleData name="fid_dates_">7-15-2015</SimpleData>
+		<SimpleData name="region">1</SimpleData>
+		<SimpleData name="con">0</SimpleData>
+		<SimpleData name="year">2015</SimpleData>
+		<SimpleData name="layer">allTrainingAreas_11_3_2021_v3</SimpleData>
+		<SimpleData name="path">/home/adam/cloud/gdrive/fire_project/local_data/classificationData/allTrainingAreas_11_3_2021_v3.shp|layername=allTrainingAreas_11_3_2021_v3</SimpleData>
+	</SchemaData></ExtendedData>
+      <MultiGeometry><Polygon><outerBoundaryIs><LinearRing><coordinates>-123.275775628494,41.5852196034919 -123.27575953524,41.5843007527296 -123.277272301125,41.5842967402522 -123.277283029961,41.5851714544316 -123.275775628494,41.5852196034919</coordinates></LinearRing></outerBoundaryIs></Polygon></MultiGeometry>
+  </Placemark>
+  <Placemark>
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#trainingAreas_v4">
+		<SimpleData name="class">2</SimpleData>
+		<SimpleData name="FID">61</SimpleData>
+		<SimpleData name="fid_dates_">7-15-2015</SimpleData>
+		<SimpleData name="region">1</SimpleData>
+		<SimpleData name="con">0</SimpleData>
+		<SimpleData name="year">2015</SimpleData>
+		<SimpleData name="layer">allTrainingAreas_11_3_2021_v3</SimpleData>
+		<SimpleData name="path">/home/adam/cloud/gdrive/fire_project/local_data/classificationData/allTrainingAreas_11_3_2021_v3.shp|layername=allTrainingAreas_11_3_2021_v3</SimpleData>
+	</SchemaData></ExtendedData>
+      <MultiGeometry><Polygon><outerBoundaryIs><LinearRing><coordinates>-123.373711712025,41.6155495735928 -123.373711712025,41.61697730819 -123.371673233173,41.61697730819 -123.371673233173,41.6155495735928 -123.373711712025,41.6155495735928</coordinates></LinearRing></outerBoundaryIs></Polygon></MultiGeometry>
+  </Placemark>
+  <Placemark>
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#trainingAreas_v4">
+		<SimpleData name="class">2</SimpleData>
+		<SimpleData name="FID">62</SimpleData>
+		<SimpleData name="fid_dates_">7-15-2015</SimpleData>
+		<SimpleData name="region">1</SimpleData>
+		<SimpleData name="con">0</SimpleData>
+		<SimpleData name="year">2015</SimpleData>
+		<SimpleData name="layer">allTrainingAreas_11_3_2021_v3</SimpleData>
+		<SimpleData name="path">/home/adam/cloud/gdrive/fire_project/local_data/classificationData/allTrainingAreas_11_3_2021_v3.shp|layername=allTrainingAreas_11_3_2021_v3</SimpleData>
+	</SchemaData></ExtendedData>
+      <MultiGeometry><Polygon><outerBoundaryIs><LinearRing><coordinates>-123.372102386616,41.6176029347397 -123.372102386616,41.6198006004128 -123.369055397175,41.6198006004129 -123.369055397175,41.6176029347397 -123.372102386616,41.6176029347397</coordinates></LinearRing></outerBoundaryIs></Polygon></MultiGeometry>
+  </Placemark>
+  <Placemark>
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#trainingAreas_v4">
+		<SimpleData name="class">2</SimpleData>
+		<SimpleData name="FID">63</SimpleData>
+		<SimpleData name="fid_dates_">7-15-2015</SimpleData>
+		<SimpleData name="region">1</SimpleData>
+		<SimpleData name="con">0</SimpleData>
+		<SimpleData name="year">2015</SimpleData>
+		<SimpleData name="layer">allTrainingAreas_11_3_2021_v3</SimpleData>
+		<SimpleData name="path">/home/adam/cloud/gdrive/fire_project/local_data/classificationData/allTrainingAreas_11_3_2021_v3.shp|layername=allTrainingAreas_11_3_2021_v3</SimpleData>
+	</SchemaData></ExtendedData>
+      <MultiGeometry><Polygon><outerBoundaryIs><LinearRing><coordinates>-123.374870426319,41.610752795581 -123.374870426319,41.6131592505428 -123.372123844288,41.6131592505428 -123.372123844288,41.610752795581 -123.374870426319,41.610752795581</coordinates></LinearRing></outerBoundaryIs></Polygon></MultiGeometry>
+  </Placemark>
+  <Placemark>
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#trainingAreas_v4">
+		<SimpleData name="class">2</SimpleData>
+		<SimpleData name="FID">64</SimpleData>
+		<SimpleData name="fid_dates_">7-15-2015</SimpleData>
+		<SimpleData name="region">1</SimpleData>
+		<SimpleData name="con">0</SimpleData>
+		<SimpleData name="year">2015</SimpleData>
+		<SimpleData name="layer">allTrainingAreas_11_3_2021_v3</SimpleData>
+		<SimpleData name="path">/home/adam/cloud/gdrive/fire_project/local_data/classificationData/allTrainingAreas_11_3_2021_v3.shp|layername=allTrainingAreas_11_3_2021_v3</SimpleData>
+	</SchemaData></ExtendedData>
+      <MultiGeometry><Polygon><outerBoundaryIs><LinearRing><coordinates>-123.393281108997,41.6196722716296 -123.393281108997,41.6213084444886 -123.390834934376,41.6213084444886 -123.390834934376,41.6196722716296 -123.393281108997,41.6196722716296</coordinates></LinearRing></outerBoundaryIs></Polygon></MultiGeometry>
+  </Placemark>
+  <Placemark>
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#trainingAreas_v4">
+		<SimpleData name="class">2</SimpleData>
+		<SimpleData name="FID">65</SimpleData>
+		<SimpleData name="fid_dates_">7-15-2015</SimpleData>
+		<SimpleData name="region">1</SimpleData>
+		<SimpleData name="con">0</SimpleData>
+		<SimpleData name="year">2015</SimpleData>
+		<SimpleData name="layer">allTrainingAreas_11_3_2021_v3</SimpleData>
+		<SimpleData name="path">/home/adam/cloud/gdrive/fire_project/local_data/classificationData/allTrainingAreas_11_3_2021_v3.shp|layername=allTrainingAreas_11_3_2021_v3</SimpleData>
+	</SchemaData></ExtendedData>
+      <MultiGeometry><Polygon><outerBoundaryIs><LinearRing><coordinates>-123.352232582233,41.6203941177141 -123.352232582233,41.6219340290229 -123.350558883808,41.6219340290229 -123.350558883808,41.6203941177141 -123.352232582233,41.6203941177141</coordinates></LinearRing></outerBoundaryIs></Polygon></MultiGeometry>
+  </Placemark>
+  <Placemark>
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#trainingAreas_v4">
+		<SimpleData name="class">2</SimpleData>
+		<SimpleData name="FID">66</SimpleData>
+		<SimpleData name="fid_dates_">7-15-2015</SimpleData>
+		<SimpleData name="region">1</SimpleData>
+		<SimpleData name="con">0</SimpleData>
+		<SimpleData name="year">2015</SimpleData>
+		<SimpleData name="layer">allTrainingAreas_11_3_2021_v3</SimpleData>
+		<SimpleData name="path">/home/adam/cloud/gdrive/fire_project/local_data/classificationData/allTrainingAreas_11_3_2021_v3.shp|layername=allTrainingAreas_11_3_2021_v3</SimpleData>
+	</SchemaData></ExtendedData>
+      <MultiGeometry><Polygon><outerBoundaryIs><LinearRing><coordinates>-123.349400169514,41.6188862522593 -123.349400169514,41.6198006004129 -123.347833759449,41.6198006004129 -123.347833759449,41.6188862522593 -123.349400169514,41.6188862522593</coordinates></LinearRing></outerBoundaryIs></Polygon></MultiGeometry>
+  </Placemark>
+  <Placemark>
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#trainingAreas_v4">
+		<SimpleData name="class">2</SimpleData>
+		<SimpleData name="FID">68</SimpleData>
+		<SimpleData name="fid_dates_">7-15-2015</SimpleData>
+		<SimpleData name="region">1</SimpleData>
+		<SimpleData name="con">0</SimpleData>
+		<SimpleData name="year">2015</SimpleData>
+		<SimpleData name="layer">allTrainingAreas_11_3_2021_v3</SimpleData>
+		<SimpleData name="path">/home/adam/cloud/gdrive/fire_project/local_data/classificationData/allTrainingAreas_11_3_2021_v3.shp|layername=allTrainingAreas_11_3_2021_v3</SimpleData>
+	</SchemaData></ExtendedData>
+      <MultiGeometry><Polygon><outerBoundaryIs><LinearRing><coordinates>-123.338456756733,41.6159024996923 -123.338456756733,41.6173141847786 -123.336289531849,41.6173141847786 -123.336289531849,41.6159024996923 -123.338456756733,41.6159024996923</coordinates></LinearRing></outerBoundaryIs></Polygon></MultiGeometry>
+  </Placemark>
+  <Placemark>
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#trainingAreas_v4">
+		<SimpleData name="class">2</SimpleData>
+		<SimpleData name="FID">69</SimpleData>
+		<SimpleData name="fid_dates_">7-15-2015</SimpleData>
+		<SimpleData name="region">1</SimpleData>
+		<SimpleData name="con">0</SimpleData>
+		<SimpleData name="year">2015</SimpleData>
+		<SimpleData name="layer">allTrainingAreas_11_3_2021_v3</SimpleData>
+		<SimpleData name="path">/home/adam/cloud/gdrive/fire_project/local_data/classificationData/allTrainingAreas_11_3_2021_v3.shp|layername=allTrainingAreas_11_3_2021_v3</SimpleData>
+	</SchemaData></ExtendedData>
+      <MultiGeometry><Polygon><outerBoundaryIs><LinearRing><coordinates>-123.303760419477,41.6275137648626 -123.303760419477,41.6281092160475 -123.302832375158,41.6281092160475 -123.302832375158,41.6275137648626 -123.303760419477,41.6275137648626</coordinates></LinearRing></outerBoundaryIs></Polygon></MultiGeometry>
+  </Placemark>
+  <Placemark>
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#trainingAreas_v4">
+		<SimpleData name="class">2</SimpleData>
+		<SimpleData name="FID">70</SimpleData>
+		<SimpleData name="fid_dates_">7-15-2015</SimpleData>
+		<SimpleData name="region">1</SimpleData>
+		<SimpleData name="con">0</SimpleData>
+		<SimpleData name="year">2015</SimpleData>
+		<SimpleData name="layer">allTrainingAreas_11_3_2021_v3</SimpleData>
+		<SimpleData name="path">/home/adam/cloud/gdrive/fire_project/local_data/classificationData/allTrainingAreas_11_3_2021_v3.shp|layername=allTrainingAreas_11_3_2021_v3</SimpleData>
+	</SchemaData></ExtendedData>
+      <MultiGeometry><Polygon><outerBoundaryIs><LinearRing><coordinates>-123.305728668425,41.626271453203 -123.305728668425,41.6273260398808 -123.304312462065,41.6273260398808 -123.304312462065,41.626271453203 -123.305728668425,41.626271453203</coordinates></LinearRing></outerBoundaryIs></Polygon></MultiGeometry>
+  </Placemark>
+  <Placemark>
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#trainingAreas_v4">
+		<SimpleData name="class">2</SimpleData>
+		<SimpleData name="FID">71</SimpleData>
+		<SimpleData name="fid_dates_">5-29-2016</SimpleData>
+		<SimpleData name="region">1</SimpleData>
+		<SimpleData name="con">0</SimpleData>
+		<SimpleData name="year">2016</SimpleData>
+		<SimpleData name="layer">allTrainingAreas_11_3_2021_v3</SimpleData>
+		<SimpleData name="path">/home/adam/cloud/gdrive/fire_project/local_data/classificationData/allTrainingAreas_11_3_2021_v3.shp|layername=allTrainingAreas_11_3_2021_v3</SimpleData>
+	</SchemaData></ExtendedData>
+      <MultiGeometry><Polygon><outerBoundaryIs><LinearRing><coordinates>-123.079106626759,40.9855146185758 -123.079106626759,40.987110089395 -123.077271995793,40.987110089395 -123.077271995793,40.9855146185758 -123.079106626759,40.9855146185758</coordinates></LinearRing></outerBoundaryIs></Polygon></MultiGeometry>
+  </Placemark>
+  <Placemark>
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#trainingAreas_v4">
+		<SimpleData name="class">2</SimpleData>
+		<SimpleData name="FID">72</SimpleData>
+		<SimpleData name="fid_dates_">5-29-2016</SimpleData>
+		<SimpleData name="region">1</SimpleData>
+		<SimpleData name="con">0</SimpleData>
+		<SimpleData name="year">2016</SimpleData>
+		<SimpleData name="layer">allTrainingAreas_11_3_2021_v3</SimpleData>
+		<SimpleData name="path">/home/adam/cloud/gdrive/fire_project/local_data/classificationData/allTrainingAreas_11_3_2021_v3.shp|layername=allTrainingAreas_11_3_2021_v3</SimpleData>
+	</SchemaData></ExtendedData>
+      <MultiGeometry><Polygon><outerBoundaryIs><LinearRing><coordinates>-123.073130665074,40.9856442014024 -123.073130665074,40.9866322620822 -123.071703729878,40.9866322620822 -123.071703729878,40.9856442014024 -123.073130665074,40.9856442014024</coordinates></LinearRing></outerBoundaryIs></Polygon></MultiGeometry>
+  </Placemark>
+  <Placemark>
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#trainingAreas_v4">
+		<SimpleData name="class">2</SimpleData>
+		<SimpleData name="FID">73</SimpleData>
+		<SimpleData name="fid_dates_">5-29-2016</SimpleData>
+		<SimpleData name="region">1</SimpleData>
+		<SimpleData name="con">0</SimpleData>
+		<SimpleData name="year">2016</SimpleData>
+		<SimpleData name="layer">allTrainingAreas_11_3_2021_v3</SimpleData>
+		<SimpleData name="path">/home/adam/cloud/gdrive/fire_project/local_data/classificationData/allTrainingAreas_11_3_2021_v3.shp|layername=allTrainingAreas_11_3_2021_v3</SimpleData>
+	</SchemaData></ExtendedData>
+      <MultiGeometry><Polygon><outerBoundaryIs><LinearRing><coordinates>-123.083741483937,40.9847371162689 -123.083741483937,40.9858466740592 -123.081928310643,40.9858466740592 -123.081928310643,40.9847371162689 -123.083741483937,40.9847371162689</coordinates></LinearRing></outerBoundaryIs></Polygon></MultiGeometry>
+  </Placemark>
+  <Placemark>
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#trainingAreas_v4">
+		<SimpleData name="class">2</SimpleData>
+		<SimpleData name="FID">74</SimpleData>
+		<SimpleData name="fid_dates_">5-29-2016</SimpleData>
+		<SimpleData name="region">1</SimpleData>
+		<SimpleData name="con">0</SimpleData>
+		<SimpleData name="year">2016</SimpleData>
+		<SimpleData name="layer">allTrainingAreas_11_3_2021_v3</SimpleData>
+		<SimpleData name="path">/home/adam/cloud/gdrive/fire_project/local_data/classificationData/allTrainingAreas_11_3_2021_v3.shp|layername=allTrainingAreas_11_3_2021_v3</SimpleData>
+	</SchemaData></ExtendedData>
+      <MultiGeometry><Polygon><outerBoundaryIs><LinearRing><coordinates>-123.093093792669,40.9703805804012 -123.093093792669,40.9729727832393 -123.090851465933,40.9729727832393 -123.090851465933,40.9703805804012 -123.093093792669,40.9703805804012</coordinates></LinearRing></outerBoundaryIs></Polygon></MultiGeometry>
+  </Placemark>
+  <Placemark>
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#trainingAreas_v4">
+		<SimpleData name="class">0</SimpleData>
+		<SimpleData name="FID">75</SimpleData>
+		<SimpleData name="fid_dates_">7-15-2015</SimpleData>
+		<SimpleData name="region">1</SimpleData>
+		<SimpleData name="con">0</SimpleData>
+		<SimpleData name="year">2015</SimpleData>
+		<SimpleData name="layer">allTrainingAreas_11_3_2021_v3</SimpleData>
+		<SimpleData name="path">/home/adam/cloud/gdrive/fire_project/local_data/classificationData/allTrainingAreas_11_3_2021_v3.shp|layername=allTrainingAreas_11_3_2021_v3</SimpleData>
+	</SchemaData></ExtendedData>
+      <MultiGeometry><Polygon><outerBoundaryIs><LinearRing><coordinates>-123.326153195389,41.5432848978596 -123.326217568406,41.5435800015293 -123.325238562115,41.5434434911556 -123.325321710595,41.5432327025126 -123.326153195389,41.5432848978596</coordinates></LinearRing></outerBoundaryIs></Polygon></MultiGeometry>
+  </Placemark>
+  <Placemark>
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#trainingAreas_v4">
+		<SimpleData name="class">0</SimpleData>
+		<SimpleData name="FID">76</SimpleData>
+		<SimpleData name="fid_dates_">7-15-2015</SimpleData>
+		<SimpleData name="region">1</SimpleData>
+		<SimpleData name="con">0</SimpleData>
+		<SimpleData name="year">2015</SimpleData>
+		<SimpleData name="layer">allTrainingAreas_11_3_2021_v3</SimpleData>
+		<SimpleData name="path">/home/adam/cloud/gdrive/fire_project/local_data/classificationData/allTrainingAreas_11_3_2021_v3.shp|layername=allTrainingAreas_11_3_2021_v3</SimpleData>
+	</SchemaData></ExtendedData>
+      <MultiGeometry><Polygon><outerBoundaryIs><LinearRing><coordinates>-123.324227963355,41.5453681630855 -123.323946331408,41.5452135894156 -123.324708078768,41.5450610228336 -123.324705396559,41.5454143343698 -123.324227963355,41.5453681630855</coordinates></LinearRing></outerBoundaryIs></Polygon></MultiGeometry>
+  </Placemark>
+  <Placemark>
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#trainingAreas_v4">
+		<SimpleData name="class">0</SimpleData>
+		<SimpleData name="FID">77</SimpleData>
+		<SimpleData name="fid_dates_">7-15-2015</SimpleData>
+		<SimpleData name="region">1</SimpleData>
+		<SimpleData name="con">0</SimpleData>
+		<SimpleData name="year">2015</SimpleData>
+		<SimpleData name="layer">allTrainingAreas_11_3_2021_v3</SimpleData>
+		<SimpleData name="path">/home/adam/cloud/gdrive/fire_project/local_data/classificationData/allTrainingAreas_11_3_2021_v3.shp|layername=allTrainingAreas_11_3_2021_v3</SimpleData>
+	</SchemaData></ExtendedData>
+      <MultiGeometry><Polygon><outerBoundaryIs><LinearRing><coordinates>-123.324965570834,41.5455608777928 -123.324815367129,41.5456291307806 -123.324600790408,41.5456291307805 -123.324919973281,41.5453239992175 -123.325260613826,41.5453460811553 -123.324965570834,41.5455608777928</coordinates></LinearRing></outerBoundaryIs></Polygon></MultiGeometry>
+  </Placemark>
+  <Placemark>
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#trainingAreas_v4">
+		<SimpleData name="class">1</SimpleData>
+		<SimpleData name="FID">149</SimpleData>
+		<SimpleData name="fid_dates_">7-3-2017</SimpleData>
+		<SimpleData name="region">1</SimpleData>
+		<SimpleData name="con">1</SimpleData>
+		<SimpleData name="year">2017</SimpleData>
+		<SimpleData name="layer">conifer_v5</SimpleData>
+		<SimpleData name="path">MultiPolygon?crs=EPSG:4326&amp;field=class:long(10,0)&amp;field=FID:long(10,0)&amp;field=fid_dates_:string(254,0)&amp;field=region:long(10,0)&amp;field=con:long(10,0)&amp;field=year:long(10,0)&amp;uid={39697402-3092-4e95-86b9-9c54bee5ec9a}</SimpleData>
+	</SchemaData></ExtendedData>
+      <MultiGeometry><Polygon><outerBoundaryIs><LinearRing><coordinates>-121.209193611756,39.8409320467612 -121.208517695085,39.8415581227597 -121.206983471528,39.8414345555806 -121.206017876283,39.8400670639513 -121.208506966249,39.8392926891449 -121.209193611756,39.8409320467612</coordinates></LinearRing></outerBoundaryIs></Polygon></MultiGeometry>
+  </Placemark>
+  <Placemark>
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#trainingAreas_v4">
+		<SimpleData name="class">1</SimpleData>
+		<SimpleData name="FID">150</SimpleData>
+		<SimpleData name="fid_dates_">12-12-2018</SimpleData>
+		<SimpleData name="region">1</SimpleData>
+		<SimpleData name="con">1</SimpleData>
+		<SimpleData name="year">2018</SimpleData>
+		<SimpleData name="layer">conifer_v5</SimpleData>
+		<SimpleData name="path">MultiPolygon?crs=EPSG:4326&amp;field=class:long(10,0)&amp;field=FID:long(10,0)&amp;field=fid_dates_:string(254,0)&amp;field=region:long(10,0)&amp;field=con:long(10,0)&amp;field=year:long(10,0)&amp;uid={39697402-3092-4e95-86b9-9c54bee5ec9a}</SimpleData>
+	</SchemaData></ExtendedData>
+      <MultiGeometry><Polygon><outerBoundaryIs><LinearRing><coordinates>-121.44298338356,39.8978683689227 -121.441234583283,39.8989713201006 -121.439936394119,39.8980329896285 -121.441706652069,39.8968477117203 -121.44298338356,39.8978683689227</coordinates></LinearRing></outerBoundaryIs></Polygon></MultiGeometry>
+  </Placemark>
+  <Placemark>
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#trainingAreas_v4">
+		<SimpleData name="class">1</SimpleData>
+		<SimpleData name="FID">151</SimpleData>
+		<SimpleData name="fid_dates_">5-31-2014</SimpleData>
+		<SimpleData name="region">1</SimpleData>
+		<SimpleData name="con">1</SimpleData>
+		<SimpleData name="year">2014</SimpleData>
+		<SimpleData name="layer">conifer_v5</SimpleData>
+		<SimpleData name="path">MultiPolygon?crs=EPSG:4326&amp;field=class:long(10,0)&amp;field=FID:long(10,0)&amp;field=fid_dates_:string(254,0)&amp;field=region:long(10,0)&amp;field=con:long(10,0)&amp;field=year:long(10,0)&amp;uid={39697402-3092-4e95-86b9-9c54bee5ec9a}</SimpleData>
+	</SchemaData></ExtendedData>
+      <MultiGeometry><Polygon><outerBoundaryIs><LinearRing><coordinates>-118.978385962269,36.7972318504391 -118.977313078663,36.7997576292663 -118.973708189747,36.7995514463617 -118.972871340534,36.7959087901936 -118.978385962269,36.7972318504391</coordinates></LinearRing></outerBoundaryIs></Polygon></MultiGeometry>
+  </Placemark>
+  <Placemark>
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#trainingAreas_v4">
+		<SimpleData name="class">1</SimpleData>
+		<SimpleData name="FID">152</SimpleData>
+		<SimpleData name="fid_dates_">5-31-2014</SimpleData>
+		<SimpleData name="region">1</SimpleData>
+		<SimpleData name="con">1</SimpleData>
+		<SimpleData name="year">2014</SimpleData>
+		<SimpleData name="layer">conifer_v5</SimpleData>
+		<SimpleData name="path">MultiPolygon?crs=EPSG:4326&amp;field=class:long(10,0)&amp;field=FID:long(10,0)&amp;field=fid_dates_:string(254,0)&amp;field=region:long(10,0)&amp;field=con:long(10,0)&amp;field=year:long(10,0)&amp;uid={39697402-3092-4e95-86b9-9c54bee5ec9a}</SimpleData>
+	</SchemaData></ExtendedData>
+      <MultiGeometry><Polygon><outerBoundaryIs><LinearRing><coordinates>-118.965466171771,36.78654060972 -118.965466171771,36.7882848521626 -118.960799128085,36.7882848521626 -118.960799128085,36.78654060972 -118.965466171771,36.78654060972</coordinates></LinearRing></outerBoundaryIs></Polygon></MultiGeometry>
+  </Placemark>
+  <Placemark>
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#trainingAreas_v4">
+		<SimpleData name="class">1</SimpleData>
+		<SimpleData name="FID">153</SimpleData>
+		<SimpleData name="fid_dates_">5-31-2014</SimpleData>
+		<SimpleData name="region">1</SimpleData>
+		<SimpleData name="con">1</SimpleData>
+		<SimpleData name="year">2014</SimpleData>
+		<SimpleData name="layer">conifer_v5</SimpleData>
+		<SimpleData name="path">MultiPolygon?crs=EPSG:4326&amp;field=class:long(10,0)&amp;field=FID:long(10,0)&amp;field=fid_dates_:string(254,0)&amp;field=region:long(10,0)&amp;field=con:long(10,0)&amp;field=year:long(10,0)&amp;uid={39697402-3092-4e95-86b9-9c54bee5ec9a}</SimpleData>
+	</SchemaData></ExtendedData>
+      <MultiGeometry><Polygon><outerBoundaryIs><LinearRing><coordinates>-118.955439893251,36.7882291581678 -118.955439893251,36.7891914825288 -118.953149286752,36.7891914825288 -118.953149286752,36.7882291581678 -118.955439893251,36.7882291581678</coordinates></LinearRing></outerBoundaryIs></Polygon></MultiGeometry>
+  </Placemark>
+  <Placemark>
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#trainingAreas_v4">
+		<SimpleData name="class">1</SimpleData>
+		<SimpleData name="FID">154</SimpleData>
+		<SimpleData name="fid_dates_">5-31-2014</SimpleData>
+		<SimpleData name="region">1</SimpleData>
+		<SimpleData name="con">1</SimpleData>
+		<SimpleData name="year">2014</SimpleData>
+		<SimpleData name="layer">conifer_v5</SimpleData>
+		<SimpleData name="path">MultiPolygon?crs=EPSG:4326&amp;field=class:long(10,0)&amp;field=FID:long(10,0)&amp;field=fid_dates_:string(254,0)&amp;field=region:long(10,0)&amp;field=con:long(10,0)&amp;field=year:long(10,0)&amp;uid={39697402-3092-4e95-86b9-9c54bee5ec9a}</SimpleData>
+	</SchemaData></ExtendedData>
+      <MultiGeometry><Polygon><outerBoundaryIs><LinearRing><coordinates>-118.952537743097,36.7872367485117 -118.952537743097,36.7887876514563 -118.949592677599,36.7887876514563 -118.949592677599,36.7872367485117 -118.952537743097,36.7872367485117</coordinates></LinearRing></outerBoundaryIs></Polygon></MultiGeometry>
+  </Placemark>
+  <Placemark>
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#trainingAreas_v4">
+		<SimpleData name="class">1</SimpleData>
+		<SimpleData name="FID">155</SimpleData>
+		<SimpleData name="fid_dates_">7-16-2016</SimpleData>
+		<SimpleData name="region">1</SimpleData>
+		<SimpleData name="con">1</SimpleData>
+		<SimpleData name="year">2016</SimpleData>
+		<SimpleData name="layer">conifer_v5</SimpleData>
+		<SimpleData name="path">MultiPolygon?crs=EPSG:4326&amp;field=class:long(10,0)&amp;field=FID:long(10,0)&amp;field=fid_dates_:string(254,0)&amp;field=region:long(10,0)&amp;field=con:long(10,0)&amp;field=year:long(10,0)&amp;uid={39697402-3092-4e95-86b9-9c54bee5ec9a}</SimpleData>
+	</SchemaData></ExtendedData>
+      <MultiGeometry><Polygon><outerBoundaryIs><LinearRing><coordinates>-118.513391893655,36.1125385731444 -118.513391893655,36.1153814313244 -118.509379308969,36.1153814313244 -118.509379308969,36.1125385731444 -118.513391893655,36.1125385731444</coordinates></LinearRing></outerBoundaryIs></Polygon></MultiGeometry>
+  </Placemark>
+  <Placemark>
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#trainingAreas_v4">
+		<SimpleData name="class">1</SimpleData>
+		<SimpleData name="FID">156</SimpleData>
+		<SimpleData name="fid_dates_">7-16-2016</SimpleData>
+		<SimpleData name="region">1</SimpleData>
+		<SimpleData name="con">1</SimpleData>
+		<SimpleData name="year">2016</SimpleData>
+		<SimpleData name="layer">conifer_v5</SimpleData>
+		<SimpleData name="path">MultiPolygon?crs=EPSG:4326&amp;field=class:long(10,0)&amp;field=FID:long(10,0)&amp;field=fid_dates_:string(254,0)&amp;field=region:long(10,0)&amp;field=con:long(10,0)&amp;field=year:long(10,0)&amp;uid={39697402-3092-4e95-86b9-9c54bee5ec9a}</SimpleData>
+	</SchemaData></ExtendedData>
+      <MultiGeometry><Polygon><outerBoundaryIs><LinearRing><coordinates>-118.520355053872,36.1146529228752 -118.520355053872,36.1161696636907 -118.518622346848,36.1161696636907 -118.518622346848,36.1146529228752 -118.520355053872,36.1146529228752</coordinates></LinearRing></outerBoundaryIs></Polygon></MultiGeometry>
+  </Placemark>
+  <Placemark>
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#trainingAreas_v4">
+		<SimpleData name="class">1</SimpleData>
+		<SimpleData name="FID">157</SimpleData>
+		<SimpleData name="fid_dates_">7-16-2016</SimpleData>
+		<SimpleData name="region">1</SimpleData>
+		<SimpleData name="con">1</SimpleData>
+		<SimpleData name="year">2016</SimpleData>
+		<SimpleData name="layer">conifer_v5</SimpleData>
+		<SimpleData name="path">MultiPolygon?crs=EPSG:4326&amp;field=class:long(10,0)&amp;field=FID:long(10,0)&amp;field=fid_dates_:string(254,0)&amp;field=region:long(10,0)&amp;field=con:long(10,0)&amp;field=year:long(10,0)&amp;uid={39697402-3092-4e95-86b9-9c54bee5ec9a}</SimpleData>
+	</SchemaData></ExtendedData>
+      <MultiGeometry><Polygon><outerBoundaryIs><LinearRing><coordinates>-118.515553899735,36.1172746992661 -118.515553899735,36.1182280507963 -118.514330812424,36.1182280507963 -118.514330812424,36.1172746992661 -118.515553899735,36.1172746992661</coordinates></LinearRing></outerBoundaryIs></Polygon></MultiGeometry>
+  </Placemark>
+  <Placemark>
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#trainingAreas_v4">
+		<SimpleData name="class">1</SimpleData>
+		<SimpleData name="FID">158</SimpleData>
+		<SimpleData name="fid_dates_">7-16-2016</SimpleData>
+		<SimpleData name="region">1</SimpleData>
+		<SimpleData name="con">1</SimpleData>
+		<SimpleData name="year">2016</SimpleData>
+		<SimpleData name="layer">conifer_v5</SimpleData>
+		<SimpleData name="path">MultiPolygon?crs=EPSG:4326&amp;field=class:long(10,0)&amp;field=FID:long(10,0)&amp;field=fid_dates_:string(254,0)&amp;field=region:long(10,0)&amp;field=con:long(10,0)&amp;field=year:long(10,0)&amp;uid={39697402-3092-4e95-86b9-9c54bee5ec9a}</SimpleData>
+	</SchemaData></ExtendedData>
+      <MultiGeometry><Polygon><outerBoundaryIs><LinearRing><coordinates>-118.540935329462,36.1197782963184 -118.540935329462,36.1214032685707 -118.538494519259,36.1214032685707 -118.538494519259,36.1197782963184 -118.540935329462,36.1197782963184</coordinates></LinearRing></outerBoundaryIs></Polygon></MultiGeometry>
+  </Placemark>
+  <Placemark>
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#trainingAreas_v4">
+		<SimpleData name="class">1</SimpleData>
+		<SimpleData name="FID">159</SimpleData>
+		<SimpleData name="fid_dates_">7-16-2016</SimpleData>
+		<SimpleData name="region">1</SimpleData>
+		<SimpleData name="con">1</SimpleData>
+		<SimpleData name="year">2016</SimpleData>
+		<SimpleData name="layer">conifer_v5</SimpleData>
+		<SimpleData name="path">MultiPolygon?crs=EPSG:4326&amp;field=class:long(10,0)&amp;field=FID:long(10,0)&amp;field=fid_dates_:string(254,0)&amp;field=region:long(10,0)&amp;field=con:long(10,0)&amp;field=year:long(10,0)&amp;uid={39697402-3092-4e95-86b9-9c54bee5ec9a}</SimpleData>
+	</SchemaData></ExtendedData>
+      <MultiGeometry><Polygon><outerBoundaryIs><LinearRing><coordinates>-118.613895329595,36.0032751197517 -118.613584193349,36.0049762736424 -118.611631545187,36.0044641954651 -118.611706647039,36.0030407742478 -118.613895329595,36.0032751197517</coordinates></LinearRing></outerBoundaryIs></Polygon></MultiGeometry>
+  </Placemark>
+  <Placemark>
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#trainingAreas_v4">
+		<SimpleData name="class">1</SimpleData>
+		<SimpleData name="FID">160</SimpleData>
+		<SimpleData name="fid_dates_">7-16-2016</SimpleData>
+		<SimpleData name="region">1</SimpleData>
+		<SimpleData name="con">1</SimpleData>
+		<SimpleData name="year">2016</SimpleData>
+		<SimpleData name="layer">conifer_v5</SimpleData>
+		<SimpleData name="path">MultiPolygon?crs=EPSG:4326&amp;field=class:long(10,0)&amp;field=FID:long(10,0)&amp;field=fid_dates_:string(254,0)&amp;field=region:long(10,0)&amp;field=con:long(10,0)&amp;field=year:long(10,0)&amp;uid={39697402-3092-4e95-86b9-9c54bee5ec9a}</SimpleData>
+	</SchemaData></ExtendedData>
+      <MultiGeometry><Polygon><outerBoundaryIs><LinearRing><coordinates>-118.615783604742,36.0017214828582 -118.615332993627,36.002858505041 -118.61369148171,36.0014350548376 -118.614421042562,36.0002632930107 -118.615783604742,36.0017214828582</coordinates></LinearRing></outerBoundaryIs></Polygon></MultiGeometry>
+  </Placemark>
+  <Placemark>
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#trainingAreas_v4">
+		<SimpleData name="class">1</SimpleData>
+		<SimpleData name="FID">161</SimpleData>
+		<SimpleData name="fid_dates_">7-16-2016</SimpleData>
+		<SimpleData name="region">1</SimpleData>
+		<SimpleData name="con">1</SimpleData>
+		<SimpleData name="year">2016</SimpleData>
+		<SimpleData name="layer">conifer_v5</SimpleData>
+		<SimpleData name="path">MultiPolygon?crs=EPSG:4326&amp;field=class:long(10,0)&amp;field=FID:long(10,0)&amp;field=fid_dates_:string(254,0)&amp;field=region:long(10,0)&amp;field=con:long(10,0)&amp;field=year:long(10,0)&amp;uid={39697402-3092-4e95-86b9-9c54bee5ec9a}</SimpleData>
+	</SchemaData></ExtendedData>
+      <MultiGeometry><Polygon><outerBoundaryIs><LinearRing><coordinates>-118.610024602579,36.0008427952069 -118.608683498072,36.0024311675928 -118.605185897516,36.0003393699596 -118.608694226908,35.9992977902792 -118.610024602579,36.0008427952069</coordinates></LinearRing></outerBoundaryIs></Polygon></MultiGeometry>
+  </Placemark>
+</Folder>
+</Document></kml>

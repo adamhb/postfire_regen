@@ -38,7 +38,7 @@ getVecs <- function(d, p_start = 0.5, p_end = 50.5){
     c == F & r == F & s == F & d == F & g == T ~ "g",
     TRUE ~ "b"
   )) %>% group_by(dom) %>%
-    summarise(n = length(dom) / 501 )
+    summarise(n = length(dom))
   print(( (p_end-p_start) * 10 ) + 1)
   return(output)
 }
@@ -66,19 +66,17 @@ for(pl in plots){
 }
 
 
-names(pct_cover) <- c("pft","pctCover","plotID","transect","segment")
+names(pct_cover) <- c("pft","n","plotID","transect","segment")
 
-LineInterceptDataTable <- pct_cover %>% select(plotID,transect,segment,pft,pctCover)
-write_csv(LineInterceptDataTable ,file = 'data/LineInterceptDataTable .csv') 
-
-
-lineInterceptComparisonData <- LineInterceptDataTable %>%
+fieldValidationData_LI <- pct_cover %>% select(plotID,transect,segment,pft,n) %>%
   group_by(plotID,pft) %>%
-  summarise(pctCover = mean(pctCover)) %>%
-  group_by(plotID) %>%
-  summarise(total = sum(pctCover))
+  summarise(pctCover = sum(n)/( (501+401)*4 )) %>%
+  ungroup()
 
-unique(LineInterceptDataTable$pft)
+
+write_csv(fieldValidationData_LI ,file = 'data/fieldValidationData_LI.csv') 
+
+
 
 
 

@@ -1,8 +1,8 @@
 source('00_setup.R')
 
 fromFile <- T
-makeFigs <- T
-cleanedData <- 'fromR_patchLevelTimeVarying_FA132022-01-31_16-57-37.csv'
+makeFigs <- F
+cleanedData <- 'allVarsPatchLevel.csv'
 
 ###########################
 if(fromFile == T){
@@ -27,9 +27,7 @@ meanRecoveryOfAllPatches <- patchLevelTimeVarying %>%
   summarise(RRI = mean(RRI))
 
 
-
-
-#visualize recovery trajectories of all patches and the mean across patches
+#visualize RRI of all patches and the mean across patches
 recoveryTrajsFig <- patchLevelTimeVarying %>%
   ggplot(aes(timeSinceFire,RRI,color = patchID)) +
   geom_line() +
@@ -37,38 +35,34 @@ recoveryTrajsFig <- patchLevelTimeVarying %>%
   adams_theme +
   theme(legend.position = "none")
 
-
-
 makePNG(fig = recoveryTrajsFig,path_to_output.x = figuresPath,file_name = "recoveryTraj_noStrat")
+
+#visualize ConProb
+patchLevelTimeVarying %>%
+  ggplot(aes(timeSinceFire,ConProb,color = patchID)) +
+  geom_line() +
+  #geom_line(data = meanRecoveryOfAllPatches, mapping = aes(timeSinceFire,RRI), color = "black", size = 3) +
+  adams_theme +
+  theme(legend.position = "none")
+
 
 
 #what is the conifer probability at the end of the trajectories
-patchLevelTimeVarying %>%
-  filter(timeSinceFire > 30) %>%
-  ggplot(aes(timeSinceFire,ConProb,color = patchID)) +
-  geom_line() +
-  #geom_line(data = meanRecoveryOfAllPatches, mapping = aes(timeSinceFire,RRI), color = "black", size = 3) +
-  adams_theme +
-  theme(legend.position = "none")
-
-patchLevelTimeVarying %>%
-  ggplot(aes(timeSinceFire,ConProb,color = patchID)) +
-  geom_line() +
-  #geom_line(data = meanRecoveryOfAllPatches, mapping = aes(timeSinceFire,RRI), color = "black", size = 3) +
-  adams_theme +
-  theme(legend.position = "none")
-
-
-
-
+# patchLevelTimeVarying %>%
+#   filter(timeSinceFire > 30) %>%
+#   ggplot(aes(timeSinceFire,ConProb,color = patchID)) +
+#   geom_line() +
+#   #geom_line(data = meanRecoveryOfAllPatches, mapping = aes(timeSinceFire,RRI), color = "black", size = 3) +
+#   adams_theme +
+#   theme(legend.position = "none")
 
 
 
 ######################################################################################
 #visualize recovery trajectories stratified by postFire precip and seed availability##
 ######################################################################################
-SAP_quantiles <- quantile(patchLevelTimeVarying$postFireSAP, probs = c(0.2,0.8))
-PPT_quantiles <- quantile(patchLevelTimeVarying$pptYr0_3_sum, probs = c(0.2,0.8))
+SAP_quantiles <- quantile(patchLevelTimeVarying$postFireSAP, probs = c(0.2,0.8), na.rm = T)
+PPT_quantiles <- quantile(patchLevelTimeVarying$pptYr0_3_sum, probs = c(0.2,0.8), na.rm = T)
 
 
 
@@ -96,8 +90,6 @@ recoveryTrajsStratFig <- patchLevelTimeVarying %>%
 #theme(legend.position = "none")
 
 makePNG(fig = recoveryTrajsStratFig,path_to_output.x = figuresPath,file_name = "recoveryTrajsStratFig",res = 600)
-
-
 
 ################################################################
 #############creat new time-invariant variables here############
@@ -160,21 +152,27 @@ makePNG(fig = corrPlot,
         res = 100, width = 10, height = 10)
 
 
+
+
+#could make RRI and other vars here.
+
+
+
 ###########################################################
 ######MAKE SCATTER PLOTS HERE OF VARS THAT ARE CORRELATED##
 ###########################################################
 
 #planting vs. RRI at Year 20
-patchLevelTimeInvariant %>%
-  ggplot(aes(postFirePlanting * 100, RRI_yr20)) +
-  geom_point() +
-  geom_smooth(method = "lm", se = FALSE, color = "red", lty = "dashed") +
-  #geom_smooth(se = FALSE, lty = "dashed") +
-  ylab(label = "RRI at Year 20") +
-  xlab(label = "% of Patch Planted After Fire") +
-  adams_theme
+# patchLevelTimeInvariant %>%
+#   ggplot(aes(postFirePlanting * 100, RRI_yr20)) +
+#   geom_point() +
+#   geom_smooth(method = "lm", se = FALSE, color = "red", lty = "dashed") +
+#   #geom_smooth(se = FALSE, lty = "dashed") +
+#   ylab(label = "RRI at Year 20") +
+#   xlab(label = "% of Patch Planted After Fire") +
+#   adams_theme
 
-print(summary_stats(patchLevelTimeInvariant))
+
 
 
 

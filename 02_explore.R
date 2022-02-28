@@ -1,72 +1,164 @@
+rm(list = ls())
+gc()
 source('00_setup.R')
+source('00_validate_classifier.R')
 
 fromFile <- T
-makeFigs <- F
+makeFigs <- T
 cleanedData <- 'allVarsPatchLevel.csv'
-
 ###########################
 if(fromFile == T){
   path <- "~/cloud/gdrive/fire_project/local_data/CleanedDataForAnalysis/"
   outpath <- "~/cloud/gdrive/fire_project/local_data/"
   figuresPath <- '~/cloud/gdrive/fire_project/figures/'
-  patchLevelTimeVarying <- read_csv(paste0(path,cleanedData),
+  df2 <- read_csv(paste0(path,cleanedData),
                                     col_types = cols(.default = "?", patchID = "c"))
-  PatchesIN <- patchLevelTimeVarying$patchID %>% unique()
+  PatchesIN <- df2$patchID %>% unique()
 }else{
   source('01_calculateVariables.R')
 }
 
+`%!in%` <- Negate(`%in%`)
+df2 <- df2 %>% filter(patchID %!in% c("-777474889-FA-22","118942956-FA-27"),
+                      preFireConProb > 50)
+
+
+###################################
+#calculating additional variables##
+###################################
+nPatches <- length(unique(df2$patchID)) #npatches
+print(paste(nPatches,"patches"))
+nYears <- max(df2$year) - min(df2$year) + 1
+print(paste(nYears,"years"))
+endYr <- 2016 #final year of data
+print("focalAreas:")
+unique(df2$focalAreaID)
+
+
+
+df2$pctCovCon <- predict(object = logMod,newdata = df2) #adding pct cover
+df2$ConDom <- df2$pctCovCon > 0.5 #adding if conifers are dominant
+df2$recoveryTrajLength <- endYr - df2$fireYear #adding recovery length
+
+
+df3 <- df2 %>% 
+  mutate_at(.vars = "ConProb",.funs = function(x){x*100}) %>%
+  filter(burnSev < 5) %>%
+  mutate(disturbanceSize = preFireConProb - postFireConProb,
+         ARI = ConProb - postFireConProb,
+         RRI = ARI / disturbanceSize)
+
+
+
+makeRRIatEndOfTraj <- function(patch = df3$patchID[1]){
+  fireYear <- df3[df3$patchID == patch,]$fireYear[1]
+  recoveryTrajLength <- df3[df3$patchID == patch,]$recoveryTrajLength[1]
+  finalYrofTraj <- fireYear + recoveryTrajLength
+  RRIFinalYear <- df3[df3$patchID == patch & df3$year == finalYrofTraj,]$RRI
+  RR_per_year <- RRIFinalYear / recoveryTrajLength
+  output <- tibble(patchID = patch,
+                   finalYrofTraj = finalYrofTraj,
+                   RRIFinalYear = RRIFinalYear,
+                   RR_per_year = RR_per_year)
+  return(output)
+}
+makeRRIatEndOfTraj()
+
+df3 <- df3 %>% 
+  left_join(map_df(.x = unique(df3$patchID), .f = makeRRIatEndOfTraj),by = "patchID")
+
+##########################
+####basic info############
+##########################
+
+#sample size per fire year
+n_patch_per_fire_year <- distinct(df3,patchID,.keep_all = T) %>% pull(fireYear) %>% table()
+print("fireYears:")
+print(n_patch_per_fire_year)
+n_per_recovery_length <- distinct(df3,patchID,.keep_all = T) %>% pull(recoveryTrajLength) %>% table()
+n_per_recovery_length
+#1987 and 1999 are the two most represented fire years
 
 ################################################################
 ##visualizing variation in patch-level recovery trajectories ###
 ################################################################
 
+
+
+
 #get the mean recovery trajectory of all patches
-meanRecoveryOfAllPatches <- patchLevelTimeVarying %>%
+meanRecoveryOfAllPatches <- df3 %>%
   group_by(timeSinceFire) %>%
-  summarise(RRI = mean(RRI))
+  summarise_at(.vars = c("RRI","ConProb","pctCovCon"), .funs = function(x){mean(x,na.rm = T)})
 
-
-#visualize RRI of all patches and the mean across patches
-recoveryTrajsFig <- patchLevelTimeVarying %>%
-  ggplot(aes(timeSinceFire,RRI,color = patchID)) +
-  geom_line() +
-  geom_line(data = meanRecoveryOfAllPatches, mapping = aes(timeSinceFire,RRI), color = "black", size = 3) +
-  adams_theme +
-  theme(legend.position = "none")
-
-makePNG(fig = recoveryTrajsFig,path_to_output.x = figuresPath,file_name = "recoveryTraj_noStrat")
-
-#visualize ConProb
-patchLevelTimeVarying %>%
-  ggplot(aes(timeSinceFire,ConProb,color = patchID)) +
+#plot mean recovery over all patches
+RRI_mean_allPatches <- ggplot(data = meanRecoveryOfAllPatches, mapping = aes(timeSinceFire,ConProb)) +
   geom_line() +
   #geom_line(data = meanRecoveryOfAllPatches, mapping = aes(timeSinceFire,RRI), color = "black", size = 3) +
   adams_theme +
   theme(legend.position = "none")
+RRI_mean_allPatches 
+
+#visualize RRI of all patches and the mean across patches
+recoveryTrajsFig <- df3 %>%
+  ggplot(aes(timeSinceFire,RRI,color = patchID)) +
+  geom_line() +
+  geom_line(data = meanRecoveryOfAllPatches, mapping = aes(timeSinceFire,RRI), color = "black", size = 3) +
+  scale_y_continuous(limits = c(-0.3,1.2)) +
+  scale_x_continuous(limits = c(0,35)) +
+  adams_theme +
+  theme(legend.position = "none")
+recoveryTrajsFig
+
+#visualize ConProb
+recoveryTrajsFigConProb <- df3 %>%
+  ggplot(aes(timeSinceFire,ConProb,color = patchID)) +
+  geom_line() +
+  scale_y_continuous(limits = c(0,100)) +
+  scale_x_continuous(limits = c(0,35)) +
+  adams_theme +
+  theme(legend.position = "none")
+recoveryTrajsFigConProb
+
+#visualize pct cover
+recoveryTrajsPctCovCon <- df3 %>%
+  filter(year < 2017) %>%
+  ggplot(aes(timeSinceFire,pctCovCon,color = patchID)) +
+  geom_line() +
+  scale_y_continuous(limits = c(0,0.53)) +
+  scale_x_continuous(limits = c(0,35)) +
+  adams_theme +
+  theme(legend.position = "none")
+recoveryTrajsPctCovCon
 
 
+#what is the pctCover at the end of the trajectories?
+pctCovConEnd <- ggplot(data = df3 %>% filter(year == 2016), mapping = aes(x = pctCovCon)) +
+  geom_histogram() +
+  xlab("Conifer Cover (%)") +
+  labs(title = "%Pct Conifer Cover in 2016") +
+  ylab(label = "N Patches") +
+  adams_theme
+#all plots have at least some conifer recovery
 
-#what is the conifer probability at the end of the trajectories
-# patchLevelTimeVarying %>%
-#   filter(timeSinceFire > 30) %>%
-#   ggplot(aes(timeSinceFire,ConProb,color = patchID)) +
-#   geom_line() +
-#   #geom_line(data = meanRecoveryOfAllPatches, mapping = aes(timeSinceFire,RRI), color = "black", size = 3) +
-#   adams_theme +
-#   theme(legend.position = "none")
 
+#distribution of pre-fire conProb
+pctCovConEnd <- ggplot(data = df3 %>% filter(year == 2016), mapping = aes(x = preFireConProb)) +
+  geom_histogram() +
+  xlab("PreFireConProb") +
+  labs(title = "PreFireConProb") +
+  ylab(label = "N Patches") +
+  adams_theme
 
 
 ######################################################################################
-#visualize recovery trajectories stratified by postFire precip and seed availability##
+#visualize recovery trajectories stratified by postFire precip. and seed availability##
 ######################################################################################
-SAP_quantiles <- quantile(patchLevelTimeVarying$postFireSAP, probs = c(0.2,0.8), na.rm = T)
-PPT_quantiles <- quantile(patchLevelTimeVarying$pptYr0_3_sum, probs = c(0.2,0.8), na.rm = T)
+SAP_quantiles <- quantile(df3$postFireSAP, probs = c(0.33,0.66), na.rm = T)
+PPT_quantiles <- quantile(df3$pptYr0_3_sum, probs = c(0.33,0.66), na.rm = T)
 
-
-
-recoveryTrajsStratFig <- patchLevelTimeVarying %>%
+recoveryTrajsStratFigDF <- df3 %>%
+  filter(postFirePlanting > 0.1, burnSev < 5, burnSev > 2.5, year < 2017) %>%
   mutate(SeedAvail = case_when(
     postFireSAP <= SAP_quantiles[1] ~ "low seed avail.",
     postFireSAP >= SAP_quantiles[2] ~ "high seed avail.",
@@ -81,80 +173,128 @@ recoveryTrajsStratFig <- patchLevelTimeVarying %>%
   mutate(planted = case_when(
     postFirePlanting >= 0.5 ~ TRUE,
     postFirePlanting < 0.5 ~ FALSE
-  )) %>% 
-  ggplot(aes(timeSinceFire,RRI,color = patchID,linetype = planted)) +
-  geom_line() +
+  )) %>%
+  ggplot(aes(timeSinceFire,ConProb,group = patchID, color = burnSev)) +
+  geom_line(size = 1) +
+  #geom_smooth(data = recoveryTrajsStratFigDF, mapping = aes(x = timeSinceFire, y = RRI, group = planted))
   facet_grid(rows = vars(SeedAvail2), cols = vars(PostFirePPT2),drop = FALSE) +
-  scale_colour_discrete(guide = FALSE) +
+  #scale_colour_discrete(guide = FALSE) +
+  scale_colour_gradient2(low = "blue", mid = "yellow", high = "red", midpoint = 3) +
+  scale_y_continuous(limits = c(0,100)) +
+  scale_x_continuous(limits = c(-2,35)) +
+  labs(title = " < 10% of patch planted in first 6 years after fire \n RRI") +
   theme_minimal()
-#theme(legend.position = "none")
 
-makePNG(fig = recoveryTrajsStratFig,path_to_output.x = figuresPath,file_name = "recoveryTrajsStratFig",res = 600)
+
+makePNG(fig = recoveryTrajsStratFig,path_to_output.x = figuresPath,file_name = "RRI-Trajectory-NotPlanted",res = 600)
 
 ################################################################
-#############creat new time-invariant variables here############
+#############create new time-invariant variables here############
 ################################################################
-
-
-
-
-
-
 
 
 
 #############################################################
 ################histograms of time-invariant variables#######
 #############################################################
-
-patchLevelTimeInvariant <- patchLevelTimeVarying %>%
+patchLevelTimeInvariant <- df3 %>%
   select_if(function(col) length(unique(col)) <= length(PatchesIN)) %>%
+  select(-ConDom) %>%
   group_by(patchID) %>%
-  summarise_all(.funs = mean)
+  summarise_all(.funs = mean) %>%
+  mutate(planted = postFirePlanting > 0.25) %>%
+  mutate(plantedNamed = case_when(
+    planted == TRUE ~ "planted",
+    planted == FALSE ~ "notPlanted"
+  )) 
+  
+  
 
 cols <- patchLevelTimeInvariant %>%
-  #dplyr::select(-fireYear,-wilderness,-patchID,-focalAreaID,-year,-timeSinceFire) %>%
-  dplyr::select(-fireYear,-wilderness,-patchID,-focalAreaID) %>%
-  colnames()
+  dplyr::select(-fireYear,-wilderness,-patchID,-focalAreaID,-year,-timeSinceFire,
+                -fireYear,-ConDom,-recoveryTrajLength,-year) %>% colnames()
 
 
 histograms <- ggplot(gather(patchLevelTimeInvariant %>% 
-                  dplyr::select(-fireYear,-wilderness,-patchID),
+                  dplyr::select(-fireYear,-wilderness,-patchID,-year),
                 cols,value),mapping = aes(x = value)) +
-  geom_dotplot(aes(y = ..density..),method = "histodot") +
-  #geom_histogram(aes(y = ..density..)) +
+  #geom_histogram() +
+  #geom_dotplot(aes(y = ..density..),method = "histodot") +
+  geom_histogram(aes(y = ..density..)) +
   geom_density() +
   facet_wrap(.~cols, scales = "free",nrow = 3) +
   theme_minimal()
 
-makePNG(fig = histograms,
-        path_to_output.x = figuresPath,
-        file_name = "histograms_timeInvariantVars",
-        res = 100, width = 20, height = 10)
+histograms
 
-
+# makePNG(fig = histograms,
+#         path_to_output.x = figuresPath,
+#         file_name = "histograms_timeInvariantVars",
+#         res = 100, width = 20, height = 10)
 
 #############################################
 ####exploring associations among variables###
 #############################################
-
 #correlation plot of all time-invariant variables
-corr <- patchLevelTimeInvariant %>% select_at(.vars = cols) %>% cor() %>% round(1)
-Pmat <- patchLevelTimeInvariant %>% select_at(.vars = cols) %>% cor_pmat()
+corr <- patchLevelTimeInvariant %>% select_at(.vars = cols) %>% select(-CWDhist) %>% cor() %>% round(1)
+Pmat <- patchLevelTimeInvariant %>% select_at(.vars = cols) %>% select(-CWDhist) %>% cor_pmat()
+
 corrPlot <- ggcorrplot(corr, hc.order = TRUE, type = "full",
            lab = TRUE, p.mat = Pmat) +
   theme_minimal() +
   theme(legend.position = "none",
         axis.text.x.bottom  = element_text(angle = 45, hjust=1))
-makePNG(fig = corrPlot,
-        path_to_output.x = figuresPath,
-        file_name = "corrPlot",
-        res = 100, width = 10, height = 10)
+
+
+
+#exploring the relationships between RRI_per_year and driver vars
+
+vars <- names(df3)[c(7,8,9,10,11,13,14,15,16,17,18,19,20,21,22,23,24)]
+vars %in% names(patchLevelTimeInvariant)
+
+varOfInterest <- vars[2]
+makeCorrPlot <- function(varOfInterest = vars[1]){
+  
+  plot <- patchLevelTimeInvariant %>% 
+    filter(RR_per_year < 0.2) %>%
+    filter(burnSev < 5) %>%
+    ggplot(aes_string(varOfInterest,"RR_per_year",color = "burnSev")) +
+    geom_point() +
+    geom_smooth(method = "lm") +
+    scale_colour_gradient2(low = "blue", mid = "yellow", high = "red", midpoint = 3) +
+    facet_grid(~plantedNamed) +
+    labs(title = varOfInterest) +
+    adams_theme
+  
+  makePNG(fig = plot, path_to_output.x = paste0(figuresPath,"correlations/"), file_name = varOfInterest)
+  #return(plot)
+  
+}
+
+#makeCorrPlot(varOfInterest = vars[2])
+
+patchLevelTimeInvariant %>%
+  ggplot(aes(x = RR_per_year)) +
+  geom_histogram() + 
+  scale_x_continuous(limits = c(0,0.15)) +
+  adams_theme
+
+map(.x = vars, .f = makeCorrPlot)
 
 
 
 
-#could make RRI and other vars here.
+
+
+# makePNG(fig = corrPlot,
+#         path_to_output.x = figuresPath,
+#         file_name = "corrPlot",
+#         res = 100, width = 10, height = 10)
+
+
+
+
+
 
 
 

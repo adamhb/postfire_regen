@@ -1,5 +1,5 @@
 
-
+remote_server <- F
 #import libraries
 library(tidyverse)
 library(parallel)
@@ -29,7 +29,7 @@ summary_stats <- function(data){
   focal_areas <- unique(data$focalAreaID)
   n_patches <- length(unique(data$patchID))
   n_pixels <- length(unique(data$pixelID))
-  area <- n_pixels * (60*60) / 1e4 #hectares
+  area <- n_pixels * (30*30) / 1e4 #hectares
   output <- tibble(stat = c("n Focal Areas", "n Patches","n Pixels","Area (ha)"),
                    value = c(n_focal_areas,n_patches,n_pixels,area))
 

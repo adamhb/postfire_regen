@@ -3,16 +3,18 @@ gc()
 source('00_setup.R')
 
 #set parameters
+
 minPixPerPatch <- 100
 nViablePixPerYear <- 100
-light_run <- T
+light_run <- F
 write_csvs <- T
 patches_sub_sample <- 50
 path <- "~/cloud/gdrive/fire_project/local_data/fromGEE/checked/"
 tmpFolder <- "~/cloud/gdrive/fire_project/local_data/fromGEE/tmp/"
 outpath <- "~/cloud/gdrive/fire_project/local_data/CleanedDataForAnalysis/"
+path_to_clean_data <- "~/cloud/gdrive/fire_project/local_data/CleanedDataForAnalysis/"
 
-files <- list.files(path,pattern = "csv")[c(1,5,10,23,17)]
+files <- list.files(path,pattern = "csv")
 
 write_csv_to_temp <- function(obj,file_name,perPatch = F){
   write_csv(obj,file = paste0(tmpFolder,file_name,".csv"))
@@ -88,6 +90,18 @@ df <- df %>% filter(patchID %in% PatchesIN)
 
 fa_pa_px <- df %>% select(focalAreaID,patchID,pixelID)
 
+
+patchSizeDistribution <- fa_pa_px %>%
+  group_by(patchID) %>%
+  summarise(patchSize = length(pixelID)*900/1e4) %>% 
+  ggplot(aes(patchSize)) +
+  geom_histogram(binwidth = 5, color="black", fill="white") +
+  scale_x_continuous("Patch size (ha)", breaks = seq(0,70,by = 5)) +
+  adams_theme
+
+
+
+makePNG(fig = patchSizeDistribution, path_to_output.x = "figures/",file_name = "PatchSizedist")
 #save the time-invariant variables (per pixel and per patch versions)
 stableVars <- df %>% dplyr::select(pixelID, patchID,
                                    CWDhist,PPThist,PPThistSD,T_meanHist,T_meanSD,
@@ -432,17 +446,17 @@ write_csv(calculatedTimeInvariant, file = paste0(tmpFolder,"calculatedTimeInvari
 stableVarsPerPatch <- readPatchLevel("stableVars")
 ConProb <- readPatchLevel("ConProb")
 
-AllVarsPatchLevel <- ConProb %>%
+allVarsPatchLevel <- ConProb %>%
+  mutate_at(.vars = "ConProb", .funs = function(x){x/100}) %>%
   left_join(stableVarsPerPatch, by = "patchID") %>%
   left_join(calculatedTimeInvariant, by = "patchID") %>%
-  mutate(timeSinceFire = year-fireYear) %>%
-  mutate(disturbanceSize = preFireConProb - postFireConProb,
-  ARI = ConProb - postFireConProb,
-  RRI = ARI / disturbanceSize)
+  mutate_at(.vars = "fireYear",.funs = round) %>%
+  mutate(timeSinceFire = year-fireYear) 
+  
 #add recovery trajectory length here?
 
 #write_csv_to_temp(AllVarsPatchLevel,file_name = "AllVarsPatchLevel")
-write_csv(AllVarsPatchLevel, file = paste0(outpath,"allVarsPatchLevel.csv"))
+write_csv(allVarsPatchLevel, file = paste0(path_to_clean_data,"allVarsPatchLevel.csv"))
 
 NAs_per_var <- summarise_all(AllVarsPatchLevel, .funs = is.na) %>%
   summarise_all(.tbl = ., .funs = sum) %>% as.numeric()

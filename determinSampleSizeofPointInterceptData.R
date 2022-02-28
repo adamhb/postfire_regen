@@ -1,18 +1,19 @@
 library(tidyverse)
 
-raw <- read_csv('~/cloud/gdrive/fire_project/local_data/field_validation/PointInterceptData/pointInterceptData.csv') 
+raw <- read_csv('~/cloud/gdrive/fire_project/local_data/classificationData/pct_cover_training_feb_2022/pct_cover_data.csv') %>%
+  filter(fid == 2)
 
 #Clean the point intercept data
-df <- raw %>%
-  mutate_at(.vars = "pft",.funs = tolower) %>% 
-  mutate_at(
-    vars(starts_with("pft")),
-    funs(case_when(
-      . == "br" ~ "r",
-      . == "p" ~ "b",
-      TRUE ~ .
-    ))
-  ) %>% rename(pointID = photoID)
+# df <- raw %>%
+#   mutate_at(.vars = "pft",.funs = tolower) %>% 
+#   mutate_at(
+#     vars(starts_with("pft")),
+#     funs(case_when(
+#       . == "br" ~ "r",
+#       . == "p" ~ "b",
+#       TRUE ~ .
+#     ))
+#   ) %>% rename(pointID = photoID)
 
 
 ########################
@@ -28,11 +29,8 @@ getPctCover <- function(df,pft = "c"){
   return(as.numeric(pct_cover[pft]))
 }
 
-getPctCover(df,c("c","d"))
+getSDofSampleMeans <- function(df, n_draws, sample_size, returnEstimates = F){
 
-
-getSDofSampleMeans <- function(df, n_draws, sample_size){
-  
   estimates <- c()
   
   j <- 0
@@ -41,12 +39,16 @@ getSDofSampleMeans <- function(df, n_draws, sample_size){
     j <- j + 1
     rows <- floor(runif(n = sample_size, min = 1, max = nrow(df)))
     sample <- df[rows,]
-    estimates[j] <- getPctCover(sample,"s")
+    estimates[j] <- getPctCover(sample,"c")
   }
-  
-  return(sd(estimates))
+  if(returnEstimates == T){
+    return(estimates)
+  }else{
+    return(sd(estimates))
+  }
 }
 
+hist(getSDofSampleMeans(df = raw, n_draws = 300, sample_size = 100, returnEstimates = T))
 
 getSampleSaturation <- function(df, min_ssize, max_ssize, n_ssizes, n_draws) {
   ssizes <- as.integer(seq(min_ssize,min(max_ssize,nrow(df)),length.out = n_ssizes))
@@ -62,7 +64,7 @@ getSampleSaturation <- function(df, min_ssize, max_ssize, n_ssizes, n_draws) {
 }
 
 
-sd_vs_sample_size <- getSampleSaturation(raw,30,400,10,500)
+sd_vs_sample_size <- getSampleSaturation(raw,10,400,10,500)
 
 
 #The image below shows that the estimate of percent cover

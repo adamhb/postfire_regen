@@ -49,7 +49,7 @@ validationPlotCentroids <- rbind(lineInterceptValidationPoints,pointInterceptCen
 validationPlotRSPredictions <- read_csv('data/validationPlotPredictions_2_28_22.csv') %>%
   select(plotID,classification_mean) %>%
   drop_na(plotID) %>%
-  rename(ConProb = classification_mean)
+  rename(pctCoverRS = classification_mean)
   #mutate_at(.vars = "ConProb", .funs = function(x){x/100})
 
 
@@ -61,22 +61,35 @@ validationDF <- fieldValidationData %>%
 categoricalDF <- fieldValidationData %>%
   filter(pft == "c") %>%
   left_join(validationPlotRSPredictions, by = "plotID") %>%
-  mutate(coniferDomPred = ConProb > 0.5) %>%
+  mutate(coniferDomPred = pctCoverRS > 0.5) %>%
   mutate(coniferDomRef = pctCover > 0.5) %>%
   select(coniferDomPred, coniferDomRef) %>%
   table() 
   
- 
 
 #############################
 #fitting a logistic model####
 #############################
 #to predict pct cover as a function of conifer prob
-forLogit <- validationDF %>%
-  mutate(conProbNorm = (ConProb))
-logitMod <- glm(data = forLogit, formula = conProbNorm ~ pctCover, family = "binomial")
-predictions <- predict(object = logitMod,newdata = tibble(pctCover = forLogit$pctCover),type = "response")
-forLogit$predictions <- predictions
+
+linearMod <- lm(validationDF, formula = pctCover ~ pctCoverRS)
+summary(linearMod)
+
+validationFig <- validationDF %>%
+  ggplot(aes(pctCoverRS, pctCover)) +
+  geom_point() +
+  xlab(label = "Predicted conifer cover \n [% of surface area]") +
+  ylab('Conifer cover observed in field \n [% of surface area]') +
+  geom_smooth(method = "lm",
+              color = "#666666") +
+  scale_x_continuous(limits = c(0,0.8),breaks = seq(0,0.7,0.1)) +
+  scale_y_continuous(limits = c(0,0.8),breaks = seq(0,0.8,0.1)) +
+  adams_theme
+
+makePNG(fig = validationFig, path_to_output.x = 'figures/', file_name = "validationFig")
+# logitMod <- glm(data = forLogit, formula = conProbNorm ~ pctCover, family = "binomial")
+# predictions <- predict(object = logitMod,newdata = tibble(pctCover = forLogit$pctCover),type = "response")
+# forLogit$predictions <- predictions
 
 # logitModInverse <- glm(data = forLogit, formula = pctCover/0.7228916 ~ conProbNorm, family = "binomial",)
 # predictionsInverse <- predict(object = logitModInverse,newdata = tibble(conProbNorm = forLogit$conProbNorm),type = "response")
@@ -85,80 +98,80 @@ forLogit$predictions <- predictions
 ##################
 #validation figs###
 ##################
-logMod <- lm(data = validationDF, formula = pctCover ~ log(ConProb))
-validationDF$pctCovPreds <- predict(object = logMod,newdata = validationDF)
-summary(logMod)
-
-validationFigInverse <- validationDF %>%
-  ggplot(aes(ConProb, pctCover) ) +
-  geom_point() +
-  geom_vline(xintercept = 0.5, linetype = "dotted") +
-  geom_line(mapping = aes(ConProb,pctCovPreds), linetype = "dashed") +
-  xlab('Predicted probability of conifer dominance \n (> 50% conifer canopy cover)') +
-  ylab('Fractional conifer canopy cover \n observed in field') +
-  #scale_x_continuous(limits = c(0,0.8),breaks = seq(0,8,0.1)) +
-  adams_theme
-makePNG(fig = validationFigInverse, path_to_output.x = figuresPath, file_name = "validationFig")
-
-validationFigInverse_lowcon <- validationDF %>%
-  ggplot(aes(ConProb, pctCover) ) +
-  geom_point() +
-  geom_vline(xintercept = 0.5, linetype = "dotted") +
-  geom_line(mapping = aes(ConProb,pctCovPreds), linetype = "dashed") +
-  scale_y_continuous(limits = c(0,0.25)) +
-  scale_x_continuous(limits = c(0,0.25)) +
-  xlab('Predicted probability of conifer dominance \n (> 50% conifer canopy cover)') +
-  ylab('Fractional conifer canopy cover \n observed in field') +
-  #scale_x_continuous(limits = c(0,0.8),breaks = seq(0,8,0.1)) +
-  adams_theme
-makePNG(fig = validationFigInverse_lowcon, path_to_output.x = figuresPath, file_name = "validationLowConiferAreas")
-
-
-makePNG(validationFigInverse, "figures/","validationFigBag900")
-
-validationFig <- validationDF %>%
-  ggplot(aes(pctCover,ConProb)) +
-  geom_point() +
-  geom_line(data = forLogit, mapping = aes(pctCover,predictions), linetype = "dotted") +
-  geom_vline(xintercept = 0.5, linetype = "dashed") +
-  ylab('Predicted probability of conifer dominance \n (> 50% conifer canopy cover)') +
-  xlab('Conifer canopy cover (% of total ground area) \n observed in field') +
-  scale_x_continuous(limits = c(0,0.8),breaks = seq(0,8,0.1)) +
-  adams_theme
-
-#makePNG(fig = validationFig,path_to_output.x = "figures/", file_name = "validationFig.png")
-
-
-#Interpretation of conifer probability
-
-#When the predicted conifer probability is > 50% there are always conifers present in the field
-#Conifers could occupy as little as 20% of hte canopy, but more likely 50-60% of the canopy
-ggplot(validationDF %>% filter(ConProb > 0.5), 
-       aes(x=pctCover)) + 
-  geom_histogram(binwidth=0.01) +
-  xlab("Observed Pct cover") +
-  labs(title = "When predicted ConProb > 50%") +
-  adams_theme
-# Change colors
-
-
-# 5-50 percent probability means anywhere from 20-40 of canopy (significant recovery, but not domianting the canopy)
-ggplot(validationDF %>% filter(ConProb < 0.5 & ConProb > 0.20), 
-       aes(x=pctCover)) + 
-  geom_histogram(binwidth=0.01) +
-  xlab("Observed Pct cover") +
-  scale_x_continuous(limits = c(0,0.7)) +
-  labs(title = "When predicted ConProb between 5 and 20%") +
-  adams_theme
-
-# < 1 percent probability of recovery means that conifers are either not there or comprise
-# (most likely) < 2.5%, potentially up to 17%
-ggplot(validationDF %>% filter(ConProb < 0.01), 
-       aes(x=pctCover)) + 
-  geom_histogram(binwidth=0.001) +
-  xlab("Observed Pct cover") +
-  labs(title = "When predicted ConProb < 1%") +
-  adams_theme
+# logMod <- lm(data = validationDF, formula = pctCover ~ log(ConProb))
+# validationDF$pctCovPreds <- predict(object = logMod,newdata = validationDF)
+# summary(logMod)
+# 
+# validationFigInverse <- validationDF %>%
+#   ggplot(aes(ConProb, pctCover) ) +
+#   geom_point() +
+#   geom_vline(xintercept = 0.5, linetype = "dotted") +
+#   geom_line(mapping = aes(ConProb,pctCovPreds), linetype = "dashed") +
+#   xlab('Predicted probability of conifer dominance \n (> 50% conifer canopy cover)') +
+#   ylab('Fractional conifer canopy cover \n observed in field') +
+#   #scale_x_continuous(limits = c(0,0.8),breaks = seq(0,8,0.1)) +
+#   adams_theme
+# makePNG(fig = validationFigInverse, path_to_output.x = figuresPath, file_name = "validationFig")
+# 
+# validationFigInverse_lowcon <- validationDF %>%
+#   ggplot(aes(ConProb, pctCover) ) +
+#   geom_point() +
+#   geom_vline(xintercept = 0.5, linetype = "dotted") +
+#   geom_line(mapping = aes(ConProb,pctCovPreds), linetype = "dashed") +
+#   scale_y_continuous(limits = c(0,0.25)) +
+#   scale_x_continuous(limits = c(0,0.25)) +
+#   xlab('Predicted probability of conifer dominance \n (> 50% conifer canopy cover)') +
+#   ylab('Fractional conifer canopy cover \n observed in field') +
+#   #scale_x_continuous(limits = c(0,0.8),breaks = seq(0,8,0.1)) +
+#   adams_theme
+# makePNG(fig = validationFigInverse_lowcon, path_to_output.x = figuresPath, file_name = "validationLowConiferAreas")
+# 
+# 
+# makePNG(validationFigInverse, "figures/","validationFigBag900")
+# 
+# validationFig <- validationDF %>%
+#   ggplot(aes(pctCover,ConProb)) +
+#   geom_point() +
+#   geom_line(data = forLogit, mapping = aes(pctCover,predictions), linetype = "dotted") +
+#   geom_vline(xintercept = 0.5, linetype = "dashed") +
+#   ylab('Predicted probability of conifer dominance \n (> 50% conifer canopy cover)') +
+#   xlab('Conifer canopy cover (% of total ground area) \n observed in field') +
+#   scale_x_continuous(limits = c(0,0.8),breaks = seq(0,8,0.1)) +
+#   adams_theme
+# 
+# #makePNG(fig = validationFig,path_to_output.x = "figures/", file_name = "validationFig.png")
+# 
+# 
+# #Interpretation of conifer probability
+# 
+# #When the predicted conifer probability is > 50% there are always conifers present in the field
+# #Conifers could occupy as little as 20% of hte canopy, but more likely 50-60% of the canopy
+# ggplot(validationDF %>% filter(ConProb > 0.5), 
+#        aes(x=pctCover)) + 
+#   geom_histogram(binwidth=0.01) +
+#   xlab("Observed Pct cover") +
+#   labs(title = "When predicted ConProb > 50%") +
+#   adams_theme
+# # Change colors
+# 
+# 
+# # 5-50 percent probability means anywhere from 20-40 of canopy (significant recovery, but not domianting the canopy)
+# ggplot(validationDF %>% filter(ConProb < 0.5 & ConProb > 0.20), 
+#        aes(x=pctCover)) + 
+#   geom_histogram(binwidth=0.01) +
+#   xlab("Observed Pct cover") +
+#   scale_x_continuous(limits = c(0,0.7)) +
+#   labs(title = "When predicted ConProb between 5 and 20%") +
+#   adams_theme
+# 
+# # < 1 percent probability of recovery means that conifers are either not there or comprise
+# # (most likely) < 2.5%, potentially up to 17%
+# ggplot(validationDF %>% filter(ConProb < 0.01), 
+#        aes(x=pctCover)) + 
+#   geom_histogram(binwidth=0.001) +
+#   xlab("Observed Pct cover") +
+#   labs(title = "When predicted ConProb < 1%") +
+#   adams_theme
 
 #The next classification goal would be to develop an algorithm that can better distinguish
 #between plots that have conifers as a small fraction of the pixel window

@@ -58,13 +58,13 @@ validationDF <- fieldValidationData %>%
   filter(pft == "c") %>%
   left_join(validationPlotRSPredictions, by = "plotID") 
 
-categoricalDF <- fieldValidationData %>%
-  filter(pft == "c") %>%
-  left_join(validationPlotRSPredictions, by = "plotID") %>%
-  mutate(coniferDomPred = pctCoverRS > 0.5) %>%
-  mutate(coniferDomRef = pctCover > 0.5) %>%
-  select(coniferDomPred, coniferDomRef) %>%
-  table() 
+# categoricalDF <- fieldValidationData %>%
+#   filter(pft == "c") %>%
+#   left_join(validationPlotRSPredictions, by = "plotID") %>%
+#   mutate(coniferDomPred = pctCoverRS > 0.5) %>%
+#   mutate(coniferDomRef = pctCover > 0.5) %>%
+#   select(coniferDomPred, coniferDomRef) %>%
+#   table() 
   
 
 #############################

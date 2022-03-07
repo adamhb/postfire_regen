@@ -5,10 +5,10 @@ source('00_validate_classifier.R')
 
 fromFile <- T
 makeFigs <- T
-cleanedData <- 'allVarsPatchLevel.csv'
+cleanedData <- 'allVarsPixelLevel_3_6_2022.csv'
 ###########################
 if(fromFile == T){
-  path <- "~/cloud/gdrive/fire_project/local_data/CleanedDataForAnalysis/"
+  path <- "~/cloud/gdrive/fire_project/local_data/fromGEE/tmp/"
   outpath <- "~/cloud/gdrive/fire_project/local_data/"
   figuresPath <- '~/cloud/gdrive/fire_project/figures/'
   df2 <- read_csv(paste0(path,cleanedData),
@@ -20,7 +20,7 @@ if(fromFile == T){
 
 `%!in%` <- Negate(`%in%`)
 df2 <- df2 %>% filter(patchID %!in% c("-777474889-FA-22","118942956-FA-27"),
-                      preFireConProb > 50)
+                      preFireConProb > 0.2)
 
 
 ###################################
@@ -36,13 +36,13 @@ unique(df2$focalAreaID)
 
 
 
-df2$pctCovCon <- predict(object = logMod,newdata = df2) #adding pct cover
+#df2$pctCovCon <- predict(object = logMod,newdata = df2) #adding pct cover
 df2$ConDom <- df2$pctCovCon > 0.5 #adding if conifers are dominant
 df2$recoveryTrajLength <- endYr - df2$fireYear #adding recovery length
 
 
 df3 <- df2 %>% 
-  mutate_at(.vars = "ConProb",.funs = function(x){x*100}) %>%
+  #mutate_at(.vars = "ConProb",.funs = function(x){x*100}) %>%
   filter(burnSev < 5) %>%
   mutate(disturbanceSize = preFireConProb - postFireConProb,
          ARI = ConProb - postFireConProb,
@@ -56,7 +56,7 @@ makeRRIatEndOfTraj <- function(patch = df3$patchID[1]){
   finalYrofTraj <- fireYear + recoveryTrajLength
   RRIFinalYear <- df3[df3$patchID == patch & df3$year == finalYrofTraj,]$RRI
   RR_per_year <- RRIFinalYear / recoveryTrajLength
-  output <- tibble(patchID = patch,
+  output <- tibble(pixelID = patch,
                    finalYrofTraj = finalYrofTraj,
                    RRIFinalYear = RRIFinalYear,
                    RR_per_year = RR_per_year)
@@ -64,8 +64,13 @@ makeRRIatEndOfTraj <- function(patch = df3$patchID[1]){
 }
 makeRRIatEndOfTraj()
 
-df3 <- df3 %>% 
-  left_join(map_df(.x = unique(df3$patchID), .f = makeRRIatEndOfTraj),by = "patchID")
+df4 <- df3 %>% 
+  left_join(map_df(.x = unique(df3$pixelID)[1:1000], .f = makeRRIatEndOfTraj),by = "pixelID")
+
+
+df3 %>% filter(year == 2016) %>% 
+  ggplot(mapping = aes(RRI)) +
+           geom_histogram(binwidth = 0.1)
 
 ##########################
 ####basic info############
@@ -100,11 +105,20 @@ RRI_mean_allPatches <- ggplot(data = meanRecoveryOfAllPatches, mapping = aes(tim
 RRI_mean_allPatches 
 
 #visualize RRI of all patches and the mean across patches
+
+
+pixels <- unique(df3$pixelID)
+rows <- as.integer(runif(n = 10, min = 1, max = length(pixels)))
+pixel_sample <- pixels[rows]
+
+
+
 recoveryTrajsFig <- df3 %>%
-  ggplot(aes(timeSinceFire,RRI,color = patchID)) +
+  filter(pixelID %in% pixel_sample) %>%
+  ggplot(aes(timeSinceFire,RRI,color = pixelID)) +
   geom_line() +
-  geom_line(data = meanRecoveryOfAllPatches, mapping = aes(timeSinceFire,RRI), color = "black", size = 3) +
-  scale_y_continuous(limits = c(-0.3,1.2)) +
+  #geom_line(data = meanRecoveryOfAllPatches, mapping = aes(timeSinceFire,RRI), color = "black", size = 3) +
+  #scale_y_continuous(limits = c(-0.3,1.2)) +
   scale_x_continuous(limits = c(0,35)) +
   adams_theme +
   theme(legend.position = "none")

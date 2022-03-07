@@ -4,12 +4,13 @@ source('00_setup.R')
 
 #set parameters
 
-minPixPerPatch <- 100
-nViablePixPerYear <- 100
+minPixPerPatch <- 1
+nViablePixPerYear <- 1
 light_run <- F
 write_csvs <- T
 patches_sub_sample <- 50
 path <- "~/cloud/gdrive/fire_project/local_data/fromGEE/checked/"
+path <- "~/cloud/gdrive/fire_project/local_data/fromGEE/"
 tmpFolder <- "~/cloud/gdrive/fire_project/local_data/fromGEE/tmp/"
 outpath <- "~/cloud/gdrive/fire_project/local_data/CleanedDataForAnalysis/"
 path_to_clean_data <- "~/cloud/gdrive/fire_project/local_data/CleanedDataForAnalysis/"
@@ -39,6 +40,9 @@ readPatchLevel <- function(var){
   read_csv(paste0(tmpFolder,var,"PerPatch.csv"),show_col_types = FALSE)
 }
 
+readPixelLevel <- function(var){
+  read_csv(paste0(tmpFolder,var,".csv"),show_col_types = FALSE)
+}
 
 
 #outPath <- "/home/rstudio/figures/"
@@ -87,40 +91,40 @@ print(paste("nPatches after light run filter =",length(PatchesIN)))
 
 df <- df %>% filter(patchID %in% PatchesIN)
 
-
 fa_pa_px <- df %>% select(focalAreaID,patchID,pixelID)
 
+lu <- function(x){length(unique(x))}
 
-patchSizeDistribution <- fa_pa_px %>%
-  group_by(patchID) %>%
-  summarise(patchSize = length(pixelID)*900/1e4) %>% 
-  ggplot(aes(patchSize)) +
-  geom_histogram(binwidth = 5, color="black", fill="white") +
-  scale_x_continuous("Patch size (ha)", breaks = seq(0,70,by = 5)) +
-  adams_theme
+pixelIDs <- unique(df$pixelID) 
+
+# patchSizeDistribution <- fa_pa_px %>%
+#   group_by(patchID) %>%
+#   summarise(patchSize = length(pixelID)*900/1e4) %>% 
+#   ggplot(aes(patchSize)) +
+#   geom_histogram(binwidth = 5, color="black", fill="white") +
+#   scale_x_continuous("Patch size (ha)", breaks = seq(0,70,by = 5)) +
+#   adams_theme
 
 
-
-makePNG(fig = patchSizeDistribution, path_to_output.x = "figures/",file_name = "PatchSizedist")
+#makePNG(fig = patchSizeDistribution, path_to_output.x = "figures/",file_name = "PatchSizedist")
 #save the time-invariant variables (per pixel and per patch versions)
 stableVars <- df %>% dplyr::select(pixelID, patchID,
                                    CWDhist,PPThist,PPThistSD,T_meanHist,T_meanSD,
                                    SolarLoad,aspect,eastness,northness,slope,elevation,
+                                   tpi, AEThist,
                                    burnSev,wilderness)
+
 write_csv(x = stableVars, file = paste0(tmpFolder,"stableVars.csv"))
 
-stableVarsPerPatch <- stableVars %>%
-  select(-pixelID) %>%
-  group_by(patchID) %>%
-  summarise_if(.predicate = is.numeric, .funs = mean)
-write_csv(x = stableVarsPerPatch , file = paste0(tmpFolder,"stableVarsPerPatch.csv"))
+# stableVarsPerPatch <- stableVars %>%
+#   select(-pixelID) %>%
+#   group_by(patchID) %>%
+#   summarise_if(.predicate = is.numeric, .funs = mean)
+# write_csv(x = stableVarsPerPatch , file = paste0(tmpFolder,"stableVarsPerPatch.csv"))
 
 rm(stableVars)
 gc()
 ########################################
-
-
-
 
 #function to get the time trajectories of time-varying variables
 GetTimeTraj <- function(d, varOfInterest, pattern = "[:digit:]{4}(?=0)", write_to_csv = F){
@@ -145,21 +149,21 @@ ConProb <- GetTimeTraj(d = df,varOfInterest = "ConProb") %>%
 
 nYearsPerStudy <- max(as.numeric(ConProb$year)) - min(as.numeric(ConProb$year)) + 1
 
-viablePatches <- ConProb %>% 
-  group_by(patchID,year) %>%
-  summarise(ConProb_n = length(ConProb),
-            NA_n = sum(is.na(ConProb))) %>%
-  mutate(ViablePixelsPerPatch = ConProb_n - NA_n) %>%
-  filter(ViablePixelsPerPatch > nViablePixPerYear) %>%
-  group_by(patchID) %>%
-  summarise(NViableYears = length(year)) %>%
-  filter(NViableYears == nYearsPerStudy) %>%
-  pull(patchID) %>% unique()
+# viablePatches <- ConProb %>% 
+#   group_by(patchID,year) %>%
+#   summarise(ConProb_n = length(ConProb),
+#             NA_n = sum(is.na(ConProb))) %>%
+#   mutate(ViablePixelsPerPatch = ConProb_n - NA_n) %>%
+#   filter(ViablePixelsPerPatch > nViablePixPerYear) %>%
+#   group_by(patchID) %>%
+#   summarise(NViableYears = length(year)) %>%
+#   filter(NViableYears == nYearsPerStudy) %>%
+#   pull(patchID) %>% unique()
 
-PatchesIN <- PatchesIN[PatchesIN %in% viablePatches] 
+#PatchesIN <- PatchesIN[PatchesIN %in% viablePatches] 
 
 #update the df
-df <- df %>% filter(patchID %in% PatchesIN)
+#df <- df %>% filter(patchID %in% PatchesIN)
 pixelIDs <- unique(df$pixelID)
 patchIDs <- unique(df$patchID)
 
@@ -168,12 +172,12 @@ ConProb <- GetTimeTraj(d = df,varOfInterest = "ConProb") %>%
   dplyr::select(pixelID,patchID,focalAreaID,year,fireYear,ConProb)
 
 write_csv_to_temp(ConProb ,"ConProb")
-writePatchLevel(df = ConProb , "ConProb")
+#writePatchLevel(df = ConProb , "ConProb")
 
 seedDF <- GetTimeTraj(d = df,varOfInterest = "SAP") %>% 
   dplyr::select(pixelID,patchID,focalAreaID,year,fireYear, SAP)
 write_csv_to_temp(seedDF,"seedDF")
-writePatchLevel(df = seedDF, "SAP")
+#writePatchLevel(df = seedDF, "SAP")
 rm(seedDF)
 
 
@@ -182,7 +186,7 @@ managementDF <- GetTimeTraj(d = df,varOfInterest = "management",pattern = "[:dig
   mutate_at(.vars = 'management', .funs = function(x){x > 0}) %>%
   mutate_at(.vars = "management", .funs = as.numeric)
 write_csv_to_temp(managementDF,"managementDF")
-writePatchLevel(df = managementDF, "management")
+#writePatchLevel(df = managementDF, "management")
 rm(managementDF)
 
 pptOctNovDecDF <- GetTimeTraj(d = df,varOfInterest = "10_ppt",pattern = "[:digit:]{4}")
@@ -190,7 +194,7 @@ names(pptOctNovDecDF)[6] <- "pptOctNovDec"
 pptOctNovDecDF <- pptOctNovDecDF %>%
   dplyr::select(pixelID,patchID,focalAreaID,year,fireYear,pptOctNovDec)
 write_csv_to_temp(pptOctNovDecDF,"pptOctNovDecDF")
-writePatchLevel(df = pptOctNovDecDF, "pptOctNovDec")
+#writePatchLevel(df = pptOctNovDecDF, "pptOctNovDec")
 rm(pptOctNovDecDF)
 
 
@@ -199,7 +203,7 @@ names(pptJanSeptDF)[6] <- "pptJanSept"
 pptJanSeptDF <- pptJanSeptDF %>%
   dplyr::select(pixelID,patchID,focalAreaID,year,fireYear,pptJanSept)
 write_csv_to_temp(pptJanSeptDF,"pptJanSeptDF")
-writePatchLevel(df = pptJanSeptDF, "pptJanSept")
+#writePatchLevel(df = pptJanSeptDF, "pptJanSept")
 rm(pptJanSeptDF)
 
 
@@ -208,7 +212,7 @@ names(tmaxJanSeptDF)[6] <- "tmaxJanSept"
 tmaxJanSeptDF <- tmaxJanSeptDF %>%
   dplyr::select(pixelID,year,patchID,focalAreaID,fireYear,tmaxJanSept)
 write_csv_to_temp(tmaxJanSeptDF,"tmaxJanSeptDF")
-writePatchLevel(df = tmaxJanSeptDF, "tmaxJanSept")
+#writePatchLevel(df = tmaxJanSeptDF, "tmaxJanSept")
 rm(tmaxJanSeptDF)
 
 
@@ -217,7 +221,7 @@ names(tmaxOctNovDecDF)[6] <- "tmaxOctNovDec"
 tmaxOctNovDecDF <- tmaxOctNovDecDF %>%
   dplyr::select(pixelID,patchID,focalAreaID,year,fireYear,tmaxOctNovDec)
 write_csv_to_temp(tmaxOctNovDecDF,"tmaxOctNovDecDF")
-writePatchLevel(df = tmaxOctNovDecDF, "tmaxOctNovDec")
+#writePatchLevel(df = tmaxOctNovDecDF, "tmaxOctNovDec")
 rm(tmaxOctNovDecDF)
 
 
@@ -235,7 +239,7 @@ rm(tmaxOctNovDecDF)
 
 #function to calculate new time-invariant variables from the time-varying variables
 GetTimeVarStat <- function(pixel, d, varOfInterest,relYrs,stat = "mean") {
-  d <- d %>%
+   d <- d %>%
     mutate_at(.vars = "year",.funs = as.numeric) %>%
     mutate(timeSinceFire = year-fireYear)
 
@@ -243,10 +247,10 @@ GetTimeVarStat <- function(pixel, d, varOfInterest,relYrs,stat = "mean") {
   if(stat == "sum"){f = function(x){sum(x,na.rm = T)}}
   if(stat == "max"){f = function(x){max(x,na.rm = T)}}
   
-  fireYear <- d[d$patchID == pixel,]$fireYear #get fire year of pixel
+  fireYear <- d[d$pixelID == pixel,]$fireYear #get fire year of pixel
   output <- d %>%
     filter(timeSinceFire %in% relYrs,
-           patchID == pixel) %>%
+           pixelID == pixel) %>%
     pull(varOfInterest) %>% f()
  
   return(output)
@@ -260,96 +264,49 @@ GetTimeVarStat <- function(pixel, d, varOfInterest,relYrs,stat = "mean") {
 numCores <- detectCores()
 start_time <- Sys.time()
 
-ConProb <- readPatchLevel("ConProb")
-preFireConProb <- mclapply(X = patchIDs,
-       FUN = GetTimeVarStat,
-       mc.cores = numCores,
-       d = ConProb, 
-       varOfInterest = "ConProb",
-       relYrs = c(-1,-2)) %>% flatten_dbl()
+# ConProb %>%
+#   filter(pixelID %in% pixelIDs[11]) %>%
+#   ggplot(aes(year,ConProb,color = pixelID)) +
+#   geom_smooth() +
+#   scale_x_continuous(minor_breaks = 1990:2020) +
+#   geom_point() +
+#   adams_theme
+
+#GetTimeVarStat(pixel = pixelIDs[1],d = ConProb, varOfInterest = "ConProb", relYrs = c(-1,-2))
+
+
+GetTimeVarStat2 <- function(var = "ConProb", fileName = "ConProb", relYrs.x = c(-1,-2), stat.x = "mean"){
+  pixelLevelDF <- readPixelLevel(fileName)
+  output <- mclapply(X = pixelIDs,
+                             FUN = GetTimeVarStat,
+                             mc.cores = numCores,
+                             d = pixelLevelDF, 
+                             varOfInterest = var,
+                             relYrs = relYrs.x,
+                             stat = stat.x) %>% flatten_dbl()
+  rm(pixelLevelDF)
+  return(output)
+}
 
 start_time <- Sys.time()
-postFireConProb <- mclapply(X = patchIDs,
-       FUN = GetTimeVarStat,
-       mc.cores = numCores,
-       d = ConProb,
-       varOfInterest = "ConProb",
-       relYrs = c(1,2)) %>% flatten_dbl()
+preFireConProb <- GetTimeVarStat2(var = "ConProb", fileName = "ConProb",relYrs.x = c(-1,-2))
 end_time <- Sys.time()
-print( paste(as.numeric(end_time - start_time)/length(pixelIDs) * 1000, "seconds per 1000 pixels") )
-#rm(ConProb)
-
-seedDF <- ConProb <- readPatchLevel("SAP")
-postFireSAP <- mclapply(X = patchIDs,
-       FUN = GetTimeVarStat,
-       mc.cores = numCores,
-       d = seedDF,
-       varOfInterest = "SAP",
-       relYrs = c(1,2,3)) %>% flatten_dbl()
-#rm(seedDF)
-
-managementDF <- readPatchLevel("management")
-
-#GetTimeVarStat(pixel = patchIDs[1],d = managementDF, varOfInterest = "management", relYrs = 1:6, stat = "max")
-
-postFirePlanting <- mclapply(X = patchIDs,
-                        FUN = GetTimeVarStat,
-                        mc.cores = numCores,
-                        d = managementDF,
-                        varOfInterest = "management",
-                        relYrs = 1:6,
-                        stat = "max") %>% flatten_dbl()
-#rm(managementDF)
-
-pptOctNovDecDF <- readPatchLevel("pptOctNovDec")
-pptYr0_2_OctNovDec <- mclapply(X = patchIDs,
-                             FUN = GetTimeVarStat,
-                             mc.cores = numCores,
-                             d = pptOctNovDecDF, 
-                             varOfInterest = "pptOctNovDec",
-                             relYrs = c(0,1,2),
-                             stat = "sum") %>% flatten_dbl()
-#rm(pptOctNovDecDF)
+print(paste(as.numeric(end_time - start_time)/length(pixelIDs) * 1000, "seconds per 1000 pixels"))
 
 
-
-pptJanSeptDF <- readPatchLevel("pptJanSept")
-
-pptYr1_3_JanSept <- mclapply(X = patchIDs,
-                             FUN = GetTimeVarStat,
-                             mc.cores = numCores,
-                             d = pptJanSeptDF, 
-                             varOfInterest = "pptJanSept",
-                             relYrs = c(1,2,3)) %>% flatten_dbl()
-#rm(pptJanSeptDF)
-
-
-tmaxJanSeptDF <- readPatchLevel("tmaxJanSept")
-tmaxYr1_3_JanSept <- mclapply(X = patchIDs,
-                             FUN = GetTimeVarStat,
-                             mc.cores = numCores,
-                             d = tmaxJanSeptDF,
-                             varOfInterest = "tmaxJanSept",
-                             relYrs = c(1,2,3)) %>% flatten_dbl()
-#rm(tmaxJanSeptDF)
-
-tmaxOctNovDecDF <- readPatchLevel("tmaxOctNovDec")
-tmaxYr0_2_OctNovDec <- mclapply(X = patchIDs,
-                            FUN = GetTimeVarStat,
-                            mc.cores = numCores,
-                            d = tmaxOctNovDecDF,
-                            varOfInterest = "tmaxOctNovDec",
-                            relYrs = c(0,1,2)) %>% flatten_dbl()
-#rm(tmaxOctNovDecDF)
-
-end_time <- Sys.time()
-print(end_time-start_time)
+postFireConProb <- GetTimeVarStat2(var = "ConProb", fileName = "ConProb", relYrs.x = c(1,2))
+postFireSAP <- GetTimeVarStat2(var = "SAP", fileName = "seedDF",relYrs.x = c(1,2,3))
+postFirePlanting <- GetTimeVarStat2(var = "management", fileName = "managementDF",relYrs.x = 1:6)
+pptYr0_2_OctNovDec <- GetTimeVarStat2(var = "pptOctNovDec", fileName = "pptOctNovDecDF",relYrs.x = c(0,1,2), stat.x = "sum")
+pptYr1_3_JanSept <- GetTimeVarStat2(var = "pptJanSept", fileName = "pptJanSeptDF",relYrs.x = c(1,2,3), stat.x = "sum")
+tmaxYr1_3_JanSept <- GetTimeVarStat2(var = "tmaxJanSept", fileName = "tmaxJanSeptDF",relYrs.x = c(1,2,3), stat.x = "mean")
+tmaxYr0_2_OctNovDec <- GetTimeVarStat2(var = "tmaxOctNovDec", fileName = "tmaxOctNovDecDF",relYrs.x = c(0,1,2), stat.x = "mean")
 
 
 #############################################################
 ###creating a DF of the calculated time-invariant variables##
 #############################################################
-calculatedTimeInvariant <- tibble(patchID = patchIDs,
+calculatedTimeInvariant <- tibble(pixelID = pixelIDs,
        preFireConProb = preFireConProb,
        postFireConProb = postFireConProb,
        postFireSAP = postFireSAP,
@@ -369,7 +326,7 @@ calculatedTimeInvariant <- tibble(patchID = patchIDs,
   #group_by(patchID) %>%
   #summarise_if(.predicate = is.numeric, .funs = mean)
 
-write_csv(calculatedTimeInvariant, file = paste0(tmpFolder,"calculatedTimeInvariantPerPatch.csv"))
+#write_csv(calculatedTimeInvariant, file = paste0(tmpFolder,"calculatedTimeInvariantPerPatch.csv"))
 
 
 
@@ -443,22 +400,21 @@ write_csv(calculatedTimeInvariant, file = paste0(tmpFolder,"calculatedTimeInvari
 
 
 #aggregate and export
-stableVarsPerPatch <- readPatchLevel("stableVars")
-ConProb <- readPatchLevel("ConProb")
+stableVarsPerPixel <- readPixelLevel("stableVars")
+ConProb <- readPixelLevel("ConProb")
 
-allVarsPatchLevel <- ConProb %>%
-  mutate_at(.vars = "ConProb", .funs = function(x){x/100}) %>%
-  left_join(stableVarsPerPatch, by = "patchID") %>%
-  left_join(calculatedTimeInvariant, by = "patchID") %>%
+allVarsPixelLevel <- ConProb %>% select(-patchID) %>%
+  left_join(stableVarsPerPixel, by = "pixelID") %>%
+  left_join(calculatedTimeInvariant, by = "pixelID") %>%
   mutate_at(.vars = "fireYear",.funs = round) %>%
   mutate(timeSinceFire = year-fireYear) 
   
 #add recovery trajectory length here?
 
-#write_csv_to_temp(AllVarsPatchLevel,file_name = "AllVarsPatchLevel")
-write_csv(allVarsPatchLevel, file = paste0(path_to_clean_data,"allVarsPatchLevel.csv"))
+write_csv_to_temp(allVarsPixelLevel,file_name = "allVarsPixelLevel_3_6_2022")
+#write_csv(allVarsPatchLevel, file = paste0(path_to_clean_data,"allVarsPatchLevel.csv"))
 
-NAs_per_var <- summarise_all(AllVarsPatchLevel, .funs = is.na) %>%
+NAs_per_var <- summarise_all(allVarsPixelLevel, .funs = is.na) %>%
   summarise_all(.tbl = ., .funs = sum) %>% as.numeric()
 
 final_domain <- fa_pa_px %>% filter(patchID %in% PatchesIN)

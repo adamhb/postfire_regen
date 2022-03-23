@@ -1,0 +1,121 @@
+function getTrainTestData(startDate,endDate,area,wStartDate,wEndDate){
+var collection = ee.ImageCollection("LANDSAT/LC08/C01/T1_SR")
+.filterBounds(area)
+.filterDate(startDate,endDate) 
+.filter(ee.Filter.lt('CLOUD_COVER_LAND', 15))
+.select(inBands,outBands);
+
+var terrainCorrected = terrainCorrection(collection);
+var trainingImage = ee.Image(terrainCorrected.median());
+
+var trainAndTestData = trainingImage.select(outBands).sampleRegions({ 
+  collection: area,
+  properties: ['pctCover'],
+  scale: 30
+});
+
+return(trainAndTestData.randomColumn('random'));
+
+}
+
+
+
+
+
+
+
+
+
+
+
+//pct_cover_conifer_1984_1985_thresh_lower
+
+//////////////////////////////////////////
+/////Pre-Fire Conifer Cover Mask////////// 
+//////////////////////////////////////////
+
+//Identify and map pixels that had > 40% conifer canopy cover in 1985
+
+
+
+var preFireConProb = classifyScript.probConiferStack
+.select('ConProb')
+.filter(ee.Filter.date('1986-01-01T00:00','1986-12-31T23:59'))
+.filterBounds(geometry2)
+.first();
+//Prefire con prob at output resolution
+
+//Map.addLayer(preFireConProb, {min: 0.15, max: 0.85, palette: ['brown','green']},'prefire conifer conver (1985) 30m resolution');
+
+
+var preFireConProb_outputResolution = reduceResolution(preFireConProb,conCovProjection,myProjection);
+
+
+//var preFireConProb_outputResolution = ee.Image('users/ahanburybrown/preFireConProb_outputResolution_v2');
+//Map.addLayer(preFireConProb_outputResolution, {min: 0.15, max: 0.85, palette: ['brown','green']},'prefire conifer conver (1985)');
+
+
+Export.image.toAsset({image: preFireConProb_outputResolution, 
+                      description: 'preFireConProb_outputResolution_v3',
+                      region: study_area, 
+                      scale: 270, 
+                      crs: 'EPSG:3310', 
+                      maxPixels: 1e9});
+
+
+//Prefire con prob mask at output resolution
+var preFireConProbMask_outputResolution =  preFireConProb_outputResolution
+.gt(pct_cover_conifer_1984_1985_thresh_lower);
+
+//Map.addLayer(preFireConProbMask_outputResolution,{min:0,max:1},"preFireConProb mask output resolution",false);
+//print(preFireConProb_outputResolution);
+//Map.addLayer(preFireConProb_outputResolution,{min:0,max:1},"preFireConProb; output resolution");
+
+//var ConMask = probCon1985.gt(0.4);
+//var ConiferIn1985 = ConMask.updateMask(ConMask);
+
+//.first();
+
+//Map.addLayer(preFireConProb,{min:0,max:0.99},"preFireConProb");
+
+/*
+Export.image.toDrive({image:preFireConProb_outputResolution, 
+                      description:'preFireConProb_outputRes', 
+                      region: geometry, 
+                      crs:'EPSG:3310', 
+                      scale: 270,
+                      folder: "fromGEE",
+                      maxPixels: 1e9,
+                      skipEmptyTiles: true});
+*/
+
+//print(preFireConProb,'preFireconProb');
+//.select("2_LT05_041034_19840630_ConProb");
+
+//print(probCon1984,"conprob");
+/*
+var probCon1985 = ClassifyScript.probConiferStack
+.filter(ee.Filter.date('1985-01-01T00:00','1986-12-31T23:59'))
+.mean()*/
+//.select("pctCover")
+//.select("2_LT05_041034_19840630_ConProb");
+
+//print(probCon1985,"probCon1985")
+
+//var probCon1984_1985 = ee.ImageCollection([probCon1984,probCon1985]).mean()
+
+//var probCon1985_neighborhood = probCon1984_1985.reduceNeighborhood({
+//  reducer: ee.Reducer.mean(),
+//  kernel: ee.Kernel.circle({radius: 1000, units: 'meters'}),
+// });
+
+//Map.addLayer(ConiferIn1985,probabilityVizParams,"Conifer in 1985",true)
+
+//Map.addLayer(burnSevRaw,{},"Burn Severity Raw",false)
+//Identify the burn severity of each pixel between the beginning of 1986 and the end of 2000 
+
+/////////////////////////////////////////////////////////
+///End pre-fire con prob mask////////////////////////////
+/////////////////////////////////////////////////////////
+
+

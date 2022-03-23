@@ -9,19 +9,12 @@ source('utils/system_settings.R') # source internal functions and settings
 
 #set path to data on laptop
 
-
-figuresPath <- '~/cloud/gdrive/fire_project/figures/'
-
 #set path to data on cluster
 if(remote_server == T){
   path <- "/home/rstudio/data/"
   outpath <- '/home/rstudio/output/'
   figuresPath <- '/home/rstudio/figures/'
 }
-
-
-
-
 
 summary_stats <- function(data){
   
@@ -35,3 +28,33 @@ summary_stats <- function(data){
 
   return(output)
 }
+
+#############################
+##read and write functions###
+#############################
+write_csv_to_temp <- function(obj,file_name,perPatch = F){
+  write_csv(obj,file = paste0(tmpFolder,file_name,".csv"))
+}
+
+writePatchLevel <- function(df,var){
+  my_sym <- sym(var)
+  tmp <- df %>%
+    mutate_at(.vars = "patchID", .funs = as.character) %>%
+    select(-pixelID) %>%
+    group_by(patchID,focalAreaID,year) %>%
+    summarise(mean = mean(!!my_sym, na.rm = T),
+              fireYear = mean(fireYear)) %>%
+    rename(!!my_sym := mean) %>%
+    ungroup()
+  
+  write_csv_to_temp(tmp, file_name = paste0(var,"PerPatch"))
+}
+
+readPatchLevel <- function(var){
+  read_csv(paste0(tmpFolder,var,"PerPatch.csv"),show_col_types = FALSE)
+}
+
+readPixelLevel <- function(var){
+  read_csv(paste0(tmpFolder,var,".csv"),show_col_types = FALSE)
+}
+

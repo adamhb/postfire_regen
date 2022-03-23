@@ -2,52 +2,28 @@ rm(list = ls())
 gc()
 source('00_setup.R')
 
-#set parameters
+##################
+#set parameters###
+##################
 
 minPixPerPatch <- 1
 nViablePixPerYear <- 1
 light_run <- F
 write_csvs <- T
 patches_sub_sample <- 50
-path <- "~/cloud/gdrive/fire_project/local_data/fromGEE/checked/"
+#path <- "~/cloud/gdrive/fire_project/local_data/fromGEE/checked/"
 path <- "~/cloud/gdrive/fire_project/local_data/fromGEE/"
 tmpFolder <- "~/cloud/gdrive/fire_project/local_data/fromGEE/tmp/"
+figuresPath <- '~/cloud/gdrive/fire_project/figures/'
 outpath <- "~/cloud/gdrive/fire_project/local_data/CleanedDataForAnalysis/"
 path_to_clean_data <- "~/cloud/gdrive/fire_project/local_data/CleanedDataForAnalysis/"
 
+
+##################
+###read in data###
+##################
 files <- list.files(path,pattern = "csv")
 
-write_csv_to_temp <- function(obj,file_name,perPatch = F){
-  write_csv(obj,file = paste0(tmpFolder,file_name,".csv"))
-}
-
-writePatchLevel <- function(df,var){
-  my_sym <- sym(var)
-  tmp <- df %>%
-    mutate_at(.vars = "patchID", .funs = as.character) %>%
-    select(-pixelID) %>%
-    group_by(patchID,focalAreaID,year) %>%
-    summarise(mean = mean(!!my_sym, na.rm = T),
-              fireYear = mean(fireYear)) %>%
-    rename(!!my_sym := mean) %>%
-    ungroup()
-  
-  write_csv_to_temp(tmp, file_name = paste0(var,"PerPatch"))
-}
-
-
-readPatchLevel <- function(var){
-  read_csv(paste0(tmpFolder,var,"PerPatch.csv"),show_col_types = FALSE)
-}
-
-readPixelLevel <- function(var){
-  read_csv(paste0(tmpFolder,var,".csv"),show_col_types = FALSE)
-}
-
-
-#outPath <- "/home/rstudio/figures/"
-
-#join data from different focal areas (csvs)
 df <- tibble()
 
 j <- 0
@@ -63,14 +39,16 @@ for(f in files){
               print(paste("done with focal area",focalAreaID,":",j,"of",length(files),"focal areas"))
 }
 
-
-#record focal areas
 focal_areas <- unique(df$focalAreaID)
 
 #cleaning
 df <- df %>% rename(fireYear = FireYear) %>%
   mutate_at(.vars = c("patchID","focalAreaID"),.funs = as.character) ##make IDs characters
-  
+
+names(df)
+#####################################
+#get summary stats of the data set###
+#####################################
 pixelsPerPatch <- df %>% #pixels per patch
   group_by(patchID) %>%
   summarise(nPerPatch = length(pixelID))
@@ -96,7 +74,6 @@ fa_pa_px <- df %>% select(focalAreaID,patchID,pixelID)
 lu <- function(x){length(unique(x))}
 
 pixelIDs <- unique(df$pixelID) 
-
 # patchSizeDistribution <- fa_pa_px %>%
 #   group_by(patchID) %>%
 #   summarise(patchSize = length(pixelID)*900/1e4) %>% 
@@ -115,15 +92,15 @@ stableVars <- df %>% dplyr::select(pixelID, patchID,
                                    burnSev,wilderness)
 
 write_csv(x = stableVars, file = paste0(tmpFolder,"stableVars.csv"))
-
+rm(stableVars)
+gc()
 # stableVarsPerPatch <- stableVars %>%
 #   select(-pixelID) %>%
 #   group_by(patchID) %>%
 #   summarise_if(.predicate = is.numeric, .funs = mean)
 # write_csv(x = stableVarsPerPatch , file = paste0(tmpFolder,"stableVarsPerPatch.csv"))
 
-rm(stableVars)
-gc()
+
 ########################################
 
 #function to get the time trajectories of time-varying variables
@@ -256,13 +233,24 @@ GetTimeVarStat <- function(pixel, d, varOfInterest,relYrs,stat = "mean") {
   return(output)
 }
 
+GetTimeVarStat2 <- function(var = "ConProb", fileName = "ConProb", relYrs.x = c(-1,-2), stat.x = "mean"){
+  pixelLevelDF <- readPixelLevel(fileName)
+  output <- mclapply(X = pixelIDs,
+                     FUN = GetTimeVarStat,
+                     mc.cores = numCores,
+                     d = pixelLevelDF, 
+                     varOfInterest = var,
+                     relYrs = relYrs.x,
+                     stat = stat.x) %>% flatten_dbl()
+  rm(pixelLevelDF)
+  return(output)
+}
 
 ###################################################################
 #calculating time-invariant variables from time-varying variables##
 ###################################################################
 
-numCores <- detectCores()
-start_time <- Sys.time()
+
 
 # ConProb %>%
 #   filter(pixelID %in% pixelIDs[11]) %>%
@@ -275,20 +263,11 @@ start_time <- Sys.time()
 #GetTimeVarStat(pixel = pixelIDs[1],d = ConProb, varOfInterest = "ConProb", relYrs = c(-1,-2))
 
 
-GetTimeVarStat2 <- function(var = "ConProb", fileName = "ConProb", relYrs.x = c(-1,-2), stat.x = "mean"){
-  pixelLevelDF <- readPixelLevel(fileName)
-  output <- mclapply(X = pixelIDs,
-                             FUN = GetTimeVarStat,
-                             mc.cores = numCores,
-                             d = pixelLevelDF, 
-                             varOfInterest = var,
-                             relYrs = relYrs.x,
-                             stat = stat.x) %>% flatten_dbl()
-  rm(pixelLevelDF)
-  return(output)
-}
 
+numCores <- detectCores()
 start_time <- Sys.time()
+
+
 preFireConProb <- GetTimeVarStat2(var = "ConProb", fileName = "ConProb",relYrs.x = c(-1,-2))
 end_time <- Sys.time()
 print(paste(as.numeric(end_time - start_time)/length(pixelIDs) * 1000, "seconds per 1000 pixels"))

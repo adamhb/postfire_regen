@@ -20,8 +20,10 @@ if(fromFile == T){
 
 `%!in%` <- Negate(`%in%`)
 df2 <- df2 %>% filter(patchID %!in% c("-777474889-FA-22","118942956-FA-27"),
-                      preFireConProb > 0.2)
+                      preFireConProb > 0.5)
 
+
+df2 <- allVarsPixelLevel
 
 ###################################
 #calculating additional variables##
@@ -113,12 +115,21 @@ pixel_sample <- pixels[rows]
 
 
 
+#add rolling mean
+test <- df3 %>%
+  filter(pixelID == "11_263") 
+  
+roll <- roll_mean(test$ConProb, n = 3, align = "right", fill = NA)
+rolldf <- tibble(test$timeSinceFire)
+
 recoveryTrajsFig <- df3 %>%
-  filter(pixelID %in% pixel_sample) %>%
+  #filter(pixelID == "11_263") %>%
+  filter(preFireConProb > 0.5) %>%
   ggplot(aes(timeSinceFire,RRI,color = pixelID)) +
-  geom_line() +
+  #geom_line() +
+  geom_line(aes(y=rollmean(RRI, 7, na.pad=TRUE))) +
   #geom_line(data = meanRecoveryOfAllPatches, mapping = aes(timeSinceFire,RRI), color = "black", size = 3) +
-  #scale_y_continuous(limits = c(-0.3,1.2)) +
+  scale_y_continuous(limits = c(-0.3,1.2)) +
   scale_x_continuous(limits = c(0,35)) +
   adams_theme +
   theme(legend.position = "none")
@@ -194,7 +205,7 @@ recoveryTrajsStratFigDF <- df3 %>%
   facet_grid(rows = vars(SeedAvail2), cols = vars(PostFirePPT2),drop = FALSE) +
   #scale_colour_discrete(guide = FALSE) +
   scale_colour_gradient2(low = "blue", mid = "yellow", high = "red", midpoint = 3) +
-  scale_y_continuous(limits = c(0,100)) +
+  scale_y_continuous(limits = c(0,1)) +
   scale_x_continuous(limits = c(-2,35)) +
   labs(title = " < 10% of patch planted in first 6 years after fire \n RRI") +
   theme_minimal()

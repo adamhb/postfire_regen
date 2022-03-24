@@ -1,7 +1,6 @@
-rm(list = ls())
-gc()
-source('00_setup.R')
-source('00_validate_classifier.R')
+
+#source('00_setup.R')
+#source('00_validate_classifier.R')
 
 fromFile <- T
 makeFigs <- T
@@ -23,7 +22,7 @@ df2 <- df2 %>% filter(patchID %!in% c("-777474889-FA-22","118942956-FA-27"),
                       preFireConProb > 0.5)
 
 
-df2 <- allVarsPixelLevel
+
 
 ###################################
 #calculating additional variables##

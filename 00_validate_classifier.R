@@ -46,10 +46,10 @@ validationPlotCentroids <- rbind(lineInterceptValidationPoints,pointInterceptCen
 #compare predictions of conifer probability to percent conifer cover
 
 #load RS predictions
-validationPlotRSPredictions <- read_csv('data/validationPlotPredictions_2_28_22.csv') %>%
-  select(plotID,classification_mean) %>%
+validationPlotRSPredictions <- read_csv('data/validationPlotPredictions_3_22_22.csv') %>%
+  select(plotID,pctConCov2021_mean) %>%
   drop_na(plotID) %>%
-  rename(pctCoverRS = classification_mean)
+  rename(pctCoverRS = pctConCov2021_mean)
   #mutate_at(.vars = "ConProb", .funs = function(x){x/100})
 
 

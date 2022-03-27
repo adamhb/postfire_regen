@@ -4,50 +4,51 @@
 
 fromFile <- T
 makeFigs <- T
-cleanedData <- 'allVarsPixelLevel_3_6_2022.csv'
+cleanedData <- 'analysisReadyDF.csv'
 ###########################
+
 if(fromFile == T){
-  path <- "~/cloud/gdrive/fire_project/local_data/fromGEE/tmp/"
-  outpath <- "~/cloud/gdrive/fire_project/local_data/"
-  figuresPath <- '~/cloud/gdrive/fire_project/figures/'
-  df2 <- read_csv(paste0(path,cleanedData),
-                                    col_types = cols(.default = "?", patchID = "c"))
-  PatchesIN <- df2$patchID %>% unique()
+  df2 <- read_csv(paste0(data_path,cleanedData))
 }else{
   source('01_calculateVariables.R')
 }
-
-`%!in%` <- Negate(`%in%`)
-df2 <- df2 %>% filter(patchID %!in% c("-777474889-FA-22","118942956-FA-27"),
-                      preFireConProb > 0.5)
-
-
 
 
 ###################################
 #calculating additional variables##
 ###################################
-nPatches <- length(unique(df2$patchID)) #npatches
-print(paste(nPatches,"patches"))
-nYears <- max(df2$year) - min(df2$year) + 1
-print(paste(nYears,"years"))
-endYr <- 2016 #final year of data
+endYr <- 2017 #final year of data
 print("focalAreas:")
 unique(df2$focalAreaID)
 
 
-
-#df2$pctCovCon <- predict(object = logMod,newdata = df2) #adding pct cover
-df2$ConDom <- df2$pctCovCon > 0.5 #adding if conifers are dominant
+#add extra vars
+df2$conDominant <- df2$conCov > 0.5 #adding if conifers are dominant
 df2$recoveryTrajLength <- endYr - df2$fireYear #adding recovery length
 
 
-df3 <- df2 %>% 
-  #mutate_at(.vars = "ConProb",.funs = function(x){x*100}) %>%
-  filter(burnSev < 5) %>%
-  mutate(disturbanceSize = preFireConProb - postFireConProb,
-         ARI = ConProb - postFireConProb,
-         RRI = ARI / disturbanceSize)
+str(df2)
+
+
+hist(df2$disturbanceSize)
+
+df2 %>%
+  filter(disturbanceSize > 0.2) %>%
+  ggplot(aes(timeSinceFire,conCov,color = pixelID)) +
+  geom_line() +
+  theme_minimal()
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

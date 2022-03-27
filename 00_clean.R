@@ -2,11 +2,11 @@ library(raster)
 library(rgdal)
 library(tidyverse)
 
-#paths
-basePath <- '~/cloud/gdrive/fire_project/local_data/fromGEE/'
-#conCovPath <- paste0(basePath,'conCov/')
-#sapPath <- paste0(basePath,'SAP/')
-mostVarsPath <- paste0(basePath,'mostVars/')
+source('00_setup.R')
+
+pathtoGEEdata <- '~/cloud/gdrive/fire_project/local_data/fromGEE/mostVars/'
+
+list.files(pathtoGEEdata)
 
 ##functions
 options(max.print = 1000)
@@ -26,55 +26,70 @@ getValidXY <- function(r = r){
 }
 
 
+#check dims of all rasters
+for(fa in 1:3){
+  mostVarsFile <- paste0(pathtoGEEdata,list.files(path = pathtoGEEdata,pattern = paste0('-FA-',fa,'.tif')))
+  r <- stack(mostVarsFile)
+  print(dim(r))
+  rm(r)
+  gc()
+}
+
+#load raster data into r object
+
 #this function converts all the tifs in a focal area into a tibble of data
 #input focal area
 #analysis-ready output data frame
-
-fa = 2
-
-
-
-tifToTibble <- function(fa = 2){
+tifToTibble <- function(fa){
   print(paste("working on focal area:",fa))
   
-  #get paths to all files for raster stack
-  #conCovFiles <- paste0(conCovPath,list.files(path = conCovPath,pattern = paste0('-FA-',fa,'.tif')))
-  #SAPFiles <- paste0(sapPath,list.files(path = sapPath,pattern = paste0('-FA-',fa))) #fix this
-  mostVarsFiles <- paste0(mostVarsPath,list.files(path = mostVarsPath,pattern = paste0('-FA-',fa,'.tif')))
-  #rasterFiles <- c(conCovFiles,SAPFiles,mostVarsFiles)
+ 
+  #get tif file path
+  mostVarsFile <- paste0(pathtoGEEdata,list.files(path = pathtoGEEdata,pattern = paste0('-FA-',fa,'.tif')))
   
-  #get field names
-  #fieldNames <- c(names(stack(conCovFiles)),names(stack(SAPFiles)),names(stack(mostVarsFiles)))
-  fieldNames <- names(stack(mostVarsFiles))
-  #names(fieldNames) <- fieldNames
+  #load raster data into r object
+  r <- stack(mostVarsFile)
   
-  #stack the raster files
-  r <- stack(mostVarsFiles)
+  #get field names as named vector
+  fieldNames <- names(r)
+  names(fieldNames) <- fieldNames
   
-  #reset field names
-  #names(r) <- fieldNames
-  
-  #get xy
+  #get xy coordinates and cell index number of non-masked pixels
   xy <- getValidXY(r)
   
-  #extract data from valid cells and put into a tibble
+  #extract data from non-masked pixels and put into a tibble
   extractValidData <- function(var){values(r[[var]])[xy$cellID]}
   output1 <- map_df(fieldNames,extractValidData)
   
-  #add the focal area as a variable
+  #add the focal area ID, pixel ID, and XY coordinates to tibble
   output2 <- output1 %>% add_column(focalAreaID = fa) %>% cbind(xy) %>% 
-    mutate(pixelID = paste0("FA-",focalArea,"-",cellID)) %>% select(-cellID)
+    mutate(pixelID = paste0("FA-",focalAreaID,"-",cellID)) %>% select(-cellID)
   
   #remove the raster stack from memory
   rm(r)
   gc()
  
-  return(output2)
-  
   print(paste("finished focal area:",fa))
+  return(output2)
 }
 
-fa2 <- tifToTibble(2)
+#fiure out why focal area 1 doesn't have as many columns
+focalAreas <- 1:3
+#focalAreas <- focalAreas[c(5,6,7,8)]
+focalAreasIndex <- 1:length(focalAreas)
 
-#add all focal areas together (unlist rbind)
+d <- map(.x = focalAreas, .f = tifToTibble)
+
+#move data from list into a df
+df <- tibble()
+for(i in focalAreasIndex){
+  df <- rbind(df,tibble(d[[i]]))
+}
+
+model_run_time_stamp <- Sys.time() %>% 
+  sub(pattern = ":", replacement = "-") %>%
+  sub(pattern = ":", replacement = "-") %>%
+  sub(pattern = " ", replacement = "-")
+
+write_csv(x = df, file = paste0(data_path,'FA_1-3.csv'))
 

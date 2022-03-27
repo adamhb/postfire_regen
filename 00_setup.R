@@ -7,6 +7,8 @@ library(ggcorrplot)
 
 source('utils/system_settings.R') # source internal functions and settings
 
+data_path <- '~/cloud/gdrive/fire_project/local_data/analysis/'
+
 #set path to data on laptop
 
 #set path to data on cluster

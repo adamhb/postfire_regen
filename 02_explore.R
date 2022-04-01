@@ -5,10 +5,10 @@ source('00_validate_classifier.R')
 
 fromFile <- T
 makeFigs <- T
-cleanedData <- 'allVarsPixelLevel_3_6_2022.csv'
+cleanedData <- 'data_from_gee_April2020.csv'
 ###########################
 if(fromFile == T){
-  path <- "~/cloud/gdrive/fire_project/local_data/fromGEE/tmp/"
+  path <- "~/cloud/gdrive/fire_project/local_data/fromGEE/old/"
   outpath <- "~/cloud/gdrive/fire_project/local_data/"
   figuresPath <- '~/cloud/gdrive/fire_project/figures/'
   df2 <- read_csv(paste0(path,cleanedData),

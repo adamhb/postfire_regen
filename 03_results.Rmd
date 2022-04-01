@@ -1,0 +1,49 @@
+---
+title: "03_results.Rmd"
+author: "Adam Hanbury-Brown"
+date: "3/31/2022"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Model 1; Shive + 2018 (-April 1 snowpack)
+```{r pressure, echo=FALSE}
+mod1_predictors <- c("recoveryTime",'slope',"aspect","CWDhist","AEThist","postFireSAP")
+#getCorrelationMatrix(mod1_predictors)
+mod1 <- fitGAM(df4 %>% filter(postFirePlanting < 0.1,
+                              mediumReburns < 0.01,
+                              lowReburns < 0.01),
+               mod1_predictors,response = "RRI_end", scaleData = T)
+plot(mod1)
+summary(mod1)
+print(paste("AIC",AIC(mod1)))
+```
+Results of Mod 1: 
+1. Everything is significant expect aspect. So it pretty much works.
+2. Generally the relationships are pretty reasonable (except CWD). Could remove CWD because its correlated with AET and doesn't give a meaningful relationship.
+3. Not clear why SAP is negative at low SAP
+4.
+
+AIC is lower than if all terms are linear
+AIC is slightly higher if you use adjusted folded northness instead of aspect 
+If I use conCov here instead of RRI end then SAP_400 has a more reasonable result
+
+##Model 2. Stewart et al
+```{r,echo=F}
+mod2_predictors <- c("recoveryTime","slope","aspect","pptYr1_3_annual_mean","burnSev")
+#getCorrelationMatrix(mod1_predictors)
+mod2 <- fitGAM(df4 %>% filter(postFirePlanting < 0.1,
+                              mediumReburns < 0.01,
+                              lowReburns < 0.01),
+               mod2_predictors,response = "RRI_end", scaleData = T)
+plot(mod2)
+summary(mod2)
+print(paste("AIC",AIC(mod2)))
+```
+
+
+
+

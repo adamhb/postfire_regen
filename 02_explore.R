@@ -1,10 +1,12 @@
+source('00_setup.R')
 
-#source('00_setup.R')
-#source('00_validate_classifier.R')
-
+end_recovery_period <- 2019
+#analysisTimeSinceFire <- 24
+min_drop_in_pct_cover <- 0.15
+min_preFire_conCov <- 0.35
 fromFile <- T
 makeFigs <- T
-cleanedData <- 'analysisReadyDF.csv'
+cleanedData <- 'analysisReadyDF_3_30_2022.csv'
 ###########################
 
 if(fromFile == T){
@@ -14,312 +16,467 @@ if(fromFile == T){
 }
 
 
-###################################
-#calculating additional variables##
-###################################
-endYr <- 2017 #final year of data
-print("focalAreas:")
-unique(df2$focalAreaID)
+#############################################
+#additional vars, filters, and cleaning #####
+#############################################
+#get conCov_end, ARI_end, and RRI_end
+additionalVars <- df2 %>% 
+  filter(year == end_recovery_period) %>% 
+  #filter(timeSinceFire == analysisTimeSinceFire) %>%
+  dplyr::select(pixelID,focalAreaID,fireYear,conCov,ARI,RRI) %>% 
+  rename(conCov_end = conCov, ARI_end = ARI, RRI_end = RRI) %>%
+  mutate(fire = paste0(focalAreaID,"-",fireYear)) %>%
+  dplyr::select(-focalAreaID,-fireYear)
 
 
-#add extra vars
-df2$conDominant <- df2$conCov > 0.5 #adding if conifers are dominant
-df2$recoveryTrajLength <- endYr - df2$fireYear #adding recovery length
+df3 <- df2 %>%
+  #add additional vars
+  left_join(additionalVars, by = "pixelID") %>%
+  #cleaning
+  mutate(across(forestType, as_factor)) %>% 
+  mutate(across(focalAreaID, as_factor)) %>% 
+  mutate(across(fire, as_factor)) %>% 
+  #filters
+  filter(disturbanceSize > min_drop_in_pct_cover,
+         preFireConCov > min_preFire_conCov,
+         forestType != 577, forestType != 2701)
 
+df3 %>% group_by(fire) %>% summarise(n = length(unique(pixelID)))
 
-str(df2)
-
-
-hist(df2$disturbanceSize)
-
-df2 %>%
-  filter(disturbanceSize > 0.2) %>%
-  ggplot(aes(timeSinceFire,conCov,color = pixelID)) +
-  geom_line() +
-  theme_minimal()
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-makeRRIatEndOfTraj <- function(patch = df3$patchID[1]){
-  fireYear <- df3[df3$patchID == patch,]$fireYear[1]
-  recoveryTrajLength <- df3[df3$patchID == patch,]$recoveryTrajLength[1]
-  finalYrofTraj <- fireYear + recoveryTrajLength
-  RRIFinalYear <- df3[df3$patchID == patch & df3$year == finalYrofTraj,]$RRI
-  RR_per_year <- RRIFinalYear / recoveryTrajLength
-  output <- tibble(pixelID = patch,
-                   finalYrofTraj = finalYrofTraj,
-                   RRIFinalYear = RRIFinalYear,
-                   RR_per_year = RR_per_year)
-  return(output)
-}
-makeRRIatEndOfTraj()
-
-df4 <- df3 %>% 
-  left_join(map_df(.x = unique(df3$pixelID)[1:1000], .f = makeRRIatEndOfTraj),by = "pixelID")
-
-
-df3 %>% filter(year == 2016) %>% 
-  ggplot(mapping = aes(RRI)) +
-           geom_histogram(binwidth = 0.1)
+timeVaryingVars <- c("year","timeSinceFire","conCov","ARI","RRI")
+df4 <- df3 %>% dplyr::select(-all_of(timeVaryingVars)) %>% distinct()
+######################################
+#NO MORE CHANGES TO DATA AFTER THIS###
+######################################
 
 ##########################
 ####basic info############
 ##########################
+print('focalAreas:')
+print(unique(df2$focalAreaID))
 
-#sample size per fire year
-n_patch_per_fire_year <- distinct(df3,patchID,.keep_all = T) %>% pull(fireYear) %>% table()
-print("fireYears:")
-print(n_patch_per_fire_year)
-n_per_recovery_length <- distinct(df3,patchID,.keep_all = T) %>% pull(recoveryTrajLength) %>% table()
-n_per_recovery_length
-#1987 and 1999 are the two most represented fire years
+studyPeriod <- c(min(df2$year),max(df2$year))
+print('studyPeriod')
+print(studyPeriod)
+
+pixelIDs <- unique(df3$pixelID)
+
+df4 %>% ggplot(aes(forestType)) +
+  geom_histogram(stat = "count") +
+  theme_minimal()
+
+####################
+####functions#######
+####################
+makeDefaultHistogram <- function(d,var){
+  #range <- summary(d %>% pull(symvar))
+  d %>% 
+    ggplot(aes_string(var)) +
+    geom_histogram(binwidth = 0.05) +
+    xlab(var) +
+    labs(title = var) +
+    ylab(label = "N Pixels") +
+    theme_minimal()
+}
+
+getCorrelationMatrix <- function(varsForCorr = topoVars){
+  corr <- df4 %>% select_at(.vars = varsForCorr) %>% cor() %>% round(1)
+  Pmat <- df4 %>% select_at(.vars = varsForCorr) %>% cor_pmat()
+  corrPlot <- ggcorrplot(corr, hc.order = TRUE, type = "lower",
+                         lab = TRUE, p.mat = Pmat) +
+    theme_minimal() +
+    theme(legend.position = "none",
+          axis.text.x.bottom = element_text(angle = 45, hjust=1))
+  return(corrPlot)
+}
 
 ################################################################
 ##visualizing variation in patch-level recovery trajectories ###
 ################################################################
 
+# df3 %>%
+#   ggplot(aes(timeSinceFire,RRI,color = pixelID)) +
+#   geom_line() +
+#   theme_minimal()
 
+#visualize recovery trajectories stratified by postFire precip. and seed availability#
 
-
-#get the mean recovery trajectory of all patches
-meanRecoveryOfAllPatches <- df3 %>%
-  group_by(timeSinceFire) %>%
-  summarise_at(.vars = c("RRI","ConProb","pctCovCon"), .funs = function(x){mean(x,na.rm = T)})
-
-#plot mean recovery over all patches
-RRI_mean_allPatches <- ggplot(data = meanRecoveryOfAllPatches, mapping = aes(timeSinceFire,ConProb)) +
-  geom_line() +
-  #geom_line(data = meanRecoveryOfAllPatches, mapping = aes(timeSinceFire,RRI), color = "black", size = 3) +
-  adams_theme +
-  theme(legend.position = "none")
-RRI_mean_allPatches 
-
-#visualize RRI of all patches and the mean across patches
-
-
-pixels <- unique(df3$pixelID)
-rows <- as.integer(runif(n = 10, min = 1, max = length(pixels)))
-pixel_sample <- pixels[rows]
-
-
-
-#add rolling mean
-test <- df3 %>%
-  filter(pixelID == "11_263") 
-  
-roll <- roll_mean(test$ConProb, n = 3, align = "right", fill = NA)
-rolldf <- tibble(test$timeSinceFire)
-
-recoveryTrajsFig <- df3 %>%
-  #filter(pixelID == "11_263") %>%
-  filter(preFireConProb > 0.5) %>%
-  ggplot(aes(timeSinceFire,RRI,color = pixelID)) +
-  #geom_line() +
-  geom_line(aes(y=rollmean(RRI, 7, na.pad=TRUE))) +
-  #geom_line(data = meanRecoveryOfAllPatches, mapping = aes(timeSinceFire,RRI), color = "black", size = 3) +
-  scale_y_continuous(limits = c(-0.3,1.2)) +
-  scale_x_continuous(limits = c(0,35)) +
-  adams_theme +
-  theme(legend.position = "none")
-recoveryTrajsFig
-
-#visualize ConProb
-recoveryTrajsFigConProb <- df3 %>%
-  ggplot(aes(timeSinceFire,ConProb,color = patchID)) +
-  geom_line() +
-  scale_y_continuous(limits = c(0,100)) +
-  scale_x_continuous(limits = c(0,35)) +
-  adams_theme +
-  theme(legend.position = "none")
-recoveryTrajsFigConProb
-
-#visualize pct cover
-recoveryTrajsPctCovCon <- df3 %>%
-  filter(year < 2017) %>%
-  ggplot(aes(timeSinceFire,pctCovCon,color = patchID)) +
-  geom_line() +
-  scale_y_continuous(limits = c(0,0.53)) +
-  scale_x_continuous(limits = c(0,35)) +
-  adams_theme +
-  theme(legend.position = "none")
-recoveryTrajsPctCovCon
-
-
-#what is the pctCover at the end of the trajectories?
-pctCovConEnd <- ggplot(data = df3 %>% filter(year == 2016), mapping = aes(x = pctCovCon)) +
-  geom_histogram() +
-  xlab("Conifer Cover (%)") +
-  labs(title = "%Pct Conifer Cover in 2016") +
-  ylab(label = "N Patches") +
-  adams_theme
-#all plots have at least some conifer recovery
-
-
-#distribution of pre-fire conProb
-pctCovConEnd <- ggplot(data = df3 %>% filter(year == 2016), mapping = aes(x = preFireConProb)) +
-  geom_histogram() +
-  xlab("PreFireConProb") +
-  labs(title = "PreFireConProb") +
-  ylab(label = "N Patches") +
-  adams_theme
-
-
-######################################################################################
-#visualize recovery trajectories stratified by postFire precip. and seed availability##
-######################################################################################
 SAP_quantiles <- quantile(df3$postFireSAP, probs = c(0.33,0.66), na.rm = T)
-PPT_quantiles <- quantile(df3$pptYr0_3_sum, probs = c(0.33,0.66), na.rm = T)
+PPT_quantiles <- quantile(df3$pptYr1_3_annual_mean, probs = c(0.33,0.66), na.rm = T)
 
 recoveryTrajsStratFigDF <- df3 %>%
-  filter(postFirePlanting > 0.1, burnSev < 5, burnSev > 2.5, year < 2017) %>%
+  filter(forestType == "585") %>%
   mutate(SeedAvail = case_when(
     postFireSAP <= SAP_quantiles[1] ~ "low seed avail.",
     postFireSAP >= SAP_quantiles[2] ~ "high seed avail.",
     (postFireSAP > SAP_quantiles[1]) & (postFireSAP < SAP_quantiles[2]) ~ "medium seed avail."
   )) %>%
   mutate(PostFirePPT = case_when(
-    pptYr0_3_sum <= PPT_quantiles[1] ~ "low ppt Yrs 0-3",
-    pptYr0_3_sum >= PPT_quantiles[2] ~ "high ppt Yrs 0-3",
-    (pptYr0_3_sum > PPT_quantiles[1]) & (postFireSAP < PPT_quantiles[2]) ~ "medium ppt Yrs 0-3"
+    pptYr1_3_annual_mean <= PPT_quantiles[1] ~ "low post-fire precip.",
+    pptYr1_3_annual_mean >= PPT_quantiles[2] ~ "high post-fire precip.",
+    (pptYr1_3_annual_mean > PPT_quantiles[1]) & (pptYr1_3_annual_mean < PPT_quantiles[2]) ~ "medium post-fire precip."
   )) %>% mutate(SeedAvail2 = factor(SeedAvail,levels = c("high seed avail.","medium seed avail.","low seed avail."))) %>%
-  mutate(PostFirePPT2 = factor(PostFirePPT,levels = c("high ppt Yrs 0-3","medium ppt Yrs 0-3","low ppt Yrs 0-3"))) %>%
+  mutate(PostFirePPT2 = factor(PostFirePPT,levels = c("high post-fire precip.","medium post-fire precip.","low post-fire precip."))) %>%
   mutate(planted = case_when(
-    postFirePlanting >= 0.5 ~ TRUE,
-    postFirePlanting < 0.5 ~ FALSE
+    postFirePlanting >= 0.3 ~ TRUE,
+    postFirePlanting < 0.3 ~ FALSE
   )) %>%
-  ggplot(aes(timeSinceFire,ConProb,group = patchID, color = burnSev)) +
+  ggplot(aes(timeSinceFire,RRI,group = pixelID, color = burnSev, linetype = planted)) +
   geom_line(size = 1) +
-  #geom_smooth(data = recoveryTrajsStratFigDF, mapping = aes(x = timeSinceFire, y = RRI, group = planted))
   facet_grid(rows = vars(SeedAvail2), cols = vars(PostFirePPT2),drop = FALSE) +
-  #scale_colour_discrete(guide = FALSE) +
   scale_colour_gradient2(low = "blue", mid = "yellow", high = "red", midpoint = 3) +
-  scale_y_continuous(limits = c(0,1)) +
+  scale_y_continuous(limits = c(-0.2,1.2)) +
   scale_x_continuous(limits = c(-2,35)) +
-  labs(title = " < 10% of patch planted in first 6 years after fire \n RRI") +
+  labs(title = "XYZ") +
   theme_minimal()
 
 
-makePNG(fig = recoveryTrajsStratFig,path_to_output.x = figuresPath,file_name = "RRI-Trajectory-NotPlanted",res = 600)
+####################################################
+################view time-invariant variables#######
+####################################################
 
-################################################################
-#############create new time-invariant variables here############
-################################################################
+#response vars
+#1. conCov_end
 
+# df4 %>% 
+#   ggplot(aes(conCov_end)) +
+#   geom_histogram(binwidth = 0.05) +
+#   xlab("Conifer Cover (%)") +
+#   scale_x_continuous(limits = c(0,1), breaks = seq(from = 0, to = 1, by = 0.05)) +
+#   labs(title = "% Conifer Cover in 2019") +
+#   ylab(label = "N Pixels") +
+#   theme_minimal()
+
+#2. ARI_end
+# df4 %>% 
+#   ggplot(aes(RRI_end)) +
+#   geom_histogram(binwidth = 0.05) +
+#   xlab("RRI at end of trajectories") +
+#   scale_x_continuous(limits = c(0,1), breaks = seq(from = 0, to = 1, by = 0.05)) +
+#   labs(title = "RRI at end of trajectories") +
+#   ylab(label = "N Pixels") +
+#   theme_minimal()
+
+#3. RRI_end
+# df4 %>% 
+#   ggplot(aes(ARI_end)) +
+#   geom_histogram(binwidth = 0.05) +
+#   xlab("ARI at end of trajectories") +
+#   scale_x_continuous(limits = c(0,1), breaks = seq(from = 0, to = 1, by = 0.05)) +
+#   labs(title = "ARI at end of trajectories") +
+#   ylab(label = "N Pixels") +
+#   theme_minimal()
+
+#predictor vars
+topoVars <- c("hli","tpi","northness","eastness","adjustedNorthness","adj_fold_northness","slope","elevation")
+histClimateVars <- c("AEThist","CWDhist","TmaxHist","PPThist","PPThistSD","TmaxHistSD")
+seedVars <- c("preFireConCov","disturbanceSize","burnSev","postFireConCov","postFireSAP","postFirePlanting")
+postFireWeatherVars <- c("pptYr1_3_annual_mean","ppt_Yr1_3_mean_annual_anom",
+                     "min_annual_ppt_Yr1_3", "min_annual_ppt_Yr1_3_anom",
+                     "pptYr1_3_annual_mean_t_adjusted",
+                     "min_annual_ppt_t_adjusted_Yr1_3")
+otherVars <- c("x","y","wilderness","forestType","mediumReburns","lowReburns","recoveryTime")
+
+#histograms of topo vars, histClimate vars, seed vars and post fire weather vars
+#varsForHist <- c(topoVars,histClimateVars,seedVars,postFireWeatherVars,otherVars)
+
+# predictorHist <- df4 %>%
+#   select(varsForHist) %>% 
+#   gather(key = "var", value = "value", c(varsForHist)) %>%
+#   ggplot(aes(value)) +
+#   geom_histogram(aes(y = ..density..)) +
+#   geom_density() +
+#   facet_wrap(.~var, scales = "free",nrow = 3) +
+#   theme_minimal()
+# makePDF(fig = predictorHist, file_name = 'predictorVarsHist',height = 10, width = 15)
+
+
+#######################################################
+####exploring correlations among predictor variables###
+#######################################################
+
+terrainCorr <- getCorrelationMatrix()
+histClimateCorr <- getCorrelationMatrix(histClimateVars)
+postFireWeatherCorr <- getCorrelationMatrix(postFireWeatherVars)
+seedVarsCorr <- getCorrelationMatrix(seedVars)
 
 
 #############################################################
-################histograms of time-invariant variables#######
+##########exploring correlations between pred and response###
 #############################################################
-patchLevelTimeInvariant <- df3 %>%
-  select_if(function(col) length(unique(col)) <= length(PatchesIN)) %>%
-  select(-ConDom) %>%
-  group_by(patchID) %>%
-  summarise_all(.funs = mean) %>%
-  mutate(planted = postFirePlanting > 0.25) %>%
-  mutate(plantedNamed = case_when(
-    planted == TRUE ~ "planted",
-    planted == FALSE ~ "notPlanted"
-  )) 
-  
-  
+medianSAP <- df3 %>%
+  #filter(postFirePlanting < 0.1, recoveryTime == 32, focalAreaID == 10) %>%
+  pull(postFireSAP) %>% median()
 
-cols <- patchLevelTimeInvariant %>%
-  dplyr::select(-fireYear,-wilderness,-patchID,-focalAreaID,-year,-timeSinceFire,
-                -fireYear,-ConDom,-recoveryTrajLength,-year) %>% colnames()
-
-
-histograms <- ggplot(gather(patchLevelTimeInvariant %>% 
-                  dplyr::select(-fireYear,-wilderness,-patchID,-year),
-                cols,value),mapping = aes(x = value)) +
-  #geom_histogram() +
-  #geom_dotplot(aes(y = ..density..),method = "histodot") +
-  geom_histogram(aes(y = ..density..)) +
-  geom_density() +
-  facet_wrap(.~cols, scales = "free",nrow = 3) +
+df4 %>% group_by(fire) %>%
+  #filter(RRI_end < 1) %>%
+  filter(postFirePlanting < 0.01, mediumReburns < 0.01) %>%
+  summarise_at(.vars = c(predictors.x[-4],'x','y','RRI_end','pptYr1_3_annual_mean','ARI_end','CWDhist'),.funs = mean)%>%
+  arrange(RRI_end) %>%
+  #filter(pptYr1_3_annual_mean < 3000) %>%
+  ggplot(aes(recoveryTime,RRI_end,color = burnSev)) +
+  geom_point(size = 4) +
+  #geom_smooth(method = "lm") +
   theme_minimal()
 
-histograms
 
-# makePNG(fig = histograms,
-#         path_to_output.x = figuresPath,
-#         file_name = "histograms_timeInvariantVars",
-#         res = 100, width = 20, height = 10)
+df4 %>%
+  ggplot(aes(log(postFireSAP), RRI_end)) +
+  geom_point() +
+  facet_wrap(~fire) +
+  geom_smooth(method = "lm") +
+  theme_minimal()
 
-#############################################
-####exploring associations among variables###
-#############################################
-#correlation plot of all time-invariant variables
-corr <- patchLevelTimeInvariant %>% select_at(.vars = cols) %>% select(-CWDhist) %>% cor() %>% round(1)
-Pmat <- patchLevelTimeInvariant %>% select_at(.vars = cols) %>% select(-CWDhist) %>% cor_pmat()
 
-corrPlot <- ggcorrplot(corr, hc.order = TRUE, type = "full",
-           lab = TRUE, p.mat = Pmat) +
+df3 %>%
+  filter(postFirePlanting < 0.1, recoveryTime == 32, focalAreaID == 6) %>%
+  ggplot(aes(timeSinceFire,ARI, group = pixelID, color = postFireSAP)) +
+  geom_line(size = 1) +
+  scale_x_continuous(breaks = 0:20) +
+  #scale_y_continuous(limits = c(0,2)) +
+  scale_colour_gradient2(low = "red", mid = "orange", high = "blue", midpoint = medianSAP) +
   theme_minimal() +
-  theme(legend.position = "none",
-        axis.text.x.bottom  = element_text(angle = 45, hjust=1))
+  theme(legend.position = "none")
+
+df4 %>%
+  ggplot(aes(burnSev,postFireSAP)) +
+  geom_point() +
+  geom_smooth(method = "lm") +
+  theme_minimal()
+
+#######################################################
+############exploring key study domain variables#######
+#######################################################
+
+makeDefaultHistogram(df4,"mediumReburns")
+makeDefaultHistogram(df4,"lowReburns")
+makeDefaultHistogram(df4,"postFirePlanting")
 
 
 
-#exploring the relationships between RRI_per_year and driver vars
+#584 & 551: Mediterranean California Dry-Mesic Mixed Conifer Forest and Woodland
+#585 & 552: Mediterranean California Mesic Mixed Conifer Forest and Woodland
+#588: California Montane Jeffrey Pine(-Ponderosa Pine) Woodland
+#587: Mediterranean California Lower Montane Black Oak-Conifer Forest and Woodland
+#549: Klamath-Siskiyou Lower Montane Serpentine Mixed Conifer Woodland
+#550: Klamath-Siskiyou Upper Montane Serpentine Mixed Conifer Woodland
+#577: Inter-Mountain Basins Sparsely Vegetated Systems (filtered out)
+#589: Mediterranean California Red Fir Forest - Cascades
+#2701: unk.
 
-vars <- names(df3)[c(7,8,9,10,11,13,14,15,16,17,18,19,20,21,22,23,24)]
-vars %in% names(patchLevelTimeInvariant)
+###################################################
+####################fit models#####################
+###################################################
 
-varOfInterest <- vars[2]
-makeCorrPlot <- function(varOfInterest = vars[1]){
-  
-  plot <- patchLevelTimeInvariant %>% 
-    filter(RR_per_year < 0.2) %>%
-    filter(burnSev < 5) %>%
-    ggplot(aes_string(varOfInterest,"RR_per_year",color = "burnSev")) +
-    geom_point() +
-    geom_smooth(method = "lm") +
-    scale_colour_gradient2(low = "blue", mid = "yellow", high = "red", midpoint = 3) +
-    facet_grid(~plantedNamed) +
-    labs(title = varOfInterest) +
-    adams_theme
-  
-  makePNG(fig = plot, path_to_output.x = paste0(figuresPath,"correlations/"), file_name = varOfInterest)
-  #return(plot)
-  
+#model to do
+#1. spatial auto corr.
+#2. plot output of relationships (partial residual plots)
+#3. play with filtering / grouping by eco type, reburns, replanting
+#4. fit models to specific fires to explore SAP, explore SAP var in GEE for a fire, try SAP 150 to see if it improves the models
+#confirm that the "partial dependence plots" are what I'm looking / should be looking at for gam var relationships
+
+####SAP issue
+# variable seems to be working well; perhaps relationship is not as strong because I focused on areas of clumps of pixels, so the lone pixels are not as represented.gc()
+#can fit to other dependent vars like con cov
+#add / find interactions
+#add a random effect of fire or fire X focal area
+#try fitting the gam to the timeseries
+
+
+#functions
+scale_this <- function(x){
+  (x - mean(x, na.rm=TRUE)) / sd(x, na.rm=TRUE)
 }
 
-#makeCorrPlot(varOfInterest = vars[2])
+fitGAM <- function(d,preds,response = "RRI_end", scaleData = T, includeXY = F, randomEffect = F){
 
-patchLevelTimeInvariant %>%
-  ggplot(aes(x = RR_per_year)) +
-  geom_histogram() + 
-  scale_x_continuous(limits = c(0,0.15)) +
-  adams_theme
+  v <- c()
+  for(p in preds){
+    unique_vals <- d %>% pull(p) %>% unique() %>% length()
+    if(unique_vals < 10){
+      k <- unique_vals-1
+      v <- append(v,paste0("s(",p,",k=",k,")"))
+    }else{
+      v <- append(v,paste0("s(",p,")"))
+    }
+  }
+  
+  if(randomEffect == T){
+    v <- c(v,"s(fire,bs='re')") 
+  }
+  
+  if(includeXY == T){
+    v <- c(v,"s(x,y") 
+  }
+ 
+  X <- paste(v, collapse = "+")
+  Y <- response
+  form <- as.formula(paste(Y,"~",X))
+  print(form)
+  
+  if(scaleData == T){
+    forMod <- d %>%
+      dplyr::select(response,x,y,all_of(preds)) %>%
+      mutate(across(where(is.numeric),scale_this))
+  }else{
+    forMod <- d %>%
+      dplyr::select(response,all_of(preds))
+  }
+ 
+  mod <- gam(formula = form, data = forMod) 
+  return(mod)
+}
 
-map(.x = vars, .f = makeCorrPlot)
+#predictor vars
+topoVars <- c("hli","tpi","northness","eastness","adjustedNorthness","adj_fold_northness","slope","elevation")
+
+histClimateVars <- c("AEThist","CWDhist","TmaxHist","PPThist","PPThistSD","TmaxHistSD")
+
+seedVars <- c("preFireConCov","disturbanceSize","burnSev","postFireConCov","postFireSAP","postFirePlanting")
+
+postFireWeatherVars <- c("pptYr1_3_annual_mean","ppt_Yr1_3_mean_annual_anom",
+                         "min_annual_ppt_Yr1_3", "min_annual_ppt_Yr1_3_anom",
+                         "pptYr1_3_annual_mean_t_adjusted",
+                         "min_annual_ppt_t_adjusted_Yr1_3")
+
+otherVars <- c("x","y","wilderness","forestType","mediumReburns","lowReburns","recoveryTime","fire")
+
+
+
+
+#getCorrelationMatrix(mod3_predictors)
+# forGGPairs <- c("RRI_end",all_of(mod3_predictors))
+# df4 %>% select(forGGPairs) %>% ggpairs()
+
+
+#################
+#working model###
+#################
+#vars to include
+otherVars.x <- c("recoveryTime","mediumReburns","lowReburns","fire")
+topoVar.x  <- c("slope","elevation","adjustedNorthness")
+histClimateVars.x <- c("PPThist")
+seedVars.x <- c("burnSev","postFireSAP","postFirePlanting")
+postFireWeather.x <- c("ppt_Yr1_3_mean_annual_anom")
+
+predictors.x <- c(otherVars.x,topoVar.x,histClimateVars.x,seedVars.x,postFireWeather.x)
+
+
+
+#I was able to improve on Shive by...
+getCorrelationMatrix(varsForCorr = c("recoveryTime","slope","elevation","hli","AEThist","postFireSAP","pptYr1_3_annual_mean","burnSev"))
+
+k.default = 15
+
+###############################################################
+###############################################################
+# filter(postFirePlanting < 0.1,
+#        mediumReburns < 0.01,
+#        lowReburns < 0.01) 
+
+
+modData <- df4 %>%
+  mutate(across(where(is.numeric),scale_this)) 
+
+mod <- gam(formula = RRI_end ~ s(recoveryTime, k = 6) + s(fire, bs="re") +
+                               s(mediumReburns, k = k.default) +
+                               s(burnSev, k = k.default) +
+                               s(slope, k = k.default) + s(elevation, k = k.default) + s(hli, k = k.default) + 
+                               s(CWDhist, k = k.default) +
+                               s(AEThist, k = k.default) +
+                               s(postFireSAP, k = k.default) + 
+                               s(pptYr1_3_annual_mean, k = k.default),
+            data = modData)
+
+
+################################################################################
+################################################################################
+plot(mod)
+summary(mod)
+AIC(mod)
+
+#model checking
+plot(predict(mod),residuals(mod))
+gam.check(mod)
 
 
 
 
 
 
-# makePNG(fig = corrPlot,
-#         path_to_output.x = figuresPath,
-#         file_name = "corrPlot",
-#         res = 100, width = 10, height = 10)
+
+#other mods below
+mod <- gam(formula = RRI ~ te(postFireSAP,timeSinceFire, k = 12) + s(fire, bs="re"),
+           data = df3 %>% filter(postFirePlanting < 0.01,
+                                 mediumReburns < 0.01,
+                                 lowReburns < 0.01))
+
+
+
+
+#fit a gam
+mod <- gam(formula = RRI_end ~ s(recoveryTime, k = 4) + s(fire, bs="re") +
+             s(hli, k = 15) + 
+             s(burnSev, k = 15) + 
+             s(ppt_Yr1_3_mean_annual_anom, k = 15),
+            data = df4 %>% filter(postFirePlanting < 0.1,
+                                 mediumReburns < 0.01,
+                                 lowReburns < 0.01) %>%
+            mutate(across(where(is.numeric),scale_this)))
+summary(mod)
+gam.check(mod)
+plot(mod)
+AIC(mod)
+
+
+
+#fit a gamm
+#vars taken out: lowReburn
+mod <- gamm(formula = RRI_end ~ s(recoveryTime) + s(mediumReburns) +
+             s(slope) + s(elevation) + s(adjustedNorthness) + 
+             s(PPThist) +
+             s(burnSev) + s(postFirePlanting) + s(postFireSAP) + 
+             s(ppt_Yr1_3_mean_annual_anom),
+            random = list(fire=~1),
+            data = df4 %>% 
+             mutate(across(where(is.numeric),scale_this)))
+summary(mod$gam)
+summary(mod$lme)
+plot(mod$gam)
+AIC(mod)
 
 
 
 
 
+
+
+
+
+
+####################
+#2. best base model#
+####################
+mod2_predictors <- c(topoVars[-c(3,4,5,6)],histClimateVars[-2],seedVars[-6]) 
+mod2_predictors <- c("recoveryTime","PPThist")
+#dropped: tpi
+#getCorrelationMatrix(mod2_predictors)
+mod2 <- fitGAM(df4 %>% filter(postFirePlanting < 0.1,
+                              mediumReburns < 0.01,
+                              lowReburns < 0.01),
+               mod2_predictors, response = "RRI_end", scaleData = T)
+plot(mod2)
+
+summary(mod2)
+AIC(mod2)
+
+
+
+
+
+##############
+###scratch####
+###############
 
 
 
@@ -339,6 +496,65 @@ map(.x = vars, .f = makeCorrPlot)
 
 
 
+
+#get the mean recovery trajectory of all patches
+# meanRecoveryOfAllPatches <- df3 %>%
+#   group_by(timeSinceFire) %>%
+#   summarise_at(.vars = c("RRI","conCov"), .funs = function(x){mean(x,na.rm = T)})
+# 
+# #plot mean recovery over all patches
+# RRI_mean_allPatches <- ggplot(data = meanRecoveryOfAllPatches, mapping = aes(timeSinceFire,conCov)) +
+#   geom_line() +
+#   #geom_line(data = meanRecoveryOfAllPatches, mapping = aes(timeSinceFire,RRI), color = "black", size = 3) +
+#   adams_theme +
+#   theme(legend.position = "none")
+# RRI_mean_allPatches 
+
+
+
+
+# 
+# vars <- names(df3)[c(7,8,9,10,11,13,14,15,16,17,18,19,20,21,22,23,24)]
+# vars %in% names(patchLevelTimeInvariant)
+# 
+# varOfInterest <- vars[2]
+# makeCorrPlot <- function(varOfInterest = vars[1]){
+#   
+#   plot <- patchLevelTimeInvariant %>% 
+#     filter(RR_per_year < 0.2) %>%
+#     filter(burnSev < 5) %>%
+#     ggplot(aes_string(varOfInterest,"RR_per_year",color = "burnSev")) +
+#     geom_point() +
+#     geom_smooth(method = "lm") +
+#     scale_colour_gradient2(low = "blue", mid = "yellow", high = "red", midpoint = 3) +
+#     facet_grid(~plantedNamed) +
+#     labs(title = varOfInterest) +
+#     adams_theme
+#   
+#   makePNG(fig = plot, path_to_output.x = paste0(figuresPath,"correlations/"), file_name = varOfInterest)
+#   #return(plot)
+#   
+# }
+# 
+# #makeCorrPlot(varOfInterest = vars[2])
+# 
+# patchLevelTimeInvariant %>%
+#   ggplot(aes(x = RR_per_year)) +
+#   geom_histogram() + 
+#   scale_x_continuous(limits = c(0,0.15)) +
+#   adams_theme
+# 
+# map(.x = vars, .f = makeCorrPlot)
+# 
+# 
+# 
+
+
+
+# makePNG(fig = corrPlot,
+#         path_to_output.x = figuresPath,
+#         file_name = "corrPlot",
+#         res = 100, width = 10, height = 10)
 
 
 

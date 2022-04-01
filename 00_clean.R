@@ -4,9 +4,16 @@ library(tidyverse)
 
 source('00_setup.R')
 
-pathtoGEEdata <- '~/cloud/gdrive/fire_project/local_data/fromGEE/mostVars/'
+basePath <- '~/cloud/gdrive/fire_project/local_data/fromGEE/'
+conCovPath <- paste0(basePath,'conCov/')
+sapPath <- paste0(basePath,'SAP/')
+mostVarsPath <- paste0(basePath,'mostVars/')
 
-list.files(pathtoGEEdata)
+#which fa's are ready
+done <- as.integer(na.omit(str_extract(string = list.files(mostVarsPath),pattern = "[:digit:]{2}")))
+remaining <- 10:55
+remaining[10:55 %in% done == F]
+exclude <- c(remaining[10:55 %in% done == F],27)
 
 ##functions
 options(max.print = 1000)
@@ -26,44 +33,48 @@ getValidXY <- function(r = r){
 }
 
 
-#check dims of all rasters
-for(fa in 1:3){
-  mostVarsFile <- paste0(pathtoGEEdata,list.files(path = pathtoGEEdata,pattern = paste0('-FA-',fa,'.tif')))
-  r <- stack(mostVarsFile)
-  print(dim(r))
-  rm(r)
-  gc()
-}
+# for(fa in 1){
+#   mostVarsFile <- paste0(pathtoGEEdata,list.files(path = pathtoGEEdata,pattern = paste0('-FA-',fa,'.tif')))
+#   r <- stack(mostVarsFile)
+#   print(dim(r))
+#   rm(r)
+#   gc()
+# }
 
 #load raster data into r object
 
 #this function converts all the tifs in a focal area into a tibble of data
-#input focal area
-#analysis-ready output data frame
+#input: focal area (integer)
+#output: tibble
 tifToTibble <- function(fa){
   print(paste("working on focal area:",fa))
   
- 
-  #get tif file path
-  mostVarsFile <- paste0(pathtoGEEdata,list.files(path = pathtoGEEdata,pattern = paste0('-FA-',fa,'.tif')))
+  conCovFiles <- paste0(conCovPath,list.files(path = conCovPath,pattern = paste0('-FA-',fa,'.tif')))
+  SAPFiles <- paste0(sapPath,list.files(path = sapPath,pattern = paste0('-FA-',fa,'.tif'))) #fix this
+  mostVarsFiles <- paste0(mostVarsPath,list.files(path = mostVarsPath,pattern = paste0('-FA-',fa,'.tif')))
+  rasterFiles <- c(conCovFiles,SAPFiles,mostVarsFiles)
   
-  #load raster data into r object
-  r <- stack(mostVarsFile)
-  
-  #get field names as named vector
-  fieldNames <- names(r)
+  #get field names
+  fieldNames <- c(names(stack(conCovFiles)),names(stack(SAPFiles)),names(stack(mostVarsFiles)))
+  fieldNames[1:72] <- str_extract(string = fieldNames[1:72],pattern = '^.*\\.')
   names(fieldNames) <- fieldNames
   
+  #load raster data into r object
+  r <- stack(rasterFiles)
+  
+  #reset field names
+  names(r) <- fieldNames
+  str_extract(string = fieldNames[1:72],pattern = '^.*\\.')
   #get xy coordinates and cell index number of non-masked pixels
-  xy <- getValidXY(r)
+  xy <- as_tibble(getValidXY(r))
   
   #extract data from non-masked pixels and put into a tibble
   extractValidData <- function(var){values(r[[var]])[xy$cellID]}
-  output1 <- map_df(fieldNames,extractValidData)
+  output1 <- as_tibble(map_df(fieldNames,extractValidData))
   
   #add the focal area ID, pixel ID, and XY coordinates to tibble
   output2 <- output1 %>% add_column(focalAreaID = fa) %>% cbind(xy) %>% 
-    mutate(pixelID = paste0("FA-",focalAreaID,"-",cellID)) %>% select(-cellID)
+    mutate(pixelID = paste0("FA-",focalAreaID,"-",cellID)) %>% dplyr::select(-cellID)
   
   #remove the raster stack from memory
   rm(r)
@@ -72,24 +83,33 @@ tifToTibble <- function(fa){
   print(paste("finished focal area:",fa))
   return(output2)
 }
+tifToTibble_possibly <- possibly(.f = tifToTibble, otherwise = paste("ERROR:"))
 
-#fiure out why focal area 1 doesn't have as many columns
-focalAreas <- 1:3
-#focalAreas <- focalAreas[c(5,6,7,8)]
-focalAreasIndex <- 1:length(focalAreas)
+focalAreas <- c(28,37,38,41,42,43,44,45,46,50,52)
 
-d <- map(.x = focalAreas, .f = tifToTibble)
+d <- map(.x = focalAreas, .f = tifToTibble_possibly)
 
 #move data from list into a df
+focalAreasIndex <- 1:length(focalAreas)
 df <- tibble()
 for(i in focalAreasIndex){
-  df <- rbind(df,tibble(d[[i]]))
+  d2 <- dim(tibble(d[[i]]))[2]
+  if(d2 == 317){
+    df <- rbind(df,tibble(d[[i]]))
+  }
 }
 
-model_run_time_stamp <- Sys.time() %>% 
-  sub(pattern = ":", replacement = "-") %>%
-  sub(pattern = ":", replacement = "-") %>%
-  sub(pattern = " ", replacement = "-")
 
-write_csv(x = df, file = paste0(data_path,'FA_1-3.csv'))
+write_csv(x = df, file = paste0(data_path,'FA_3_31_2022.csv'))
 
+
+
+
+
+
+
+#scratch
+# model_run_time_stamp <- Sys.time() %>% 
+#   sub(pattern = ":", replacement = "-") %>%
+#   sub(pattern = ":", replacement = "-") %>%
+#   sub(pattern = " ", replacement = "-")

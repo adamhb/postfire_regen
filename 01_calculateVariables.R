@@ -21,11 +21,14 @@ source('00_setup.R')
 #source('00_clean.R')
 
 #load data
-df <- read_csv(paste0(data_path,'FA_3_30_2022.csv')) 
+df <- read_csv(paste0(data_path,'FA_3_31_2022.csv')) %>% 
+      rbind(read_csv(paste0(data_path,'FA_3_30_2022.csv')))
+
+length(unique(df$focalAreaID))
 
 #params of script
-light_run <- F
-sample_n <- 20
+light_run <- T
+sample_n <- 2000
 options(max.print = 1000)
 options(dplyr.print_max = 1e4)
 
@@ -189,10 +192,11 @@ checkNAs(d = stableVars)
 ###alternative pattern in case need it: #"[:digit:]{4}(?=0)"
 conCovDF <- GetTimeTraj2(df,"conCov",newName = "conCov")
 
+
 #converting con cov to a rolling mean
-adamRoll <- rollFunc(df = conCovDF, var = 'conCov', pixelIDs = pixelIDs)
-conCovDF2 <- conCovDF %>% left_join(adamRoll, by = c("pixelID","year"))
-conCovDF$conCov <- conCovDF2$conCovRoll
+#adamRoll <- rollFunc(df = conCovDF, var = 'conCov', pixelIDs = pixelIDs)
+#conCovDF2 <- conCovDF %>% left_join(adamRoll, by = c("pixelID","year"))
+#conCovDF$conCov <- conCovDF2$conCovRoll
 
 sapDF <- GetTimeTraj2(df,"SAP",newName = "SAP")
 managementDF <- GetTimeTraj2(df,"management",newName = "management")
@@ -314,7 +318,7 @@ print(unique(export$focalAreaID))
 print('pixels:')
 print(unique(df2$pixelID))
 
-write_csv(export,paste0(data_path,'analysisReadyDF_3_30_2022.csv'))
+write_csv(export,paste0(data_path,'analysisReadyDF_4_1_2022_noRollingMean'))
 
 
 

@@ -74,8 +74,8 @@ pointInterceptHulls <- geo_data3 %>%
   st_convex_hull()
 pointInterceptCentroids <- st_centroid(pointInterceptHulls)
 
-st_write(obj = pointInterceptHulls,dsn = "data/pointInterceptHulls.shp", driver = "ESRI Shapefile")
-st_write(obj = pointInterceptCentroids,dsn = "data/pointInterceptCentroids.shp", driver = "ESRI Shapefile")
+#st_write(obj = pointInterceptHulls,dsn = "data/pointInterceptHulls.shp", driver = "ESRI Shapefile")
+#st_write(obj = pointInterceptCentroids,dsn = "data/pointInterceptCentroids.shp", driver = "ESRI Shapefile")
 
 
 
@@ -118,11 +118,14 @@ fieldValidationData_PI <- fieldValidationData_PI %>%
   select(plotID,pft,pct_cover) %>%
   rename(pctCover = pct_cover)
 
-write_csv(fieldValidationData_PI ,"data/fieldValidationData_PI.csv")
+#write_csv(fieldValidationData_PI ,"data/fieldValidationData_SHRUB_PI.csv")
 #join point intercept data with line intercept data
 
+shrubCov <- fieldValidationData_PI %>%
+  filter(pft == "s") %>% arrange(desc(pctCover)) %>%
+  rename(shrubCov = pctCover)
 
-
+write_csv(shrubCov, "data/shrubCov.csv")
 
 
 

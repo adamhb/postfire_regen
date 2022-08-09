@@ -9,32 +9,415 @@ output: html_document
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-## Model 1; Shive + 2018 (-April 1 snowpack)
+
+## Model 1; Shive + 2018 (-April 1 snowpack); site conditions / climate
 ```{r pressure, echo=FALSE}
-mod1_predictors <- c("recoveryTime",'slope',"aspect","CWDhist","AEThist","postFireSAP")
-#getCorrelationMatrix(mod1_predictors)
-mod1 <- fitGAM(df4 %>% filter(postFirePlanting < 0.1,
-                              mediumReburns < 0.01,
-                              lowReburns < 0.01),
-               mod1_predictors,response = "RRI_end", scaleData = T)
-plot(mod1)
-summary(mod1)
-print(paste("AIC",AIC(mod1)))
+mod_predictors <- c("recoveryTime",'slope',"aspect","CWDhist","AEThist","postFireSAP","snowPack")
+
+k.default = 10
+ShiveTrial <- 4
+sampleSize <- 35
+#using RRI end of trajectory
+modData <- df4 %>%
+  filter(postFirePlanting < 0.01,
+         mediumReburns < 0.01,
+         lowReburns < 0.01) %>%
+  mutate(across(where(is.numeric),scale_this))
+
+#using a standard time since fire
+# modData <- df3 %>%
+#   filter(postFirePlanting < 0.01,
+#          mediumReburns < 0.01,
+#          lowReburns < 0.01,
+#          timeSinceFire == 20) %>%
+#   mutate(RRI_end = RRI) %>%
+#   mutate(across(where(is.numeric),scale_this))
+
+modDataSub <- tibble()
+
+for(fa in unique(modData$focalAreaID)){
+  d <- modData %>% filter(focalAreaID == fa)
+  if(nrow(d) < sampleSize){
+    tmp <- d
+  }else{
+    tmp <- sample_n(d,size = sampleSize)
+  }
+  modDataSub <- rbind(modDataSub,tmp)
+}
+
+modData <- modDataSub
+modData <- read_csv("data/Shive_mod_3-2022-04-02 18:45:18data.csv")
+
+mod <- gam(formula = RRI_end ~ 
+             recoveryTime + 
+             s(x, y, bs = "gp", k = 65, m = 2) +
+             s(slope, k = k.default) +
+             s(aspect, k = k.default) + 
+             s(postFireSAP, k = k.default) + 
+             #s(CWDhist, k = k.default) +
+             s(AEThist, k = 6) + 
+             s(snowPack, k = k.default),
+           data = modData)
+
+getCorrelationMatrix(d = modData, varsForCorr = mod_predictors)
+
+modName <- paste0("Shive_mod_",ShiveTrial,"-",Sys.time(),'.RDS')
+dataName <- paste0("Shive_mod_",ShiveTrial,"-",Sys.time(),"data.csv")
+saveRDS(object = mod, file = paste0('data/',modName))
+write_csv(modData,file = paste0('data/',dataName))
+
+
+summary(mod)
+gam.check(mod)
+plot(mod)
+AIC(mod)
+
+pixel.dists <- as.matrix(dist(cbind(modData$x, modData$y)))
+pixel.dists.inv <- 1/pixel.dists
+diag(pixel.dists.inv) <- 0
+print(Moran.I(residuals(mod),pixel.dists.inv))
+print(paste0("AIC:",AIC(mod)))
+#write_csv(modData,"Shive_model_reduced_data.csv")
+#saveRDS(object = mod, file = 'data/Shive_model_reduced.RDS')
 ```
-Results of Mod 1: 
-1. Everything is significant expect aspect. So it pretty much works.
+Results of Shive Mod:
+
+Trial 1:
+Including Shive's variables in a model resulted in a model with significant multicollinearity with AET and CWD and slope and AET. 
+
+Trial 2 (data/Shive_model_reduce):
+A reduced version of Shive's model produced expected outcomes, but residual were spatially autocorrelated. AIC = 876.
+
+Trial 3. Reduced the sample size.
+--result: AIC = 762; fixed spatial auto, could imprve AET relationship with lower k.
+
+Trial 4. Reduce k on AET. This resulted in a better relationship with AET, and similar AIC to above.
+
+
+
+Prior testing:
+1. Everything is significant except aspect. So it pretty much works.
 2. Generally the relationships are pretty reasonable (except CWD). Could remove CWD because its correlated with AET and doesn't give a meaningful relationship.
 3. Not clear why SAP is negative at low SAP
-4.
-
 AIC is lower than if all terms are linear
 AIC is slightly higher if you use adjusted folded northness instead of aspect 
 If I use conCov here instead of RRI end then SAP_400 has a more reasonable result
 
-##Model 2. Stewart et al
+
+
+
+##Model 2. Stewart: post-fire weather 
+The goal of this model is to test if the same predictors that Stewart et al. 2020 found to predict the probability of conifer regeneration also predict conifer canopy recovery 20-35 years after fire.
 ```{r,echo=F}
-mod2_predictors <- c("recoveryTime","slope","aspect","pptYr1_3_annual_mean","burnSev")
-#getCorrelationMatrix(mod1_predictors)
+mod_predictors <- c("recoveryTime","slope","aspect","pptYr1_3_annual_mean","burnSev","postFireSAP")
+#getCorrelationMatrix(mod_predictors)
+k.default = 9
+
+StewTrial <- 2
+modData <- df4 %>%
+  filter(postFirePlanting < 0.01,
+         mediumReburns < 0.01,
+         lowReburns < 0.01) %>%
+  mutate(across(where(is.numeric),scale_this))
+
+
+#n_per_fa <- modData %>% group_by(focalAreaID) %>% summarise(n = length(RRI_end)) %>% pull(n)
+
+modDataSub <- tibble()
+sampleSize <- 45
+for(fa in unique(modData$focalAreaID)){
+  d <- modData %>% filter(focalAreaID == fa)
+  if(nrow(d) < sampleSize){
+    tmp <- d
+  }else{
+    tmp <- sample_n(d,size = sampleSize)
+  }
+  modDataSub <- rbind(modDataSub,tmp)
+}
+modData <- modDataSub
+#modData <- read_csv("data/modDataSub_StewartModel.csv")
+modData <- read_csv("data/Shive_mod_3-2022-04-02 18:45:18data.csv")
+#modData <- read_csv("data/mod_3-2022-04-02 17:13:55data.csv")
+
+mod <- gam(formula = RRI_end ~ 
+             recoveryTime + 
+             s(x, y, bs = "gp", k = 65, m = 2) +
+             burnSev +
+             s(slope, k = k.default) +
+             s(aspect, k = k.default) + 
+             s(postFireSAP, k = k.default) + 
+             s(pptYr1_3_annual_mean,k = 12),
+           data = modData)
+
+
+modName <- paste0("Stewart_mod_",StewTrial,"-",Sys.time(),'.RDS')
+dataName <- paste0("Stewart_mod_",StewTrial,"-",Sys.time(),"data.csv")
+#saveRDS(object = mod, file = paste0('data/',modName))
+#write_csv(modData,file = paste0('data/',dataName))
+
+summary(mod)
+gam.check(mod)
+plot(mod)
+AIC(mod)
+
+pixel.dists <- as.matrix(dist(cbind(modData$x, modData$y)))
+pixel.dists.inv <- 1/pixel.dists
+diag(pixel.dists.inv) <- 0
+print(Moran.I(residuals(mod),pixel.dists.inv))
+print(paste("AIC:",AIC(mod)))
+#write_csv(modDataSub,file = "data/modDataSub_StewartModel.csv")
+```
+
+Trial 1. Things working pretty well, but would like to use the exact same data as in the Shive trial.
+
+Trial 2. Using the same exact data as the Shive trial produced pretty good results except that the ppt_1_3 was not significant. This is workable though.
+
+Trial 3. Use a different subset of data to see if we can get the significance up on the post-fire precip. This didn't have a good effect.
+
+Trial 4. Same as 2, but linear for post-fire SAP. Didn't improve things.
+
+
+Vars to choose from:
+```{r}
+topoVars <- c("hli","tpi","northness","eastness","adjustedNorthness","adj_fold_northness","slope","elevation")
+histClimateVars <- c("AEThist","CWDhist","TmaxHist","PPThist","PPThistSD","TmaxHistSD")
+seedVars <- c("preFireConCov","disturbanceSize","burnSev","postFireConCov","postFireSAP","postFirePlanting")
+postFireWeatherVars <- c("pptYr1_3_annual_mean","ppt_Yr1_3_mean_annual_anom",
+                         "min_annual_ppt_Yr1_3", "min_annual_ppt_Yr1_3_anom",
+                         "pptYr1_3_annual_mean_t_adjusted",
+                         "min_annual_ppt_t_adjusted_Yr1_3")
+otherVars <- c("x","y","wilderness","forestType","mediumReburns","lowReburns","recoveryTime","fire")
+```
+
+
+##Model 3. Best model including planting etc.
+
+The goal of model three is to find the best model of a series of candidate models to predict RRI
+while including areas that were planted and had reburned.
+
+```{r,echo=F}
+mods <- list()
+```
+
+```{r,echo=F}
+trialN <- 21
+sub <- T
+k.default = 10
+sampleSize <- 30
+
+modData <- df4 %>%
+  mutate(across(where(is.numeric),scale_this)) 
+
+modDataSub <- tibble()
+
+for(fa in unique(modData$focalAreaID)){
+  d <- modData %>% filter(focalAreaID == fa)
+  if(nrow(d) < sampleSize){
+    tmp <- d
+  }else{
+    tmp <- sample_n(d,size = sampleSize)
+  }
+  modDataSub <- rbind(modDataSub,tmp)
+}
+
+if(sub == T){
+  modData <- modDataSub
+}
+
+modData <- read_csv('data/mod_3-2022-04-02 17:13:55data.csv')
+#modData <- modData %>% mutate_at(.vars = "RRI_end", .funs = function(x){ (x * 0.3856) + 0.5110378 } )
+
+mod <- gam(formula = RRI_end ~ 
+             recoveryTime + 
+             s(x, y, bs = "gp", k = 75, m = 2) +
+             #s(fire, bs="re") +
+             mediumReburns +
+             #s(lowReburns, k = k.default) +
+             #postFirePlanting +
+             burnSev +
+             #tpi +
+             #s(PPThist) +
+             s(TmaxHist, k = 15) +
+             #s(tmaxYr1_3_mean, k = 15) +
+             #adj_fold_northness +
+             s(adj_fold_northness, k = 15) +
+             #s(hli, k = k.default) + 
+             #s(slope, k = k.default) +
+             #s(CWDhist, k = k.default) +
+             #s(AEThist, k = 15) +
+             s(postFireSAP, k = 15) +
+             s(pptYr1_3_annual_mean, k = 15),
+             #s(ppt_Yr1_3_mean_annual_anom, k = 15),
+           data = modData)
+
+#for correlation matrix
+otherVars.x <- c("recoveryTime","mediumReburns","lowReburns")
+topoVar.x  <- c("slope","hli")
+histClimateVars.x <- c("AEThist","CWDhist")
+seedVars.x <- c("burnSev","postFireSAP","postFirePlanting")
+postFireWeather.x <- c("pptYr1_3_annual_mean")
+predictors.x <- c(otherVars.x,topoVar.x,histClimateVars.x,seedVars.x,postFireWeather.x)
+getCorrelationMatrix(d = modData, varsForCorr = predictors.x)
+
+
+
+#check spatial autocorrelation
+pixel.dists <- as.matrix(dist(cbind(modData$x, modData$y)))
+pixel.dists.inv <- 1/pixel.dists
+diag(pixel.dists.inv) <- 0
+
+#store model for making table and comparing AICs later
+modName <- paste0("mod_",trialN,"-",Sys.time(),'.RDS')
+dataName <- paste0("mod_",trialN,"-",Sys.time(),"data.csv")
+#saveRDS(object = mod, file = paste0('data/',modName))
+#write_csv(modData,file = paste0('data/',dataName))
+
+
+#mod <- readRDS("data/mod_3-2022-04-02 17:13:55.RDS")
+#view results
+summary(mod)
+gam.check(mod)
+plot(mod)
+print(Moran.I(residuals(mod),pixel.dists.inv))
+paste0("AIC:",AIC(mod))
+#write_csv(modDataSub,file = "data/modDataSub_StewartModel.csv")
+```
+
+
+
+
+
+```{r}
+plot(modData$pptYr1_3_annual_mean,modData$RRI_end)
+plot(df4$pptYr1_3_annual_mean, df4$RRI_end)
+```
+
+
+Results from best fitting model
+Trial 1: 
+-result: spatial auto., CWD and AET negatively correlated, slope and postFireSAP positively correlated (?)., low reburns don't seem to matter, medium reburns linear, AET could be linear, ppt_1_3 not significant, but could be linear.
+
+--next: reduce sample size to 35, take out AET, take out low Reburns, take out slope.
+--interesting finding: slope and medium reburn are positively correlated
+
+Trial 2: 
+--result: Still spatial auto, but otherwise, this is a good model, ppt in the first 3 years after fire seems to nullify AET. Other vars make sense.
+--AIC is 1325
+--adjusted R2 is 80 
+
+Trial 3
+--goal: smaller sample size, larger k in x,y to see if we can get rid of spatial auto.
+-- results: The precip. in the first 3 years seems to be more important that AEThist. Post-fire planting likely not significant because they plant where the fires are the worst. Perhaps post fire SAP not having an effect because this is best analyzed within a fire.
+
+Trial 4
+--same as above, but increased k x,y to account for spatial auto.
+
+Trial 5
+--take AET and postfire planting out. This improved the AIC.
+--AIC:1080
+
+Trial 6
+--move postfire SAP to linear
+--results raised AIC a lot, and re-introduced unexplained spatial structure
+
+Trial 7
+--trying to put ppt hist and t hist in the model
+--result: AIC lowered (1069), tmax hist was signficant, ppthist was not as a smooth function.
+
+Trial 8
+--put ppt hist as linear term, increase k for t max hist. (from default to 15)
+--result: AIC 1066, but ppthist is not significant.
+
+Trial 9
+--take out ppt hist.
+--result: AIC 1067 (slightly higher than with ppthist in)
+--best model so far
+
+Trial 10
+--try t adjusted precip 1-3 instead.
+-- was not as good. AIC went up and spatial auto corr. went up.
+
+Trial 11
+--try min precip 1-3 instead.
+--not as good. AIC went up and spatal auto went up.
+
+Trial 12
+--try precip anom instead. Not as good.
+
+Trial 13
+--try to get a topography variable in there.
+--adjusted, folded, northness lowered the AIC to 1060 (7 lower than without); best model so far
+
+Trial 14
+--move adjusted northness to linear
+--slightly higher than Trial 13 with adjusted folded northness as non-linear
+
+Trial 15
+--same as 13, but with CWD instead of Tmax.
+
+Trail 16
+--same as 13 with adjusted northness instead of adjusted, folded northness
+
+Trial 17. add postfire planting to 13, but didn't improve anything. 
+
+Trial 18. added tpi to 13. no change. tpi as smooth not significant
+
+Trial 19. added tpi as linear term.
+
+Trial 20. same as 13, but tried tmax_1-3 instead of tmax_hist.
+
+Trial 21. same as 13, but without standardizing the response variable.
+
+Pick up here. Perhaps don't do Shive's model explicitly, but save that for the discussion.
+
+
+
+##Analysis of SAP (perhaps look at interaction between CWD and seed availability at the site level)
+Try running one focal area at a time
+```{r}
+mod_predictors <- c("recoveryTime","slope","aspect","pptYr1_3_annual_mean","burnSev","postFireSAP")
+#getCorrelationMatrix(mod_predictors)
+k.default = 5
+
+modData <- df4 %>%
+  filter(fire == forSiteLevelAnalysis[5]) %>%
+  mutate(across(where(is.numeric),scale_this)) %>%
+  ggplot(aes(x,y,color = RRI_end)) +
+  geom_point()
+
+#
+
+mod <- gam(formula = RRI_end ~ s(x,y,k=15) +
+             s(burnSev, k = k.default) +
+             s(slope, k = k.default) + s(aspect, k = k.default) + 
+             s(postFireSAP, k = k.default),
+           data = modData)
+
+pixel.dists <- as.matrix(dist(cbind(modData$x, modData$y)))
+pixel.dists.inv <- 1/pixel.dists
+diag(pixel.dists.inv) <- 0
+
+summary(mod)
+gam.check(mod)
+plot(mod)
+AIC(mod)
+
+
+print(Moran.I(residuals(mod),pixel.dists.inv))
+```
+
+
+Check if residuals are spatially correlated
+```{r}
+
+```
+
+
+
+
+
+
+```{r}
 mod2 <- fitGAM(df4 %>% filter(postFirePlanting < 0.1,
                               mediumReburns < 0.01,
                               lowReburns < 0.01),
@@ -43,7 +426,5 @@ plot(mod2)
 summary(mod2)
 print(paste("AIC",AIC(mod2)))
 ```
-
-
 
 

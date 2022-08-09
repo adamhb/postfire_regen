@@ -75,18 +75,69 @@ validationDF <- fieldValidationData %>%
 linearMod <- lm(validationDF, formula = pctCover ~ pctCoverRS)
 summary(linearMod)
 
-validationFig <- validationDF %>%
-  ggplot(aes(pctCoverRS, pctCover)) +
-  geom_point() +
-  xlab(label = "Predicted conifer cover \n [% of surface area]") +
-  ylab('Conifer cover observed in field \n [% of surface area]') +
-  geom_smooth(method = "lm",
-              color = "#666666") +
-  scale_x_continuous(limits = c(0,0.8),breaks = seq(0,0.7,0.1)) +
-  scale_y_continuous(limits = c(0,0.8),breaks = seq(0,0.8,0.1)) +
-  adams_theme
 
-makePNG(fig = validationFig, path_to_output.x = 'figures/', file_name = "validationFig")
+#shrub cov data
+
+#point shrub cov
+shrubCovPoint <- read_csv("data/shrubCov.csv") %>% select(plotID,shrubCov) 
+
+#line shrub cov
+AllshrubCov <- fieldValidationData_LI %>% filter(pft == "s") %>% rename(shrubCov = pctCover) %>%
+  select(-pft) %>% rbind(shrubCovPoint)
+
+validationFig <- validationDF %>%
+  left_join(AllshrubCov, by = "plotID") %>%
+  mutate(LotsOfShrub = shrubCov > 0.5) %>%
+  ggplot(aes(pctCover,pctCoverRS, shape = LotsOfShrub)) +
+  geom_point(size = 3) +
+  geom_abline(slope=1, intercept=0, linetype = "dashed") +
+  xlab("Observed conifer foliage projective cover") +
+  ylab("Predicted conifer foliage projective cover") +
+  #xlab(label = expression(atop("Predicted conifer canopy leaf area index [m2 m-2]") +
+  #ylab('Conifer cover observed in field \n [% of surface area]') +
+  scale_x_continuous(limits = c(0,0.8),breaks = seq(0,0.8,0.1)) +
+  scale_y_continuous(limits = c(0,0.8),breaks = seq(0,0.8,0.1)) +
+  scale_shape_manual(values = c(1,2)) +
+  adams_theme +
+  theme(legend.position = "none")
+
+#validMod <- lm(data = validationDF,formula = pctCover ~ pctCoverRS)
+#summary(validMod)
+
+makePNG(fig = validationFig, path_to_output.x = fig_path, file_name = "validationFig", res = 400, width = 6, height = 6)
+
+
+
+
+##########plotting predictions against training data#############
+
+trainingPlotRSPredictions <- read_csv('data/trainingAreaPredictions/trainingPlotPredictions_4_26_2022.csv') %>%
+  select(fid,mean,pctCover,year) 
+
+linearMod <- lm(trainingPlotRSPredictions, formula = pctCover ~ mean)
+summary(linearMod)
+
+trainingPlotRSPredictionsFig <- trainingPlotRSPredictions %>%
+  ggplot(aes(pctCover,mean)) +
+  geom_point(size = 3, shape = 1) +
+  geom_abline(slope=1, intercept=0, linetype = "dashed") +
+  xlab("Observed conifer foliage projective cover") +
+  ylab("Predicted conifer foliage projective cover") +
+  #xlab(label = expression(atop("Predicted conifer canopy leaf area index [m2 m-2]") +
+  #ylab('Conifer cover observed in field \n [% of surface area]') +
+  scale_x_continuous(limits = c(0,0.8),breaks = seq(0,0.8,0.1)) +
+  scale_y_continuous(limits = c(0,0.8),breaks = seq(0,0.8,0.1)) +
+  adams_theme +
+  theme(legend.position = "none")
+
+makePNG(fig = trainingPlotRSPredictionsFig, path_to_output.x = fig_path, file_name = "trainingPlotRSPredictionsFig", res = 400, width = 6, height = 6)
+
+
+
+
+
+
+
 # logitMod <- glm(data = forLogit, formula = conProbNorm ~ pctCover, family = "binomial")
 # predictions <- predict(object = logitMod,newdata = tibble(pctCover = forLogit$pctCover),type = "response")
 # forLogit$predictions <- predictions

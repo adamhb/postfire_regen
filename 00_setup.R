@@ -6,6 +6,9 @@ library(parallel)
 library(ggcorrplot)
 library(zoo)
 library(mgcv)
+library(ape)
+library(gstat)
+library(cowplot)
 
 source('utils/system_settings.R') # source internal functions and settings
 
@@ -61,6 +64,7 @@ readPixelLevel <- function(var){
   read_csv(paste0(tmpFolder,var,".csv"),show_col_types = FALSE)
 }
 
+axis_size <- 15
 
 adams_theme <- theme(plot.title = element_text(hjust = 0.5, size = title_size),
                      strip.text.x = element_text(size = axis_size),

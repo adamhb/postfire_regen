@@ -7,13 +7,21 @@ source('00_setup.R')
 basePath <- '~/cloud/gdrive/fire_project/local_data/fromGEE/'
 conCovPath <- paste0(basePath,'conCov/')
 sapPath <- paste0(basePath,'SAP/')
+snowPackPath <- paste0(basePath,"snowPack/")
 mostVarsPath <- paste0(basePath,'mostVars/')
 
-#which fa's are ready
+#which to convert
 done <- as.integer(na.omit(str_extract(string = list.files(mostVarsPath),pattern = "[:digit:]{2}")))
-remaining <- 10:55
-remaining[10:55 %in% done == F]
-exclude <- c(remaining[10:55 %in% done == F],27)
+alreadyCSV <- done %in% unique(df4$focalAreaID)
+makeCSVofThese <- done[alreadyCSV == F]
+makeCSVofThese <- makeCSVofThese[makeCSVofThese > 9]
+makeCSVofThese <- makeCSVofThese[-2]
+makeCSVofThese <- c(28, 37, 38)
+makeCSVofThese <- c(1)
+
+# remaining <- 10:55
+# remaining[10:55 %in% done == F]
+# exclude <- c(remaining[10:55 %in% done == F],27)
 
 ##functions
 options(max.print = 1000)
@@ -85,7 +93,7 @@ tifToTibble <- function(fa){
 }
 tifToTibble_possibly <- possibly(.f = tifToTibble, otherwise = paste("ERROR:"))
 
-focalAreas <- c(28,37,38,41,42,43,44,45,46,50,52)
+focalAreas <- makeCSVofThese
 
 d <- map(.x = focalAreas, .f = tifToTibble_possibly)
 
@@ -100,7 +108,7 @@ for(i in focalAreasIndex){
 }
 
 
-write_csv(x = df, file = paste0(data_path,'FA_3_31_2022.csv'))
+write_csv(x = df, file = paste0(data_path,'FA_4_1_2022.csv'))
 
 
 

@@ -46,6 +46,9 @@ modData <-  df6_filter %>%
   mutate(across(where(is.numeric),scale_this))
 print(paste("sample size:",nrow(modData)))
 
+write_csv(df6_filter,"analysis4/data_for_statistical_analysis_100423.csv")
+
+
 ###############################################
 
 print(paste("Mean ARI on full NF domain with spatial rarification",mean(df6_filter$ARI_end_smooth)))

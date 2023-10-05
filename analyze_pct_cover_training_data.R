@@ -7,7 +7,7 @@ pfts <- names(table(d$pft))
 
 sample_sizes <- d %>%
   group_by(fid) %>%
-  summarise(n = length(pft)) %>%
+  summarise(n = length(pft)) %>% arrange(n)
   pull(n) %>% summary()
 
 print(paste("sample size ranged from",sample_sizes[1],"to",sample_sizes[6], "with a median of",sample_sizes[3]))

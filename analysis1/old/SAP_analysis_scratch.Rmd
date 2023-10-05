@@ -1,0 +1,68 @@
+---
+title: "SAP_analysis_scratch"
+author: "Adam Hanbury-Brown"
+date: "1/11/2023"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+
+##Analysis of SAP (perhaps look at interaction between CWD and seed availability at the site level)
+Try running one focal area at a time
+```{r}
+mod_predictors <- c("recoveryTime","slope","aspect","pptYr1_3_annual_mean","burnSev","postFireSAP")
+#getCorrelationMatrix(mod_predictors)
+k.default = 5
+
+modData <- df4 %>%
+  filter(fire == forSiteLevelAnalysis[5]) %>%
+  mutate(across(where(is.numeric),scale_this)) %>%
+  ggplot(aes(x,y,color = RRI_end)) +
+  geom_point()
+
+#
+
+mod <- gam(formula = RRI_end ~ s(x,y,k=15) +
+             s(burnSev, k = k.default) +
+             s(slope, k = k.default) + s(aspect, k = k.default) + 
+             s(postFireSAP, k = k.default),
+           data = modData)
+
+pixel.dists <- as.matrix(dist(cbind(modData$x, modData$y)))
+pixel.dists.inv <- 1/pixel.dists
+diag(pixel.dists.inv) <- 0
+
+summary(mod)
+gam.check(mod)
+plot(mod)
+AIC(mod)
+
+
+print(Moran.I(residuals(mod),pixel.dists.inv))
+```
+
+
+Check if residuals are spatially correlated
+```{r}
+
+```
+
+
+
+
+
+
+```{r}
+mod2 <- fitGAM(df4 %>% filter(postFirePlanting < 0.1,
+                              mediumReburns < 0.01,
+                              lowReburns < 0.01),
+               mod2_predictors,response = "RRI_end", scaleData = T)
+plot(mod2)
+summary(mod2)
+print(paste("AIC",AIC(mod2)))
+```
+

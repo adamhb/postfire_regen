@@ -1,0 +1,2 @@
+var years = [1995,1996,1997]
+years.map(exportSAP_

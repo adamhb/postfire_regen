@@ -1,0 +1,309 @@
+---
+title: "03_results.Rmd"
+author: "Adam Hanbury-Brown"
+date: "3/31/2022"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+```{r, echo=FALSE}
+source('00_setup.R')
+```
+
+
+##Load data
+```{r}
+#df <- read_csv(paste0(data_path,"timeInvariantDF_Aug2022.csv"))
+df <- df4
+```
+
+##Spatially rarify the points
+```{r}
+rarify_scale <- 1000
+df5 <- df %>% mutate_at(.vars = c("x","y"), .funs = function(x){round(x/rarify_scale,0)})
+df6 <- df5[!duplicated(df5[c("x","y")]),]
+df6$focalAreaID <- factor(df6$focalAreaID)
+nrow(df6)
+```
+
+
+```{r}
+df7 <- read_csv('data/mod_3-2022-04-02 17:13:55data.csv')
+nrow(df7)
+```
+
+
+##Best Model
+
+```{r,echo=F}
+#name the model
+trialN <- 100
+
+#k for xy = 75
+#k for others = 15
+
+#scale the data
+#modData <- df6 %>%
+#  mutate(across(where(is.numeric),scale_this)) 
+
+# fix RRI to be between 0 and 1
+# modData <- df6 %>%
+#   mutate(RRI_end_1max = case_when(
+#     RRI_end > 1 ~ 1,
+#     RRI_end < 0 ~ 0,
+#     TRUE ~ RRI_end
+#   ))
+
+#fit the model
+mod <- gam(formula = RRI_end ~ 
+             recoveryTime + 
+             mediumReburns +
+             burnSev +
+             s(x, y, bs = "gp", k = 75, m = 2) +
+             #s(CWDhist, k = 15) +
+             s(TmaxHist, k = 15) +
+             s(adj_fold_northness, k = 15) +
+             s(postFireSAP, k = 15) +
+             s(pptYr1_3_annual_mean, k = 15),
+           data = modData, method = "REML")
+
+#check spatial autocorrelation
+pixel.dists <- as.matrix(dist(cbind(modData$x, modData$y)))
+pixel.dists.inv <- 1/pixel.dists
+diag(pixel.dists.inv) <- 0
+print(paste("spatial auto: ",Moran.I(residuals(mod),pixel.dists.inv)))
+
+#store model for making table and comparing AICs later
+modName <- paste0("mod_",trialN,"-",Sys.time(),'.RDS')
+dataName <- paste0("mod_",trialN,"-",Sys.time(),"data.csv")
+#saveRDS(object = mod, file = paste0('data/',modName))
+#write_csv(modData,file = paste0('data/',dataName))
+
+#view results
+summary(mod)
+gam.check(mod)
+concurvity(mod, full = F)
+plot(mod, rug = T, all.terms = T, residuals = T, pch = 1, cex = 1, shift = coef(mod)[1], scheme = 2)
+paste0("AIC:",AIC(mod))
+
+```
+
+```{r}
+#vis.gam(mod, view = c("x","y"), plot.type = "contour")
+```
+
+
+
+```{r}
+plot(df6$recoveryTime, df6$RRI_end)
+plot(df6$burnSev, df6$RRI_end)
+plot(df6$pptYr1_3_annual_mean, df6$RRI_end)
+plot(df6$mediumReburns, df6$RRI_end)
+plot(df6$adj_fold_northness, df6$RRI_end)
+plot(df6$tmaxYr1_3_mean, df6$RRI_end)
+```
+
+
+Vars to choose from:
+```{r}
+topoVars <- c("hli","tpi","northness","eastness","adjustedNorthness","adj_fold_northness","slope","elevation")
+histClimateVars <- c("AEThist","CWDhist","TmaxHist","PPThist","PPThistSD","TmaxHistSD")
+seedVars <- c("preFireConCov","disturbanceSize","burnSev","postFireConCov","postFireSAP","postFirePlanting")
+postFireWeatherVars <- c("pptYr1_3_annual_mean","ppt_Yr1_3_mean_annual_anom",
+                         "min_annual_ppt_Yr1_3", "min_annual_ppt_Yr1_3_anom",
+                         "pptYr1_3_annual_mean_t_adjusted",
+                         "min_annual_ppt_t_adjusted_Yr1_3")
+otherVars <- c("x","y","wilderness","forestType","mediumReburns","lowReburns","recoveryTime","fire")
+```
+
+
+
+
+
+
+
+
+
+```{r}
+str(df6)
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+##Check correlation between vars
+```{r}
+#for correlation matrix
+otherVars.x <- c("recoveryTime","mediumReburns","lowReburns")
+topoVar.x  <- c("slope","hli")
+histClimateVars.x <- c("AEThist","CWDhist")
+seedVars.x <- c("burnSev","postFireSAP","postFirePlanting")
+postFireWeather.x <- c("pptYr1_3_annual_mean")
+predictors.x <- c(otherVars.x,topoVar.x,histClimateVars.x,seedVars.x,postFireWeather.x)
+getCorrelationMatrix(d = modData, varsForCorr = predictors.x)
+```
+
+
+
+
+
+
+
+
+
+
+
+```{r}
+plot(modData$pptYr1_3_annual_mean,modData$RRI_end)
+plot(df4$pptYr1_3_annual_mean, df4$RRI_end)
+```
+
+
+Results from best fitting model
+Trial 1: 
+-result: spatial auto., CWD and AET negatively correlated, slope and postFireSAP positively correlated (?)., low reburns don't seem to matter, medium reburns linear, AET could be linear, ppt_1_3 not significant, but could be linear.
+
+--next: reduce sample size to 35, take out AET, take out low Reburns, take out slope.
+--interesting finding: slope and medium reburn are positively correlated
+
+Trial 2: 
+--result: Still spatial auto, but otherwise, this is a good model, ppt in the first 3 years after fire seems to nullify AET. Other vars make sense.
+--AIC is 1325
+--adjusted R2 is 80 
+
+Trial 3
+--goal: smaller sample size, larger k in x,y to see if we can get rid of spatial auto.
+-- results: The precip. in the first 3 years seems to be more important that AEThist. Post-fire planting likely not significant because they plant where the fires are the worst. Perhaps post fire SAP not having an effect because this is best analyzed within a fire.
+
+Trial 4
+--same as above, but increased k x,y to account for spatial auto.
+
+Trial 5
+--take AET and postfire planting out. This improved the AIC.
+--AIC:1080
+
+Trial 6
+--move postfire SAP to linear
+--results raised AIC a lot, and re-introduced unexplained spatial structure
+
+Trial 7
+--trying to put ppt hist and t hist in the model
+--result: AIC lowered (1069), tmax hist was signficant, ppthist was not as a smooth function.
+
+Trial 8
+--put ppt hist as linear term, increase k for t max hist. (from default to 15)
+--result: AIC 1066, but ppthist is not significant.
+
+Trial 9
+--take out ppt hist.
+--result: AIC 1067 (slightly higher than with ppthist in)
+--best model so far
+
+Trial 10
+--try t adjusted precip 1-3 instead.
+-- was not as good. AIC went up and spatial auto corr. went up.
+
+Trial 11
+--try min precip 1-3 instead.
+--not as good. AIC went up and spatal auto went up.
+
+Trial 12
+--try precip anom instead. Not as good.
+
+Trial 13
+--try to get a topography variable in there.
+--adjusted, folded, northness lowered the AIC to 1060 (7 lower than without); best model so far
+
+Trial 14
+--move adjusted northness to linear
+--slightly higher than Trial 13 with adjusted folded northness as non-linear
+
+Trial 15
+--same as 13, but with CWD instead of Tmax.
+
+Trail 16
+--same as 13 with adjusted northness instead of adjusted, folded northness
+
+Trial 17. add postfire planting to 13, but didn't improve anything. 
+
+Trial 18. added tpi to 13. no change. tpi as smooth not significant
+
+Trial 19. added tpi as linear term.
+
+Trial 20. same as 13, but tried tmax_1-3 instead of tmax_hist.
+
+Trial 21. same as 13, but without standardizing the response variable.
+
+Pick up here. Perhaps don't do Shive's model explicitly, but save that for the discussion.
+
+
+
+##Analysis of SAP (perhaps look at interaction between CWD and seed availability at the site level)
+Try running one focal area at a time
+```{r}
+mod_predictors <- c("recoveryTime","slope","aspect","pptYr1_3_annual_mean","burnSev","postFireSAP")
+#getCorrelationMatrix(mod_predictors)
+k.default = 5
+
+modData <- df4 %>%
+  filter(fire == forSiteLevelAnalysis[5]) %>%
+  mutate(across(where(is.numeric),scale_this)) %>%
+  ggplot(aes(x,y,color = RRI_end)) +
+  geom_point()
+
+#
+
+mod <- gam(formula = RRI_end ~ s(x,y,k=15) +
+             s(burnSev, k = k.default) +
+             s(slope, k = k.default) + s(aspect, k = k.default) + 
+             s(postFireSAP, k = k.default),
+           data = modData)
+
+pixel.dists <- as.matrix(dist(cbind(modData$x, modData$y)))
+pixel.dists.inv <- 1/pixel.dists
+diag(pixel.dists.inv) <- 0
+
+summary(mod)
+gam.check(mod)
+plot(mod)
+AIC(mod)
+
+
+print(Moran.I(residuals(mod),pixel.dists.inv))
+```
+
+
+Check if residuals are spatially correlated
+```{r}
+
+```
+
+
+
+
+
+
+```{r}
+mod2 <- fitGAM(df4 %>% filter(postFirePlanting < 0.1,
+                              mediumReburns < 0.01,
+                              lowReburns < 0.01),
+               mod2_predictors,response = "RRI_end", scaleData = T)
+plot(mod2)
+summary(mod2)
+print(paste("AIC",AIC(mod2)))
+```
+
+

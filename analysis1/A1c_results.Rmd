@@ -1,0 +1,72 @@
+---
+title: "A1c"
+author: "Adam Hanbury-Brown"
+date: "2/8/2023"
+output: html_document
+---
+This is the data of A1 with the domain of A2. Does not include fires that reburned at high severity between 2014 and 2019. Does not include smaller radius for SAP (that will be A1d).
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+Load data
+```{r}
+source('~/cloud/gdrive/fire_project/postfire_regen/analysis1/00_setup_A1.R')
+
+#A2 domain except for the 2014 to 2019 fires 
+df4 <- read_csv('A1_data_with_A2_domain_020823.csv')
+
+#Run the spatial rarification script to get the "keep pixels". This didn't fix
+```
+
+
+```{r}
+modData <- df4 %>% filter(pixelID %in% keep_pixels) %>% #spatial rarification
+  mutate(across(where(is.numeric),scale_this)) #standardize data
+
+mod <- gam(formula = RRI_end ~ 
+             recoveryTime + 
+             s(x, y, bs = "gp", k = 75, m = 2) +
+             mediumReburns +
+             burnSev +
+             s(TmaxHist,k = 15) +
+             #CWDhist +
+             s(adj_fold_northness, k = 15) +
+             s(postFireSAP, k = 15) +
+             s(pptYr1_3_annual_mean,k = 15),
+           data = modData, select = TRUE)
+
+
+#model results
+summary(mod)
+plot(mod)
+paste0("AIC:",AIC(mod))
+```
+
+
+Check model assumptions.
+#Check residuals
+```{r}
+gam.check(mod)
+```
+
+
+
+Check concurvity
+```{r}
+print(concurvity(mod))
+```
+
+
+Check spatial autocorrelation. This is good.
+```{r}
+#check spatial autocorrelation
+
+#look into this more
+pixel.dists <- as.matrix(dist(cbind(modData$x, modData$y)))
+pixel.dists.inv <- 1/pixel.dists
+diag(pixel.dists.inv) <- 0
+print(Moran.I(residuals(mod),pixel.dists.inv))
+```

@@ -1,0 +1,496 @@
+var years = [1994]
+var years = [1987]
+var years = [1999]
+var years = [1987]
+var years = [1992]
+var years = [1992]
+var years = [1992]
+var years = [1988]
+var years = [1990]
+var years = [1987]
+var years = [2003]
+var years = [1987]
+var years = [1996]
+var years = [1999]
+var years = [2000]
+var years = [2000]
+var years = [2001]
+var years = [1987]
+var years = [1994]
+var years = [1999]
+var years = [2001]
+var years = [1987]
+var years = [1992]
+var years = [2004]
+var years = [2004]
+var years = [1992]
+var years = [1996]
+var years = [1987]
+var years = [1987]
+var years = [1987]
+var years = [2002]
+var years = [2000]
+var years = [2004]
+var years = [1994]
+var years = [198719881989]
+var years = [199920002001]
+var years = [198719881989]
+var years = [199219931994]
+var years = [199219931994]
+var years = [199219931994]
+var years = [198819891990]
+var years = [199019911992]
+var years = [198719881989]
+var years = [200320042005]
+var years = [198719881989]
+var years = [199619971998]
+var years = [199920002001]
+var years = [200020012002]
+var years = [200020012002]
+var years = [200120022003]
+var years = [198719881989]
+var years = [199419951996]
+var years = [199920002001]
+var years = [200120022003]
+var years = [198719881989]
+var years = [199219931994]
+var years = [200420052006]
+var years = [200420052006]
+var years = [199219931994]
+var years = [199619971998]
+var years = [198719881989]
+var years = [198719881989]
+var years = [198719881989]
+var years = [200220032004]
+var years = [200020012002]
+var years = [200420052006]
+var years = [199419951996]
+var years = [1987,1988,1989]
+var years = [1999,2000,2001]
+var years = [1987,1988,1989]
+var years = [1992,1993,1994]
+var years = [1992,1993,1994]
+var years = [1992,1993,1994]
+var years = [1988,1989,1990]
+var years = [1990,1991,1992]
+var years = [1987,1988,1989]
+var years = [2003,2004,2005]
+var years = [1987,1988,1989]
+var years = [1996,1997,1998]
+var years = [1999,2000,2001]
+var years = [2000,2001,2002]
+var years = [2000,2001,2002]
+var years = [2001,2002,2003]
+var years = [1987,1988,1989]
+var years = [1994,1995,1996]
+var years = [1999,2000,2001]
+var years = [2001,2002,2003]
+var years = [1987,1988,1989]
+var years = [1992,1993,1994]
+var years = [2004,2005,2006]
+var years = [2004,2005,2006]
+var years = [1992,1993,1994]
+var years = [1996,1997,1998]
+var years = [1987,1988,1989]
+var years = [1987,1988,1989]
+var years = [1987,1988,1989]
+var years = [2002,2003,2004]
+var years = [2000,2001,2002]
+var years = [2004,2005,2006]
+var years = [1994,1995,1996]
+var years = [1987,1988,1989]
+hi
+var years = [1999,2000,2001]
+hi
+var years = [1987,1988,1989]
+hi
+var years = [1992,1993,1994]
+hi
+var years = [1992,1993,1994]
+hi
+var years = [1992,1993,1994]
+hi
+var years = [1988,1989,1990]
+hi
+var years = [1990,1991,1992]
+hi
+var years = [1987,1988,1989]
+hi
+var years = [2003,2004,2005]
+hi
+var years = [1987,1988,1989]
+hi
+var years = [1996,1997,1998]
+hi
+var years = [1999,2000,2001]
+hi
+var years = [2000,2001,2002]
+hi
+var years = [2000,2001,2002]
+hi
+var years = [2001,2002,2003]
+hi
+var years = [1987,1988,1989]
+hi
+var years = [1994,1995,1996]
+hi
+var years = [1999,2000,2001]
+hi
+var years = [2001,2002,2003]
+hi
+var years = [1987,1988,1989]
+hi
+var years = [1992,1993,1994]
+hi
+var years = [2004,2005,2006]
+hi
+var years = [2004,2005,2006]
+hi
+var years = [1992,1993,1994]
+hi
+var years = [1996,1997,1998]
+hi
+var years = [1987,1988,1989]
+hi
+var years = [1987,1988,1989]
+hi
+var years = [1987,1988,1989]
+hi
+var years = [2002,2003,2004]
+hi
+var years = [2000,2001,2002]
+hi
+var years = [2004,2005,2006]
+hi
+var years = [1994,1995,1996]
+hi
+var years = [1987,1988,1989]
+years.map(exportSAP_1
+var years = [1999,2000,2001]
+years.map(exportSAP_1
+var years = [1987,1988,1989]
+years.map(exportSAP_1
+var years = [1992,1993,1994]
+years.map(exportSAP_1
+var years = [1992,1993,1994]
+years.map(exportSAP_1
+var years = [1992,1993,1994]
+years.map(exportSAP_1
+var years = [1988,1989,1990]
+years.map(exportSAP_1
+var years = [1990,1991,1992]
+years.map(exportSAP_1
+var years = [1987,1988,1989]
+years.map(exportSAP_1
+var years = [2003,2004,2005]
+years.map(exportSAP_2
+var years = [1987,1988,1989]
+years.map(exportSAP_1
+var years = [1996,1997,1998]
+years.map(exportSAP_1
+var years = [1999,2000,2001]
+years.map(exportSAP_1
+var years = [2000,2001,2002]
+years.map(exportSAP_2
+var years = [2000,2001,2002]
+years.map(exportSAP_2
+var years = [2001,2002,2003]
+years.map(exportSAP_2
+var years = [1987,1988,1989]
+years.map(exportSAP_1
+var years = [1994,1995,1996]
+years.map(exportSAP_1
+var years = [1999,2000,2001]
+years.map(exportSAP_1
+var years = [2001,2002,2003]
+years.map(exportSAP_2
+var years = [1987,1988,1989]
+years.map(exportSAP_1
+var years = [1992,1993,1994]
+years.map(exportSAP_1
+var years = [2004,2005,2006]
+years.map(exportSAP_2
+var years = [2004,2005,2006]
+years.map(exportSAP_2
+var years = [1992,1993,1994]
+years.map(exportSAP_1
+var years = [1996,1997,1998]
+years.map(exportSAP_1
+var years = [1987,1988,1989]
+years.map(exportSAP_1
+var years = [1987,1988,1989]
+years.map(exportSAP_1
+var years = [1987,1988,1989]
+years.map(exportSAP_1
+var years = [2002,2003,2004]
+years.map(exportSAP_2
+var years = [2000,2001,2002]
+years.map(exportSAP_2
+var years = [2004,2005,2006]
+years.map(exportSAP_2
+var years = [1994,1995,1996]
+years.map(exportSAP_1
+var years = [1987,1988,1989]
+years.map(exportSAP_NA
+var years = [1999,2000,2001]
+years.map(exportSAP_NA
+var years = [1987,1988,1989]
+years.map(exportSAP_NA
+var years = [1992,1993,1994]
+years.map(exportSAP_NA
+var years = [1992,1993,1994]
+years.map(exportSAP_NA
+var years = [1992,1993,1994]
+years.map(exportSAP_NA
+var years = [1988,1989,1990]
+years.map(exportSAP_NA
+var years = [1990,1991,1992]
+years.map(exportSAP_NA
+var years = [1987,1988,1989]
+years.map(exportSAP_NA
+var years = [2003,2004,2005]
+years.map(exportSAP_NA
+var years = [1987,1988,1989]
+years.map(exportSAP_NA
+var years = [1996,1997,1998]
+years.map(exportSAP_NA
+var years = [1999,2000,2001]
+years.map(exportSAP_NA
+var years = [2000,2001,2002]
+years.map(exportSAP_NA
+var years = [2000,2001,2002]
+years.map(exportSAP_NA
+var years = [2001,2002,2003]
+years.map(exportSAP_NA
+var years = [1987,1988,1989]
+years.map(exportSAP_NA
+var years = [1994,1995,1996]
+years.map(exportSAP_NA
+var years = [1999,2000,2001]
+years.map(exportSAP_NA
+var years = [2001,2002,2003]
+years.map(exportSAP_NA
+var years = [1987,1988,1989]
+years.map(exportSAP_NA
+var years = [1992,1993,1994]
+years.map(exportSAP_NA
+var years = [2004,2005,2006]
+years.map(exportSAP_NA
+var years = [2004,2005,2006]
+years.map(exportSAP_NA
+var years = [1992,1993,1994]
+years.map(exportSAP_NA
+var years = [1996,1997,1998]
+years.map(exportSAP_NA
+var years = [1987,1988,1989]
+years.map(exportSAP_NA
+var years = [1987,1988,1989]
+years.map(exportSAP_NA
+var years = [1987,1988,1989]
+years.map(exportSAP_NA
+var years = [2002,2003,2004]
+years.map(exportSAP_NA
+var years = [2000,2001,2002]
+years.map(exportSAP_NA
+var years = [2004,2005,2006]
+years.map(exportSAP_NA
+var years = [1994,1995,1996]
+years.map(exportSAP_NA
+var years = [1987,1988,1989]
+years.map(exportSAP_NA
+var years = [1999,2000,2001]
+years.map(exportSAP_NA
+var years = [1987,1988,1989]
+years.map(exportSAP_NA
+var years = [1992,1993,1994]
+years.map(exportSAP_NA
+var years = [1992,1993,1994]
+years.map(exportSAP_NA
+var years = [1992,1993,1994]
+years.map(exportSAP_NA
+var years = [1988,1989,1990]
+years.map(exportSAP_NA
+var years = [1990,1991,1992]
+years.map(exportSAP_NA
+var years = [1987,1988,1989]
+years.map(exportSAP_NA
+var years = [2003,2004,2005]
+years.map(exportSAP_NA
+var years = [1987,1988,1989]
+years.map(exportSAP_NA
+var years = [1996,1997,1998]
+years.map(exportSAP_NA
+var years = [1999,2000,2001]
+years.map(exportSAP_NA
+var years = [2000,2001,2002]
+years.map(exportSAP_NA
+var years = [2000,2001,2002]
+years.map(exportSAP_NA
+var years = [2001,2002,2003]
+years.map(exportSAP_NA
+var years = [1987,1988,1989]
+years.map(exportSAP_NA
+var years = [1994,1995,1996]
+years.map(exportSAP_NA
+var years = [1999,2000,2001]
+years.map(exportSAP_NA
+var years = [2001,2002,2003]
+years.map(exportSAP_NA
+var years = [1987,1988,1989]
+years.map(exportSAP_NA
+var years = [1992,1993,1994]
+years.map(exportSAP_NA
+var years = [2004,2005,2006]
+years.map(exportSAP_NA
+var years = [2004,2005,2006]
+years.map(exportSAP_NA
+var years = [1992,1993,1994]
+years.map(exportSAP_NA
+var years = [1996,1997,1998]
+years.map(exportSAP_NA
+var years = [1987,1988,1989]
+years.map(exportSAP_NA
+var years = [1987,1988,1989]
+years.map(exportSAP_NA
+var years = [1987,1988,1989]
+years.map(exportSAP_NA
+var years = [2002,2003,2004]
+years.map(exportSAP_NA
+var years = [2000,2001,2002]
+years.map(exportSAP_NA
+var years = [2004,2005,2006]
+years.map(exportSAP_NA
+var years = [1994,1995,1996]
+years.map(exportSAP_NA
+var years = [1987,1988,1989]
+years.map(exportSAP_NA
+var years = [1999,2000,2001]
+years.map(exportSAP_NA
+var years = [1987,1988,1989]
+years.map(exportSAP_NA
+var years = [1992,1993,1994]
+years.map(exportSAP_NA
+var years = [1992,1993,1994]
+years.map(exportSAP_NA
+var years = [1992,1993,1994]
+years.map(exportSAP_NA
+var years = [1988,1989,1990]
+years.map(exportSAP_NA
+var years = [1990,1991,1992]
+years.map(exportSAP_NA
+var years = [1987,1988,1989]
+years.map(exportSAP_NA
+var years = [2003,2004,2005]
+years.map(exportSAP_NA
+var years = [1987,1988,1989]
+years.map(exportSAP_NA
+var years = [1996,1997,1998]
+years.map(exportSAP_NA
+var years = [1999,2000,2001]
+years.map(exportSAP_NA
+var years = [2000,2001,2002]
+years.map(exportSAP_NA
+var years = [2000,2001,2002]
+years.map(exportSAP_NA
+var years = [2001,2002,2003]
+years.map(exportSAP_NA
+var years = [1987,1988,1989]
+years.map(exportSAP_NA
+var years = [1994,1995,1996]
+years.map(exportSAP_NA
+var years = [1999,2000,2001]
+years.map(exportSAP_NA
+var years = [2001,2002,2003]
+years.map(exportSAP_NA
+var years = [1987,1988,1989]
+years.map(exportSAP_NA
+var years = [1992,1993,1994]
+years.map(exportSAP_NA
+var years = [2004,2005,2006]
+years.map(exportSAP_NA
+var years = [2004,2005,2006]
+years.map(exportSAP_NA
+var years = [1992,1993,1994]
+years.map(exportSAP_NA
+var years = [1996,1997,1998]
+years.map(exportSAP_NA
+var years = [1987,1988,1989]
+years.map(exportSAP_NA
+var years = [1987,1988,1989]
+years.map(exportSAP_NA
+var years = [1987,1988,1989]
+years.map(exportSAP_NA
+var years = [2002,2003,2004]
+years.map(exportSAP_NA
+var years = [2000,2001,2002]
+years.map(exportSAP_NA
+var years = [2004,2005,2006]
+years.map(exportSAP_NA
+var years = [1994,1995,1996]
+years.map(exportSAP_NA
+var years = [1987,1988,1989]
+years.map(exportSAP_NA
+var years = [1999,2000,2001]
+years.map(exportSAP_NA
+var years = [1987,1988,1989]
+years.map(exportSAP_NA
+var years = [1992,1993,1994]
+years.map(exportSAP_NA
+var years = [1992,1993,1994]
+years.map(exportSAP_NA
+var years = [1992,1993,1994]
+years.map(exportSAP_NA
+var years = [1988,1989,1990]
+years.map(exportSAP_NA
+var years = [1990,1991,1992]
+years.map(exportSAP_NA
+var years = [1987,1988,1989]
+years.map(exportSAP_NA
+var years = [2003,2004,2005]
+years.map(exportSAP_NA
+var years = [1987,1988,1989]
+years.map(exportSAP_NA
+var years = [1996,1997,1998]
+years.map(exportSAP_NA
+var years = [1999,2000,2001]
+years.map(exportSAP_NA
+var years = [2000,2001,2002]
+years.map(exportSAP_NA
+var years = [2000,2001,2002]
+years.map(exportSAP_NA
+var years = [2001,2002,2003]
+years.map(exportSAP_NA
+var years = [1987,1988,1989]
+years.map(exportSAP_NA
+var years = [1994,1995,1996]
+years.map(exportSAP_NA
+var years = [1999,2000,2001]
+years.map(exportSAP_NA
+var years = [2001,2002,2003]
+years.map(exportSAP_NA
+var years = [1987,1988,1989]
+years.map(exportSAP_NA
+var years = [1992,1993,1994]
+years.map(exportSAP_NA
+var years = [2004,2005,2006]
+years.map(exportSAP_NA
+var years = [2004,2005,2006]
+years.map(exportSAP_NA
+var years = [1992,1993,1994]
+years.map(exportSAP_NA
+var years = [1996,1997,1998]
+years.map(exportSAP_NA
+var years = [1987,1988,1989]
+years.map(exportSAP_NA
+var years = [1987,1988,1989]
+years.map(exportSAP_NA
+var years = [1987,1988,1989]
+years.map(exportSAP_NA
+var years = [2002,2003,2004]
+years.map(exportSAP_NA
+var years = [2000,2001,2002]
+years.map(exportSAP_NA
+var years = [2004,2005,2006]
+years.map(exportSAP_NA
+var years = [1994,1995,1996]
+years.map(exportSAP_NA

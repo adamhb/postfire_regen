@@ -1,0 +1,66 @@
+var years = [1988,1989,1990]
+years.map(exportSAP_
+var years = [2000,2001,2002]
+years.map(exportSAP_
+var years = [1988,1989,1990]
+years.map(exportSAP_
+var years = [1993,1994,1995]
+years.map(exportSAP_
+var years = [1993,1994,1995]
+years.map(exportSAP_
+var years = [1993,1994,1995]
+years.map(exportSAP_
+var years = [1989,1990,1991]
+years.map(exportSAP_
+var years = [1991,1992,1993]
+years.map(exportSAP_
+var years = [1988,1989,1990]
+years.map(exportSAP_
+var years = [2004,2005,2006]
+years.map(exportSAP_
+var years = [1988,1989,1990]
+years.map(exportSAP_
+var years = [1997,1998,1999]
+years.map(exportSAP_
+var years = [2000,2001,2002]
+years.map(exportSAP_
+var years = [2001,2002,2003]
+years.map(exportSAP_
+var years = [2001,2002,2003]
+years.map(exportSAP_
+var years = [2002,2003,2004]
+years.map(exportSAP_
+var years = [1988,1989,1990]
+years.map(exportSAP_
+var years = [1995,1996,1997]
+years.map(exportSAP_
+var years = [2000,2001,2002]
+years.map(exportSAP_
+var years = [2002,2003,2004]
+years.map(exportSAP_
+var years = [1988,1989,1990]
+years.map(exportSAP_
+var years = [1993,1994,1995]
+years.map(exportSAP_
+var years = [2005,2006,2007]
+years.map(exportSAP_
+var years = [2005,2006,2007]
+years.map(exportSAP_
+var years = [1993,1994,1995]
+years.map(exportSAP_
+var years = [1997,1998,1999]
+years.map(exportSAP_
+var years = [1988,1989,1990]
+years.map(exportSAP_
+var years = [1988,1989,1990]
+years.map(exportSAP_
+var years = [1988,1989,1990]
+years.map(exportSAP_
+var years = [2003,2004,2005]
+years.map(exportSAP_
+var years = [2001,2002,2003]
+years.map(exportSAP_
+var years = [2005,2006,2007]
+years.map(exportSAP_
+var years = [1995,1996,1997]
+years.map(exportSAP_

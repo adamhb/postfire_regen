@@ -1,0 +1,330 @@
+---
+title: "03_results_A1.Rmd"
+author: "Adam Hanbury-Brown"
+date: "3/31/2022"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+```{r}
+library(sf)
+```
+
+
+Load cleaned data
+```{r}
+#source('~/cloud/gdrive/fire_project/postfire_regen/analysis4/01_clean_A4.R')
+source('~/cloud/gdrive/fire_project/postfire_regen/analysis4/00_setup_A4.R')
+```
+
+
+```{r}
+df6 <- read_csv('~/cloud/gdrive/fire_project/postfire_regen/analysis4/modelFittingData_030623.csv')
+```
+
+All vars to choose from:
+```{r}
+topoVars <- c("hli","tpi","northness","eastness","adjustedNorthness","adj_fold_northness","slope","elevation")
+histClimateVars <- c("AEThist","CWDhist","TmaxHist","PPThist","PPThistSD","TmaxHistSD")
+seedVars <- c("preFireConCov","disturbanceSize","burnSev","postFireConCov","postFireSAP")
+postFireWeatherVars <- c("postFirePrecip","ppt_Yr1_3_mean_annual_anom",
+                         "minPostFirePrecip", "min_annual_ppt_Yr1_3_anom",
+                         "pptYr1_3_annual_mean_t_adjusted",
+                         "min_annual_ppt_t_adjusted_Yr1_3")
+otherVars <- c("x","y","wilderness","forestType","mediumReburns","lowReburns","recoveryTime","FIRE_NAME")
+
+allVars <- c(topoVars,histClimateVars,seedVars,postFireWeatherVars,otherVars)
+```
+
+
+
+```{r}
+for(v in allVars){
+  missing <- sum(names(df6) == v) < 1
+  if(missing == T){
+    print(v)
+  }
+}
+```
+
+
+Check collinearity among predictors. Check for vars > 0.65
+```{r}
+#for correlation matrix
+# otherVars.x <- c("recoveryTime","mediumReburns","lowReburns","x","y","RRI_end")
+# topoVar.x  <- c("adj_fold_northness")
+# histClimateVars.x <- c("TmaxHist")
+# seedVars.x <- c("burnSev","postFireSAP")
+# postFireWeather.x <- c("postFirePrecip")
+# predictors.x <- c(otherVars.x,topoVar.x,histClimateVars.x,seedVars.x,postFireWeather.x)
+# getCorrelationMatrix(d = modData %>% ungroup(), varsForCorr = predictors.x)
+```
+
+
+Spatial rare
+```{r}
+
+spatial_rare_pixel_list <- list()
+dists <- c(200,600,1000,1500,2000,3000,5000,10000,20000,50000)
+for(dist in dists[3]){
+  f = paste0('~/cloud/gdrive/fire_project/postfire_regen/analysis4/spat_rare_pixels_',as.character(dist),".csv")
+  tmp <- read_csv(f)
+}
+
+tmp
+```
+
+
+
+A4W
+## Model A4W. This can be made with and without flooring ARI smooth.
+This is the best model so far in terms of making sense.
+```{r}
+modData <- df6 %>%
+  filter(wilderness == 1) %>% 
+  filter(pixelID %in% tmp$pixelID) %>%
+  #filter(pixelID %in% notPlanted$pixelID) %>%
+  mutate(across(where(is.numeric),scale_this))
+
+mod <- gam(formula = ARI_end_smooth ~ 
+             s(recoveryTime, k = 8) + 
+             #s(x, y, bs = "gp", k = 25, m = 2) +
+             s(mediumReburns, k = 20) +
+             s(burnSev, k = 20) +
+             #s(TmaxHist, k = 15) +
+             s(adj_fold_northness, k = 20) +
+             s(postFireSAP, k = 20) +
+             s(postFirePrecip, k = 20),
+           data = modData, select = T, method = "REML")
+
+#model results
+summary(mod)
+plot(mod)
+paste0("AIC:",AIC(mod))
+```
+
+
+```{r}
+modData <- df6 %>%
+  filter(wilderness == 1) %>% 
+  filter(pixelID %in% tmp$pixelID) %>%
+  #filter(pixelID %in% notPlanted$pixelID) %>%
+  mutate(across(where(is.numeric),scale_this))
+
+mod <- gam(formula = ARI_end_smooth ~ 
+             s(recoveryTime, k = 8) + 
+             #s(x, y, bs = "gp", k = 25, m = 2) +
+             s(mediumReburns, k = 20) +
+             s(burnSev, k = 20) +
+             #s(TmaxHist, k = 15) +
+             s(adj_fold_northness, k = 20) +
+             s(postFireSAP, k = 20) +
+             s(postFirePrecip, k = 20),
+           data = modData, select = T, method = "REML")
+
+#model results
+summary(mod)
+plot(mod)
+paste0("AIC:",AIC(mod))
+```
+
+
+Check residuals
+```{r}
+gam.check(mod)
+```
+
+
+Check concurvity
+```{r}
+print(concurvity(mod))
+```
+
+Check spatial autocorrelation
+```{r}
+xy <- df6 %>%
+  filter(wilderness == 1) %>%
+  filter(pixelID %in% tmp$pixelID) %>%
+  dplyr::select(x,y) %>% as.matrix()
+
+dists <- dist(xy) 
+summary(dists) 
+v1 <- variog(coords = xy, data = residuals.gam(mod))
+plot(v1, type = "b", main = "Variogram: ") 
+# pixel.dists <- as.matrix(dist(cbind(modData$x, modData$y)))
+# pixel.dists.inv <- 1/pixel.dists
+# diag(pixel.dists.inv) <- 0
+# print(Moran.I(residuals(mod),pixel.dists.inv))
+```
+
+
+```{r}
+testSpatialAutocorrelation(residuals(mod), x = modData$x, y = modData$y)
+```
+
+
+```{r}
+pixel.dists <- as.matrix(dist(cbind(modData$x, modData$y)))
+pixel.dists.inv <- 1/pixel.dists
+diag(pixel.dists.inv) <- 0
+print(Moran.I(residuals(mod),pixel.dists.inv))
+```
+
+
+Additional filters, transformations, and normalizing
+```{r}
+
+```
+
+
+Spatially rarify
+```{r}
+
+```
+
+
+## Model A41. This can be made with and without flooring ARI smooth.
+```{r}
+modData <- df6 %>%
+  mutate(across(where(is.numeric),scale_this))
+
+mod <- gam(formula = ARI_end_smooth ~ 
+             recoveryTime + 
+             s(x, y, bs = "gp", k = 75, m = 2) +
+             mediumReburns +
+             burnSev +
+             s(TmaxHist, k = 15) +
+             s(adj_fold_northness, k = 15) +
+             s(postFireSAP, k = 15) +
+             s(postFirePrecip, k = 15),
+           data = modData, select = T, method = "REML")
+
+#model results
+summary(mod)
+plot(mod)
+paste0("AIC:",AIC(mod))
+```
+
+
+
+Check residuals
+```{r}
+gam.check(mod)
+```
+Check concurvity
+```{r}
+print(concurvity(mod))
+```
+Check spatial autocorrelation
+```{r}
+#check spatial autocorrelation
+# pixel.dists <- as.matrix(dist(cbind(modData$x, modData$y)))
+# pixel.dists.inv <- 1/pixel.dists
+# diag(pixel.dists.inv) <- 0
+# print(Moran.I(residuals(mod),pixel.dists.inv))
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Model A42
+## Model A41. Binomial regression
+```{r}
+modData <- df6 %>%
+  mutate(recovery_status = case_when(
+    ARI_end_smooth > 0 ~ TRUE,
+    ARI_end_smooth == 0 ~ FALSE
+  ))  %>%
+  mutate(across(where(is.numeric),scale_this))
+
+mod <- gam(formula = recovery_status ~ 
+             recoveryTime + 
+             s(x, y, bs = "gp", k = 75, m = 2) +
+             mediumReburns +
+             burnSev +
+             s(TmaxHist, k = 15) +
+             s(adj_fold_northness, k = 15) +
+             s(postFireSAP, k = 15) +
+             s(postFirePrecip, k = 15),
+           data = modData, select = T, family = binomial(link = "logit"))
+
+#model results
+summary(mod)
+plot(mod)
+paste0("AIC:",AIC(mod))
+```
+
+
+Check residuals
+```{r}
+gam.check(mod)
+```
+Check concurvity
+```{r}
+print(concurvity(mod))
+```
+Check spatial autocorrelation
+```{r}
+#check spatial autocorrelation
+# pixel.dists <- as.matrix(dist(cbind(modData$x, modData$y)))
+# pixel.dists.inv <- 1/pixel.dists
+# diag(pixel.dists.inv) <- 0
+# print(Moran.I(residuals(mod),pixel.dists.inv))
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

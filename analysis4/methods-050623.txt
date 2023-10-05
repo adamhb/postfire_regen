@@ -1,0 +1,14 @@
+fire year start = 1985
+pre-fire conifer cover > 30%
+pre-fire con cov = mean of 3 pre-fire years
+post-fire con cov = min of 5 post-fire years
+disturbance size > 0.2
+had to have a minimum of 5 pixels to upscale to 270 meters
+we fit a loess smooth line to the recovery trajectory
+we filtered out other disturbance not detected by the medium severity reburns by ignoring pixels where the highest value on the loess smooth line was greater than 50% of the value of ARI_end. span = 1.2
+
+filtered out NF fragments and areas within 200 m of facts polygons
+
+\Delta_C
+
+C_{F+i}

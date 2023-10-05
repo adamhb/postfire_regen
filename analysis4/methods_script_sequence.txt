@@ -1,0 +1,10 @@
+script sequent
+
+GEE v2 scripts (30 m)
+create tiles of GEE tiffs (bash script)
+run resample_raster.R to resample to 270 m resolution on each tile separately
+run calculateVariables_10_18_2022_v2.py (to calculate all post-fire vars etc.)
+run clean_data_after_calculateVars_v2.ipynb (convert feather files to csv)
+run 01_clean_A4 (cleaning, filtering, spatial rarification before model fitting)
+run A4_results (standardization before fitting)
+

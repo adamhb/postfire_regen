@@ -10,21 +10,101 @@ knitr::opts_chunk$set(echo = TRUE)
 ```
 
 
-```{r}
+```{r, echo=FALSE}
 source('00_setup.R')
 ```
 
 
 ##Load data
 ```{r}
-df <- read_csv(paste0(data_path,"timeInvariantDF_Aug2022.csv"))
-str(df)
+#df <- read_csv(paste0(data_path,"timeInvariantDF_Aug2022.csv"))
+df <- df4
 ```
+
 ##Spatially rarify the points
 ```{r}
 rarify_scale <- 1000
 df5 <- df %>% mutate_at(.vars = c("x","y"), .funs = function(x){round(x/rarify_scale,0)})
 df6 <- df5[!duplicated(df5[c("x","y")]),]
+df6$focalAreaID <- factor(df6$focalAreaID)
+nrow(df6)
+```
+
+
+```{r}
+df7 <- read_csv('data/mod_3-2022-04-02 17:13:55data.csv')
+nrow(df7)
+```
+
+
+##Best Model
+
+```{r,echo=F}
+#name the model
+trialN <- 100
+
+#k for xy = 75
+#k for others = 15
+
+#scale the data
+#modData <- df6 %>%
+#  mutate(across(where(is.numeric),scale_this)) 
+
+# fix RRI to be between 0 and 1
+# modData <- df6 %>%
+#   mutate(RRI_end_1max = case_when(
+#     RRI_end > 1 ~ 1,
+#     RRI_end < 0 ~ 0,
+#     TRUE ~ RRI_end
+#   ))
+
+#fit the model
+mod <- gam(formula = RRI_end ~ 
+             recoveryTime + 
+             mediumReburns +
+             burnSev +
+             s(x, y, bs = "gp", k = 75, m = 2) +
+             #s(CWDhist, k = 15) +
+             s(TmaxHist, k = 15) +
+             s(adj_fold_northness, k = 15) +
+             s(postFireSAP, k = 15) +
+             s(pptYr1_3_annual_mean, k = 15),
+           data = modData, method = "REML")
+
+#check spatial autocorrelation
+pixel.dists <- as.matrix(dist(cbind(modData$x, modData$y)))
+pixel.dists.inv <- 1/pixel.dists
+diag(pixel.dists.inv) <- 0
+print(paste("spatial auto: ",Moran.I(residuals(mod),pixel.dists.inv)))
+
+#store model for making table and comparing AICs later
+modName <- paste0("mod_",trialN,"-",Sys.time(),'.RDS')
+dataName <- paste0("mod_",trialN,"-",Sys.time(),"data.csv")
+#saveRDS(object = mod, file = paste0('data/',modName))
+#write_csv(modData,file = paste0('data/',dataName))
+
+#view results
+summary(mod)
+gam.check(mod)
+concurvity(mod, full = F)
+plot(mod, rug = T, all.terms = T, residuals = T, pch = 1, cex = 1, shift = coef(mod)[1], scheme = 2)
+paste0("AIC:",AIC(mod))
+
+```
+
+```{r}
+#vis.gam(mod, view = c("x","y"), plot.type = "contour")
+```
+
+
+
+```{r}
+plot(df6$recoveryTime, df6$RRI_end)
+plot(df6$burnSev, df6$RRI_end)
+plot(df6$pptYr1_3_annual_mean, df6$RRI_end)
+plot(df6$mediumReburns, df6$RRI_end)
+plot(df6$adj_fold_northness, df6$RRI_end)
+plot(df6$tmaxYr1_3_mean, df6$RRI_end)
 ```
 
 
@@ -41,57 +121,31 @@ otherVars <- c("x","y","wilderness","forestType","mediumReburns","lowReburns","r
 ```
 
 
-##Best Model
-
-```{r,echo=F}
-trialN <- 22
-sub <- T
-k.default = 10
-sampleSize <- 30
-
-modData <- df4 %>%
-  mutate(across(where(is.numeric),scale_this)) 
-
-modDataSub <- tibble()
-
-for(fa in unique(modData$focalAreaID)){
-  d <- modData %>% filter(focalAreaID == fa)
-  if(nrow(d) < sampleSize){
-    tmp <- d
-  }else{
-    tmp <- sample_n(d,size = sampleSize)
-  }
-  modDataSub <- rbind(modDataSub,tmp)
-}
 
 
 
-modData <- read_csv('data/mod_3-2022-04-02 17:13:55data.csv')
-#modData <- modData %>% mutate_at(.vars = "RRI_end", .funs = function(x){ (x * 0.3856) + 0.5110378 } )
 
-mod <- gam(formula = RRI_end ~ 
-             recoveryTime + 
-             s(x, y, bs = "gp", k = 75, m = 2) +
-             #s(fire, bs="re") +
-             mediumReburns +
-             #s(lowReburns, k = k.default) +
-             #postFirePlanting +
-             burnSev +
-             #tpi +
-             #s(PPThist) +
-             s(TmaxHist, k = 15) +
-             #s(tmaxYr1_3_mean, k = 15) +
-             #adj_fold_northness +
-             s(adj_fold_northness, k = 15) +
-             #s(hli, k = k.default) + 
-             #s(slope, k = k.default) +
-             #s(CWDhist, k = k.default) +
-             #s(AEThist, k = 15) +
-             s(postFireSAP, k = 15) +
-             s(pptYr1_3_annual_mean, k = 15),
-             #s(ppt_Yr1_3_mean_annual_anom, k = 15),
-           data = modData)
 
+
+
+```{r}
+str(df6)
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+##Check correlation between vars
+```{r}
 #for correlation matrix
 otherVars.x <- c("recoveryTime","mediumReburns","lowReburns")
 topoVar.x  <- c("slope","hli")
@@ -100,30 +154,13 @@ seedVars.x <- c("burnSev","postFireSAP","postFirePlanting")
 postFireWeather.x <- c("pptYr1_3_annual_mean")
 predictors.x <- c(otherVars.x,topoVar.x,histClimateVars.x,seedVars.x,postFireWeather.x)
 getCorrelationMatrix(d = modData, varsForCorr = predictors.x)
-
-
-
-#check spatial autocorrelation
-pixel.dists <- as.matrix(dist(cbind(modData$x, modData$y)))
-pixel.dists.inv <- 1/pixel.dists
-diag(pixel.dists.inv) <- 0
-
-#store model for making table and comparing AICs later
-modName <- paste0("mod_",trialN,"-",Sys.time(),'.RDS')
-dataName <- paste0("mod_",trialN,"-",Sys.time(),"data.csv")
-#saveRDS(object = mod, file = paste0('data/',modName))
-#write_csv(modData,file = paste0('data/',dataName))
-
-
-#mod <- readRDS("data/mod_3-2022-04-02 17:13:55.RDS")
-#view results
-summary(mod)
-gam.check(mod)
-plot(mod)
-print(Moran.I(residuals(mod),pixel.dists.inv))
-paste0("AIC:",AIC(mod))
-#write_csv(modDataSub,file = "data/modDataSub_StewartModel.csv")
 ```
+
+
+
+
+
+
 
 
 

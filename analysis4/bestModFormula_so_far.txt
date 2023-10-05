@@ -1,0 +1,35 @@
+modData <- df6 %>%
+  filter(wilderness == 1) %>% 
+  #filter(pixelID %in% notPlanted$pixelID) %>%
+  mutate(across(where(is.numeric),scale_this))
+
+mod <- gam(formula = ARI_end_smooth ~ 
+             s(recoveryTime, k = 8) + 
+             #s(x, y, bs = "gp", k = 25, m = 2) +
+             s(mediumReburns, k = 8) +
+             s(burnSev, k = 8) +
+             #s(TmaxHist, k = 15) +
+             s(adj_fold_northness, k = 10) +
+             s(postFireSAP, k = 10) +
+             s(postFirePrecip, k = 20),
+           data = modData, select = T, method = "REML")
+
+#model results
+summary(mod)
+plot(mod)
+paste0("AIC:",AIC(mod))
+
+
+
+#no spatial auto
+
+mod <- gam(formula = ARI_end_smooth ~ 
+             #s(recoveryTime, k = 8) + 
+             s(x, y, bs = "gp", k = 48, m = 2) +
+             s(mediumReburns, k = 8) +
+             s(burnSev, k = 8) +
+             #s(TmaxHist, k = 15) +
+             s(adj_fold_northness, k = 10) +
+             s(postFireSAP, k = 10) +
+             postFirePrecip,
+           data = modData, select = T, method = "REML")

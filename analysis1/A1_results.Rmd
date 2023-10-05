@@ -1,0 +1,287 @@
+---
+title: "03_results_A1.Rmd"
+author: "Adam Hanbury-Brown"
+date: "3/31/2022"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+source('02_clean_analysis_data_A1.R')
+```
+
+
+Check histogram of response variable
+```{r}
+modData <- read_csv("mod_3-2022-04-02 17:13:55data.csv")
+hist(modData$RRI_end)
+```
+
+
+Vars to choose from:
+```{r}
+topoVars <- c("hli","tpi","northness","eastness","adjustedNorthness","adj_fold_northness","slope","elevation")
+histClimateVars <- c("AEThist","CWDhist","TmaxHist","PPThist","PPThistSD","TmaxHistSD")
+seedVars <- c("preFireConCov","disturbanceSize","burnSev","postFireConCov","postFireSAP","postFirePlanting")
+postFireWeatherVars <- c("pptYr1_3_annual_mean","ppt_Yr1_3_mean_annual_anom",
+                         "min_annual_ppt_Yr1_3", "min_annual_ppt_Yr1_3_anom",
+                         "pptYr1_3_annual_mean_t_adjusted",
+                         "min_annual_ppt_t_adjusted_Yr1_3")
+otherVars <- c("x","y","wilderness","forestType","mediumReburns","lowReburns","recoveryTime","fire")
+```
+
+
+
+
+##Results used in Chapter 3 of Dissertation
+```{r,echo=F}
+modData <- read_csv("mod_3-2022-04-02 17:13:55data.csv")
+
+mod <- gam(formula = RRI_end ~ 
+             recoveryTime + 
+             s(x, y, bs = "gp", k = 75, m = 2) +
+             mediumReburns +
+             burnSev +
+             s(TmaxHist, k = 15) +
+             s(adj_fold_northness, k = 15) +
+             s(postFireSAP, k = 15) +
+             s(pptYr1_3_annual_mean, k = 15),
+           data = modData)
+
+#model results
+summary(mod)
+plot(mod)
+paste0("AIC:",AIC(mod))
+```
+
+Check model assumptions.
+#Check residuals
+```{r}
+gam.check(mod)
+```
+
+Check concurvity
+```{r}
+print(concurvity(mod))
+```
+
+
+Check spatial autocorrelation. This is good.
+```{r}
+#check spatial autocorrelation
+pixel.dists <- as.matrix(dist(cbind(modData$x, modData$y)))
+pixel.dists.inv <- 1/pixel.dists
+diag(pixel.dists.inv) <- 0
+print(Moran.I(residuals(mod),pixel.dists.inv))
+```
+
+Check collinearity among predictors
+```{r}
+#for correlation matrix
+otherVars.x <- c("recoveryTime","mediumReburns","lowReburns","x","y","RRI_end")
+topoVar.x  <- c("adj_fold_northness")
+histClimateVars.x <- c("TmaxHist")
+seedVars.x <- c("burnSev","postFireSAP","postFirePlanting")
+postFireWeather.x <- c("pptYr1_3_annual_mean")
+predictors.x <- c(otherVars.x,topoVar.x,histClimateVars.x,seedVars.x,postFireWeather.x)
+getCorrelationMatrix(d = modData, varsForCorr = predictors.x)
+```
+
+
+
+
+
+##Try binary
+```{r}
+ch3_data <- read_csv("mod_3-2022-04-02 17:13:55data.csv")
+
+binary_df <- read_csv("mod_3-2022-04-02 17:13:55data.csv") %>%
+  mutate(recovering = case_when(
+    RRI_end >= 0.3 ~ TRUE,
+    RRI_end < 0.3 ~ FALSE
+  ))
+
+mod <- gam(formula = recovering ~ 
+             recoveryTime + 
+             s(x, y, bs = "gp", k = 75, m = 2) +
+             mediumReburns +
+             burnSev +
+             s(TmaxHist, k = 15) +
+             s(adj_fold_northness, k = 15) +
+             s(postFireSAP, k = 15) +
+             s(pptYr1_3_annual_mean, k = 15),
+           data = binary_df, family = binomial(link = "logit"))
+
+#model results
+summary(mod)
+plot(mod)
+paste0("AIC:",AIC(mod))
+```
+
+
+
+## Replicating Ch. 3 results with reproducible workflow. Can I produce the above using df4?
+```{r,echo=F}
+modData_replicate <- df4 %>%
+  mutate(across(where(is.numeric),scale_this)) %>%
+  filter(pixelID %in% modData$pixelID)
+
+mod_replicate <- gam(formula = RRI_end ~ 
+             recoveryTime + 
+             s(x, y, bs = "gp", k = 75, m = 2) +
+             mediumReburns +
+             burnSev +
+             s(TmaxHist, k = 15) +
+             s(adj_fold_northness, k = 15) +
+             s(postFireSAP, k = 15) +
+             s(pptYr1_3_annual_mean, k = 15),
+           data = modData_replicate)
+
+#model results
+summary(mod_replicate)
+plot(mod_replicate)
+paste0("AIC:",AIC(mod_replicate))
+```
+
+Yes, this is the exact same model as above.
+df4 is derived from analysisReadyDF_4_1_2022.csv
+So before submitting I should see if I can re-create analysisReadyDF_4_1_2022.csv.
+
+
+
+
+A1-b results: "A1 data with A2 domain". JAN 2023 TRIAL. MORE TRIALS IN ANALYSIS 1 FOLDER.
+
+FOR FUTURE: I could try a more sophisticated version of the below where I restrict to the new
+domain before the spatial rarification within each focal area
+```{r,echo=F}
+A1_data_A2_domain <- read_csv('~/cloud/gdrive/fire_project/postfire_regen/analysis2/A1_data_with_A2_domain/new_domain_old_pix_011123.csv')
+
+modData <- df4 %>%
+  mutate(across(where(is.numeric),scale_this)) %>%
+  filter(pixelID %in% A1_data_A2_domain$pixelID)
+
+mod <- gam(formula = RRI_end ~ 
+             recoveryTime + 
+             s(x, y, bs = "gp", k = 75, m = 2) +
+             mediumReburns +
+             burnSev +
+             s(TmaxHist, k = 15) +
+             s(adj_fold_northness, k = 15) +
+             s(postFireSAP, k = 15) +
+             s(pptYr1_3_annual_mean, k = 15),
+           data = modData)
+
+#model results
+summary(mod)
+plot(mod)
+paste0("AIC:",AIC(mod))
+```
+
+
+
+Check model assumptions.
+#Check residuals
+
+#QQ
+```{r}
+gam.check(mod)
+```
+
+Check concurvity
+```{r}
+print(concurvity(mod))
+```
+
+
+Check spatial autocorrelation. This is good.
+```{r}
+#check spatial autocorrelation
+pixel.dists <- as.matrix(dist(cbind(modData$x, modData$y)))
+pixel.dists.inv <- 1/pixel.dists
+diag(pixel.dists.inv) <- 0
+print(Moran.I(residuals(mod),pixel.dists.inv))
+```
+
+
+Results from model fitting process (data behind Table 3 in paper).
+Trial 1: 
+-result: spatial auto., CWD and AET negatively correlated, slope and postFireSAP positively correlated (?)., low reburns don't seem to matter, medium reburns linear, AET could be linear, ppt_1_3 not significant, but could be linear.
+
+--next: reduce sample size to 35, take out AET, take out low Reburns, take out slope.
+--interesting finding: slope and medium reburn are positively correlated
+
+Trial 2: 
+--result: Still spatial auto, but otherwise, this is a good model, ppt in the first 3 years after fire seems to nullify AET. Other vars make sense.
+--AIC is 1325
+--adjusted R2 is 80 
+
+Trial 3
+--goal: smaller sample size, larger k in x,y to see if we can get rid of spatial auto.
+-- results: The precip. in the first 3 years seems to be more important that AEThist. Post-fire planting likely not significant because they plant where the fires are the worst. Perhaps post fire SAP not having an effect because this is best analyzed within a fire.
+
+Trial 4
+--same as above, but increased k x,y to account for spatial auto.
+
+Trial 5
+--take AET and postfire planting out. This improved the AIC.
+--AIC:1080
+
+Trial 6
+--move postfire SAP to linear
+--results raised AIC a lot, and re-introduced unexplained spatial structure
+
+Trial 7
+--trying to put ppt hist and t hist in the model
+--result: AIC lowered (1069), tmax hist was signficant, ppthist was not as a smooth function.
+
+Trial 8
+--put ppt hist as linear term, increase k for t max hist. (from default to 15)
+--result: AIC 1066, but ppthist is not significant.
+
+Trial 9
+--take out ppt hist.
+--result: AIC 1067 (slightly higher than with ppthist in)
+--best model so far
+
+Trial 10
+--try t adjusted precip 1-3 instead.
+-- was not as good. AIC went up and spatial auto corr. went up.
+
+Trial 11
+--try min precip 1-3 instead.
+--not as good. AIC went up and spatal auto went up.
+
+Trial 12
+--try precip anom instead. Not as good.
+
+Trial 13
+--try to get a topography variable in there.
+--adjusted, folded, northness lowered the AIC to 1060 (7 lower than without); best model so far
+
+Trial 14
+--move adjusted northness to linear
+--slightly higher than Trial 13 with adjusted folded northness as non-linear
+
+Trial 15
+--same as 13, but with CWD instead of Tmax.
+
+Trail 16
+--same as 13 with adjusted northness instead of adjusted, folded northness
+
+Trial 17. add postfire planting to 13, but didn't improve anything. 
+
+Trial 18. added tpi to 13. no change. tpi as smooth not significant
+
+Trial 19. added tpi as linear term.
+
+Trial 20. same as 13, but tried tmax_1-3 instead of tmax_hist.
+
+Trial 21. same as 13, but without standardizing the response variable.
+
+Pick up here. Perhaps don't do Shive's model explicitly, but save that for the discussion.
+
+

@@ -1,0 +1,30 @@
+Output of wild model
+
+Family: gaussian 
+Link function: identity 
+
+Formula:
+ARI_end_smooth ~ s(recoveryTime, k = 6) + mediumReburns + burnSev + 
+    s(elevation, k = 6) + hli + lowReburns + te(postFireSAP, 
+    minPostFirePrecip, k = 6)
+
+Parametric coefficients:
+                Estimate Std. Error t value Pr(>|t|)    
+(Intercept)    2.887e-16  4.421e-02   0.000 1.000000    
+mediumReburns -5.012e-01  5.157e-02  -9.718  < 2e-16 ***
+burnSev       -1.831e-01  5.481e-02  -3.340 0.000951 ***
+hli            8.259e-02  4.740e-02   1.742 0.082539 .  
+lowReburns    -1.046e-01  5.020e-02  -2.084 0.038029 *  
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Approximate significance of smooth terms:
+                                    edf Ref.df     F  p-value    
+s(recoveryTime)                   3.544  4.214 7.563 6.93e-06 ***
+s(elevation)                      2.951  3.616 5.923 0.000265 ***
+te(postFireSAP,minPostFirePrecip) 5.305  6.210 5.404 2.07e-05 ***
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+R-sq.(adj) =  0.419   Deviance explained =   45%
+-REML = 355.42  Scale est. = 0.58057   n = 297

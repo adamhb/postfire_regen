@@ -1,0 +1,100 @@
+---
+title: "A3"
+author: "Adam Hanbury-Brown"
+date: "1/11/2023"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+source("~/cloud/gdrive/fire_project/postfire_regen/analysis2/01_clean_A2.R")
+```
+
+
+```{r}
+#######################################
+#############create rarified df########
+#######################################s
+rarified_df <- c()
+for (f in fires_to_include){
+  set.seed <- 5
+  tmp <- sample_n(filter(df4, FIRE_NAME == f), 100, replace = FALSE)
+  rarified_df <- rbind(rarified_df,tmp)
+}
+
+#check the distribution of the data
+hist(rarified_df$RRI_end, 100)
+```
+
+```{r}
+nrow(rarified_df)
+```
+
+
+A3 results
+```{r}
+modData <- rarified_df %>% 
+  #filter(recoveryTime > 20) %>%
+  mutate(across(where(is.numeric),scale_this)) 
+
+mod <- gam(formula = RRI_end ~ 
+             recoveryTime + 
+             s(x, y, bs = "gp", k = 75, m = 2) +
+             mediumReburns +
+             burnSev +
+             s(TmaxHist, k = 15) +
+             s(adj_fold_northness, k = 15) +
+             s(postFireSAP, k = 15) +
+             s(postFirePrecip, k = 15),
+           data = modData)
+
+#model results
+summary(mod)
+plot(mod)
+paste0("AIC:",AIC(mod))
+```
+
+
+
+#Check model assumptions.
+
+Check residuals
+```{r}
+gam.check(mod)
+```
+
+Check concurvity
+```{r}
+print(concurvity(mod, full = F))
+```
+
+
+Check spatial autocorrelation
+```{r}
+#check spatial autocorrelation
+pixel.dists <- as.matrix(dist(cbind(modData$x, modData$y)))
+pixel.dists.inv <- 1/pixel.dists
+diag(pixel.dists.inv) <- 0
+print(Moran.I(residuals(mod),pixel.dists.inv))
+```
+
+Check colinearity among predictors
+
+!Need to remove non-numeric vars here.
+```{r}
+#for correlation matrix
+otherVars.x <- c("recoveryTime","mediumReburns","lowReburns","x","y","RRI_end")
+topoVar.x  <- c("adj_fold_northness")
+histClimateVars.x <- c("TmaxHist")
+seedVars.x <- c("burnSev","postFireSAP","postFirePlanting")
+postFireWeather.x <- c("postFirePrecip")
+predictors.x <- c(otherVars.x,topoVar.x,histClimateVars.x,seedVars.x,postFireWeather.x)
+getCorrelationMatrix(d = modData, varsForCorr = predictors.x)
+```
+
+
+
+

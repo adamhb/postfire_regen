@@ -1,0 +1,1386 @@
+////////////////////
+///Parameters///////
+////////////////////
+
+/////Palettes///////
+var wetToDry = ['09B21E','F3FE68'];
+var dryToWet = ['F3FE68','09B21E'];
+var coldToHot = ['1BD5EF','E75E14'];
+var hli = {
+  min: 0.0,
+  max: 255.0,
+};
+
+
+///////////////////////
+////////Imports////////
+///////////////////////
+
+var filterScript = require('users/ahanburybrown/default:postfire_regen/03_FilterPixels_021423');
+var classifyScript = require('users/ahanburybrown/default:postfire_regen/02_Classify');
+
+var fire_period_start = filterScript.fire_period_start;
+var fire_period_end = filterScript.fire_period_end;
+var recovery_period_end = filterScript.recovery_period_end;
+
+//import projections
+var BPS_proj = filterScript.BPS_proj;
+
+//import the focal areas
+var fromFocalAreaScript = require('users/ahanburybrown/default:postfire_regen/focal_areas_FeatureCollection');
+var focalAreaID = fromFocalAreaScript.focalAreaID;
+
+//import study pixels
+var studyPixels = filterScript.studyPixels;
+var study_area = filterScript.study_area;
+
+/////Import burn severity and forest type////
+//var bps = fromFilterScript.BPS
+
+
+//import percent conifer cover
+var conPctCover = classifyScript.conPctCover;
+
+///////////////////////////////////////
+////////////functions//////////////////
+///////////////////////////////////////
+
+var reduceResolution_mode = function(img,input_crs,output_crs){
+  var tmp = img.reproject({crs:input_crs})
+    // Force the next reprojection to aggregate instead of resampling.
+    .reduceResolution({
+      reducer: ee.Reducer.mode(),
+       maxPixels: 1024
+    })
+    // Request the data at the scale and projection of the MODIS image.
+    .reproject({
+      crs: output_crs
+    });
+    return(tmp);
+};
+
+var rasterizeFacts = function(year) {
+  
+  var yearNumber = ee.Number.parse(year);
+  
+  var factsRaster = FACTS.filter(ee.Filter.eq('FY_COMPLET', yearNumber))
+  .filter(ee.Filter.notNull(['ACTIVITY_C']))
+  .filter(ee.Filter.eq('ACTIVITY_C',4431))
+  .reduceToImage({
+    properties: ['ACTIVITY_C'],
+    reducer: ee.Reducer.first()
+}).gt(1).rename([ee.String('management').cat(year)]).unmask();
+  
+  return factsRaster;
+};
+
+
+var getfirstBandName = function(img){
+  return(ee.String(img.bandNames().get(0)));
+};
+
+var CalcSAP = function(img){
+  var SAPimg = img.reduceNeighborhood({
+  reducer: ee.Reducer.mean(),
+  kernel: ee.Kernel.circle({radius: 400, units: 'meters'}),
+ }).rename(ee.String("SAP").cat(getfirstBandName(img)));
+ return(SAPimg);
+};
+
+var CalcSAP_75 = function(img){
+  var SAPimg = img.reduceNeighborhood({
+  reducer: ee.Reducer.mean(),
+  kernel: ee.Kernel.circle({radius: 75, units: 'meters'}),
+ }).rename(ee.String("SAP_75").cat(getfirstBandName(img)));
+ return(SAPimg);
+};
+
+var renameBurnSev = function(img){
+   var yearString = ee.String(ee.Number(img.get('year')).int());
+   var newName = ee.String('burnSev').cat(yearString);
+   var burnSev = img.select('burnSev').rename(newName);
+  return(burnSev);
+};
+
+
+var reduceResolution = classifyScript.reduceResolution;
+var medBurn = filterScript.medBurn;
+var lowBurn = filterScript.lowBurn;
+///////////////////////////////
+//////////projections//////////
+///////////////////////////////
+var targetProjection = ee.Image('users/ahanburybrown/aet1981_2010_ave_HST_1646345617').projection();//http://climate.calcommons.org/dataset/2014-CA-BCM
+var landsatProjection = classifyScript.landsatProjection;
+//print(landsatProjection,'landsatProj');
+
+
+/////////////////////////////////
+//Calculate predictor variables//
+/////////////////////////////////
+
+
+///get forest type
+var BPS = ee.Image(filterScript.BPS);
+
+////////////////////////
+//fire history vars/////
+////////////////////////
+
+//import burn severity image collection
+var mtbs = filterScript.mtbs;
+
+
+//calculate burn severity
+var burnSev = mtbs
+.filter(ee.Filter.gte('year',fire_period_start))
+.filter(ee.Filter.lte('year',fire_period_end))
+.qualityMosaic('burnSev')
+.select('burnSev')
+.rename('burnSev');
+
+//rename the burn severity band to have the year in the band name
+var burnSevEachYear = mtbs.map(renameBurnSev);
+
+///count the number of medium severity reburns during the recovery period//
+var mediumReburn = mtbs
+.filter(ee.Filter.gt('year',fire_period_end))
+.filter(ee.Filter.lte('year',recovery_period_end))
+.map(medBurn) 
+.sum().rename('mediumReburns');
+//Map.addLayer(mediumReburn,{min:0,max:1,palette:["white",'yellow']},'mediumReburn');
+
+
+///count the number of low severity reburns during the recovery period//
+
+var lowReburn = mtbs
+.filter(ee.Filter.gt('year',fire_period_end))
+.filter(ee.Filter.lte('year',recovery_period_end))
+.map(lowBurn) 
+.sum().rename('lowReburns');
+
+//Map.addLayer(lowReburn,{min:0,max:1,palette:["white",'green']},'lowReburn');
+//Get the fire year of each pixel
+
+//print(mtbs,'mtbs');
+
+var fireYear = mtbs
+.filter(ee.Filter.gte('year',fire_period_start))
+.filter(ee.Filter.lte('year',fire_period_end))
+.qualityMosaic('burnSev')
+.select('year')
+.rename('fireYear');
+//Map.addLayer(fireYear,{min:1984,max:2019,palette:["black","white"]},"fireYear default rez",true);
+
+var burnSev_proj = ee.Image('projects/earthengine-legacy/assets/users/ahanburybrown/mtbs_CA_1984').projection();
+
+var fireHistoryVars = burnSevEachYear.toBands()
+.addBands(mediumReburn)
+.addBands(lowReburn)
+//.addBands(fireYear)
+.addBands(burnSev);
+
+//print(fireHistoryVars,'fireHistoryVars');
+
+/////////////////////
+//Seed availability//
+/////////////////////
+//ee.String(conPctCover.first().bandNames().get(0));
+
+//var SAP = conPctCover.map(CalcSAP).toBands();
+var SAP_75 = conPctCover.map(CalcSAP_75).toBands();
+
+//////////////////////////
+//Topographic Variables///
+//////////////////////////
+var srtm = ee.Image('USGS/SRTMGL1_003').rename('elevation');
+var terrain_proj = srtm.projection();
+
+var slope = ee.Terrain.slope(srtm).rename('slope');
+var aspect = ee.Terrain.aspect(srtm).rename('aspect');
+var northness = aspect.divide(180).multiply(Math.PI).cos().rename('northness');
+var eastness = aspect.divide(180).multiply(Math.PI).sin().rename('eastness');
+
+//Adjusted topographic variables (adjusted for slope and assymetry of heat load)
+var fold = ee.Number(225); // 180 + easterly offset for north-south axis (using 45)
+var slope_rad_sin = slope.divide(180).multiply(Math.PI).sin(); //slope [0,1] sin of slope in radians
+var adjustedNorthness = northness.multiply(slope_rad_sin).rename('adjustedNorthness');
+var foldedAspect = ee.Image(180).subtract(aspect.subtract(fold).abs());
+var foldedNorthness = foldedAspect.divide(180).multiply(Math.PI).cos().rename('folded northness');
+var adjustedFoldedNorthness = foldedNorthness.multiply(slope_rad_sin).rename('adj_fold_northness');
+//var foldedEastness = foldedAspect.divide(180).multiply(Math.PI).sin().rename('folded eastness');
+//var adjustedFoldedEastness = foldedEastness.multiply(slope_rad_sin).rename('adj_fold_eastness');
+
+////heat load index and topographic position index/////////
+var hli = ee.Image('CSP/ERGo/1_0/US/CHILI').select('constant').rename('hli');
+var hli_proj = hli.projection();
+//print(hli_proj,'hli proj');
+//Map.addLayer(hli,{min:40,max:255,palette: coldToHot},'hli default resolution');
+//Map.addLayer(hli_outputResolution,{min:40,max:255,palette: coldToHot},'hli target resolution');
+
+
+var tpi = ee.Image('CSP/ERGo/1_0/Global/SRTM_mTPI').select('elevation').rename('tpi');
+var tpi_proj = tpi.projection();
+//Map.addLayer(tpi,{min:-40,max:150,palette: coldToHot},'tpi default resolution');
+
+
+//print(tpi_proj,'tpi_proj');
+
+
+//////////////////////
+//Climate Variables///
+//////////////////////
+
+/////climate water deficit//////////////
+var CWD_hist = ee.Image('users/ahanburybrown/DS421_data/cwd_hist_3310');//http://climate.calcommons.org/dataset/2014-CA-BCM
+var CWD_proj = CWD_hist.projection(); 
+var CWD_hist_NE = ee.Image('users/ahanburybrown/cwd_NE_CA');
+var CWD_hist_SE = ee.Image('users/ahanburybrown/cwd_SE_CA');
+var CWD_tehachapi = ee.Image('users/ahanburybrown/cwd1981_2010_ave_HST_tehachapi');
+var CWD_geyserville = ee.Image('users/ahanburybrown/cwd1981_2010_ave_HST_geyserville');
+var CWD_hist_all = ee.ImageCollection([CWD_hist, CWD_hist_NE, CWD_hist_SE,CWD_tehachapi,CWD_geyserville]).mosaic().rename('CWDhist');
+
+//Map.addLayer(CWD_hist_all,{min: 200, max: 700,palette:['blue','red']},'CWD');
+
+//Map.addLayer(CWD_hist_all,{min:100,max:1000,palette:wetToDry},'CWD');
+
+//////AET///
+var AET_hist_klamath = ee.Image('users/ahanburybrown/aet1981_2010_ave_HST_1646345617');//http://climate.calcommons.org/dataset/2014-CA-BCM
+var AET_hist_NE_sierras = ee.Image('users/ahanburybrown/aet1981_2010_ave_HST_1646345520_N_sierras');
+var AET_hist_SE_sierras = ee.Image('users/ahanburybrown/aet1981_2010_ave_HST_1646345274_SE_sierras');
+var AET_hist_clearLake = ee.Image('users/ahanburybrown/aet1981_2010_ave_HST_clearLake');
+var AET_hist_gasquet = ee.Image('users/ahanburybrown/aet1981_2010_ave_HST_gasquet');
+var AET_hist_tahoe = ee.Image('users/ahanburybrown/aet1981_2010_ave_HST_tahoe');
+var AET_hist_tehachapi = ee.Image('users/ahanburybrown/aet1981_2010_ave_HST_tehachapi');
+var AET_hist_bieber = ee.Image('users/ahanburybrown/aet1981_2010_ave_HST_bieber');
+
+var AET_hist_all = ee.ImageCollection([AET_hist_klamath, 
+                                       AET_hist_NE_sierras, 
+                                       AET_hist_SE_sierras,
+                                       AET_hist_clearLake,
+                                       AET_hist_tahoe,
+                                       AET_hist_tehachapi,
+                                       AET_hist_gasquet,
+                                       AET_hist_bieber]).mosaic().rename('AEThist');
+var AET_proj = AET_hist_klamath.projection();
+
+//Map.addLayer(AET_hist_all,{min: 200, max: 700,palette:['red','blue']},'AET');
+
+
+var aprilSnowpack = ee.Image('users/ahanburybrown/aprpck1981_2010_ave_HST_1648747717');
+var aprilSnowpack_proj = aprilSnowpack.projection(); 
+
+/////////historical ppt////////////////////////
+
+var prism_ppt_proj = ee.ImageCollection('OREGONSTATE/PRISM/Norm81m').
+filterBounds(study_area).select(['ppt']).first().projection();
+//print(prism_ppt_proj,'prism ppt proj');
+
+var AvGppt = ee.ImageCollection('OREGONSTATE/PRISM/Norm81m')
+.filterBounds(study_area).select(['ppt'])
+.sum().rename('PPThist');
+
+
+var BPSmask = filterScript.BPSmask;
+Map.addLayer(BPSmask,{min:0,max:1,palette:['white','green']},'BPS in');
+
+var moreThan1000Precip = AvGppt.gt(1000);
+Map.addLayer(moreThan1000Precip,{min: 0, max: 1, palette: ['brown','blue']}, 'precip thresh');
+
+/*
+Export.image.toDrive({image: moreThan1000Precip, 
+                      description: "moreThan1000Precip",
+                      region: study_area,
+                      crs: "EPSG: 3310",
+                      folder:"fromGEE",
+                      maxPixels: 1e11
+                      });
+*/
+//var precipVec = moreThan1000Precip.reduceToVectors();
+//Map.addLayer(precipVec);
+
+
+//////////SD of historical ppt//////////////////////////
+var SDppt30YR = ee.ImageCollection('OREGONSTATE/PRISM/AN81m') //check I've done this right
+.filterBounds(study_area).select(['ppt'])
+.filterDate('1981-01-01', '2010-12-31')
+.reduce(ee.Reducer.stdDev()).rename('PPThistSD');
+
+///////////////historical mean of daily max temperature////////////////////
+var prism_tmax_proj = ee.ImageCollection('OREGONSTATE/PRISM/Norm81m')
+.filterBounds(study_area).select(['tmax']).first().projection();
+
+//print(prism_tmax_proj,'tmax proj');
+
+var AvGtemp = ee.ImageCollection('OREGONSTATE/PRISM/Norm81m')
+.filterBounds(study_area).select(['tmax'])
+.mean().rename('TmaxHist');
+
+
+var lessThan21Temp = AvGtemp.lt(21.1);
+Map.addLayer(lessThan21Temp,{min: 0, max: 1, palette: ['red','#ADD8E6']}, 'temp thresh');
+
+/*
+Export.image.toDrive({image: lessThan21Temp, 
+                      description: "tempThresh",
+                      region: study_area,
+                      crs: "EPSG: 3310",
+                      folder:"fromGEE",
+                      maxPixels: 1e11
+                      });
+*/
+
+//var tempVec = AvGtemp.reduceToVectors();
+//Map.addLayer(tempVec);
+
+
+////////////standard deviation of historical daily max temperature//////////
+var SDtemp30YR = ee.ImageCollection('OREGONSTATE/PRISM/AN81m') //this might not be quite right
+.filterBounds(study_area).select(['tmax'])
+.filterDate('1981-01-01', '2010-12-31')
+.reduce(ee.Reducer.stdDev()).rename('TmaxHistSD');
+
+///////////////////////////////////////////
+//Total precip per year in Oct, Nov, Dec///
+///////////////////////////////////////////
+var ClimateFilterOctNovDec = ee.Filter.and(
+    ee.Filter.bounds(study_area), ee.Filter.calendarRange(274, 365, 'day_of_year'));
+var PPT = ee.ImageCollection('OREGONSTATE/PRISM/AN81m').select(['ppt'])
+.filterDate('1984-01-01','2020-12-31')
+.filter(ClimateFilterOctNovDec);
+
+var PPT = PPT.map(function(img) {
+  return img.set('year', img.date().get('year'));
+});
+//Subset collection to distinct years
+//Source: https://developers.google.com/earth-engine/tutorials/community/landsat-etm-to-oli-harmonization 
+var distinctYearCol = PPT.distinct('year');
+var filter = ee.Filter.equals({leftField: 'year', rightField: 'year'});
+var join = ee.Join.saveAll('year_matches');
+var joinCol = ee.ImageCollection(join.apply(distinctYearCol, PPT, filter));
+// Apply median reduction among matching year collections //
+var OctNovDecPPT = joinCol.map(function(img) {
+  var yearCol = ee.ImageCollection.fromImages(img.get('year_matches'));
+  return yearCol.reduce(ee.Reducer.sum())
+       .set('system:time_start', img.date().update({month: 8, day: 1}));
+}).toBands();
+
+//////////////////////////////////
+//Total precip per year Jan-Sept//
+//////////////////////////////////
+var ClimateFilterJanSept = ee.Filter.and(
+    ee.Filter.bounds(study_area), ee.Filter.calendarRange(1, 274, 'day_of_year'));
+var PPT = ee.ImageCollection('OREGONSTATE/PRISM/AN81m').select(['ppt'])
+.filterDate('1984-01-01','2020-12-31')
+.filter(ClimateFilterJanSept); 
+
+var PPT = PPT.map(function(img) {
+  return img.set('year', img.date().get('year'));
+});
+//Subset collection to distinct years
+//Source: https://developers.google.com/earth-engine/tutorials/community/landsat-etm-to-oli-harmonization 
+var distinctYearCol = PPT.distinct('year');
+var filter = ee.Filter.equals({leftField: 'year', rightField: 'year'});
+var join = ee.Join.saveAll('year_matches');
+var joinCol = ee.ImageCollection(join.apply(distinctYearCol, PPT, filter));
+// Apply median reduction among matching year collections //
+var JantoSeptPPT = joinCol.map(function(img) {
+  var yearCol = ee.ImageCollection.fromImages(img.get('year_matches'));
+  return yearCol.reduce(ee.Reducer.sum())
+       .set('system:time_start', img.date().update({month: 8, day: 1}));
+}).toBands();
+
+
+/////////////////////////////////////////////////
+//Mean max daily T for (Oct, Nov, Dec) per year//
+/////////////////////////////////////////////////
+var ClimateFilterOctNovDec = ee.Filter.and(
+    ee.Filter.bounds(study_area), ee.Filter.calendarRange(274, 365, 'day_of_year'));
+var maxT = ee.ImageCollection('OREGONSTATE/PRISM/AN81m').select(['tmax'])
+.filterDate('1984-01-01','2020-12-31')
+.filter(ClimateFilterOctNovDec);
+
+
+var maxT = maxT.map(function(img) {
+  return img.set('year', img.date().get('year'));
+});
+//Subset collection to distinct years
+//Source: https://developers.google.com/earth-engine/tutorials/community/landsat-etm-to-oli-harmonization 
+var distinctYearCol = maxT.distinct('year');
+var filter = ee.Filter.equals({leftField: 'year', rightField: 'year'});
+var join = ee.Join.saveAll('year_matches');
+var joinCol = ee.ImageCollection(join.apply(distinctYearCol, maxT, filter));
+// Apply median reduction among matching year collections //
+var OctNovDecT = joinCol.map(function(img) {
+  var yearCol = ee.ImageCollection.fromImages(img.get('year_matches'));
+  return yearCol.reduce(ee.Reducer.mean())
+       .set('system:time_start', img.date().update({month: 8, day: 1}));
+}).toBands();
+
+
+/////////////////////////////////////////////////
+//Mean max daily T for (Jan-Sept) per year//
+/////////////////////////////////////////////////
+var ClimateFilterJanSept = ee.Filter.and(
+    ee.Filter.bounds(study_area), ee.Filter.calendarRange(1, 274, 'day_of_year'));
+var maxT = ee.ImageCollection('OREGONSTATE/PRISM/AN81m').select(['tmax'])
+.filterDate('1984-01-01','2020-12-31')
+.filter(ClimateFilterJanSept); 
+
+var maxT = maxT.map(function(img) {
+  return img.set('year', img.date().get('year'));
+});
+//Subset collection to distinct years
+//Source: https://developers.google.com/earth-engine/tutorials/community/landsat-etm-to-oli-harmonization 
+var distinctYearCol = maxT.distinct('year');
+var filter = ee.Filter.equals({leftField: 'year', rightField: 'year'});
+var join = ee.Join.saveAll('year_matches');
+var joinCol = ee.ImageCollection(join.apply(distinctYearCol, maxT, filter));
+// Apply median reduction among matching year collections //
+var JantoSeptT = joinCol.map(function(img) {
+  var yearCol = ee.ImageCollection.fromImages(img.get('year_matches'));
+  return yearCol.reduce(ee.Reducer.mean())
+       .set('system:time_start', img.date().update({month: 8, day: 1}));
+}).toBands();
+//Map.addLayer(JantoSeptPPT,{min:0, max:1000,palette:["blue","red"]})
+
+
+
+/////////////////////////////////////
+/////management vars/////////////////
+/////////////////////////////////////
+
+//Is the pixel in a wilderness area?
+
+//Import wilderness polygons
+var wilderness = ee.FeatureCollection("users/ahanburybrown/S_USAWilderness");
+
+//turn wilderness polygons into raster at 30 m scale with EPSG:4326
+var wildernessRaster = wilderness.reduceToImage({
+    properties: ['WID'],
+    reducer: ee.Reducer.first()
+}).gt(0).unmask().rename('wilderness').reproject({crs: 'EPSG:4326',scale: 30});
+
+var management_proj = wildernessRaster.projection();
+//Map.addLayer(wildernessRaster,{min:0,max:1,palette:['white','green']},'wilderness raster');
+
+//var wilderness_proj = ee.Projection({crs: ''});
+//print(wilderness_proj,'wilderness proj');
+
+
+/////////////////////////////////////
+//Was the pixel planted after fire?//
+/////////////////////////////////////
+var factsRaw = ee.FeatureCollection("users/ahanburybrown/DS421_data/CA_FACTS");
+
+var FACTS = factsRaw.map(function(feature){
+    var num = ee.Number.parse(feature.get('ACTIVITY_C'));
+    return feature.set('ACTIVITY_C', num);
+  });
+  
+var factsYears = ["1984","1985","1986","1987","1988","1989","1990","1991","1992","1993","1994","1995","1996","1997","1998","1999","2000","2001","2002","2003","2004","2005","2006","2007","2008","2009","2010","2011","2012","2013","2014","2015","2016","2017","2018",'2019'];
+var management = ee.Image([factsYears.map(rasterizeFacts)]);
+//Map.addLayer(management.select('management1996'),{palette:['white','green']},'management 1996 pre transform');
+
+
+
+
+
+
+
+
+////////////////////////////////////////////////////
+///////change resolutions to output resolution//////
+////////////////////////////////////////////////////
+
+//reprojection forest type data
+var BPS_proj = filterScript.BPS_proj;
+var BPS_reproj = reduceResolution_mode(BPS,BPS_proj,targetProjection).rename('forestType');
+
+///reproject management vars
+var managementVars = management
+.addBands(wildernessRaster);
+var managementVars_reproj = reduceResolution(managementVars, management_proj, targetProjection);
+//print(managementVars_reproj,'managementVars reproj');
+//Map.addLayer(managementVars_reproj.select('management1996'),{min:0,max:1,palette:['white','green']},'1996 output resolution');
+
+//reprojection fire history vars
+var fireHistoryVars_reproj = reduceResolution(fireHistoryVars,burnSev_proj,targetProjection);
+var fireYear_reproj = reduceResolution_mode(fireYear,burnSev_proj,targetProjection);
+var fireHistoryVars_reproj = fireHistoryVars_reproj
+.addBands(fireYear_reproj);
+
+//Map.addLayer(fireYear_reproj,{min:1984,max:2019,palette:["black","white"]},"fireYear output rez",true);
+
+
+///reproject prism climate vars
+var prismClimateVars = AvGppt
+.addBands(SDppt30YR)
+.addBands(AvGtemp)
+.addBands(SDtemp30YR)
+.addBands(JantoSeptT)
+.addBands(OctNovDecT)
+.addBands(JantoSeptPPT)
+.addBands(OctNovDecPPT);
+
+var prismClimateVars_reproj = reduceResolution(prismClimateVars, prism_ppt_proj, targetProjection);
+//print(prismClimateVars_reproj,'prismClimateVars');
+//Map.addLayer(prismClimateVars_reproj.select('PPThist'),{min: 200, max:2000, palette: dryToWet},'pptHist');
+
+//reproject heat load index
+var hli_reproj = reduceResolution(hli,hli_proj,targetProjection);
+//Map.addLayer(hli_reproj,{min:40,max:255,palette: coldToHot},'hli rerojected resolution');
+
+//reproject tpi
+var tpi_reproj = reduceResolution(tpi,tpi_proj,targetProjection);
+//Map.addLayer(tpi_outputResolution,{min:-40,max:150,palette: coldToHot},'tpi target resolution');
+
+//reproject CWD/AET
+var CWD_reproj = reduceResolution(CWD_hist_all,CWD_proj,targetProjection);
+//print(CWD_reproj,'CWD reproj');
+
+var AET_reproj = reduceResolution(AET_hist_all,AET_proj,targetProjection);
+
+//reprojection aprilSnowpack
+var aprilSnowpack_reproj = reduceResolution(aprilSnowpack,aprilSnowpack_proj,targetProjection);
+
+//reproject terrain vars
+var terrainVars = srtm
+.addBands(slope)
+.addBands(aspect)
+.addBands(northness)
+.addBands(eastness).rename(['elevation','slope','aspect','northness','eastness'])
+.addBands(adjustedNorthness) //adjusted for sin(slope)
+.addBands(adjustedFoldedNorthness)
+.toFloat()
+.updateMask(studyPixels);
+
+var terrainVars_reproj = reduceResolution(terrainVars,terrain_proj,targetProjection);
+//print(terrainVars_reproj,'terrainVars reproj');
+
+
+//reproject SAP vars
+var SAPvars = SAP_75;
+//.addBands(SAP_150);
+
+var SAPvars_reproj = reduceResolution(SAPvars,landsatProjection,targetProjection)
+.updateMask(studyPixels)
+.toFloat()
+.rename(['SAPconCov2021',
+'SAPconCov2020',
+'SAPconCov2019',
+'SAPconCov2018',
+'SAPconCov2017',
+'SAPconCov2016',
+'SAPconCov2015',
+'SAPconCov2014',
+'SAPconCov2013',
+'SAPconCov2012',
+'SAPconCov2011',
+'SAPconCov2010',
+'SAPconCov2009',
+'SAPconCov2008',
+'SAPconCov2007',
+'SAPconCov2006',
+'SAPconCov2005',
+'SAPconCov2004',
+'SAPconCov2003',
+'SAPconCov2002',
+'SAPconCov2001',
+'SAPconCov2000',
+'SAPconCov1999',
+'SAPconCov1998',
+'SAPconCov1997',
+'SAPconCov1996',
+'SAPconCov1995',
+'SAPconCov1994',
+'SAPconCov1993',
+'SAPconCov1992',
+'SAPconCov1991',
+'SAPconCov1990',
+'SAPconCov1989',
+'SAPconCov1988',
+'SAPconCov1987',
+'SAPconCov1986',
+'SAPconCov1985',
+'SAPconCov1984',
+]);
+
+
+
+//reprojection conPctCover
+var conPctCover_reproj = reduceResolution(conPctCover.toBands(),landsatProjection,targetProjection)
+.updateMask(studyPixels)
+.toFloat()
+.rename(['conCov2021',
+'conCov2020',
+'conCov2019',
+'conCov2018',
+'conCov2017',
+'conCov2016',
+'conCov2015',
+'conCov2014',
+'conCov2013',
+'conCov2012',
+'conCov2011',
+'conCov2010',
+'conCov2009',
+'conCov2008',
+'conCov2007',
+'conCov2006',
+'conCov2005',
+'conCov2004',
+'conCov2003',
+'conCov2002',
+'conCov2001',
+'conCov2000',
+'conCov1999',
+'conCov1998',
+'conCov1997',
+'conCov1996',
+'conCov1995',
+'conCov1994',
+'conCov1993',
+'conCov1992',
+'conCov1991',
+'conCov1990',
+'conCov1989',
+'conCov1988',
+'conCov1987',
+'conCov1986',
+'conCov1985',
+'conCov1984',
+]);
+
+
+/*
+//group all variables except conCov and SAP vars
+var mostVars = fireHistoryVars_reproj
+.addBands(terrainVars_reproj)
+//.addBands(fireHistoryVars_reproj)
+.addBands(SAPvars_reproj)
+.addBands(conPctCover_reproj)
+.addBands(hli_reproj)
+.addBands(tpi_reproj)
+.addBands(CWD_reproj)
+.addBands(AET_reproj)
+.addBands(prismClimateVars_reproj)
+.addBands(managementVars_reproj)
+.addBands(BPS_reproj)
+.addBands(snowPackExport)
+.toFloat()
+.updateMask(studyPixels);
+
+print(mostVars,'mostVars');
+*/
+
+
+
+Export.image.toDrive({image: terrainVars_reproj, 
+                      description: "terrainVars_021422",
+                      region: geometry2,
+                      crs: projFinal.crs,
+                      crsTransform: projFinal.transform,
+                      folder:"mostVars",
+                      maxPixels: 1e11
+                      });
+
+
+
+
+
+//Map.addLayer(aprilSnowpack,{palette:['brown','blue']},'April 1 Snowpack');
+var snowPackExport = aprilSnowpack_reproj
+.toFloat()
+.updateMask(studyPixels);
+//////////////
+//export prep/
+//////////////
+
+//var focalAreas = classifyScript.focalAreas;
+//var projFinal = classifyScript.projFinal;
+//var years = classifyScript.years;
+
+var projFinal = ee.Image('users/ahanburybrown/aet1981_2010_ave_HST_1646345520_N_sierras').projection().getInfo();
+//exports.projFinal = projFinal;
+
+var focalAreas = ee.FeatureCollection('users/ahanburybrown/focalAreas_3_27_2022');
+Map.addLayer(focalAreas,{},'focalareas');
+//exports.focalAreas = focalAreas;
+
+var years = [1984, 1985, 1986, 1987, 1988, 1989, 1990, 1991, 1992, 1993, 
+1994, 1995, 1996, 1997, 1998, 1999, 2000, 2001, 2002, 2003, 2004, 2005, 
+2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019];
+
+//var years = [2018, 2019];
+//exports.years = years;
+
+
+//////////////////////////////
+//////export functions////////
+//////////////////////////////
+
+/*
+
+//function to export most vars
+var exportMostVars = function(fa){
+var focalArea = focalAreas
+.filter(ee.Filter.eq('id', fa))
+.geometry();
+
+var focalAreaString = ee.String(ee.Number(fa));
+var folderName = ee.String('mostVars').cat(ee.String('-FA-')).cat(focalAreaString);
+
+
+Export.image.toDrive({image: mostVars, 
+                      description: folderName.getInfo(),
+                      region: focalArea,
+                      crs: projFinal.crs,
+                      crsTransform: projFinal.transform,
+                      folder:"mostVars",
+                      maxPixels: 1e11
+                      });
+
+  
+};
+
+
+
+//function to export snowpack
+var exportSnowPack = function(fa){
+var focalArea = focalAreas
+.filter(ee.Filter.eq('id', fa))
+.geometry();
+
+var focalAreaString = ee.String(ee.Number(fa));
+var folderName = ee.String('snowPack').cat(ee.String('-FA-')).cat(focalAreaString);
+
+
+Export.image.toDrive({image: aprilSnowpack_reproj, 
+                      description: folderName.getInfo(),
+                      region: focalArea,
+                      crs: projFinal.crs,
+                      crsTransform: projFinal.transform,
+                      folder:"snowPack",
+                      maxPixels: 1e11
+                      });
+
+  
+};
+
+
+//function to export SAP
+var exportSAP_FA = function(fa){
+  return function (yr){
+    var focalArea = focalAreas
+.filter(ee.Filter.eq('id', fa))
+.geometry();
+
+var focalAreaString = ee.String(ee.Number(fa));
+var yearString = ee.String(ee.Number(yr));
+var bandString = ee.String('SAPconCov').cat(yearString);
+var fileName = ee.String('SAP').cat(yearString).cat(ee.String('-FA-')).cat(focalAreaString);
+
+
+Export.image.toDrive({image: SAPvars_reproj.select(bandString), 
+                      description: fileName.getInfo(),
+                      region: focalArea,
+                      crs: projFinal.crs,
+                      crsTransform: projFinal.transform,
+                      folder:"SAP",
+                      maxPixels: 1e11
+                      });
+  };
+};
+
+
+//make SAP funcs
+var exportSAP_1 = exportSAP_FA(1);
+var exportSAP_2 = exportSAP_FA(2);
+var exportSAP_3 = exportSAP_FA(3);
+var exportSAP_4 = exportSAP_FA(4);
+var exportSAP_5 = exportSAP_FA(5);
+var exportSAP_6 = exportSAP_FA(6);
+var exportSAP_7 = exportSAP_FA(7);
+var exportSAP_8 = exportSAP_FA(8);
+var exportSAP_9 = exportSAP_FA(9);
+var exportSAP_10 = exportSAP_FA(10);
+var exportSAP_11 = exportSAP_FA(11);
+var exportSAP_12 = exportSAP_FA(12);
+var exportSAP_13 = exportSAP_FA(13);
+var exportSAP_14 = exportSAP_FA(14);
+var exportSAP_15 = exportSAP_FA(15);
+var exportSAP_16 = exportSAP_FA(16);
+var exportSAP_17 = exportSAP_FA(17);
+var exportSAP_18 = exportSAP_FA(18);
+var exportSAP_19 = exportSAP_FA(19);
+var exportSAP_20 = exportSAP_FA(20);
+var exportSAP_21 = exportSAP_FA(21);
+var exportSAP_22 = exportSAP_FA(22);
+var exportSAP_23 = exportSAP_FA(23);
+var exportSAP_24 = exportSAP_FA(24);
+var exportSAP_25 = exportSAP_FA(25);
+var exportSAP_26 = exportSAP_FA(26);
+var exportSAP_27 = exportSAP_FA(27);
+var exportSAP_28 = exportSAP_FA(28);
+var exportSAP_29 = exportSAP_FA(29);
+var exportSAP_30 = exportSAP_FA(30);
+var exportSAP_31 = exportSAP_FA(31);
+var exportSAP_32 = exportSAP_FA(32);
+var exportSAP_33 = exportSAP_FA(33);
+var exportSAP_34 = exportSAP_FA(34);
+var exportSAP_35 = exportSAP_FA(35);
+var exportSAP_36 = exportSAP_FA(36);
+var exportSAP_37 = exportSAP_FA(37);
+var exportSAP_38 = exportSAP_FA(38);
+var exportSAP_39 = exportSAP_FA(39);
+var exportSAP_40 = exportSAP_FA(40);
+var exportSAP_41 = exportSAP_FA(41);
+var exportSAP_42 = exportSAP_FA(42);
+var exportSAP_43 = exportSAP_FA(43);
+var exportSAP_44 = exportSAP_FA(44);
+var exportSAP_45 = exportSAP_FA(45);
+var exportSAP_46 = exportSAP_FA(46);
+var exportSAP_47 = exportSAP_FA(47);
+var exportSAP_48 = exportSAP_FA(48);
+var exportSAP_49 = exportSAP_FA(49);
+var exportSAP_50 = exportSAP_FA(50);
+var exportSAP_51 = exportSAP_FA(51);
+var exportSAP_52 = exportSAP_FA(52);
+var exportSAP_53 = exportSAP_FA(53);
+var exportSAP_54 = exportSAP_FA(54);
+var exportSAP_55 = exportSAP_FA(55);
+
+
+//////functions to export just conifer cover
+var exportConCovFA = function(fa){
+  return function (yr){
+    var focalArea = focalAreas
+.filter(ee.Filter.eq('id', fa))
+.geometry();
+
+var focalAreaString = ee.String(ee.Number(fa));
+var yearString = ee.String(ee.Number(yr));
+var bandString = ee.String('conCov').cat(yearString);
+var folderName = ee.String('conCov').cat(ee.String('-FA-')).cat(focalAreaString);
+var folderName2 = ee.String('conCov').cat(ee.String('/FA-')).cat(focalAreaString);
+
+Export.image.toDrive({image: conPctCover_reproj.select(bandString), 
+                      description: bandString.cat(folderName).getInfo(),
+                      region: focalArea,
+                      crs: projFinal.crs,
+                      crsTransform: projFinal.transform,
+                      folder:'conCov',
+                      maxPixels: 1e11
+                      });
+  };
+};
+
+//define con cov funcs
+var exportConCov1 = exportConCovFA(1);
+var exportConCov2 = exportConCovFA(2);
+var exportConCov3 = exportConCovFA(3);
+var exportConCov4 = exportConCovFA(4);
+var exportConCov5 = exportConCovFA(5);
+var exportConCov6 = exportConCovFA(6);
+var exportConCov7 = exportConCovFA(7);
+var exportConCov8 = exportConCovFA(8);
+var exportConCov9 = exportConCovFA(9);
+var exportConCov10 = exportConCovFA(10);
+var exportConCov11 = exportConCovFA(11);
+var exportConCov12 = exportConCovFA(12);
+var exportConCov13 = exportConCovFA(13);
+var exportConCov14 = exportConCovFA(14);
+var exportConCov15 = exportConCovFA(15);
+var exportConCov16 = exportConCovFA(16);
+var exportConCov17 = exportConCovFA(17);
+var exportConCov18 = exportConCovFA(18);
+var exportConCov19 = exportConCovFA(19);
+var exportConCov20 = exportConCovFA(20);
+var exportConCov21 = exportConCovFA(21);
+var exportConCov22 = exportConCovFA(22);
+var exportConCov23 = exportConCovFA(23);
+var exportConCov24 = exportConCovFA(24);
+var exportConCov25 = exportConCovFA(25);
+var exportConCov26 = exportConCovFA(26);
+var exportConCov27 = exportConCovFA(27);
+var exportConCov28 = exportConCovFA(28);
+var exportConCov29 = exportConCovFA(29);
+var exportConCov30 = exportConCovFA(30);
+var exportConCov31 = exportConCovFA(31);
+var exportConCov32 = exportConCovFA(32);
+var exportConCov33 = exportConCovFA(33);
+var exportConCov34 = exportConCovFA(34);
+var exportConCov35 = exportConCovFA(35);
+var exportConCov36 = exportConCovFA(36);
+var exportConCov37 = exportConCovFA(37);
+var exportConCov38 = exportConCovFA(38);
+var exportConCov39 = exportConCovFA(39);
+var exportConCov40 = exportConCovFA(40);
+var exportConCov41 = exportConCovFA(41);
+var exportConCov42 = exportConCovFA(42);
+var exportConCov43 = exportConCovFA(43);
+var exportConCov44 = exportConCovFA(44);
+var exportConCov45 = exportConCovFA(45);
+var exportConCov46 = exportConCovFA(46);
+var exportConCov47 = exportConCovFA(47);
+var exportConCov48 = exportConCovFA(48);
+var exportConCov49 = exportConCovFA(49);
+var exportConCov50 = exportConCovFA(50);
+var exportConCov51 = exportConCovFA(51);
+var exportConCov52 = exportConCovFA(52);
+var exportConCov53 = exportConCovFA(53);
+var exportConCov54 = exportConCovFA(54);
+var exportConCov55 = exportConCovFA(55);
+
+*/
+///////
+//execute snowpack
+////
+//var nums = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55]; 
+
+//nums.map(exportSnowPack);
+
+
+/////////////////////
+//execute Most vars//
+/////////////////////
+
+//exportMostVars(50);
+//exportMostVars(52);
+
+//to do
+/*
+
+
+//end to do
+*/
+
+/*
+done
+
+exportMostVars(41);
+exportMostVars(42);
+exportMostVars(43);
+exportMostVars(44);
+exportMostVars(45);
+exportMostVars(46);
+exportMostVars(1);
+exportMostVars(20);
+exportMostVars(23);
+exportMostVars(24);
+exportMostVars(25);
+exportMostVars(26);
+exportMostVars(27);
+exportMostVars(28);
+
+exportMostVars(17);
+exportMostVars(18);
+exportMostVars(19);
+exportMostVars(38);
+exportMostVars(39);
+exportMostVars(40);
+
+exportMostVars(33);
+exportMostVars(34);
+exportMostVars(35);
+exportMostVars(36);
+exportMostVars(37);
+
+exportMostVars(51);
+
+exportMostVars(12);
+exportMostVars(13);
+exportMostVars(14);
+exportMostVars(15);
+exportMostVars(16);
+
+exportMostVars(7);
+exportMostVars(8);
+exportMostVars(9);
+exportMostVars(10);
+exportMostVars(11);
+
+exportMostVars(5);
+exportMostVars(6);
+exportMostVars(22);
+exportMostVars(32);
+
+
+exportMostVars(3);
+exportMostVars(4);
+exportMostVars(21);
+exportMostVars(31);
+*/
+
+/*
+
+exportMostVars(2);
+exportMostVars(20);
+exportMostVars(30);
+
+*/
+
+//exportMostVars(3);
+//exportMostVars(7);
+//exportMostVars(8);
+//exportMostVars(9);
+/*
+exportMostVars(10);
+exportMostVars(11);
+exportMostVars(12);
+exportMostVars(13);
+exportMostVars(14);
+exportMostVars(15);
+exportMostVars(16);
+exportMostVars(17);
+exportMostVars(18);
+exportMostVars(19);
+exportMostVars(21);
+exportMostVars(22);
+exportMostVars(23);
+exportMostVars(24);
+exportMostVars(25);
+exportMostVars(26);
+exportMostVars(27);
+exportMostVars(28);
+exportMostVars(29);
+exportMostVars(30);
+*/
+
+
+////////////////
+///execute SAP//
+////////////////
+
+//years.map(exportSAP_27); need some years of this still
+
+
+//10-1987
+
+/*
+var years = [1988,1989,1990]
+years.map(exportSAP_10);
+var years = [2000,2001,2002]
+years.map(exportSAP_11);
+var years = [1988,1989,1990]
+years.map(exportSAP_12);
+var years = [1993,1994,1995]
+years.map(exportSAP_13);
+var years = [1993,1994,1995]
+years.map(exportSAP_14);
+*/
+//var years = [2000, 2001, 2002, 2003, 2004, 2005, 
+//2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019];
+
+//years.map(exportSAP_27);
+
+
+
+/*
+var years = [1991,1992,1993]
+years.map(exportSAP_17);
+var years = [1988,1989,1990]
+years.map(exportSAP_18);
+var years = [2004,2005,2006]
+years.map(exportSAP_19);
+var years = [1988,1989,1990]
+years.map(exportSAP_2);
+var years = [1997,1998,1999]
+years.map(exportSAP_20);
+var years = [2000,2001,2002]
+years.map(exportSAP_21);
+var years = [2001,2002,2003]
+years.map(exportSAP_22);
+var years = [2001,2002,2003]
+years.map(exportSAP_23);
+var years = [2002,2003,2004]
+years.map(exportSAP_24);
+var years = [1988,1989,1990]
+years.map(exportSAP_25);
+var years = [1995,1996,1997]
+years.map(exportSAP_19);
+var years = [2000,2001,2002]
+years.map(exportSAP_30);
+var years = [2002,2003,2004]
+years.map(exportSAP_31);
+var years = [1988,1989,1990]
+years.map(exportSAP_31);
+var years = [1993,1994,1995]
+years.map(exportSAP_32);
+var years = [2005,2006,2007]
+years.map(exportSAP_33);
+var years = [2005,2006,2007]
+years.map(exportSAP_34);
+var years = [1993,1994,1995]
+years.map(exportSAP_36);
+var years = [1997,1998,1999]
+years.map(exportSAP_39);
+var years = [1988,1989,1990]
+years.map(exportSAP_4);
+var years = [1988,1989,1990]
+years.map(exportSAP_5);
+var years = [1988,1989,1990]
+years.map(exportSAP_6);
+var years = [2003,2004,2005]
+years.map(exportSAP_6);
+var years = [2001,2002,2003]
+years.map(exportSAP_7);
+var years = [2005,2006,2007]
+years.map(exportSAP_8);
+var years = [1995,1996,1997]
+years.map(exportSAP_9);
+*/
+//to do
+/*
+
+
+*/
+//end to do
+
+/*
+done
+
+
+years.map(exportSAP_41);
+years.map(exportSAP_42);
+years.map(exportSAP_43);
+years.map(exportSAP_44);
+years.map(exportSAP_45);
+years.map(exportSAP_46);
+
+
+
+years.map(exportSAP_23);
+years.map(exportSAP_24);
+years.map(exportSAP_25);
+years.map(exportSAP_26);
+
+//years.map(exportSAP_28);
+years.map(exportSAP_17);
+years.map(exportSAP_18);
+years.map(exportSAP_19);
+
+years.map(exportSAP_38);
+years.map(exportSAP_39);
+years.map(exportSAP_40);
+years.map(exportSAP_33);
+years.map(exportSAP_34);
+years.map(exportSAP_35);
+years.map(exportSAP_36);
+years.map(exportSAP_37);
+years.map(exportSAP_12);
+years.map(exportSAP_13);
+years.map(exportSAP_14);
+years.map(exportSAP_15);
+years.map(exportSAP_16);
+years.map(exportSAP_5);
+years.map(exportSAP_6);
+years.map(exportSAP_22);
+years.map(exportSAP_32);
+years.map(exportSAP_52);
+
+years.map(exportSAP_7);
+years.map(exportSAP_8);
+years.map(exportSAP_9);
+years.map(exportSAP_10);
+years.map(exportSAP_11);
+
+years.map(exportSAP_3);
+years.map(exportSAP_4);
+years.map(exportSAP_21);
+years.map(exportSAP_31);
+years.map(exportSAP_51);
+
+years.map(exportSAP_1);
+years.map(exportSAP_2);
+years.map(exportSAP_20);
+years.map(exportSAP_30);
+years.map(exportSAP_50);
+*/
+
+////////////////////
+////execute conCov//
+////////////////////
+
+
+//to do
+/*
+
+
+*/
+//end to do
+
+/*
+done
+
+years.map(exportConCov41);
+years.map(exportConCov42);
+years.map(exportConCov43);
+years.map(exportConCov44);
+years.map(exportConCov45);
+years.map(exportConCov46);
+
+years.map(exportConCov23);
+years.map(exportConCov24);
+years.map(exportConCov25);
+years.map(exportConCov26);
+years.map(exportConCov27);
+years.map(exportConCov28);
+
+
+years.map(exportConCov17);
+years.map(exportConCov18);
+years.map(exportConCov19);
+
+
+years.map(exportConCov38);
+years.map(exportConCov39);
+years.map(exportConCov40);
+
+years.map(exportConCov33);
+years.map(exportConCov34);
+years.map(exportConCov35);
+years.map(exportConCov36);
+years.map(exportConCov37);
+
+years.map(exportConCov12);
+years.map(exportConCov13);
+years.map(exportConCov14);
+years.map(exportConCov15);
+years.map(exportConCov16);
+years.map(exportConCov5);
+years.map(exportConCov6);
+years.map(exportConCov22);
+years.map(exportConCov32);
+years.map(exportConCov52);
+
+years.map(exportConCov7);
+years.map(exportConCov8);
+years.map(exportConCov9);
+years.map(exportConCov10);
+years.map(exportConCov11);
+
+years.map(exportConCov3);
+years.map(exportConCov4);
+years.map(exportConCov21);
+years.map(exportConCov31);
+years.map(exportConCov51);
+
+years.map(exportConCov1);
+years.map(exportConCov2);
+years.map(exportConCov20);
+years.map(exportConCov30);
+years.map(exportConCov50);
+*/
+
+
+
+
+
+
+
+
+
+/////////////////////
+//////scratch////////
+/////////////////////
+
+//extra definition of SAP vars, BUT before adding the SAP 150, so defunct.  
+
+/*
+var SAPvars_reproj = reduceResolution(SAPvars,landsatProjection,targetProjection)
+
+*/
+
+
+
+//////////////2nd function to export most////
+/*
+var samplePoints = studyPixels.updateMask(studyPixels).sample({
+  region: study_area,
+  scale: 270,
+  geometries: true,  // if you want points
+});
+
+print(samplePoints,'samplePoints');
+*/
+/*
+var toExport = sampleRegions({collection: samplePoints, 
+               scale: 270,
+               geometries: true});
+*/
+
+//print(toExport,'toExport');
+
+
+
+
+
+/*
+Export.image.toDrive({image: conPctCover_reproj.select(['conCov2021']), 
+                      description: "conPctCover_reproj_geometry_2021_repoject_before_classification", 
+                      region: study_area, 
+                      crs: projFinal.crs, 
+                      crsTransform: projFinal.transform,
+                      folder: "fromGEE",
+                      skipEmptyTiles: true});
+*/
+
+/*
+Export.image.toAsset({image: studyPixels, 
+                      description: 'studyPixels_3_21_2022',
+                      region: study_area,
+                      crs: projFinal.crs,
+                      crsTransform: projFinal.transform,
+                      maxPixels: 1e9
+                      });
+*/
+
+/*
+Export.image.toDrive({image: terrainVars_reproj, 
+                      description: "terrainVars_reproj_studyArea", 
+                      region: study_area, 
+                      crs: projFinal.crs, 
+                      crsTransform: projFinal.transform,
+                      folder: "fromGEE",
+                      skipEmptyTiles: true});
+*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+//print(allVars,'allVars');
+
+
+
+//Map.addLayer(allVars.select('fireYear'),{min:1987,max:2020,palette:['white','black']},'fireYear');
+//Map.addLayer(allVars.select('burnSev'),{min:2,max:4,palette:['yellow','red']},'burnSev');
+//Map.addLayer(allVars.select('3_burnSev1987'),{min:2,max:4,palette:['yellow','red']},'burnSev1987');
+//Map.addLayer(allVars.select('18_burnSev2002'),{min:2,max:4,palette:['yellow','red']},'burnSev2002');
+
+
+/*
+Map.addLayer(studyPixels,{min:0,max:1,palette:['white','black']},'study pixels');
+Map.addLayer(allVars.select('1_1_0_pctConCov2021'),{min:0,max:0.7,palette:['brown','green']},'con cov 2021 in stack');
+Map.addLayer(allVars.select('2_9_pctConCov1989'),{min:0,max:0.7,palette:['brown','green']},'con cov 1989');
+Map.addLayer(allVars.select('2_9_SAP_150pctConCov1989'),{min:0,max:1,palette:['white','purple']},'SAP 150 1989');
+Map.addLayer(allVars.select('3_burnSev1987'),{min:2,max:4,palette:['yellow','red']},'burn sev 1986');
+*/
+
+/*
+Map.addLayer(allVars.select('3_burnSev1987'),{min:2,max:4,palette:['yellow','red']},'burn sev 1986');
+Map.addLayer(allVars.select('2_9_pctConCov1989'),{min:0,max:0.7,palette:['brown','green']},'con cov 1989');
+Map.addLayer(allVars.select('2_9_SAP_150pctConCov1989'),{min:0,max:1,palette:['white','purple']},'SAP 150 1989');
+Map.addLayer(allVars.select('1_1_0_pctConCov2021'),{min:0,max:0.7,palette:['brown','green']},'con cov 2021');
+*/
+
+

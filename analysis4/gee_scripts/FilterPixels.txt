@@ -1,0 +1,464 @@
+//This script defines the study pixels
+/*
+Study pixels:
+    1. In mixed conifer forest (BPSmask at 270m > 0.5)
+    2. Burned once at medium or high severity during the fire period 
+    3. Did not burn again at high severity during the fire period
+*/
+
+///////////////////
+////parameters/////
+///////////////////
+var fire_period_start = 1985;
+exports.fire_period_start = fire_period_start;
+var fire_period_end = 2004;
+exports.fire_period_end = fire_period_end;
+var recovery_period_end = 2014;
+exports.recovery_period_end = recovery_period_end;
+
+//aggregation thresholds
+var BPS_thresh_lower = 0.5; //more than X% of the 30m pixels in the target size pixel had to be mixed conifer forest
+var burnHistMask_thresh = 0.75; //more than X% of 30m pixels in a target size pixel had to meet the burn history criteria
+
+////////////////
+//import data///
+////////////////
+
+var study_area = ee.FeatureCollection("users/ahanburybrown/study_area"),
+    bpsN = ee.Image("users/ahanburybrown/BPS_North").rename('forestType'),
+    bpsS = ee.Image("users/ahanburybrown/BPS_South").rename('forestType');
+
+exports.study_area = study_area;
+
+var mtbsRaw = ee.ImageCollection([
+  ee.Image('projects/earthengine-legacy/assets/users/ahanburybrown/mtbs_CA_1984'),
+  ee.Image('projects/earthengine-legacy/assets/users/ahanburybrown/mtbs_CA_1985'),
+  ee.Image('projects/earthengine-legacy/assets/users/ahanburybrown/mtbs_CA_1986'),
+  ee.Image('projects/earthengine-legacy/assets/users/ahanburybrown/mtbs_CA_1987'),
+  ee.Image('projects/earthengine-legacy/assets/users/ahanburybrown/mtbs_CA_1988'),
+  ee.Image('projects/earthengine-legacy/assets/users/ahanburybrown/mtbs_CA_1989'),
+  ee.Image('projects/earthengine-legacy/assets/users/ahanburybrown/mtbs_CA_1990'),
+  ee.Image('projects/earthengine-legacy/assets/users/ahanburybrown/mtbs_CA_1991'),
+  ee.Image('projects/earthengine-legacy/assets/users/ahanburybrown/mtbs_CA_1992'),
+  ee.Image('projects/earthengine-legacy/assets/users/ahanburybrown/mtbs_CA_1993'),
+  ee.Image('projects/earthengine-legacy/assets/users/ahanburybrown/mtbs_CA_1994'),
+  ee.Image('projects/earthengine-legacy/assets/users/ahanburybrown/mtbs_CA_1995'),
+  ee.Image('projects/earthengine-legacy/assets/users/ahanburybrown/mtbs_CA_1996'),
+  ee.Image('projects/earthengine-legacy/assets/users/ahanburybrown/mtbs_CA_1997'),
+  ee.Image('projects/earthengine-legacy/assets/users/ahanburybrown/mtbs_CA_1998'),
+  ee.Image('projects/earthengine-legacy/assets/users/ahanburybrown/mtbs_CA_1999'),
+  ee.Image('projects/earthengine-legacy/assets/users/ahanburybrown/mtbs_CA_2000'),
+  ee.Image('projects/earthengine-legacy/assets/users/ahanburybrown/mtbs_CA_2001'),
+  ee.Image('projects/earthengine-legacy/assets/users/ahanburybrown/mtbs_CA_2002'),
+  ee.Image('projects/earthengine-legacy/assets/users/ahanburybrown/mtbs_CA_2003'),
+  ee.Image('projects/earthengine-legacy/assets/users/ahanburybrown/mtbs_CA_2004'),
+  ee.Image('projects/earthengine-legacy/assets/users/ahanburybrown/mtbs_CA_2005'),
+  ee.Image('projects/earthengine-legacy/assets/users/ahanburybrown/mtbs_CA_2006'),
+  ee.Image('projects/earthengine-legacy/assets/users/ahanburybrown/mtbs_CA_2007'),
+  ee.Image('projects/earthengine-legacy/assets/users/ahanburybrown/mtbs_CA_2008'),
+  ee.Image('projects/earthengine-legacy/assets/users/ahanburybrown/mtbs_CA_2009'),
+  ee.Image('projects/earthengine-legacy/assets/users/ahanburybrown/mtbs_CA_2010'),
+  ee.Image('projects/earthengine-legacy/assets/users/ahanburybrown/mtbs_CA_2011'),
+  ee.Image('projects/earthengine-legacy/assets/users/ahanburybrown/mtbs_CA_2012'),
+  ee.Image('projects/earthengine-legacy/assets/users/ahanburybrown/mtbs_CA_2013'),
+  ee.Image('projects/earthengine-legacy/assets/users/ahanburybrown/mtbs_CA_2014'),
+  ee.Image('projects/earthengine-legacy/assets/users/ahanburybrown/mtbs_CA_2015'),
+  ee.Image('projects/earthengine-legacy/assets/users/ahanburybrown/mtbs_CA_2016'),
+  ee.Image('projects/earthengine-legacy/assets/users/ahanburybrown/mtbs_CA_2017'),
+  ee.Image('projects/earthengine-legacy/assets/users/ahanburybrown/mtbs_CA_2018'),
+  ee.Image('projects/earthengine-legacy/assets/users/ahanburybrown/mtbs_CA_2019')
+  ]);
+
+
+//////////////////////
+//////projections/////
+//////////////////////
+
+var classifyScript = require('users/ahanburybrown/default:postfire_regen/02_Classify');
+
+//import target projection
+var targetProjection = classifyScript.targetProjection;
+
+//import landsat projection
+var landsatProjection = classifyScript.landsatProjection;
+
+//mtbs native projection
+var mtbs_proj = ee.Image('projects/earthengine-legacy/assets/users/ahanburybrown/mtbs_CA_1984').projection();
+exports.mtbs_proj = mtbs_proj;
+
+//BPS native projection
+var BPS_proj = bpsN.projection();
+exports.BPS_proj = BPS_proj;
+
+
+
+
+
+
+
+
+///////////////
+///functions///
+///////////////
+
+//function to make outline of study area
+var MapOutline = classifyScript.MapOutline;
+
+//import reduce resolution function
+var reduceResolution = classifyScript.reduceResolution;
+
+var maskOutside = function(geometry) {
+  var mask = ee.Image.constant(1).clip(geometry).mask();
+  return(mask);
+};
+
+var cleanMtbs = function(img){
+  var mask1 = img.lt(5);
+  var mask2 = img.gt(1);
+  var output = img.updateMask(mask1).updateMask(mask2);
+  return output.rename('burnSev');
+};
+
+var addYear = function(img) {
+  var yr = img.get('year');
+  var yr_img = ee.Image.constant(yr).rename('year').toInt32().updateMask(img);
+  return img.addBands(yr_img);
+};
+
+
+var medHighBurn = function(img){
+  var medHighMask = img.gt(2).select('burnSev');
+  return(medHighMask.rename("medHigh"));
+};
+
+
+var highBurn = function(img){
+  var high = img.gt(3).select('burnSev');
+  return(high.rename("high"));
+};
+
+var medBurn = function(img){
+  var med = img.eq(3).select('burnSev');
+  return(med.rename("med"));
+};
+exports.medBurn = medBurn;
+
+var lowBurn = function(img){
+  var med = img.eq(2).select('burnSev');
+  return(med.rename("low"));
+};
+exports.lowBurn = lowBurn;
+
+//mask out areas that could have been planted by USFS (FACTS)
+var rasterizeFacts = function(year) {
+  
+  var yearNumber = ee.Number.parse(year);
+  
+  var factsRaster = FACTS.filter(ee.Filter.eq('FY_COMPLET', yearNumber))
+  .filter(ee.Filter.notNull(['ACTIVITY_C']))
+  .filter(ee.Filter.eq('ACTIVITY_C',4431))
+  .reduceToImage({
+    properties: ['ACTIVITY_C'],
+    reducer: ee.Reducer.first()
+}).gt(1).rename([ee.String('management').cat(year)]).unmask();
+  
+  return factsRaster;
+};
+
+
+
+//Map the study area
+//MapOutline(study_area,"study area")
+
+
+//////////////////////////////////////
+///Create Mixed Conifer Forest mask///
+//////////////////////////////////////
+
+//create the mask in native resolution (30m)
+var BPS = ee.Image(ee.ImageCollection([bpsN,bpsS]).mosaic());
+exports.BPS = BPS;
+
+var BPSmask = BPS.eq(549)
+.or(BPS.eq(550))
+.or(BPS.eq(551))
+.or(BPS.eq(552))
+.or(BPS.eq(554))
+.or(BPS.eq(555))
+.or(BPS.eq(583))
+.or(BPS.eq(584))
+.or(BPS.eq(585))
+.or(BPS.eq(587))
+.or(BPS.eq(588))
+.or(BPS.eq(762)) 
+.or(BPS.eq(763))
+.or(BPS.eq(764))
+.or(BPS.eq(765))
+.or(BPS.eq(767))
+.or(BPS.eq(768))
+.or(BPS.eq(795)) 
+.or(BPS.eq(796))
+.or(BPS.eq(797))
+.or(BPS.eq(798))
+.or(BPS.eq(800))
+.or(BPS.eq(801))
+.or(BPS.eq(911)) 
+.or(BPS.eq(913))
+.or(BPS.eq(914))
+.or(BPS.eq(931))
+.or(BPS.eq(932))
+.or(BPS.eq(934))
+.or(BPS.eq(935)) 
+.or(BPS.eq(1052))
+.or(BPS.eq(1054));
+//Map.addLayer(BPSmask,{min:0, max:1, palette: ['brown', 'green']},"BPS mask 30 m",false);
+
+//Get the BPS mask at target resolution
+var BPSmask_outputResolution = reduceResolution(BPSmask,BPS_proj,targetProjection);
+//Map.addLayer(BPSmask_outputResolution,{min:0, max:1, palette: ['brown', 'green']},"BPS mask continuous",false);
+
+//Threshold the BPS mask
+var BPSmask_outputResolution = BPSmask_outputResolution.gt(BPS_thresh_lower);
+
+//Cut out masked out areas so they don't display on the map
+var BPSmask_outputResolution = BPSmask_outputResolution.updateMask(BPSmask_outputResolution);
+//Map.addLayer(BPSmask_outputResolution,{min:0, max:1, palette: ['brown', 'green']},"BPS mask",true);
+///End Create Mixed Conifer Forest mask///
+exports.BPSmask = BPSmask;
+
+
+/////////////////////////////////////////////////////////
+///Create fire history mask and get fire year ///////////
+/////////////////////////////////////////////////////////
+
+///fire period mask///
+
+//print(mtbsRaw,'mtbsRaw');
+
+
+var mtbs = mtbsRaw.map(cleanMtbs).map(addYear);
+exports.mtbs = mtbs;
+//print(mtbs,'mtbs');
+
+//Filter to pixels that burned once at medium or high severity 
+//during the fire period
+var firePeriodMask = mtbs
+.filter(ee.Filter.gte('year',fire_period_start))
+.filter(ee.Filter.lte('year',fire_period_end))
+.map(medHighBurn)
+.sum().eq(1);
+
+//print(firePeriodMask,"fire period mask");
+//Map.addLayer(firePeriodMask,{min:0,max:1,palette: ['white','purple']},"firePeriodMask");
+
+//Filter to pixels that did not reburn at high severity during the recovery period
+
+/*
+var postFirePeriodMask = mtbs
+.filter(ee.Filter.gt('year',fire_period_end))
+.filter(ee.Filter.lt('year',recovery_period_end))
+.map(highBurn) 
+//.map(medHighBurn) 
+.sum().eq(0);
+//print(postFirePeriodMask,'postFirePeriodMask');
+//Map.addLayer(postFirePeriodMask,{min:0,max:1,palette: ['white','purple']},"postFirePeriodMask");
+*/
+
+
+var postFirePeriodHighBurn = mtbs
+.filter(ee.Filter.gt('year',fire_period_end))
+.filter(ee.Filter.lt('year',recovery_period_end))
+.map(highBurn) 
+//.map(medHighBurn) 
+.sum().gt(0).unmask();
+
+
+var postFirePeriodMask = ee.Image.constant(1)
+.add(postFirePeriodHighBurn)
+.eq(1);
+
+
+var fireHistMask = ee.Image.constant(1).updateMask(firePeriodMask).updateMask(postFirePeriodMask);
+//Map.addLayer(fireHistMask,{min:0,max:1,palette: ['white','purple']},"fireHistMask",true);
+
+
+////reproject fire history mask to output resolution////
+var fireHistMask_outputResolution = reduceResolution(fireHistMask.unmask(),mtbs_proj,targetProjection)
+.gt(burnHistMask_thresh);
+
+//Map.addLayer(fireHistMask_outputResolution.updateMask(fireHistMask_outputResolution),{min:0,max:1,palette:['white','purple']},'fireHistMask_outputResolution',false);
+
+
+
+/*
+
+
+
+////////////////////
+//Not Planted mask//
+////////////////////
+//facts
+var factsRaw = ee.FeatureCollection("users/ahanburybrown/DS421_data/CA_FACTS");
+
+
+var FACTS = factsRaw.map(function(feature){
+    var num = ee.Number.parse(feature.get('ACTIVITY_C'));
+    return feature.set('ACTIVITY_C', num);
+  });
+  
+  
+//Export.table.toDrive(factsRaw);
+  
+
+var factsYears = ["1984","1985","1986","1987","1988","1989","1990","1991","1992","1993","1994","1995","1996","1997","1998","1999","2000","2001","2002","2003","2004","2005","2006","2007","2008","2009","2010","2011","2012","2013","2014","2015","2016","2017","2018",'2019'];
+var management = ee.Image([factsYears.map(rasterizeFacts)]);
+var facts_proj = management.projection();
+var notplanted = management.reduce("sum").lt(1).setDefaultProjection('EPSG:4326');
+Map.addLayer(notplanted, {}, "notplanted", false);
+
+
+//////////////////
+//Inside CA NF////
+//////////////////
+
+
+//NF proj
+//clip study area to just national forest
+//var nationalForest = ee.FeatureCollection("users/ahanburybrown/NationalForestLand_CA");
+
+var inNationalForest = maskOutside(nationalForest).setDefaultProjection('EPSG:4269');
+
+var NF_proj = inNationalForest.projection();
+
+
+
+Map.addLayer(inNationalForest,{min:0,max:1,palette:['white','purple']},'national forest',false);
+//exports.studyPixels = studyPixels;
+
+
+
+
+////reproject planting mask////
+var notplanted_output_resolution = reduceResolution(notplanted.unmask(),facts_proj,targetProjection)
+.eq(1);
+//Map.addLayer(notplanted_output_resolution,{min:0,max:1,palette:['white','purple']},'national forest',true);
+
+///reproject NF mask////
+var inNationalForest_output_resolution = reduceResolution(inNationalForest.unmask(),NF_proj,targetProjection)
+.eq(1);
+//Map.addLayer(inNationalForest_output_resolution,{min:0,max:1,palette:['white','purple']},'national forest',true);
+
+*/
+
+
+
+//create study pixel mask///
+var studyAreaPixels = maskOutside(study_area);
+var studyPixels = BPSmask_outputResolution.updateMask(fireHistMask_outputResolution).updateMask(studyAreaPixels);
+Map.addLayer(studyPixels,{min:0,max:1,palette:['white','purple']},'study pixels',true);
+exports.studyPixels = studyPixels;
+
+
+//Map.addLayer(studyPixels.cluster(ee.Clusterer.wekaKMeans(5)),{},"study pixels",true);
+
+//var clusters = ee.Algorithms.Image.Segmentation.SNIC({image: studyPixels, numClusters: 30});
+//print(clusters,'clusters');
+//Map.addLayer(clusters,{min:0,max:1,palette:['white','purple']},'cluster',true);
+
+
+//Map.addLayer(firePeriodMask,{min:0,max:1,palette:['white','purple']},'medium or high burn (1985-2004',true);
+
+/*
+Map.addLayer(postFirePeriodHighBurn,{min:0,max:1,palette:['white','red']},'postfire period high burn (2005-2017)',true);
+Map.addLayer(postFirePeriodMask,{min:0,max:1,palette:['white','purple']}, "no post-fire period high burn",true);
+Map.addLayer(fireHistMask,{min:0,max:1,palette: ['white','purple']},"fireHistMask",true);
+
+*/
+
+
+
+/////////////////////
+///predictor vars////
+/////////////////////
+
+
+
+
+///reproject fire year into output resolution////
+//var fireYear_outputResolution = reduceResolution_mode(fireYear,mtbs_proj,targetProjection).updateMask(fireHistMask_outputResolution);
+//Map.addLayer(fireYear_outputResolution,{min:1984,max:2019,palette:["black","white"]},"fireYear output rez",false);
+
+/////////////////////////////////////////////////////////
+///END create fire history  mask ////////////////////////////
+/////////////////////////////////////////////////////////
+
+
+
+/////////////////////////////
+///export the study pixels///
+/////////////////////////////
+
+//pick up with confining to study area polygon
+
+/*
+
+
+Export.image.toDrive({image:studyPixels, 
+                      description:'studyPixels_3_26_2022_v2', 
+                      region: study_area, 
+                      crs:'EPSG:3310', 
+                      scale: 270,
+                      folder: "fromGEE",
+                      maxPixels: 1e9,
+                      skipEmptyTiles: true});
+
+Export.image.toAsset({image:studyPixels, 
+                      description:'studyPixels_withmedReburn', 
+                      region: study_area, 
+                      crs:'EPSG:3310', 
+                      scale: 270,
+                      maxPixels: 1e9
+                      });
+
+
+
+Export.image.toDrive({image:studyPixels, 
+                      description:'studyPixels_3_27_2022', 
+                      region: study_area, 
+                      crs:'EPSG:3310', 
+                      scale: 270,
+                      folder: "fromGEE",
+                      maxPixels: 1e9,
+                      skipEmptyTiles: true});
+
+
+
+Export.image.toDrive({image:preFireConProb_outputResolution, 
+                      description:'preFireConProb_1985', 
+                      region: geometry2, 
+                      crs:'EPSG:3310', 
+                      scale: 270,
+                      folder: "fromGEE",
+                      maxPixels: 1e9,
+                      skipEmptyTiles: true});
+
+Export.image.toDrive({image:preFireConProb, 
+                      description:'ConProb_1985_30m', 
+                      region: geometry2, 
+                      crs:'EPSG:32611', 
+                      scale: 30,
+                      folder: "fromGEE",
+                      maxPixels: 1e9,
+                      skipEmptyTiles: true});
+
+
+
+//Identify and map the study pixels
+var studyPixels = burnSev
+.gt(0)
+.rename('inStudy')
+//Map.addLayer(studyPixels,{},"studyPixels",false)
+exports.studyPixels = studyPixels
+*/
+
+
